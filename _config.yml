@@ -293,8 +293,10 @@ defaults:
       share: true
       related: true
 
-collections_dir: vcanus_collections
 collections:
-- development
-- data_science
+    development:
+	output: true
+    data_science:
+	output: true
 
+collections_dir: vcanus_collections
