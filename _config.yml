@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "VCANUS Technical Blog"
+title                    : "VCANUS's Technical Blog"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : #"VCANUS"
@@ -107,7 +107,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "VCANUS"
+  name             : #"VCANUS"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : #"I am an **amazing** person."
   location         : #"Somewhere"
@@ -118,7 +118,7 @@ author:
       # url: mailto:your.name@email.com
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      url: "https://www.vcanus.com"
+      #url: "https://www.vcanus.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       # url: "https://twitter.com/"
