@@ -294,9 +294,6 @@ defaults:
       related: true
 
 collections:
-    development:
-	output: true
-    data_science:
+    vcanus_collections:
 	output: true
 
-collections_dir: vcanus_collections
