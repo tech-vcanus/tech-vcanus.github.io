@@ -376,14 +376,14 @@ jsonObject.Add(Key4, Value4);
 ```
  
 - From Json  
-JObject
+ JObject
 ```
 JObject jsonObject = JObject.Parse(jsonContents);
 //JSON 오브젝트는 Key, Value로 이루어져있어 Dicitionary<String, Object>와 같이 변환이 가능하다.
 Dictionary<String, Object> dictionary = jsonObject.ToObject<<Dictionary<String, Object>>();
 ```
 
-만약 Value값만 추출해서 사용하려면 아래와 같이 Value를 이용한다.  
+ 만약 Value값만 추출해서 사용하려면 아래와 같이 Value를 이용한다.  
 ```
 //해당 Dictionary의 Key로 이루어진 List를 생성
 List<String> keyList = new List<>(dictionary.Keys);
@@ -394,7 +394,7 @@ for(int i = 0; i < jsonObject.Count; i++){
 }
 ```
  
-JArray  
+ JArray  
 ```
 JArray jArray = JArray.Parse(jsonContents);
 foreach(JObject jObj in jArray){
