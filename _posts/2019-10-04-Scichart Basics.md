@@ -49,6 +49,7 @@ namespace WpfAppName
     }
 }
 ```
+
 - 라이센스 키를 입력하고 그래프를 정상적으로 보려면 디버깅 모드로 실행 X   =>   디버그하지 않고 시작 O
 
 ## 2. Scichart 튜토리얼
@@ -63,6 +64,7 @@ namespace WpfAppName
   ```WPF
   xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
   ```
+  
   2. Grid 내부에 Scichart를 생성
   3. X축, Y축 설정
   
@@ -100,12 +102,14 @@ namespace WpfAppName
     </Grid>
   </Window>        
   ```
+  
   4. MainViewModel.cs에서 BindableObject를 상속받아 이용한다.
   BindableObject는 INotifyPropertyChanged를 상속받고 있다.
   
   ```C#
   public class MainViewModel : BindableObject
   ```
+  
   아래 코드처럼 Binding하는 변수에 대한 설정을 해주면 된다.
   
   ```C#
@@ -153,12 +157,14 @@ namespace WpfAppName
     }
   }     
   ```
+  
   - 시리즈 추가 (시리즈 : 하나의 그래프로 표시될 자료)
   1. 여러개의 시리즈를 담을 수 있는 Collection을 생성한다. 이 컬렉션이 SciChart의 Binding대상
   
   ```C#
   private ObservableCollection<IRenderableSeriesViewModel> _renderableSeries;
   ```
+  
   2. 공식 홈페이지의 getter, setter는 아래처럼 설정되어있다.
   
   ```C#
@@ -172,6 +178,7 @@ namespace WpfAppName
     }
   }
   ```
+  
   아직 정확한 원인을 찾아내지 못했지만 OnPropertyChanged의 내용이 들어가 있으면 그래프의 새로고침 기능이 작동하지 않는 경우가 있다.
   따라서 시리즈 또는 시리즈의 내용이 바뀔 때 새로고침이 되게 하려면 아래처럼 OnPropertyChanged를 삭제하자!
   
@@ -182,6 +189,7 @@ namespace WpfAppName
     set => _renderableSeries = value;
   }
   ```
+  
   3. MainViewModel.cs에서 Series를 만들고 RenderableSeries에 넣는다!
   2D로 생성되는 일반적인 그래프의 경우에는 XyDataSeries를 이용한다.
   
@@ -204,6 +212,7 @@ namespace WpfAppName
     });
   }
   ```
+  
   4. MainWindow.xaml에서 RenderableSeries를 Binding한다.
   RenderableSeries에서 SeriesBinding 기능이 제공되기에 해당 시리즈를 한번에 연결!
   
@@ -236,6 +245,7 @@ namespace WpfAppName
 	var dataSeries = new XyDataSeries<double, double>();
 	//생성자체는 어려울 것 없다.
 	```
+	
 	위에서 int는 X축의 데이터를 의미하고 double은 Y축의 데이터를 뜻한다.  
 	물론 int, double, float 등 데이터타입은 숫자 데이터면 가능하다.  
 
@@ -274,6 +284,7 @@ namespace WpfAppName
   
   <s:SciChartSurface RenderableSeries = "{s:SeriesBinding SeriesList, UpdateSourceTrigger=PropertyChanged}">
   ```
+  
   ### 3) DataSeries에 대한 속성 설정
   - 이전 순서에서 Collection에 DataSeries를 추가하는 방법을 공부했다.  
   이번에는 시리즈를 추가할 때 다양한 속성을 설정하는 방법에 대해 알아볼 예정이다.
@@ -283,6 +294,7 @@ namespace WpfAppName
   //생성할 때 SeriesName을 설정해주자.
   XyDataSeries<double, double> xyDataSeries = new XyDataSeries<double, double>() { SeriesName = keyList[i] };
   ```
+  
   2. 각종 설정 추가
   
   ```C#
@@ -295,6 +307,7 @@ namespace WpfAppName
     PointMarker = new EllipsePointMarker() { Width = 7, Height = 7 }
   });
   ```
+  
   위 코드에서 DataSeries를 묶는 것은 이전 순서에서 한 내용들이다.  
   이외에는 이 Series에 대한 속성을 지정해주는 것이다.
   - StrokeThickness : 선 굵기
@@ -325,6 +338,7 @@ namespace WpfAppName
     PointMarker = new EllipsePointMarker() { Width = 7, Height = 7 }
   });
   ```
+  
   ![StrokeThickness = 0](https://user-images.githubusercontent.com/41990925/66175649-72ad8200-e695-11e9-8d7e-d45f7de68973.png)
   
   4. ScatterSeries를 쓰지 않은 이유?  
