@@ -5,6 +5,8 @@ categories: development
 tags: WPF C# Scichart Basic Chart XAML MVVM
 ---
 
+Written by Young-rae Shin(https://github.com/lived1024)
+
 # Scichart
 Scichart는 수많은 숫자 데이터를 그래프로 표현할 수 있도록 한다.
 이 파일의 내용을 읽기전에 WPF의 기본에 관해서 숙지하는 것이 좋다.
