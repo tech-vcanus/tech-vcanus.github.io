@@ -400,12 +400,12 @@ foreach(JObject jObj in jArray){
 ## Windows Form  
 ### DataGridView  
 #### DataBinding  
-  - 현재 선택된 셀의 행 인덱스값  
+  현재 선택된 셀의 행 인덱스값  
   ```
   데이터그리드뷰.CurrentCell.RowIndex;
   ```
 
-  - 현재 선택된 셀에 담긴 값 가져오기  
+  현재 선택된 셀에 담긴 값 가져오기  
   ```
   int rownum = 데이터그리드뷰.CurrentCell.RowIndex;
   String device = 데이터그리드뷰.Rows[rownum].Cells[0].FormattedValue.ToString();
