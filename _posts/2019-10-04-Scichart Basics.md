@@ -56,7 +56,7 @@ http://scichart.com/
 1. Scichart 공식홈페이지에서 해당 프로그램 설치
 2. WPF 프로젝트 생성
 3. 참조 추가
-    ![StartScichart](https://user-images.githubusercontent.com/41990925/66175657-73deaf00-e695-11e9-8ef5-d8ecacef2592.png)
+![StartScichart](https://user-images.githubusercontent.com/41990925/66175657-73deaf00-e695-11e9-8ef5-d8ecacef2592.png)
 ### Scichart표면(Surface) 생성
 #### XAML에 Scichart 연결
 
