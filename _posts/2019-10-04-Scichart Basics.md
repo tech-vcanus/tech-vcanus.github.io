@@ -1,4 +1,3 @@
-
 ---
 title: "Scichart Basics"
 data: 2019-10-04 00:00:00 -0000
