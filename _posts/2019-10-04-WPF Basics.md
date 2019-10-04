@@ -104,6 +104,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>```
 >>![Grid](https://user-images.githubusercontent.com/41990925/66175638-717c5500-e695-11e9-9af9-8427289089ef.png)
 >>* Control의 배치는 아래화면처럼 Grid.Row 와 Grid.Column을 이용하여 지정할 수 있다.
+>>
 >>```WPF
 >><TextBlock Text="C0, R0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
 >>
