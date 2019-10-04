@@ -365,56 +365,55 @@ C#에서 JSON에 관한 작업은 대부분 Newtonsoft.Json을 이용한다.
 ![Nuget 2](https://user-images.githubusercontent.com/41990925/66175647-72ad8200-e695-11e9-9f65-efc9bcbcd7fd.png)
 ### 사용 방법  
  - To JSON : JObject, JArray 동일
- ```
- JObject jsonObject = new JObject();
- jsonObject.Add(Key, Value);
- jsonObject.Add(Key2, Value2);
- jsonObject.Add(Key3, Value3);
- jsonObject.Add(Key4, Value4);
-
+```
+JObject jsonObject = new JObject();
+jsonObject.Add(Key, Value);
+jsonObject.Add(Key2, Value2);
+jsonObject.Add(Key3, Value3);
+jsonObject.Add(Key4, Value4);
  string jsonContents = jsonObject.ToString();   
- //위 순서는 JSON 오브젝트에 대상의 값을 넣고, 문자열로 변환한 것이다.
- ```
+//위 순서는 JSON 오브젝트에 대상의 값을 넣고, 문자열로 변환한 것이다.
+```
  
- - From Json  
- JObject  
- ```
- JObject jsonObject = JObject.Parse(jsonContents);
- //JSON 오브젝트는 Key, Value로 이루어져있어 Dicitionary<String, Object>와 같이 변환이 가능하다.
- Dictionary<String, Object> dictionary = jsonObject.ToObject<<Dictionary<String, Object>>();
- ```
+- From Json  
+JObject
+```
+JObject jsonObject = JObject.Parse(jsonContents);
+//JSON 오브젝트는 Key, Value로 이루어져있어 Dicitionary<String, Object>와 같이 변환이 가능하다.
+Dictionary<String, Object> dictionary = jsonObject.ToObject<<Dictionary<String, Object>>();
+```
+
+만약 Value값만 추출해서 사용하려면 아래와 같이 Value를 이용한다.  
+```
+//해당 Dictionary의 Key로 이루어진 List를 생성
+List<String> keyList = new List<>(dictionary.Keys);
+//각 Key값에 따른 객체들을 반복문을 이용하여 꺼낼 수 있다.
+for(int i = 0; i < jsonObject.Count; i++){
+  Object obj = jsonObject.Value<Object>(keyList[i]);
+                        //Value<데이터타입>(Key값)
+}
+```
  
- 만약 Value값만 추출해서 사용하려면 아래와 같이 Value를 이용한다.  
- ```
- //해당 Dictionary의 Key로 이루어진 List를 생성
- List<String> keyList = new List<>(dictionary.Keys);
- //각 Key값에 따른 객체들을 반복문을 이용하여 꺼낼 수 있다.
- for(int i = 0; i < jsonObject.Count; i++){
-   Object obj = jsonObject.Value<Object>(keyList[i]);
-                         //Value<데이터타입>(Key값)
- }
- ```
- 
- JArray  
- ```
- JArray jArray = JArray.Parse(jsonContents);
- foreach(JObject jObj in jArray){
-   JObject obj = (JObject)jObj;
-   //JObject로 변환 후에는 ToObject를 이용해 변환하거나, 반복문으로 Value만 구해낼 수 있다.
-   Dictionary<String, int> dictionary = obj.ToObject<Dictionary<String, int>>();
- }
- ```
- 
+JArray  
+```
+JArray jArray = JArray.Parse(jsonContents);
+foreach(JObject jObj in jArray){
+  JObject obj = (JObject)jObj;
+  //JObject로 변환 후에는 ToObject를 이용해 변환하거나, 반복문으로 Value만 구해낼 수 있다.
+  Dictionary<String, int> dictionary = obj.ToObject<Dictionary<String, int>>();
+}
+```
+
 ## Windows Form  
 ### DataGridView  
 #### DataBinding  
-  - 현재 선택된 셀의 행 인덱스값  
-  ```
-  데이터그리드뷰.CurrentCell.RowIndex;
-  ```
-  
-  - 현재 선택된 셀에 담긴 값 가져오기  
-  ```
-  int rownum = 데이터그리드뷰.CurrentCell.RowIndex;
-  String device = 데이터그리드뷰.Rows[rownum].Cells[0].FormattedValue.ToString();
-  ```
+- 현재 선택된 셀의 행 인덱스값  
+```
+데이터그리드뷰.CurrentCell.RowIndex;
+```
+
+- 현재 선택된 셀에 담긴 값 가져오기  
+```
+int rownum = 데이터그리드뷰.CurrentCell.RowIndex;
+String device = 데이터그리드뷰.Rows[rownum].Cells[0].FormattedValue.ToString();
+```
