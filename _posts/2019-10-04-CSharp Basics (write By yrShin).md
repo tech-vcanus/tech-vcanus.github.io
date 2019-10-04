@@ -5,16 +5,16 @@ categories: development
 tags: C# Basics
 ---
 
-해당 내용은 신입개발자(C# about 1 month experience)가 작성한 내용입니다.
+해당 내용은 신입개발자(C# about 1 month experience)가 작성한 내용입니다.  
 
-Write By Young-rae Shin(https://github.com/lived1024)
+Write By Young-rae Shin(https://github.com/lived1024)  
 
-# C# 기초
-## 1. C#의 DataType
-- JAVA에서는 String을 대문자 String으로만 사용했지만 C#에서는 string, String 둘 다 가능하다.
+# C# 기초  
+## 1. C#의 DataType  
+- JAVA에서는 String을 대문자 String으로만 사용했지만 C#에서는 string, String 둘 다 가능하다.  
 - 숫자에 관한 데이터 타입은 JAVA와는 다르게 음수, 양수에 이용하는 데이터 타입이 다양하다.  
-(참조 : https://blog.naver.com/syrch/221587473761)
-## 2. C#의 Naming 규칙
+(참조 : https://blog.naver.com/syrch/221587473761)  
+## 2. C#의 Naming 규칙  
 - Class의 이름은 JAVA의 클래스 명처럼 첫글자, 단어구분에 대문자!!  
 ```C#
 public class ClassNameExample{ }
@@ -66,13 +66,13 @@ private string Test()
 //C#  : getter와 setter를 이용하려면 해당 함수를 호출하면 상황에 맞게 자동 설정되어 작동한다.
 ```  
 
-## 4. JAVA와의 차이
-### 1) var를 이용한 변수
+## 4. JAVA와의 차이  
+### 1) var를 이용한 변수  
 자바스크립트를 사용해봤다면 변수를 이용할때 var를 썼던 기억이 있을 것입니다.  
 자바스크립트에서 var를 이용한 변수는 데이터를 할당할 수도 있고, 함수를 할당할 수도 있었습니다.  
 하지만 JAVA에서는 변수에 var를 사용하지 못했지만, C#에서는 var를 이용할 수 있습니다.  
-단, 자바스크립트처럼 자유롭게 이용할 수 있는 것은 아니지만 암시적으로 타입을 변환할 수 있습니다.
-#### var 제약조건
+단, 자바스크립트처럼 자유롭게 이용할 수 있는 것은 아니지만 암시적으로 타입을 변환할 수 있습니다.  
+#### var 제약조건  
 1. private, public 등 전역변수로 사용할 수 없다. -> 지역변수로만 사용 가능.  
 ```C#
 public var a = 10;
@@ -102,11 +102,11 @@ var? a = "aa";    // X
 var a = 1;
 a = "Hi";    // X
 ```  
-### 2) ref, out 파라미터
+### 2) ref, out 파라미터  
 JAVA와 C#은 모두 개체를 참조하는 메서드는 매개변수를 주소에 의한 참조로 전달한다.  
 하지만 기본 데이터 형식 매개 변수는 값으로 전달되기에 외부에서 결과를 이용하기에 어려움이 있다.  
-이런 불편함을 해결해줄 out, ref 파라미터에 대해 알아보자.
-#### 출력전용 out 파라미터
+이런 불편함을 해결해줄 out, ref 파라미터에 대해 알아보자.  
+#### 출력전용 out 파라미터  
 하나의 메소드에서 2개 이상의 결과를 반환하려면 Map을 반환하거나 메소드를 별도로 제작했다.  
 예를 들어 나눗셈에서 몫과 나머지를 반환하려면 Map에 넣어서 반환을 해야했다.  
 하지만 C#에서는 출력전용으로 쓰는 out 파라미터가 존재한다.  
@@ -133,8 +133,8 @@ public void PrintResult()
   MessageBox.Show("몫 : " + c + " 나머지 : " + d);
 }
 ```  
-위처럼 간단하게 반환하여 이용할 수 있다.
-#### 참조변수 ref
+위처럼 간단하게 반환하여 이용할 수 있다.  
+#### 참조변수 ref  
 Call By Reference, Call By Value  
 둘 모두 C에서 사용하는 용어로 주소를 전달하는지, 값을 전달하는지에 따른 분류이다.  
 다른 말로는 얕은 복사(Swallow Copy), 깊은 복사(Deep Copy)로 부르기도 하는데 
@@ -174,7 +174,7 @@ public void ResultPrint()
   MessageBox.Show("몫 : " + c + " 나머지 : " + d);
 }
 ```  
-위 내용처럼 진행했다면 c = 1, d = 4가 출력될 것이다.
+위 내용처럼 진행했다면 c = 1, d = 4가 출력될 것이다.  
 
 하지만 이렇게 본다면 out과 똑같다는 생각만 들 수 있다.  
 그렇다면 ResultPrint 메소드의 내용을 다음과 같이 바꿔서 진행해보자.  
@@ -195,22 +195,22 @@ public void ResultPrint()
 분명히 c와 d를 1로 바꿨지만 결과는 동일하게 c = 1, d = 4가 나올 것이다.  
 즉!  
 ref를 이용한 변수는 ResultPrint에서 할당된 값 자체를 바꿔버리는 역할을 한다.  
-순서를 보면
-1. 메소드의 파라미터에서 주소를 알려주고
-2. Cal 메소드에서 그 주소의 값(내용)을 변경
-3. ResultPrint 메소드에서는 파라미터의 주소에 있는 값(내용)을 가져온다.
+순서를 보면  
+1. 메소드의 파라미터에서 주소를 알려주고  
+2. Cal 메소드에서 그 주소의 값(내용)을 변경  
+3. ResultPrint 메소드에서는 파라미터의 주소에 있는 값(내용)을 가져온다.  
 
-#### out과 ref의 차이점
+#### out과 ref의 차이점  
 ref변수와 out변수에 대해 봤다면 out변수도 ref의 마지막 코드처럼 이용할 수 있지 않을까라는 생각을 할 수 있다.  
 물론 이용해도 문제없이 실행되며 결과도 동일하게 나온다.  
 
 차이점은 스크린샷을 보면 알 수 있는데, out변수에는 컴파일러 에러를 띄워주는 안전장치가 존재한다.  
 ref는 해당 변수의 값을 메소드 내에서 변경하지 않더라도 에러가 발생하지 않는다.  
 하지만 out은 해당 변수의 값을 메소드 내에서 변경 또는 할당하지 않는다면 에러가 발생한다.  
-![Out](https://user-images.githubusercontent.com/41990925/66175651-72ad8200-e695-11e9-90f7-2845c3874613.png)
-![Ref](https://user-images.githubusercontent.com/41990925/66175655-73461880-e695-11e9-9328-6a483d5f901f.png)
+![Out](https://user-images.githubusercontent.com/41990925/66175651-72ad8200-e695-11e9-90f7-2845c3874613.png)  
+![Ref](https://user-images.githubusercontent.com/41990925/66175655-73461880-e695-11e9-9328-6a483d5f901f.png)  
 
-### 3) 대리자(Delegate)
+### 3) 대리자(Delegate)  
 대리자는 메소드의 파라미터로 메소드를 보낼 수 있게 해준다.  
 메소드에서 파라미터로 객체를 보내거나 int, string 등 데이터 타입을 보내주는 것은 자주 사용하던 일이다.  
 ```C#
@@ -221,11 +221,11 @@ public void SendData(Class c){ }
 하지만 메소드를 파라미터로 전송한다는 생각은 전혀 못하고 있었고 아직도 제대로 이용하지는 못했다.  
 간단히 말해서 대리자는 메소드를 파라미터로 전송해서 쉬운 재사용을 할 수 있게 만든다.  
 아직 익숙하지 못한 개념으로 해당 링크에서 2개의 페이지를 읽어보면 이해하기 쉬울 것이다.  
-https://blog.naver.com/syrch/221600865926
+https://blog.naver.com/syrch/221600865926  
 
 
-### 4) using을 이용한 메모리 관리
-using은 C#에서 namespace를 import하기위해 사용되는 명령어로 클래스를 생성하면 기본적으로 보인다.
+### 4) using을 이용한 메모리 관리  
+using은 C#에서 namespace를 import하기위해 사용되는 명령어로 클래스를 생성하면 기본적으로 보인다.  
 ![using](https://user-images.githubusercontent.com/41990925/66175662-74774580-e695-11e9-80a2-d97a9e7b1a6d.png)
 
 하지만 C#의 코드를 보면 메소드 내부에서 아래와 같은 모습을 볼 수 있다.  
@@ -252,11 +252,11 @@ finally{
 }
 ```  
 이처럼 메소드 내부의 using은 메모리관리를 효율적으로 하기 위해서 사용된다.  
-만약 필요한 경우에는 IDisposable 인터페이스를 상속받아 Dispose() 메소드를 구현하는 것이 좋다.
+만약 필요한 경우에는 IDisposable 인터페이스를 상속받아 Dispose() 메소드를 구현하는 것이 좋다.  
 
-### 5) Nullable
-Nullable은 숫자형식의 데이터는 null값을 가질 수 없지만 null을 가질 수 있게 해줍니다.
-예를 들어 JAVA에서 int에 null을 입력하면 컴파일러 에러가 발생합니다.
+### 5) Nullable  
+Nullable은 숫자형식의 데이터는 null값을 가질 수 없지만 null을 가질 수 있게 해줍니다.  
+예를 들어 JAVA에서 int에 null을 입력하면 컴파일러 에러가 발생합니다.  
 이는 C#에서도 동일하게 int에는 null값이 들어가지 못합니다.  
 ```JAVA
 int a = null;   // X
@@ -277,8 +277,8 @@ double[] doubleArray = { 0, 0.01, double.NaN, 0.02, 0.03 };   // O
 ```  
 
 
-## 5. 입출력
-### 1) 콘솔창, Windows Form, WPF 출력
+## 5. 입출력  
+### 1) 콘솔창, Windows Form, WPF 출력  
 #### 콘솔창 출력  
 ```C#
 //JAVA의 System.out.println()
@@ -329,8 +329,8 @@ if(di.Exists && fi.Exists)  //디렉토리와 파일이 있다면
 }
 ```  
 
-### 3) TextBox에 숫자만 입력
-#### KeyPress 이벤트를 이용한 방법
+### 3) TextBox에 숫자만 입력  
+#### KeyPress 이벤트를 이용한 방법  
 KeyPress는 일반적인 문자나 숫자 입력에 이용(Ctrl, Alt, Shift, Enter, Tab 등의 입력신호를 받지 못한다)  
 ```C#
 // KeyPress 이벤트를 이용하여 입력할 때마다 확인을 한다!
@@ -344,12 +344,12 @@ private void TextBoxRobotPort_KeyPress(object sender, KeyPressEventArgs e)
   }
 }
 ```  
-위 코드를 넣게 되면 텍스트박스에 숫자만 누적된다.
-여기서 주의해야 할 점은 키보드 누를때 반응이 아니다!!!!
-경험상 현재 입력중인 칸에서 다음 칸에 입력될때 반응이 나타난다.(커서가 옆으로 옮겨질 때)
+위 코드를 넣게 되면 텍스트박스에 숫자만 누적된다.  
+여기서 주의해야 할 점은 키보드 누를때 반응이 아니다!!!!  
+경험상 현재 입력중인 칸에서 다음 칸에 입력될때 반응이 나타난다.(커서가 옆으로 옮겨질 때)  
 
-####  KeyDown 이벤트를 이용한 방법
-###### KeyDown 이벤트를 이용한 방법
+####  KeyDown 이벤트를 이용한 방법  
+###### KeyDown 이벤트를 이용한 방법  
 KeyDown, KeyUp은 모든 키에 적용이 된다  
 ```C#
 private void TextBoxRobotPort_KeyDown(object sender, KeyEventArgs e)
@@ -364,16 +364,16 @@ private void TextBoxRobotPort_KeyDown(object sender, KeyEventArgs e)
   }
 }
 ```  
-이 방법의 경우에는 누르는 즉시 반응이 오기 때문에 조금 더 복잡하지만 선호하는 편이다.
+이 방법의 경우에는 누르는 즉시 반응이 오기 때문에 조금 더 복잡하지만 선호하는 편이다.  
 
-## 6. JSON 파싱
-C#에서 JSON에 관한 작업은 대부분 Newtonsoft.Json을 이용한다.
-### 1) 설치 방법
-1. Nuget 패키지 관리자를 실행
+## 6. JSON 파싱  
+C#에서 JSON에 관한 작업은 대부분 Newtonsoft.Json을 이용한다.  
+### 1) 설치 방법  
+1. Nuget 패키지 관리자를 실행  
 ![Nuget 1](https://user-images.githubusercontent.com/41990925/66175646-72ad8200-e695-11e9-9a6b-af71e643afd8.png)
-2. Newtonsoft.Json을 설치한다
+2. Newtonsoft.Json을 설치한다  
 ![Nuget 2](https://user-images.githubusercontent.com/41990925/66175647-72ad8200-e695-11e9-9f65-efc9bcbcd7fd.png)
-### 2) 사용 방법
+### 2) 사용 방법  
 - To JSON : JObject, JArray 동일   
 ```C#
 JObject jsonObject = new JObject();
@@ -386,7 +386,7 @@ string jsonContents = jsonObject.ToString();
 //위 순서는 JSON 오브젝트에 대상의 값을 넣고, 문자열로 변환한 것이다.
 ```  
 
-- From Json
+- From Json  
 1. JObject  
 ```C#
 JObject jsonObject = JObject.Parse(jsonContents);
@@ -413,9 +413,9 @@ foreach(JObject jObj in jArray){
 }
 ```  
 
-## 7. Windows Form
-### DataGridView
-#### DataBinding
+## 7. Windows Form  
+### DataGridView  
+#### DataBinding  
 - 현재 선택된 셀의 행 인덱스값  
 ``` C#
 데이터그리드뷰.CurrentCell.RowIndex;
