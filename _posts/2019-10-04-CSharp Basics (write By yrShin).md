@@ -9,15 +9,15 @@ tags: C# Basics
 
 Write By Young-rae Shin(https://github.com/lived1024)  
 
-# C# 기초  
-## 1. C#의 DataType  
+# 기초   
+## 1. DataType  
 - JAVA에서는 String을 대문자 String으로만 사용했지만 C#에서는 string, String 둘 다 가능하다.  
 - 숫자에 관한 데이터 타입은 JAVA와는 다르게 음수, 양수에 이용하는 데이터 타입이 다양하다.  
 (참조 : https://blog.naver.com/syrch/221587473761)  
-## 2. C#의 Naming 규칙  
+## 2. Naming 규칙  
 - Class의 이름은 JAVA의 클래스 명처럼 첫글자, 단어구분에 대문자!!  
 ```C#
-public class ClassNameExample{ }
+public class ClassNameExample(){ }
 ```  
 - 메소드(Method)의 첫 글자는 대문자로!!! -> 자바와 확연하게 차이나는 부분이다!  
 ```C#
@@ -338,7 +338,6 @@ private void TextBoxRobotPort_KeyPress(object sender, KeyPressEventArgs e)
 경험상 현재 입력중인 칸에서 다음 칸에 입력될때 반응이 나타난다.(커서가 옆으로 옮겨질 때)  
 
 ####  KeyDown 이벤트를 이용한 방법  
-###### KeyDown 이벤트를 이용한 방법  
 KeyDown, KeyUp은 모든 키에 적용이 된다  
 ```C#
 private void TextBoxRobotPort_KeyDown(object sender, KeyEventArgs e)
