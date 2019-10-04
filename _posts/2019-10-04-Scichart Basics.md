@@ -25,6 +25,7 @@ https://www.scichart.com/documentation/v5.x/webframe.html#Tutorial%2001%20-%20Re
 ![SourceCodeExample](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/ChartSourceCode.png?raw=true)
 - 링크는 Scichart의 Github 레파지토리 => https://github.com/ABTSoftware/SciChart.Wpf.Examples/tree/master/v5.x
 - 라이센스를 구매하고 해당 프로젝트의 App.xaml.cs에 라이센스 키를 입력해야한다.
+
 ```C#
 namespace WpfAppName
 {
@@ -56,11 +57,13 @@ namespace WpfAppName
   ![StartScichart](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/StartScichart.png?raw=true)
 - Scichart표면(Surface) 생성
   1. XAML에 Scichart 연결
+  
   ```WPF
   xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
   ```
   2. Grid 내부에 Scichart를 생성
   3. X축, Y축 설정
+  
   ```WPF
   <Window x:Class="SciChart.Mvvm.Tutorial.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -97,10 +100,12 @@ namespace WpfAppName
   ```
   4. MainViewModel.cs에서 BindableObject를 상속받아 이용한다.
   BindableObject는 INotifyPropertyChanged를 상속받고 있다.
+  
   ```C#
   public class MainViewModel : BindableObject
   ```
   아래 코드처럼 Binding하는 변수에 대한 설정을 해주면 된다.
+  
   ```C#
   
   using System.Collections.ObjectModel;
@@ -148,10 +153,12 @@ namespace WpfAppName
   ```
   - 시리즈 추가 (시리즈 : 하나의 그래프로 표시될 자료)
   1. 여러개의 시리즈를 담을 수 있는 Collection을 생성한다. 이 컬렉션이 SciChart의 Binding대상
+  
   ```C#
   private ObservableCollection<IRenderableSeriesViewModel> _renderableSeries;
   ```
   2. 공식 홈페이지의 getter, setter는 아래처럼 설정되어있다.
+  
   ```C#
   public ObservableCollection<IRenderableSeriesViewModel> RenderableSeries
   {
@@ -165,6 +172,7 @@ namespace WpfAppName
   ```
   아직 정확한 원인을 찾아내지 못했지만 OnPropertyChanged의 내용이 들어가 있으면 그래프의 새로고침 기능이 작동하지 않는 경우가 있다.
   따라서 시리즈 또는 시리즈의 내용이 바뀔 때 새로고침이 되게 하려면 아래처럼 OnPropertyChanged를 삭제하자!
+  
   ```C#
   public ObservableCollection<IRenderableSeriesViewModel> RenderableSeries
   {
@@ -174,6 +182,7 @@ namespace WpfAppName
   ```
   3. MainViewModel.cs에서 Series를 만들고 RenderableSeries에 넣는다!
   2D로 생성되는 일반적인 그래프의 경우에는 XyDataSeries를 이용한다.
+  
   ```C#
   public MainViewModel()
   {
@@ -195,6 +204,7 @@ namespace WpfAppName
   ```
   4. MainWindow.xaml에서 RenderableSeries를 Binding한다.
   RenderableSeries에서 SeriesBinding 기능이 제공되기에 해당 시리즈를 한번에 연결!
+  
   ```WPF
   <Grid DataContext="{StaticResource MainViewModel}">
   
@@ -234,10 +244,12 @@ namespace WpfAppName
 - ObservableCollection<IRenderableSeriesViewModel>
   튜토리얼 파트에서 ObservableCollection<IRenderableSeriesViewModel>에 Line Series를 생성하여 추가하는 것을 봤다.  
   이 콜렉션은 ScichartSurface의 RenderableSeries에 시리즈들을 한번에 Binding할 때 이용한다.
+	
   ```C#
   private static ObservableCollection<IRenderableSeriesViewModel> seriesList = new ObservableCollection<IRenderableSeriesViewModel>();
   public static ObservableCollection<IRenderableSeriesViewModel> SeriesList { get => renderableSeriesList; set => renderableSeriesList = value; }
   ```
+  
   ```C#
   //위에서 선언, 생성한 seriesList에 아래처럼 dataSeries를 추가한다
   //아래 lineData는 테스트용 시리즈
@@ -254,6 +266,7 @@ namespace WpfAppName
   });
   //위와 같이 SeriesList에 원하는만큼 DataSeries를 추가한다면 그 갯수만큼 그래프가 출력된다.
   ```
+  
   ```WPF
   xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
   
@@ -263,11 +276,13 @@ namespace WpfAppName
   - 이전 순서에서 Collection에 DataSeries를 추가하는 방법을 공부했다.  
   이번에는 시리즈를 추가할 때 다양한 속성을 설정하는 방법에 대해 알아볼 예정이다.
   1. DataSeries의 이름 설정
+  
   ```C#
   //생성할 때 SeriesName을 설정해주자.
   XyDataSeries<double, double> xyDataSeries = new XyDataSeries<double, double>() { SeriesName = keyList[i] };
   ```
   2. 각종 설정 추가
+  
   ```C#
   SeriesList.Add(new LineRenderableSeriesViewModel()
   {
@@ -297,6 +312,7 @@ namespace WpfAppName
   이전 순서에서 여러 속성으로 그래프의 모습을 설정할 수 있었다.  
   점으로 그래프를 나타내는 ScatterSeries도 별도로 있지만 위 코드에서 StrokeThickness의 속성을 0으로 설정하고,  
   PointMarker를 이용해 Point를 나타낸다면 아래처럼 점으로 이루어진 그래프가 탄생하게 된다.
+  
   ```C#
   SeriesList.Add(new LineRenderableSeriesViewModel()
   {
@@ -325,6 +341,7 @@ namespace WpfAppName
     3. StrokeThickness 의 값과 PointMarker의 값을 수정
     
   아래의 코드는 해당 속성만 변경하는 기능을 구현한 것이다.
+  
   ```C#
   //각각의 메소드는 반복문을 이용해 속성을 변경해준 것이다.
   //Scichart 선 그리기
