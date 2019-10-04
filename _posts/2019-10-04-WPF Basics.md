@@ -1,3 +1,4 @@
+
 ---
 title: "WPF Basics"
 data: 2019-10-04 00:00:00 -0000
@@ -5,22 +6,20 @@ categories: development
 tags: C# WPF Basics MVVM
 ---
 
-신입 개발자(Newcomer Programmer - WPF about 1 month, C# about 2 month)가 작성한 내용이니 감안하시고 보시길 바랍니다.
+Written by Young-rae Shin(https://github.com/lived1024)
 
 해당 문서는 WPF를 이용한 MVVC 디자인 패턴에 대한 내용을 설명할 것입니다.
 아래 링크에서 더 자세한 설명을 볼 수 있습니다.
 https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 
-Write by Young-rae Shin(https://github.com/lived1024)
-
-# 1. WPF의 정의
-## 1) MVVC 패턴이란?
+# WPF의 정의
+## MVVC 패턴이란?
   - MVVC 패턴은 MVC패턴에서 개량된 것으로, Model - View - ViewModel로 이루어져 있다.
   - Model : View에서 나타내기위한 데이터의 원본이라고 볼 수 있다.
   - View : 사용자에게 보여지는 GUI
   - ViewModel : Model에 있는 데이터를 View에서 보여주기위해 적절한 데이터로 가공하는 역할이다.
 
-## 2) WPF vs Winform : 둘 모두 응용SW의 개발에 이용하며 GUI의 미리보기(Preview)를 지원해서 개발에 편리함을 더해준다.
+## WPF vs Winform : 둘 모두 응용SW의 개발에 이용하며 GUI의 미리보기(Preview)를 지원해서 개발에 편리함을 더해준다.
   - Winform : 전통적인 방식으로 오랜 기간 이용되었으며 국내에서는 C# 응용SW의 대부분을 차지하고 있다.
     - 장점
       1. 안정성이 뛰어나다.
@@ -44,7 +43,7 @@ Write by Young-rae Shin(https://github.com/lived1024)
       2. 1번의 이유로 필요한 정보는 영어로 찾아야한다.
       3. 외국에서는 인기가 많다고 하지만 아직까지는 국내 점유율이 처참하다고 한다. - WinForm 10 : WPF 1 정도의 비율
       
-## 3) WPF를 이용한 MVVC패턴의 기초(Visual Studio)
+## WPF를 이용한 MVVC패턴의 기초(Visual Studio)
 ### Model
   - 기존의 C# 코드를 이용하여 View의 기초 데이터를 담당한다.
   - Car 클래스, Person 클래스 등 직접 DataBinding하는 자료를 제외한 클래스들이 여기에 속한다.
@@ -53,32 +52,32 @@ Write by Young-rae Shin(https://github.com/lived1024)
   - Model의 데이터를 View에서 이용할 수 있도록 가공한다.
   - 가공한 데이터는 DataBinding을 이용해 View를 제공하는 XAML파일(WPF)로 연결!
   - Main이 되는 XAML의 .cs파일에 작성할 수도 있지만 Resource를 설정하여 다른 파일에서 이용할 수도 있다.
-  ![예시](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/DataBinding%20by%20using%20Resource%20Tag.png?raw=true)
+  ![예시](https://user-images.githubusercontent.com/41990925/66175633-70e3be80-e695-11e9-8964-41dd054742c1.png)
   - WPF(XAML파일)에서 DataBinding을 설정하기도 하지만 ViewModel에서 설정할 수도 있다.
-  ![DataBinding in XAML](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/DataBinding%20in%20XAML.png?raw=true)  
+  ![DataBinding in XAML](https://user-images.githubusercontent.com/41990925/66175635-70e3be80-e695-11e9-8365-33865aa7eef6.png)  
   Binding 뒤의 "Items", "IsExpanded"는 Code-Behind에서 설정한 변수의 이름
-  ![DataBinding in Code-Behind](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/DataBinding%20in%20Code-Behind.png?raw=true)  
+  ![DataBinding in Code-Behind](https://user-images.githubusercontent.com/41990925/66175634-70e3be80-e695-11e9-8451-4c812de76d00.png)  
   단, 최상위 Window의 Code-Behind와 해당 XAML의 Code-Behind가 아니면 아래와 같은 에러를 볼 수 있다.  
-  ![Not Static Control](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Not%20Static%20Control.png?raw=true)
+  ![Not Static Control](https://user-images.githubusercontent.com/41990925/66175645-7214eb80-e695-11e9-8928-324ccc5ed6c0.png)
 ### View : XAML파일(WPF)
   - UI를 담당한다고 볼 수 있다.
   - 마크업 언어로 구성되어 가독성이 뛰어나고, ViewModel과 연결하여 DataBinding을 이용할 수 있다.
   - 해당 파일을 생성하면 Code-Behind파일이 자동으로 생성된다.  
-  ![Files](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Files.png?raw=true)
+  ![Files](https://user-images.githubusercontent.com/41990925/66175636-70e3be80-e695-11e9-942f-87fdbf955f46.png)
   - XAML파일에서 Event의 메소드명을 설정하면 Code-Behind에서 해당 이벤트를 구현하면 된다.
-  ![XAML Event](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/XAML%20Event.png?raw=true)
-  ![Code-Behind Event](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Code-Behind%20Event.png?raw=true)
+  ![XAML Event](https://user-images.githubusercontent.com/41990925/66175667-750fdc00-e695-11e9-8a91-670f6f15a0a9.png)
+  ![Code-Behind Event](https://user-images.githubusercontent.com/41990925/66175626-6fb29180-e695-11e9-92d9-b2704f2bd05b.png)
   
-# 2. WPF 실전
+# WPF 실전
 ## 프로젝트 살펴보기 - 이 항목에서는 Model을 제외한 ViewModel과 View에 대해서만 기술한다.
-### 1) 생성 화면
-![First Screen](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Create%20WPF%20Project.png?raw=true)
-![First Screen2](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Create%20WPF%20Project2.png?raw=true)  
+### 생성 화면
+![First Screen](https://user-images.githubusercontent.com/41990925/66175631-704b2800-e695-11e9-9fbd-b47a0f1fdc77.png)
+![First Screen2](https://user-images.githubusercontent.com/41990925/66175632-704b2800-e695-11e9-929b-47ed5a5c6ce4.png)  
 Preview 화면의 우측 하단을 보면 초록색 박스가 있다. 박스 안의 버튼을 이용하여 아래와 같이 화면 조정 가능  
-![Vertical Screen](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Vertical%20Screen.png?raw=true)
-![WPF Screen](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/WPF%20Screen.png?raw=true)
-![Preview Screen](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Preview%20Screen.png?raw=true)  
-### 2) WPF의 기초 태그
+![Vertical Screen](https://user-images.githubusercontent.com/41990925/66175663-74774580-e695-11e9-977c-7f36318dcaed.png)
+![WPF Screen](https://user-images.githubusercontent.com/41990925/66175666-750fdc00-e695-11e9-92f1-018c501a3ad7.png)
+![Preview Screen](https://user-images.githubusercontent.com/41990925/66175653-73461880-e695-11e9-94a6-d4b769674050.png)  
+### WPF의 기초 태그
 #### Grid
   - Grid의 내부에 Control을 배치하며 View를 생성한다.
   - 화면은 기본적으로 Grid Layout으로 설정되어 있으며 아래처럼 화면을 분할할 수 있다
@@ -105,7 +104,7 @@ Preview 화면의 우측 하단을 보면 초록색 박스가 있다. 박스 안
         </Grid.RowDefinitions>
     </Grid>
     ```
-  ![Grid](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Grid.png?raw=true)
+  ![Grid](https://user-images.githubusercontent.com/41990925/66175638-717c5500-e695-11e9-9af9-8427289089ef.png)
   - Control의 배치는 아래화면처럼 Grid.Row 와 Grid.Column을 이용하여 지정할 수 있다.
   ```WPF
   <TextBlock Text="C0, R0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
@@ -126,7 +125,7 @@ Preview 화면의 우측 하단을 보면 초록색 박스가 있다. 박스 안
 
   <TextBlock Text="C2, R2" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
   ```
-  ![Location](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Grid2.png?raw=true)
+  ![Location](https://user-images.githubusercontent.com/41990925/66175639-717c5500-e695-11e9-957f-f51aa6ae7d04.png)
   - 각종 속성들은 아래처럼 해당 태그의 child tag로 이용할 수 있다. 아래 코드는 모두 동일한 결과를 나타낸다.
   ```WPF
   <TextBlock Text="C0, R1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
@@ -160,13 +159,13 @@ Preview 화면의 우측 하단을 보면 초록색 박스가 있다. 박스 안
   </Window>
   ```  
   
-  ![Whole Tag](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/MainTag.png?raw=true)  
+  ![Whole Tag](https://user-images.githubusercontent.com/41990925/66175641-7214eb80-e695-11e9-8c05-467bae882ba4.png)  
    - 사용되는 태그 종류
       1. Window : 응용 프로그램의 새 창을 의미한다. 주로 해당 프로젝트에서 Main이 되는 화면에 사용
       2. Page : Window 내부의 페이지를 뜻한다. Window나 UserControl에서 Frame을 이용하여 include할 수 있다. (include시 권장 X)
       3. UserControl : 다른 컨트롤을 추가하는 것과 같은 방식으로 UI에 추가할 수 있는 재사용 가능한 화면 (include시 권장 O)
-      ![UserControl include](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/UserControl.png?raw=true)
-      ![UserControl Tag](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/UserControl2.png?raw=true)
+      ![UserControl include](https://user-images.githubusercontent.com/41990925/66175659-73deaf00-e695-11e9-9b26-10fc3009c8d9.png)
+      ![UserControl Tag](https://user-images.githubusercontent.com/41990925/66175661-73deaf00-e695-11e9-8312-e637994c07b5.png)
       4. ResourceDictionary : 앱의 UI 또는 리소스를 정의하여 이용할 위치에 정의하여 사용할 수 있다.  
       이용한 예제가 없어서 공식 홈페이지의 코드를 참조
       ```WPF
@@ -217,7 +216,7 @@ Preview 화면의 우측 하단을 보면 초록색 박스가 있다. 박스 안
   - GirdSplitter
   - Canvas
 
-### 3) DataBinding
+### DataBinding
 #### DataBinding in WPF
   - Code-behind : View의 Code-Behind에서 작성한 예 => this.DataContext = this; 만 추가!
   ```WPF
@@ -243,9 +242,9 @@ Preview 화면의 우측 하단을 보면 초록색 박스가 있다. 박스 안
   ```WPF
   <TextBlock Text = "{Binding Str"}/>
   ```
-  ![WPF Binding](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/WPF%20Binding.png?raw=true)
+  ![WPF Binding](https://user-images.githubusercontent.com/41990925/66175664-74774580-e695-11e9-8e0d-dd4ec8b992e6.png)
   - 결과 화면
-  ![Binding Result](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Binding%20Result.png?raw=true)
+  ![Binding Result](https://user-images.githubusercontent.com/41990925/66175622-6f19fb00-e695-11e9-9e0d-f4d44cb89280.png)
   
 #### DataBinding in C#
   - Code-behind : 여기서 Data를 가공하고, Binding시킨다.
@@ -274,14 +273,14 @@ Preview 화면의 우측 하단을 보면 초록색 박스가 있다. 박스 안
   ```WPF
   <TextBlock x:Name="firstTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
   ```
-  ![Naming](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Naming%20in%20XAML.png?raw=true)
+  ![Naming](https://user-images.githubusercontent.com/41990925/66175644-7214eb80-e695-11e9-8c27-c6c69a4512b4.png)
   
-### 4) Create Event
+### Create Event
   1. XAML파일에서 Event를 등록할 Control을 생성한다.
   2. 아래 화면처럼 해당 태그 내에서 Event를 찾는다.
-  ![Create Event](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Create%20Event.png?raw=true)
+  ![Create Event](https://user-images.githubusercontent.com/41990925/66175627-6fb29180-e695-11e9-828d-4d06585a1454.png)
   3. Event를 선택하고 메소드 명을 자동생성하도록 새 이벤트 처리기를 클릭 or Enter를 입력하면 자동으로 생성되며 Binding까지 된다.
-  ![Create Event2](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Create%20Event2.png?raw=true)
-  ![Create Event3](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Create%20Event3.png?raw=true)
+  ![Create Event2](https://user-images.githubusercontent.com/41990925/66175628-6fb29180-e695-11e9-80d3-2ec4dd804aa0.png)
+  ![Create Event3](https://user-images.githubusercontent.com/41990925/66175629-704b2800-e695-11e9-87b5-6920a289180a.png)
   4. Code-behind에서 확인하면 해당 이름의 이벤트가 생성된 것을 볼 수 있다.
-  ![Create Event4](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Create%20Event4.png?raw=true)
+  ![Create Event4](https://user-images.githubusercontent.com/41990925/66175630-704b2800-e695-11e9-95bd-7f2caaa27458.png)
