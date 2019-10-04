@@ -27,11 +27,11 @@ Written By Young-rae Shin(https://github.com/lived1024)
  string parameterNameExample;
  ```  
 ## Getter와 Setter  
- ```C#
+ ```
  //아래처럼 변수를 선언
  private String test;
  ```  
- ```JAVA
+ ```
  //JAVA  : getTest(), setTest() 와 같이 첫 글자는 소문자이며 각각의 메소드가 새로 생성된다.
  public String getTest(){
    return test;
@@ -40,7 +40,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
    this.test = test;
  }
  ```  
- ```C#
+ ```
  //C#  : 변수명의 첫 글자를 대문자로 변경 후 해당 메소드 내에서 get과 set에 대한 설정을 한다.
  public string Str
  {
@@ -54,7 +54,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
    }
  }
  ```  
- ```C#
+ ```
  //아래는 C#에서 람다식을 이용하여 간단하게 set과 get에 대한 설정을 한 것이다. 바로 위의 코드와 동일!
  private string Test()
  {
@@ -72,31 +72,31 @@ Written By Young-rae Shin(https://github.com/lived1024)
  단, 자바스크립트처럼 자유롭게 이용할 수 있는 것은 아니지만 암시적으로 타입을 변환할 수 있습니다.  
   #### var 제약조건  
   1. private, public 등 전역변수로 사용할 수 없다. -> 지역변수로만 사용 가능.  
-  ```C#
+  ```
   public var a = 10;
   public var b;
   ```  
   2. 전송은 가능하지만 return type을 var형식으로 할 수 없다.  
-  ```C#
+  ```
   public var Method(){ }    // X
   ```  
   3. 메소드의 매개변수로 지정할 수 없다.  
-  ```C#
+  ```
   public void Method(var i){ }   // X
   ```  
   4. null로 초기화를 할 수 없다.(참조타입의 경우 초기값 할당 이후 null로 초기화 가능)  
-  ```C#
+  ```
   var a = null;   // X
   
   var a = "Hi";
   a = null;       // O
   ```
   5. nullable로 사용할 수 없다.  
-  ```C#
+  ```
   var? a = "aa";    // X
   ```   
   6. 초기값과 다른 타입으로 사용할 수 없다.  
-  ```C#
+  ```
   var a = 1;
   a = "Hi";    // X
   ```  
@@ -108,7 +108,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
   하나의 메소드에서 2개 이상의 결과를 반환하려면 Map을 반환하거나 메소드를 별도로 제작했다.  
   예를 들어 나눗셈에서 몫과 나머지를 반환하려면 Map에 넣어서 반환을 해야했다.  
   하지만 C#에서는 출력전용으로 쓰는 out 파라미터가 존재한다.  
-  ```C#
+  ```
   public void Cal(int a, int b, out int quotient, out int remainder)
   {
     quotient = a / b;
@@ -118,7 +118,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
   여기서 주목해야되는 것은 quitient, remainder의 타입을 이용할 때 선언한 것이다.  
   이전에 quotient와 remainder를 선언하지 않더라도 필요할 때 즉시 생성해서 이용할 수 있다.  
   사용하는 방법은 아래처럼 이용하면 된다.  
-  ```C#
+  ```
   public void PrintResult()
   {
     int a = 10;
@@ -141,7 +141,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
   이 개념들은 C#에서 사용하는 참조변수 ref를 이용할 때 필요하다.  
   물론 out변수에서도 적용되는 말이지만 메소드 내에서 필요할때만 생성해서 쓰면 되기에 별도로 기술하지는 않았다.  
   사용하는 방법은 아래의 코드를 살펴보자.  
-  ```C#
+  ```
   //값을 리턴하는 Cal 메소드에서는 out과 ref의 차이만 있다.
   public void Cal(int a, int b, ref int quotient, ref int remainder)
   {
@@ -176,7 +176,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
 
   하지만 이렇게 본다면 out과 똑같다는 생각만 들 수 있다.  
   그렇다면 ResultPrint 메소드의 내용을 다음과 같이 바꿔서 진행해보자.  
-  ```C#
+  ```
   public void ResultPrint()
   {
     int a = 10;
@@ -207,7 +207,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
  ### 3) 대리자(Delegate)  
  대리자는 메소드의 파라미터로 메소드를 보낼 수 있게 해준다.  
  메소드에서 파라미터로 객체를 보내거나 int, string 등 데이터 타입을 보내주는 것은 자주 사용하던 일이다.  
- ```C#
+ ```
  public void SendData(int a){ }
  public void SendData(Class c){ }
  ```  
@@ -221,7 +221,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
  ![using](https://user-images.githubusercontent.com/41990925/66175662-74774580-e695-11e9-80a2-d97a9e7b1a6d.png)
 
  하지만 C#의 코드를 보면 메소드 내부에서 아래와 같은 모습을 볼 수 있다.  
- ```C#
+ ```
  using(var a = new StreamReader("file.txt")
  {
    ~~~~~
@@ -233,7 +233,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
  위 코드에서 var a는 using의 범위 안에서만 사용하고 해당 범위를 벗어나면 close()를 실행시킨다는 것이다.  
  자바에서 예외처리를 할 때 finally에 대해서도 기억이 날 것이다.  
  C#의 예외처리도 try-catch를 이용하면 되는데, 위 코드는 다음과 같다고 생각하면 된다.  
- ```C#
+ ```
  var a = new StreamReader("file.txt");
  try{
    ~~~~~
@@ -248,11 +248,11 @@ Written By Young-rae Shin(https://github.com/lived1024)
  Nullable은 숫자형식의 데이터는 null값을 가질 수 없지만 null을 가질 수 있게 해줍니다.  
  예를 들어 JAVA에서 int에 null을 입력하면 컴파일러 에러가 발생합니다.  
  이는 C#에서도 동일하게 int에는 null값이 들어가지 못합니다.  
- ```JAVA
+ ```
  int a = null;   // X
  ```  
  하지만 C#에서는 다음과 같이 한 기호를 넣어준다면 null값을 가질 수 있는 숫자 데이터가 생성됩니다.  
- ```C#
+ ```
  int? a = null;      // O
  float? b = null;    // O
  double? c = null;   // O
@@ -261,33 +261,33 @@ Written By Young-rae Shin(https://github.com/lived1024)
  int?[] nullableArray = { 0, 1, 2, null, 3, 4 };   // O
  ```  
  그리고 double 타입은 자체적으로 Null값을 넣을 수 있도록 double.NaN을 제공합니다.  
- ```C#
+ ```
  double[] doubleTest = { 0, 0.01, null, 0.02, 0.03 };          // X
  double[] doubleArray = { 0, 0.01, double.NaN, 0.02, 0.03 };   // O
  ```  
 ## 5 입출력  
  ### 1) 콘솔창, Windows Form, WPF 출력  
   #### 콘솔창 출력  
-  ```C#
+  ```
   //JAVA의 System.out.println()
   Console.WriteLine("내용");
   //JAVA의 System.out.print()
   Console.Write("내용");
   ```  
   #### Windows Form, WPF 메세지 출력  
-  ```C#
+  ```
   //JAVA - Swing의 JOptionPane에서 다양한 MessageDialog를 이용
   MessageBox.Shot("내용");
   ```  
  ### 2) 파일 쓰기 및 읽기  
- ``` C#
+ ```
  // 대상 = 경로 + 파일명 + 확장자 ex) C:\\testDirectory\\test.txt
  System.IO.File.WriteAllText(대상 , 내용 , 인코딩 형식);    //파일 쓰기
  System.IO.File.ReadAllText(대상);    //파일 읽기
  ```  
   #### 디렉토리의 존재에 따른 쓰기 및 읽기  
    ##### 쓰기  
-   ``` C#  
+   ```
    private string directoryPath = "C:\\testDirectory\\";    //파일 경로
    
    while (!directoryPath[directoryPath.Length - 1].Equals('\\')) //파일경로가 \\로 끝나지 않았다면
@@ -306,7 +306,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
    System.IO.File.WriteAllText(대상, 내용, 인코딩); //여기의 대상은 경로 + 파일 + 확장자
    ```  
    ##### 읽기  
-   ```C#
+   ```
    System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(directoryPath);  //디렉토리 정보
    System.IO.FileInfo fi = new System.IO.FileInfo(saveDirectoryPath+ device_name + ".txt");  //파일 정보
 
@@ -319,7 +319,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
  ### 3) TextBox에 숫자만 입력  
   #### KeyPress 이벤트를 이용한 방법  
   KeyPress는 일반적인 문자나 숫자 입력에 이용(Ctrl, Alt, Shift, Enter, Tab 등의 입력신호를 받지 못한다)  
-  ```C#
+  ```
   // KeyPress 이벤트를 이용하여 입력할 때마다 확인을 한다!
   private void TextBoxRobotPort_KeyPress(object sender, KeyPressEventArgs e)
   {
@@ -337,7 +337,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
 
   ####  KeyDown 이벤트를 이용한 방법  
   KeyDown, KeyUp은 모든 키에 적용이 된다  
-  ```C#
+  ```
   private void TextBoxRobotPort_KeyDown(object sender, KeyEventArgs e)
   {
     if (!(e.KeyData == Keys.Back || e.KeyCode >= Keys.D0 && e.KeyCode <= Keys.D9 || e.KeyCode >= Keys.NumPad0 && e.KeyCode <= Keys.NumPad9))
@@ -360,7 +360,7 @@ C#에서 JSON에 관한 작업은 대부분 Newtonsoft.Json을 이용한다.
 ![Nuget 2](https://user-images.githubusercontent.com/41990925/66175647-72ad8200-e695-11e9-9f65-efc9bcbcd7fd.png)
  ### 2) 사용 방법  
  - To JSON : JObject, JArray 동일   
- ```C#
+ ```
  JObject jsonObject = new JObject();
  jsonObject.Add(Key, Value);
  jsonObject.Add(Key2, Value2);
@@ -372,13 +372,13 @@ C#에서 JSON에 관한 작업은 대부분 Newtonsoft.Json을 이용한다.
  ```  
  - From Json  
  JObject  
- ```C#
+ ```
  JObject jsonObject = JObject.Parse(jsonContents);
  //JSON 오브젝트는 Key, Value로 이루어져있어 Dicitionary<String, Object>와 같이 변환이 가능하다.
  Dictionary<String, Object> dictionary = jsonObject.ToObject<<Dictionary<String, Object>>();
  ```  
  만약 Value값만 추출해서 사용하려면 아래와 같이 Value를 이용한다.  
- ```C#
+ ```
  //해당 Dictionary의 Key로 이루어진 List를 생성
  List<String> keyList = new List<>(dictionary.Keys);
  //각 Key값에 따른 객체들을 반복문을 이용하여 꺼낼 수 있다.
@@ -388,7 +388,7 @@ C#에서 JSON에 관한 작업은 대부분 Newtonsoft.Json을 이용한다.
  }
  ```  
  JArray  
- ```C#
+ ```
  JArray jArray = JArray.Parse(jsonContents);
  foreach(JObject jObj in jArray){
    JObject obj = (JObject)jObj;
@@ -400,11 +400,11 @@ C#에서 JSON에 관한 작업은 대부분 Newtonsoft.Json을 이용한다.
  ### DataGridView  
   #### DataBinding  
   - 현재 선택된 셀의 행 인덱스값  
-  ``` C#
+  ``` 
   데이터그리드뷰.CurrentCell.RowIndex;
   ```  
   - 현재 선택된 셀에 담긴 값 가져오기  
-  ``` C#
+  ```
   int rownum = 데이터그리드뷰.CurrentCell.RowIndex;
   String device = 데이터그리드뷰.Rows[rownum].Cells[0].FormattedValue.ToString();
   ```  
