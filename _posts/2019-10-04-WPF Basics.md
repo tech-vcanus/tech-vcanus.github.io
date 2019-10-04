@@ -126,9 +126,11 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>```
 >>![Location](https://user-images.githubusercontent.com/41990925/66175639-717c5500-e695-11e9-957f-f51aa6ae7d04.png)
 >>* 각종 속성들은 아래처럼 해당 태그의 child tag로 이용할 수 있다. 아래 코드는 모두 동일한 결과를 나타낸다.
+>>
 >>```WPF
 >><TextBlock Text="C0, R1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
 >>```
+>>
 >>```WPF
 >><TextBlock>
 >>  <TextBlock.Text>C0, R1</TextBlock.Text>
@@ -143,7 +145,8 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >#### 파일(?) 태그 및 초기 생성 태그
 >>* 해당 페이지의 넓이, 높이 등 크기 조절
 >>* 해당 페이지의 ClassName과 사용할 Namespace들의 별칭을 설정할 수 있다.
->>* 아래 코드는 WPF 프로젝트 생성 당시 자동으로 생성되는 코드
+>>* 아래 코드는 WPF 프로젝트 생성 당시 자동으로 생성되는 코드.
+>>
 >>```WPF
 >><Window x:Class="WpfAppName.MainWindow"
 >>      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -168,6 +171,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>  ![UserControl Tag](https://user-images.githubusercontent.com/41990925/66175661-73deaf00-e695-11e9-8312-e637994c07b5.png)
 >>  4. ResourceDictionary : 앱의 UI 또는 리소스를 정의하여 이용할 위치에 정의하여 사용할 수 있다.  
 >>  이용한 예제가 없어서 공식 홈페이지의 코드를 참조
+>>
 >>```WPF
 >><!-- Dictionary1.xaml -->
 >><ResourceDictionary
@@ -179,6 +183,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>
 >>    </ResourceDictionary>
 >>    ```
+>>
 >>    ```WPF
 >>    <Page
 >>        x:Class="MSDNSample.MainPage"
@@ -201,6 +206,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>    위 코드와 같이 ResourceDictionary로 필요한 설정 후, 여러 View에서 Resource로 참고하여 이용할 수 있다.  
 >>
 >>* Namespace 설정
+>>
 >>```WPF
 >><!-- xmlns의 뒤에 해당 페이지에서 부를 별칭을 설정한다. -->
 >>xmlns:name="clr-namespace:NamespaceName" 
@@ -220,6 +226,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 ### DataBinding
 >#### DataBinding in WPF
 >>* Code-behind : View의 Code-Behind에서 작성한 예 => this.DataContext = this; 만 추가!
+>>
 >>```WPF
 >>namespace WpfAppName
 >>{
@@ -240,6 +247,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>
 >>```  
 >>* WPF : 예제에서는 TextBlock => Text에 DataBinding을 시킨다. { } 를 열고, Binding 변수이름 을 작성해주면 끝!
+>>
 >>```WPF
 >><TextBlock Text = "{Binding Str"}/>
 >>```
@@ -249,6 +257,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >  
 >#### DataBinding in C#
 >>* Code-behind : 여기서 Data를 가공하고, Binding시킨다.
+>>
 >>```C#
 >>namespace WpfAppName
 >>{
@@ -270,6 +279,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>```
 >>
 >>* WPF : 디자인을 하고, x:Name으로 Binding할 컨트롤의 이름을 설정한다.
+>>
 >>```WPF
 >><TextBlock x:Name="firstTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
 >>```
