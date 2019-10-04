@@ -15,15 +15,15 @@ JAVA에서는 String을 대문자 String으로만 사용했지만 C#에서는 st
 (참조 : https://blog.naver.com/syrch/221587473761)  
 ## Naming 규칙  
 Class의 이름은 JAVA의 클래스 명처럼 첫글자, 단어구분에 대문자!!  
-```
+```C#
 public class ClassNameExample(){ }
 ```  
 메소드(Method)의 첫 글자는 대문자로!!! -> 자바와 확연하게 차이나는 부분이다!  
-```
+```C#
 public static void MethodNameExample()  {  ;}
 ```  
 변수(Parameter)는 첫 글자 소문자로 통일!  
-```
+```C#
 string parameterNameExample;
 ```  
 ## Getter와 Setter  
@@ -225,7 +225,7 @@ private string Test()
 
 >### using을 이용한 메모리 관리  
 >using은 C#에서 namespace를 import하기위해 사용되는 명령어로 클래스를 생성하면 기본적으로 보인다.  
->![using](https://user-images.githubusercontent.com/41990925/66175662-74774580-e695-11e9-80a2-d97a9e7b1a6d.png)
+>![using](https://user-images.githubusercontent.com/41990925/66175662-74774580-e695-11e9-80a2-d97a9e7b1a6d.png)  
 >하지만 C#의 코드를 보면 메소드 내부에서 아래와 같은 모습을 볼 수 있다.  
 >```
 >using(var a = new StreamReader("file.txt")
