@@ -10,11 +10,11 @@ tags: C# Basics
 Write By Young-rae Shin(https://github.com/lived1024)  
 
 # 기초   
-## 1. DataType  
+## 1 DataType  
 - JAVA에서는 String을 대문자 String으로만 사용했지만 C#에서는 string, String 둘 다 가능하다.  
 - 숫자에 관한 데이터 타입은 JAVA와는 다르게 음수, 양수에 이용하는 데이터 타입이 다양하다.  
 (참조 : https://blog.naver.com/syrch/221587473761)  
-## 2. Naming 규칙  
+## 2 Naming 규칙  
 - Class의 이름은 JAVA의 클래스 명처럼 첫글자, 단어구분에 대문자!!  
 ```C#
 public class ClassNameExample(){ }
@@ -27,7 +27,7 @@ public static void MethodNameExample()  {  ;}
 ```C#
 string parameterNameExample;
 ```  
-## 3. Getter와 Setter  
+## 3 Getter와 Setter  
 ```C#
 //아래처럼 변수를 선언
 private String test;
@@ -65,7 +65,7 @@ private string Test()
 //JAVA : getter를 이용할 경우 getTest()를 호출, setter를 이용할 경우에는 setTest()를 호출한다.
 //C#  : getter와 setter를 이용하려면 해당 함수를 호출하면 상황에 맞게 자동 설정되어 작동한다.
 ```  
-## 4. JAVA와의 차이  
+## 4 JAVA와의 차이  
 ### 1) var를 이용한 변수  
 자바스크립트를 사용해봤다면 변수를 이용할때 var를 썼던 기억이 있을 것입니다.  
 자바스크립트에서 var를 이용한 변수는 데이터를 할당할 수도 있고, 함수를 할당할 수도 있었습니다.  
@@ -267,7 +267,7 @@ int?[] nullableArray = { 0, 1, 2, null, 3, 4 };   // O
 double[] doubleTest = { 0, 0.01, null, 0.02, 0.03 };          // X
 double[] doubleArray = { 0, 0.01, double.NaN, 0.02, 0.03 };   // O
 ```  
-## 5. 입출력  
+## 5 입출력  
 ### 1) 콘솔창, Windows Form, WPF 출력  
 #### 콘솔창 출력  
 ```C#
@@ -353,7 +353,7 @@ private void TextBoxRobotPort_KeyDown(object sender, KeyEventArgs e)
 }
 ```  
 이 방법의 경우에는 누르는 즉시 반응이 오기 때문에 조금 더 복잡하지만 선호하는 편이다.  
-## 6. JSON 파싱  
+## 6 JSON 파싱  
 C#에서 JSON에 관한 작업은 대부분 Newtonsoft.Json을 이용한다.  
 ### 1) 설치 방법  
 1. Nuget 패키지 관리자를 실행  
@@ -398,7 +398,7 @@ foreach(JObject jObj in jArray){
   Dictionary<String, int> dictionary = obj.ToObject<Dictionary<String, int>>();
 }
 ```  
-## 7. Windows Form  
+## 7 Windows Form  
 ### DataGridView  
 #### DataBinding  
 - 현재 선택된 셀의 행 인덱스값  
