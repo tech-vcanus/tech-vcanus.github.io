@@ -103,7 +103,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >></Grid>
 >>```
 >>![Grid](https://user-images.githubusercontent.com/41990925/66175638-717c5500-e695-11e9-9af9-8427289089ef.png)
->>* Control의 배치는 아래화면처럼 Grid.Row 와 Grid.Column을 이용하여 지정할 수 있다.
+>>* Control의 배치는 아래화면처럼 Grid.Row 와 Grid.Column을 이용하여 지정할 수 있다.   
 >>```
 >><TextBlock Text="C0, R0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
 >>
@@ -124,10 +124,10 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >><TextBlock Text="C2, R2" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
 >>```
 >>![Location](https://user-images.githubusercontent.com/41990925/66175639-717c5500-e695-11e9-957f-f51aa6ae7d04.png)
->>* 각종 속성들은 아래처럼 해당 태그의 child tag로 이용할 수 있다. 아래 코드는 모두 동일한 결과를 나타낸다.
+>>* 각종 속성들은 아래처럼 해당 태그의 child tag로 이용할 수 있다. 아래 코드는 모두 동일한 결과를 나타낸다.   
 >>```
 >><TextBlock Text="C0, R1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
->>```
+>>```   
 >>```
 >><TextBlock>
 >>  <TextBlock.Text>C0, R1</TextBlock.Text>
@@ -136,13 +136,13 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>  <TextBlock.VerticalAlignment>Center</TextBlock.VerticalAlignment>
 >>  <Grid.Row>1</Grid.Row>
 >></TextBlock>
->>```
+>>```   
 >>Code-Behind에서도 같은 결과를 낼 수 있는데, 자세한 내용은 https://blog.naver.com/syrch/221630969293를 참고
 >
 >#### 파일(?) 태그 및 초기 생성 태그
 >>* 해당 페이지의 넓이, 높이 등 크기 조절
 >>* 해당 페이지의 ClassName과 사용할 Namespace들의 별칭을 설정할 수 있다.
->>* 아래 코드는 WPF 프로젝트 생성 당시 자동으로 생성되는 코드
+>>* 아래 코드는 WPF 프로젝트 생성 당시 자동으로 생성되는 코드   
 >>```
 >><Window x:Class="WpfAppName.MainWindow"
 >>      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -166,7 +166,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>  ![UserControl include](https://user-images.githubusercontent.com/41990925/66175659-73deaf00-e695-11e9-9b26-10fc3009c8d9.png)
 >>  ![UserControl Tag](https://user-images.githubusercontent.com/41990925/66175661-73deaf00-e695-11e9-8312-e637994c07b5.png)
 >>  4. ResourceDictionary : 앱의 UI 또는 리소스를 정의하여 이용할 위치에 정의하여 사용할 수 있다.  
->>  이용한 예제가 없어서 공식 홈페이지의 코드를 참조
+>>  이용한 예제가 없어서 공식 홈페이지의 코드를 참조   
 >>```
 >><!-- Dictionary1.xaml -->
 >><ResourceDictionary
@@ -177,7 +177,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>      <SolidColorBrush x:Key="brush" Color="Red"/>
 >>
 >></ResourceDictionary>
->>```
+>>```   
 >>```
 >><Page
 >>      x:Class="MSDNSample.MainPage"
@@ -195,8 +195,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >></Page>
 >>```  
 >>위 코드와 같이 ResourceDictionary로 필요한 설정 후, 여러 View에서 Resource로 참고하여 이용할 수 있다.  
->>
->>* Namespace 설정
+>>* Namespace 설정   
 >>```
 >><!-- xmlns의 뒤에 해당 페이지에서 부를 별칭을 설정한다. -->
 >>xmlns:name="clr-namespace:NamespaceName" 
@@ -215,7 +214,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 
 ### DataBinding
 >#### DataBinding in WPF
->>* Code-behind : View의 Code-Behind에서 작성한 예 => this.DataContext = this; 만 추가!
+>>* Code-behind : View의 Code-Behind에서 작성한 예 => this.DataContext = this; 만 추가!   
 >>```
 >>namespace WpfAppName
 >>{
@@ -235,16 +234,16 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>}
 >>
 >>```  
->>* WPF : 예제에서는 TextBlock => Text에 DataBinding을 시킨다. { } 를 열고, Binding 변수이름 을 작성해주면 끝!
+>>* WPF : 예제에서는 TextBlock => Text에 DataBinding을 시킨다. { } 를 열고, Binding 변수이름 을 작성해주면 끝!   
 >>```
 >><TextBlock Text = "{Binding Str"}/>
->>```
+>>```   
 >>![WPF Binding](https://user-images.githubusercontent.com/41990925/66175664-74774580-e695-11e9-8e0d-dd4ec8b992e6.png)
 >>* 결과 화면
 >>![Binding Result](https://user-images.githubusercontent.com/41990925/66175622-6f19fb00-e695-11e9-9e0d-f4d44cb89280.png)
 >  
 >#### DataBinding in C#
->>* Code-behind : 여기서 Data를 가공하고, Binding시킨다.
+>>* Code-behind : 여기서 Data를 가공하고, Binding시킨다.  
 >>```
 >>namespace WpfAppName
 >>{
@@ -265,7 +264,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>}  
 >>```
 >>
->>* WPF : 디자인을 하고, x:Name으로 Binding할 컨트롤의 이름을 설정한다.
+>>* WPF : 디자인을 하고, x:Name으로 Binding할 컨트롤의 이름을 설정한다.  
 >>```
 >><TextBlock x:Name="firstTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
 >>```
