@@ -1,8 +1,8 @@
 ---
-title: "Setting for Development Environment"
-data: 2019-07-05 00:00:00 -0000
+title: "WPF Basics"
+data: 2019-10-04 00:00:00 -0000
 categories: development 
-tags: development environment installation
+tags: C# WPF Basics MVVM
 ---
 
 신입 개발자(Newcomer Programmer - WPF about 1 month, C# about 2 month)가 작성한 내용이니 감안하시고 보시길 바랍니다.

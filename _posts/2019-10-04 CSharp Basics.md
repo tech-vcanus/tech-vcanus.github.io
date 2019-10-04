@@ -1,8 +1,8 @@
 ---
-title: "Setting for Development Environment"
-data: 2019-07-05 00:00:00 -0000
+title: "C# Basics"
+data: 2019-10-04 00:00:00 -0000
 categories: development 
-tags: development environment installation
+tags: C# Basics
 ---
 
 해당 내용은 신입개발자(C# about 1 month experience)가 작성한 내용입니다.

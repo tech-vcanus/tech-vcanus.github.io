@@ -1,8 +1,8 @@
 ---
-title: "Setting for Development Environment"
-data: 2019-07-05 00:00:00 -0000
+title: "Scichart Basics"
+data: 2019-10-04 00:00:00 -0000
 categories: development 
-tags: development environment installation
+tags: WPF C# Scichart Basic Chart XAML MVVM
 ---
 
 # Scichart
