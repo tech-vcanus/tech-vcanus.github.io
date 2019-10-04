@@ -15,15 +15,15 @@ Written By Young-rae Shin(https://github.com/lived1024)
  (참조 : https://blog.naver.com/syrch/221587473761)  
 ## Naming 규칙  
  Class의 이름은 JAVA의 클래스 명처럼 첫글자, 단어구분에 대문자!!  
- ```C#
+ ```
  public class ClassNameExample(){ }
  ```  
  메소드(Method)의 첫 글자는 대문자로!!! -> 자바와 확연하게 차이나는 부분이다!  
- ```C#
+ ```
  public static void MethodNameExample()  {  ;}
  ```  
  변수(Parameter)는 첫 글자 소문자로 통일!  
- ```C#
+ ```
  string parameterNameExample;
  ```  
 ## Getter와 Setter  
