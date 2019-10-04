@@ -1,3 +1,4 @@
+
 ---
 title: "C# Basics"
 data: 2019-10-04 00:00:00 -0000
@@ -204,7 +205,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
   ref는 해당 변수의 값을 메소드 내에서 변경하지 않더라도 에러가 발생하지 않는다.  
   하지만 out은 해당 변수의 값을 메소드 내에서 변경 또는 할당하지 않는다면 에러가 발생한다.    ![Out](https://user-images.githubusercontent.com/41990925/66175651-72ad8200-e695-11e9-90f7-2845c3874613.png)  
 ![Ref](https://user-images.githubusercontent.com/41990925/66175655-73461880-e695-11e9-9328-6a483d5f901f.png)  
- ### 3) 대리자(Delegate)  
+ ### 대리자(Delegate)  
  대리자는 메소드의 파라미터로 메소드를 보낼 수 있게 해준다.  
  메소드에서 파라미터로 객체를 보내거나 int, string 등 데이터 타입을 보내주는 것은 자주 사용하던 일이다.  
  ```
@@ -216,7 +217,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
  간단히 말해서 대리자는 메소드를 파라미터로 전송해서 쉬운 재사용을 할 수 있게 만든다.  
  아직 익숙하지 못한 개념으로 해당 링크에서 2개의 페이지를 읽어보면 이해하기 쉬울 것이다.  
  https://blog.naver.com/syrch/221600865926  
- ### 4) using을 이용한 메모리 관리  
+ ### using을 이용한 메모리 관리  
  using은 C#에서 namespace를 import하기위해 사용되는 명령어로 클래스를 생성하면 기본적으로 보인다.  
  ![using](https://user-images.githubusercontent.com/41990925/66175662-74774580-e695-11e9-80a2-d97a9e7b1a6d.png)
 
@@ -244,7 +245,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
  ```  
  이처럼 메소드 내부의 using은 메모리관리를 효율적으로 하기 위해서 사용된다.  
  만약 필요한 경우에는 IDisposable 인터페이스를 상속받아 Dispose() 메소드를 구현하는 것이 좋다.  
- ### 5) Nullable  
+ ### Nullable  
  Nullable은 숫자형식의 데이터는 null값을 가질 수 없지만 null을 가질 수 있게 해줍니다.  
  예를 들어 JAVA에서 int에 null을 입력하면 컴파일러 에러가 발생합니다.  
  이는 C#에서도 동일하게 int에는 null값이 들어가지 못합니다.  
@@ -265,8 +266,8 @@ Written By Young-rae Shin(https://github.com/lived1024)
  double[] doubleTest = { 0, 0.01, null, 0.02, 0.03 };          // X
  double[] doubleArray = { 0, 0.01, double.NaN, 0.02, 0.03 };   // O
  ```  
-## 5 입출력  
- ### 1) 콘솔창, Windows Form, WPF 출력  
+## 입출력  
+ ### 콘솔창, Windows Form, WPF 출력  
   #### 콘솔창 출력  
   ```
   //JAVA의 System.out.println()
@@ -279,7 +280,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
   //JAVA - Swing의 JOptionPane에서 다양한 MessageDialog를 이용
   MessageBox.Shot("내용");
   ```  
- ### 2) 파일 쓰기 및 읽기  
+ ### 파일 쓰기 및 읽기  
  ```
  // 대상 = 경로 + 파일명 + 확장자 ex) C:\\testDirectory\\test.txt
  System.IO.File.WriteAllText(대상 , 내용 , 인코딩 형식);    //파일 쓰기
@@ -316,7 +317,7 @@ Written By Young-rae Shin(https://github.com/lived1024)
    }
    ```  
 
- ### 3) TextBox에 숫자만 입력  
+ ### TextBox에 숫자만 입력  
   #### KeyPress 이벤트를 이용한 방법  
   KeyPress는 일반적인 문자나 숫자 입력에 이용(Ctrl, Alt, Shift, Enter, Tab 등의 입력신호를 받지 못한다)  
   ```
@@ -351,14 +352,14 @@ Written By Young-rae Shin(https://github.com/lived1024)
   }
   ```  
   이 방법의 경우에는 누르는 즉시 반응이 오기 때문에 조금 더 복잡하지만 선호하는 편이다.  
-## 6 JSON 파싱  
+## JSON 파싱  
 C#에서 JSON에 관한 작업은 대부분 Newtonsoft.Json을 이용한다.  
- ### 1) 설치 방법  
+ ### 설치 방법  
  Nuget 패키지 관리자를 실행  
 ![Nuget 1](https://user-images.githubusercontent.com/41990925/66175646-72ad8200-e695-11e9-9a6b-af71e643afd8.png)
  Newtonsoft.Json을 설치한다  
 ![Nuget 2](https://user-images.githubusercontent.com/41990925/66175647-72ad8200-e695-11e9-9f65-efc9bcbcd7fd.png)
- ### 2) 사용 방법  
+ ### 사용 방법  
  - To JSON : JObject, JArray 동일   
  ```
  JObject jsonObject = new JObject();
@@ -396,7 +397,7 @@ C#에서 JSON에 관한 작업은 대부분 Newtonsoft.Json을 이용한다.
    Dictionary<String, int> dictionary = obj.ToObject<Dictionary<String, int>>();
  }
  ```  
-## 7 Windows Form  
+## Windows Form  
  ### DataGridView  
   #### DataBinding  
   - 현재 선택된 셀의 행 인덱스값  
