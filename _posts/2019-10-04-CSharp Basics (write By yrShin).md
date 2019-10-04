@@ -65,7 +65,6 @@ private string Test()
 //JAVA : getter를 이용할 경우 getTest()를 호출, setter를 이용할 경우에는 setTest()를 호출한다.
 //C#  : getter와 setter를 이용하려면 해당 함수를 호출하면 상황에 맞게 자동 설정되어 작동한다.
 ```  
-
 ## 4. JAVA와의 차이  
 ### 1) var를 이용한 변수  
 자바스크립트를 사용해봤다면 변수를 이용할때 var를 썼던 기억이 있을 것입니다.  
@@ -199,17 +198,14 @@ ref를 이용한 변수는 ResultPrint에서 할당된 값 자체를 바꿔버�
 1. 메소드의 파라미터에서 주소를 알려주고  
 2. Cal 메소드에서 그 주소의 값(내용)을 변경  
 3. ResultPrint 메소드에서는 파라미터의 주소에 있는 값(내용)을 가져온다.  
-
 #### out과 ref의 차이점  
 ref변수와 out변수에 대해 봤다면 out변수도 ref의 마지막 코드처럼 이용할 수 있지 않을까라는 생각을 할 수 있다.  
 물론 이용해도 문제없이 실행되며 결과도 동일하게 나온다.  
-
 차이점은 스크린샷을 보면 알 수 있는데, out변수에는 컴파일러 에러를 띄워주는 안전장치가 존재한다.  
 ref는 해당 변수의 값을 메소드 내에서 변경하지 않더라도 에러가 발생하지 않는다.  
 하지만 out은 해당 변수의 값을 메소드 내에서 변경 또는 할당하지 않는다면 에러가 발생한다.  
 ![Out](https://user-images.githubusercontent.com/41990925/66175651-72ad8200-e695-11e9-90f7-2845c3874613.png)  
 ![Ref](https://user-images.githubusercontent.com/41990925/66175655-73461880-e695-11e9-9328-6a483d5f901f.png)  
-
 ### 3) 대리자(Delegate)  
 대리자는 메소드의 파라미터로 메소드를 보낼 수 있게 해준다.  
 메소드에서 파라미터로 객체를 보내거나 int, string 등 데이터 타입을 보내주는 것은 자주 사용하던 일이다.  
@@ -222,8 +218,6 @@ public void SendData(Class c){ }
 간단히 말해서 대리자는 메소드를 파라미터로 전송해서 쉬운 재사용을 할 수 있게 만든다.  
 아직 익숙하지 못한 개념으로 해당 링크에서 2개의 페이지를 읽어보면 이해하기 쉬울 것이다.  
 https://blog.naver.com/syrch/221600865926  
-
-
 ### 4) using을 이용한 메모리 관리  
 using은 C#에서 namespace를 import하기위해 사용되는 명령어로 클래스를 생성하면 기본적으로 보인다.  
 ![using](https://user-images.githubusercontent.com/41990925/66175662-74774580-e695-11e9-80a2-d97a9e7b1a6d.png)
@@ -235,8 +229,7 @@ using(var a = new StreamReader("file.txt")
   ~~~~~
 }
 ```  
-using이라는 용어를 네임스페이스의 import에만 이용하는 것으로 생각했는데 전혀 다른 이용법이 튀어나온 것이다.  
-  
+using이라는 용어를 네임스페이스의 import에만 이용하는 것으로 생각했는데 전혀 다른 이용법이 튀어나온 것이다.    
 그렇다면 '어떠한 역할을 하는 것인가?'에 대한 의문이 생길 수 밖에 없다.  
 하지만 어렵게 생각할 필요도 없는 아주 간단하게 이해할 수 있는 기능이다.  
 위 코드에서 var a는 using의 범위 안에서만 사용하고 해당 범위를 벗어나면 close()를 실행시킨다는 것이다.  
@@ -253,7 +246,6 @@ finally{
 ```  
 이처럼 메소드 내부의 using은 메모리관리를 효율적으로 하기 위해서 사용된다.  
 만약 필요한 경우에는 IDisposable 인터페이스를 상속받아 Dispose() 메소드를 구현하는 것이 좋다.  
-
 ### 5) Nullable  
 Nullable은 숫자형식의 데이터는 null값을 가질 수 없지만 null을 가질 수 있게 해줍니다.  
 예를 들어 JAVA에서 int에 null을 입력하면 컴파일러 에러가 발생합니다.  
@@ -275,8 +267,6 @@ int?[] nullableArray = { 0, 1, 2, null, 3, 4 };   // O
 double[] doubleTest = { 0, 0.01, null, 0.02, 0.03 };          // X
 double[] doubleArray = { 0, 0.01, double.NaN, 0.02, 0.03 };   // O
 ```  
-
-
 ## 5. 입출력  
 ### 1) 콘솔창, Windows Form, WPF 출력  
 #### 콘솔창 출력  
@@ -291,7 +281,6 @@ Console.Write("내용");
 //JAVA - Swing의 JOptionPane에서 다양한 MessageDialog를 이용
 MessageBox.Shot("내용");
 ```  
-
 ### 2) 파일 쓰기 및 읽기  
 ``` C#
 // 대상 = 경로 + 파일명 + 확장자 ex) C:\\testDirectory\\test.txt
@@ -365,7 +354,6 @@ private void TextBoxRobotPort_KeyDown(object sender, KeyEventArgs e)
 }
 ```  
 이 방법의 경우에는 누르는 즉시 반응이 오기 때문에 조금 더 복잡하지만 선호하는 편이다.  
-
 ## 6. JSON 파싱  
 C#에서 JSON에 관한 작업은 대부분 Newtonsoft.Json을 이용한다.  
 ### 1) 설치 방법  
@@ -385,7 +373,6 @@ jsonObject.Add(Key4, Value4);
 string jsonContents = jsonObject.ToString();   
 //위 순서는 JSON 오브젝트에 대상의 값을 넣고, 문자열로 변환한 것이다.
 ```  
-
 - From Json  
 1. JObject  
 ```C#
@@ -412,7 +399,6 @@ foreach(JObject jObj in jArray){
   Dictionary<String, int> dictionary = obj.ToObject<Dictionary<String, int>>();
 }
 ```  
-
 ## 7. Windows Form  
 ### DataGridView  
 #### DataBinding  
