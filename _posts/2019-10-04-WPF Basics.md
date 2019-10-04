@@ -80,7 +80,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >#### Grid
 >>Grid의 내부에 Control을 배치하며 View를 생성한다.
 >>화면은 기본적으로 Grid Layout으로 설정되어 있으며 아래처럼 화면을 분할할 수 있다
->>```WPF
+>>```
 >><Grid>
 >>  <!--ColumnDefinitions은 Grid 내부의 Column에 대한 정의를 한다.-->
 >>  <Grid.ColumnDefinitions>
@@ -91,7 +91,6 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>    <ColumnDefinition Width="*"/>
 >>    <ColumnDefinition Width="200"/>
 >>  </Grid.ColumnDefinitions>
->>
 >>  <!--RowDefinitions은 Grid 내부의 Row에 대한 정의를 한다.-->
 >>  <Grid.RowDefinitions>
 >>    <!--RowDefinition을 1개 추가할 때마다 Grid의 Row는 1개씩 늘어난다-->
@@ -105,7 +104,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>```
 >>![Grid](https://user-images.githubusercontent.com/41990925/66175638-717c5500-e695-11e9-9af9-8427289089ef.png)
 >>* Control의 배치는 아래화면처럼 Grid.Row 와 Grid.Column을 이용하여 지정할 수 있다.
->>```WPF
+>>```
 >><TextBlock Text="C0, R0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
 >>
 >><TextBlock Text="C0, R1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
@@ -126,10 +125,10 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>```
 >>![Location](https://user-images.githubusercontent.com/41990925/66175639-717c5500-e695-11e9-957f-f51aa6ae7d04.png)
 >>* 각종 속성들은 아래처럼 해당 태그의 child tag로 이용할 수 있다. 아래 코드는 모두 동일한 결과를 나타낸다.
->>```WPF
+>>```
 >><TextBlock Text="C0, R1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
 >>```
->>```WPF
+>>```
 >><TextBlock>
 >>  <TextBlock.Text>C0, R1</TextBlock.Text>
 >>  <TextBlock.FontSize>40</TextBlock.FontSize>
@@ -144,7 +143,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>* 해당 페이지의 넓이, 높이 등 크기 조절
 >>* 해당 페이지의 ClassName과 사용할 Namespace들의 별칭을 설정할 수 있다.
 >>* 아래 코드는 WPF 프로젝트 생성 당시 자동으로 생성되는 코드
->>```WPF
+>>```
 >><Window x:Class="WpfAppName.MainWindow"
 >>      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 >>      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -168,7 +167,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>  ![UserControl Tag](https://user-images.githubusercontent.com/41990925/66175661-73deaf00-e695-11e9-8312-e637994c07b5.png)
 >>  4. ResourceDictionary : 앱의 UI 또는 리소스를 정의하여 이용할 위치에 정의하여 사용할 수 있다.  
 >>  이용한 예제가 없어서 공식 홈페이지의 코드를 참조
->>```WPF
+>>```
 >><!-- Dictionary1.xaml -->
 >><ResourceDictionary
 >>      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
@@ -177,31 +176,28 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>      
 >>      <SolidColorBrush x:Key="brush" Color="Red"/>
 >>
->>    </ResourceDictionary>
->>    ```
->>    ```WPF
->>    <Page
->>        x:Class="MSDNSample.MainPage"
->>        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
->>        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+>></ResourceDictionary>
+>>```
+>>```
+>><Page
+>>      x:Class="MSDNSample.MainPage"
+>>      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+>>      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 >>        <Page.Resources>
 >>          <ResourceDictionary>
 >>            <ResourceDictionary.MergedDictionaries>
 >>                <ResourceDictionary Source="Dictionary1.xaml"/>
 >>            </ResourceDictionary.MergedDictionaries>
->>
 >>            <x:String x:Key="greeting">Hello world</x:String>
->>
 >>          </ResourceDictionary>
 >>        </Page.Resources>
->>
 >>        <TextBlock Foreground="{StaticResource brush}" Text="{StaticResource greeting}" VerticalAlignment="Center"/>
->>    </Page>
->>    ```  
->>    위 코드와 같이 ResourceDictionary로 필요한 설정 후, 여러 View에서 Resource로 참고하여 이용할 수 있다.  
+>></Page>
+>>```  
+>>위 코드와 같이 ResourceDictionary로 필요한 설정 후, 여러 View에서 Resource로 참고하여 이용할 수 있다.  
 >>
 >>* Namespace 설정
->>```WPF
+>>```
 >><!-- xmlns의 뒤에 해당 페이지에서 부를 별칭을 설정한다. -->
 >>xmlns:name="clr-namespace:NamespaceName" 
 >><!-- 해당 페이지에 include할 경우 -->
@@ -220,7 +216,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 ### DataBinding
 >#### DataBinding in WPF
 >>* Code-behind : View의 Code-Behind에서 작성한 예 => this.DataContext = this; 만 추가!
->>```WPF
+>>```
 >>namespace WpfAppName
 >>{
 >>  /// <summary>
@@ -240,7 +236,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>
 >>```  
 >>* WPF : 예제에서는 TextBlock => Text에 DataBinding을 시킨다. { } 를 열고, Binding 변수이름 을 작성해주면 끝!
->>```WPF
+>>```
 >><TextBlock Text = "{Binding Str"}/>
 >>```
 >>![WPF Binding](https://user-images.githubusercontent.com/41990925/66175664-74774580-e695-11e9-8e0d-dd4ec8b992e6.png)
@@ -249,7 +245,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >  
 >#### DataBinding in C#
 >>* Code-behind : 여기서 Data를 가공하고, Binding시킨다.
->>```C#
+>>```
 >>namespace WpfAppName
 >>{
 >>  /// <summary>
@@ -270,7 +266,7 @@ https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
 >>```
 >>
 >>* WPF : 디자인을 하고, x:Name으로 Binding할 컨트롤의 이름을 설정한다.
->>```WPF
+>>```
 >><TextBlock x:Name="firstTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/>
 >>```
 >>![Naming](https://user-images.githubusercontent.com/41990925/66175644-7214eb80-e695-11e9-8c27-c6c69a4512b4.png)
