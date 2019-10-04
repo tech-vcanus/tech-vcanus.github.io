@@ -12,7 +12,7 @@ Written by SGLee
 ## general process
 ```
 $ git init
-$ git config --global user.name "<user mail>"
+$ git config --global user.name "user name"
 $ git config --global user.email <user email>
 $ git remote add origin <repository url>
 $ git fetch origin
