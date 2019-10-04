@@ -1,3 +1,4 @@
+
 ---
 title: "Scichart Basics"
 data: 2019-10-04 00:00:00 -0000
@@ -17,12 +18,12 @@ http://scichart.com/
 - 설치를 하지 않는다면 프로젝트 참조에 뜨지 않는다.
 - 공식 홈페이지의 튜토리얼로 먼저 경험해본 이후 아래 예시들을 보는 것을 추천한다.
 https://www.scichart.com/documentation/v5.x/webframe.html#Tutorial%2001%20-%20Referencing%20SciChart%20DLLs.html
-![Tutorial](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Tutorial.png?raw=true)
+![Tutorial](https://user-images.githubusercontent.com/41990925/66175658-73deaf00-e695-11e9-8143-c98c75ebcd34.png)
 - 정상적으로 설치하면 아래 화면처럼 다양한 그래프에 대한 예시들이 들어있다.
-![Example Suite](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Scichart%20Examples.png?raw=true)
+![Example Suite](https://user-images.githubusercontent.com/41990925/66175656-73461880-e695-11e9-81c3-d84521f45cf7.png)
 - 스크린샷 하단의 Chart Types에 있는 그래프를 선택하면 그래프 예시와 소스코드를 볼 수 있다.
-![ChartExample](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/ChartExample.png?raw=true)
-![SourceCodeExample](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/ChartSourceCode.png?raw=true)
+![ChartExample](https://user-images.githubusercontent.com/41990925/66175623-6f19fb00-e695-11e9-980c-9e994ac297dc.png)
+![SourceCodeExample](https://user-images.githubusercontent.com/41990925/66175624-6f19fb00-e695-11e9-9ebe-d276def7eb9d.png)
 - 링크는 Scichart의 Github 레파지토리 => https://github.com/ABTSoftware/SciChart.Wpf.Examples/tree/master/v5.x
 - 라이센스를 구매하고 해당 프로젝트의 App.xaml.cs에 라이센스 키를 입력해야한다.
 
@@ -54,7 +55,7 @@ namespace WpfAppName
   1. Scichart 공식홈페이지에서 해당 프로그램 설치
   2. WPF 프로젝트 생성
   3. 참조 추가
-  ![StartScichart](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/StartScichart.png?raw=true)
+  ![StartScichart](https://user-images.githubusercontent.com/41990925/66175657-73deaf00-e695-11e9-8ef5-d8ecacef2592.png)
 - Scichart표면(Surface) 생성
   1. XAML에 Scichart 연결
   
@@ -225,7 +226,7 @@ namespace WpfAppName
 ## 3. Series
 이번 파트에서는 주로 사용했던 선으로 된 그래프와 점으로 구성된 그래프를 다룰 예정이다.  
 이 두가지 그래프는 흔히 볼 수 있는 2D 그래프이며 X축과 Y축으로 이루어져있다.
-![LineAndScatter](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/2D%20Chart.png?raw=true)
+![LineAndScatter](https://user-images.githubusercontent.com/41990925/66175621-6e816480-e695-11e9-8810-bdccb65bb2f0.png)
 따라서 그래프에 입력되는 데이터는 X축의 데이터, Y축의 데이터로 구성된다.
 ### 1) DataSeries 생성
 - DataSeries는 그래프에 나타낼 데이터라고 이해하면 된다.
@@ -300,14 +301,14 @@ namespace WpfAppName
   - DrawNaNAs : double.NaN으로 설정된 Null값을 어떻게 표현할 지 설정하는 속성이다.  
   이 속성의 경우에는 LineDrawMode.Gaps와 LineDrawMode.ClosedLines의 두가지로 나뉘게 된다.  
   Gaps의 경우에는 Null값은 없는 데이터로 취급하고, ClosedLines는 데이터가 있는 곳까지 이어주는 선을 표시한다.  
-  ![Gaps](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Gaps.png?raw=true)
-  ![ClosedLines](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Closed%20Lines.png?raw=true)
+  ![Gaps](https://user-images.githubusercontent.com/41990925/66175637-717c5500-e695-11e9-85f3-af918eb953f0.png)
+  ![ClosedLines](https://user-images.githubusercontent.com/41990925/66175625-6fb29180-e695-11e9-96c7-faf050bbc9c8.png)
   
   - PointMarker : X 좌표의 간격에 맞춰 Point를 표시하는 기능이다.  
   아래의 스크린샷을 보면 X축 1에서 차이가 나게된다.  
   둘 모두 X축의 간격은 1로 동일하다.
-  ![BasicSeries](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/LineBasic.png?raw=true)
-  ![PointMarker](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/PointMarker.png?raw=true)
+  ![BasicSeries](https://user-images.githubusercontent.com/41990925/66175640-717c5500-e695-11e9-82c8-019ec2177bd7.png)
+  ![PointMarker](https://user-images.githubusercontent.com/41990925/66175652-73461880-e695-11e9-97df-21b1c67867ab.png)
   3. 그래프 속성 응용
   이전 순서에서 여러 속성으로 그래프의 모습을 설정할 수 있었다.  
   점으로 그래프를 나타내는 ScatterSeries도 별도로 있지만 위 코드에서 StrokeThickness의 속성을 0으로 설정하고,  
@@ -323,7 +324,7 @@ namespace WpfAppName
     PointMarker = new EllipsePointMarker() { Width = 7, Height = 7 }
   });
   ```
-  ![StrokeThickness = 0](https://github.com/lived1024/tech-vcanus.github.io/blob/master/dev/images/Only%20PointMarker.png?raw=true)
+  ![StrokeThickness = 0](https://user-images.githubusercontent.com/41990925/66175649-72ad8200-e695-11e9-8d7e-d45f7de68973.png)
   
   4. ScatterSeries를 쓰지 않은 이유?  
   현재 개발중인 프로젝트는 WAS(스프링부트)를 이용해 DB(Mysql또는 MariaDB)에서 데이터를 가져와 DataSeries를 만들고 Binding한다.  
