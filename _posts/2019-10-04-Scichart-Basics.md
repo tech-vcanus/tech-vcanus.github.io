@@ -11,13 +11,13 @@ Written by Young-rae Shin([https://github.com/lived1024](https://github.com/live
 Scichart는 수많은 숫자 데이터를 그래프로 표현할 수 있도록 한다.
 이 파일의 내용을 읽기전에 WPF의 기본에 관해서 숙지하는 것이 좋다.
 Scichart는 WPF 프로젝트를 이용하기때문에 WPF에 대한 기본 지식이 없다면 습득에 어려움이 있을 수 있다.  
-http://scichart.com/
+공식 홈페이지 : [http://scichart.com/](http://scichart.com/)
 
 ## 1 Scichart 유의할 점
 - 공식 홈페이지에서 Trial(1달 무료)버전을 다운받아 이용해볼 수 있다.
 - 설치를 하지 않는다면 프로젝트 참조에 뜨지 않는다.
 - 공식 홈페이지의 튜토리얼로 먼저 경험해본 이후 아래 예시들을 보는 것을 추천한다.
-https://www.scichart.com/documentation/v5.x/webframe.html#Tutorial%2001%20-%20Referencing%20SciChart%20DLLs.html
+[https://www.scichart.com/documentation/v5.x/webframe.html#Tutorial%2001%20-%20Referencing%20SciChart%20DLLs.html](https://www.scichart.com/documentation/v5.x/webframe.html#Tutorial%2001%20-%20Referencing%20SciChart%20DLLs.html)
 ![Tutorial](https://user-images.githubusercontent.com/41990925/66175658-73deaf00-e695-11e9-8143-c98c75ebcd34.png)
 - 정상적으로 설치하면 아래 화면처럼 다양한 그래프에 대한 예시들이 들어있다.
 ![Example Suite](https://user-images.githubusercontent.com/41990925/66175656-73461880-e695-11e9-81c3-d84521f45cf7.png)
@@ -255,7 +255,7 @@ namespace SciChart.Mvvm.Tutorial
 위에서 int는 X축의 데이터를 의미하고 double은 Y축의 데이터를 뜻한다.  
 물론 int, double, float 등 데이터타입은 숫자 데이터면 가능하다.  
 X축에 별도의 설정을 한다면 문자열을 X축에 넣을수 있지만 시도해보진 않았다.  
-https://www.scichart.com/questions/wpf/i-want-to-display-a-character-string-on-the-x-axis
+[https://www.scichart.com/questions/wpf/i-want-to-display-a-character-string-on-the-x-axis](https://www.scichart.com/questions/wpf/i-want-to-display-a-character-string-on-the-x-axis)
 
 ### 2) Collection에 DataSeries 추가
 - ObservableCollection<IRenderableSeriesViewModel>
