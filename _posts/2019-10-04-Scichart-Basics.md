@@ -61,14 +61,15 @@ namespace WpfAppName
 - ![StartScichart](https://user-images.githubusercontent.com/41990925/66175657-73deaf00-e695-11e9-8ef5-d8ecacef2592.png)  
 
 ### Scichart표면(Surface) 생성
-- XAML에 Scichart 연결
+1. XAML에 Scichart 연결
 
 ```WPF
 xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
 ```
 
-- Grid 내부에 Scichart를 생성
-- X축, Y축 설정   
+2. Grid 내부에 Scichart를 생성
+
+3. X축, Y축 설정   
 
 ```WPF
 <Window x:Class="SciChart.Mvvm.Tutorial.MainWindow"
@@ -106,7 +107,7 @@ xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
 </Window>        
 ```
 
-- MainViewModel.cs에서 BindableObject를 상속받아 이용한다.  
+4. MainViewModel.cs에서 BindableObject를 상속받아 이용한다.  
 BindableObject는 INotifyPropertyChanged를 상속받고 있다.
 
 ```C#
@@ -164,7 +165,7 @@ namespace SciChart.Mvvm.Tutorial
 }     
 ```
 
-- 시리즈 추가 (시리즈 : 하나의 그래프로 표시될 자료)
+5. 시리즈 추가 (시리즈 : 하나의 그래프로 표시될 자료)
     * 여러개의 시리즈를 담을 수 있는 Collection을 생성한다. 이 컬렉션이 SciChart의 Binding대상
     
     ```C#
