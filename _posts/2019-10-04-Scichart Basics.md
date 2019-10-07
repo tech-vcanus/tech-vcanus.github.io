@@ -59,13 +59,13 @@ namespace WpfAppName
 - ![StartScichart](https://user-images.githubusercontent.com/41990925/66175657-73deaf00-e695-11e9-8ef5-d8ecacef2592.png)  
 
 ### Scichart표면(Surface) 생성
-1. XAML에 Scichart 연결
+- XAML에 Scichart 연결
 ```WPF
 xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
 ```
 
-2. Grid 내부에 Scichart를 생성
-3. X축, Y축 설정
+- Grid 내부에 Scichart를 생성
+- X축, Y축 설정   
 ```WPF
 <Window x:Class="SciChart.Mvvm.Tutorial.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -101,7 +101,7 @@ xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
 </Window>        
 ```
 
-4. MainViewModel.cs에서 BindableObject를 상속받아 이용한다.  
+- MainViewModel.cs에서 BindableObject를 상속받아 이용한다.  
 BindableObject는 INotifyPropertyChanged를 상속받고 있다.
 ```C#
 public class MainViewModel : BindableObject
@@ -156,13 +156,13 @@ namespace SciChart.Mvvm.Tutorial
 }     
 ```
 
-5. 시리즈 추가 (시리즈 : 하나의 그래프로 표시될 자료)
-1. 여러개의 시리즈를 담을 수 있는 Collection을 생성한다. 이 컬렉션이 SciChart의 Binding대상
+- 시리즈 추가 (시리즈 : 하나의 그래프로 표시될 자료)
+* 여러개의 시리즈를 담을 수 있는 Collection을 생성한다. 이 컬렉션이 SciChart의 Binding대상
 ```C#
 private ObservableCollection<IRenderableSeriesViewModel> _renderableSeries;
 ```
 
-2. 공식 홈페이지의 getter, setter는 아래처럼 설정되어있다.
+* 공식 홈페이지의 getter, setter는 아래처럼 설정되어있다.
 
 ```C#
 public ObservableCollection<IRenderableSeriesViewModel> RenderableSeries
@@ -187,7 +187,7 @@ public ObservableCollection<IRenderableSeriesViewModel> RenderableSeries
 }
 ```
 
-3. MainViewModel.cs에서 Series를 만들고 RenderableSeries에 넣는다!
+* MainViewModel.cs에서 Series를 만들고 RenderableSeries에 넣는다!
 2D로 생성되는 일반적인 그래프의 경우에는 XyDataSeries를 이용한다.
 
 ```C#
@@ -210,7 +210,7 @@ public MainViewModel()
 }
 ```
 
-4. MainWindow.xaml에서 RenderableSeries를 Binding한다.
+* MainWindow.xaml에서 RenderableSeries를 Binding한다.
 RenderableSeries에서 SeriesBinding 기능이 제공되기에 해당 시리즈를 한번에 연결!
 
 ```WPF
