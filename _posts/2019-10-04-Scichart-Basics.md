@@ -63,107 +63,107 @@ namespace WpfAppName
 ### Scichart표면(Surface) 생성
 1. XAML에 Scichart 연결
 
-```WPF
-xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
-```
+    ```WPF
+    xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
+    ```
 
 2. Grid 내부에 Scichart를 생성
 
 3. X축, Y축 설정   
 
-```WPF
-<Window x:Class="SciChart.Mvvm.Tutorial.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SciChart.Mvvm.Tutorial"
+    ```WPF
+    <Window x:Class="SciChart.Mvvm.Tutorial.MainWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:SciChart.Mvvm.Tutorial"
 
-        xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
+            xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
 
-        mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800">
-        
-    <!-- 공식 홈페이지의 튜토리얼은 Code-behind를 MainViewModel.cs로 설정 -->
-    <Window.Resources>
-    <local:MainViewModel x:Key="MainViewModel"/>
-    </Window.Resources>
+            mc:Ignorable="d"
+            Title="MainWindow" Height="550" Width="800">
 
-    <!-- Grid에 이용하는 Data는 MainViewModel.cs -->
-    <Grid DataContext="{StaticResource MainViewModel}">
-        <!-- Bind to ChartViewModel.ChartTitle etc -->
-        <!-- 아래의 Binding은 WPF와 같다. 주의할 점은 태그 앞의 s:ScichartSurface -->
-        <s:SciChartSurface ChartTitle="{Binding ChartTitle}">
-            <!-- X축 -->
-            <s:SciChartSurface.XAxis>
-                <s:NumericAxis AxisTitle="{Binding XAxisTitle}"/>
-            </s:SciChartSurface.XAxis>
-            <!-- Y축 -->
-            <s:SciChartSurface.YAxis>
-                <s:NumericAxis AxisTitle="{Binding YAxisTitle}"/>
-            </s:SciChartSurface.YAxis>
-        </s:SciChartSurface>
-    </Grid>
-</Window>        
-```
+        <!-- 공식 홈페이지의 튜토리얼은 Code-behind를 MainViewModel.cs로 설정 -->
+        <Window.Resources>
+        <local:MainViewModel x:Key="MainViewModel"/>
+        </Window.Resources>
+
+        <!-- Grid에 이용하는 Data는 MainViewModel.cs -->
+        <Grid DataContext="{StaticResource MainViewModel}">
+            <!-- Bind to ChartViewModel.ChartTitle etc -->
+            <!-- 아래의 Binding은 WPF와 같다. 주의할 점은 태그 앞의 s:ScichartSurface -->
+            <s:SciChartSurface ChartTitle="{Binding ChartTitle}">
+                <!-- X축 -->
+                <s:SciChartSurface.XAxis>
+                    <s:NumericAxis AxisTitle="{Binding XAxisTitle}"/>
+                </s:SciChartSurface.XAxis>
+                <!-- Y축 -->
+                <s:SciChartSurface.YAxis>
+                    <s:NumericAxis AxisTitle="{Binding YAxisTitle}"/>
+                </s:SciChartSurface.YAxis>
+            </s:SciChartSurface>
+        </Grid>
+    </Window>        
+    ```
 
 4. MainViewModel.cs에서 BindableObject를 상속받아 이용한다.  
-BindableObject는 INotifyPropertyChanged를 상속받고 있다.
+    BindableObject는 INotifyPropertyChanged를 상속받고 있다.
 
-```C#
-public class MainViewModel : BindableObject
-```
-
-아래 코드처럼 Binding하는 변수에 대한 설정을 해주면 된다.
-
-```C#
-using System.Collections.ObjectModel;
-using System.Windows.Media;
-using SciChart.Charting.Model.ChartSeries;
-using SciChart.Charting.Model.DataSeries;
-using SciChart.Data.Model;
-
-namespace SciChart.Mvvm.Tutorial
-{
-
+    ```C#
     public class MainViewModel : BindableObject
+    ```
+
+    아래 코드처럼 Binding하는 변수에 대한 설정을 해주면 된다.
+
+    ```C#
+    using System.Collections.ObjectModel;
+    using System.Windows.Media;
+    using SciChart.Charting.Model.ChartSeries;
+    using SciChart.Charting.Model.DataSeries;
+    using SciChart.Data.Model;
+
+    namespace SciChart.Mvvm.Tutorial
     {
-        private string _chartTitle = "Hello SciChart World!";
-        private string _xAxisTitle = "XAxis";
-        private string _yAxisTitle = "YAxis";
-        
-        public string ChartTitle
+
+        public class MainViewModel : BindableObject
         {
-            get { return _chartTitle; }
-            set
-                {
-                    _chartTitle = value;
-                    OnPropertyChanged("ChartTitle");
-                }
+            private string _chartTitle = "Hello SciChart World!";
+            private string _xAxisTitle = "XAxis";
+            private string _yAxisTitle = "YAxis";
+
+            public string ChartTitle
+            {
+                get { return _chartTitle; }
+                set
+                    {
+                        _chartTitle = value;
+                        OnPropertyChanged("ChartTitle");
+                    }
+            }
+
+            public string XAxisTitle
+            {
+                get { return _xAxisTitle; }
+                set
+                    {
+                        _xAxisTitle = value;
+                        OnPropertyChanged("XAxisTitle");
+                    }
+            }
+
+            public string YAxisTitle
+            {
+                get { return _yAxisTitle; }
+                set
+                    {
+                        _yAxisTitle = value;
+                        OnPropertyChanged("YAxisTitle");
+                    }
+            }
         }
-        
-        public string XAxisTitle
-        {
-            get { return _xAxisTitle; }
-            set
-                {
-                    _xAxisTitle = value;
-                    OnPropertyChanged("XAxisTitle");
-                }
-        }
-        
-        public string YAxisTitle
-        {
-            get { return _yAxisTitle; }
-            set
-                {
-                    _yAxisTitle = value;
-                    OnPropertyChanged("YAxisTitle");
-                }
-        }
-    }
-}     
-```
+    }     
+    ```
 
 5. 시리즈 추가 (시리즈 : 하나의 그래프로 표시될 자료)
     * 여러개의 시리즈를 담을 수 있는 Collection을 생성한다. 이 컬렉션이 SciChart의 Binding대상
