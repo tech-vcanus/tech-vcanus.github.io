@@ -58,7 +58,7 @@ Scichart는 WPF 프로젝트를 이용하기때문에 WPF에 대한 기본 지�
 - Scichart 공식홈페이지에서 해당 프로그램 설치
 - WPF 프로젝트 생성
 - 참조 추가
-- ![StartScichart](https://user-images.githubusercontent.com/41990925/66175657-73deaf00-e695-11e9-8ef5-d8ecacef2592.png)  
+![StartScichart](https://user-images.githubusercontent.com/41990925/66175657-73deaf00-e695-11e9-8ef5-d8ecacef2592.png)  
 
 ### Scichart표면(Surface) 생성
 1. XAML에 Scichart 연결
@@ -166,80 +166,80 @@ Scichart는 WPF 프로젝트를 이용하기때문에 WPF에 대한 기본 지�
     ```
 
 5. 시리즈 추가 (시리즈 : 하나의 그래프로 표시될 자료)
-    * 여러개의 시리즈를 담을 수 있는 Collection을 생성한다. 이 컬렉션이 SciChart의 Binding대상
+    - 여러개의 시리즈를 담을 수 있는 Collection을 생성한다. 이 컬렉션이 SciChart의 Binding대상
     
-    ```C#
-    private ObservableCollection<IRenderableSeriesViewModel> _renderableSeries;
-    ```
+        ```C#
+        private ObservableCollection<IRenderableSeriesViewModel> _renderableSeries;
+        ```
 
-    * 공식 홈페이지의 getter, setter는 아래처럼 설정되어있다.
+    - 공식 홈페이지의 getter, setter는 아래처럼 설정되어있다.
 
-    ```C#
-    public ObservableCollection<IRenderableSeriesViewModel> RenderableSeries
-    {
-        get { return _renderableSeries; }
-        set
+        ```C#
+        public ObservableCollection<IRenderableSeriesViewModel> RenderableSeries
         {
-            _renderableSeries = value;
-            OnPropertyChanged("RenderableSeries");
+            get { return _renderableSeries; }
+            set
+            {
+                _renderableSeries = value;
+                OnPropertyChanged("RenderableSeries");
+            }
         }
-    }
-    ```
+        ```
 
-    아직 정확한 원인을 찾아내지 못했지만 OnPropertyChanged의 내용이 들어가 있으면 그래프의 새로고침 기능이 작동하지 않는 경우가 있다.
-    따라서 시리즈 또는 시리즈의 내용이 바뀔 때 새로고침이 되게 하려면 아래처럼 OnPropertyChanged를 삭제하자!
+        아직 정확한 원인을 찾아내지 못했지만 OnPropertyChanged의 내용이 들어가 있으면 그래프의 새로고침 기능이 작동하지 않는 경우가 있다.
+        따라서 시리즈 또는 시리즈의 내용이 바뀔 때 새로고침이 되게 하려면 아래처럼 OnPropertyChanged를 삭제하자!
 
-    ```C#
-    public ObservableCollection<IRenderableSeriesViewModel> RenderableSeries
-    {
-        get => _renderableSeries; 
-        set => _renderableSeries = value;
-    }
-    ```
-
-    * MainViewModel.cs에서 Series를 만들고 RenderableSeries에 넣는다!
-    2D로 생성되는 일반적인 그래프의 경우에는 XyDataSeries를 이용한다.
-
-    ```C#
-    public MainViewModel()
-    {
-        // lineData가 1개의 시리즈
-        var lineData = new XyDataSeries<double, double>() { SeriesName = "TestingSeries" };
-        lineData.Append(0, 0);
-        lineData.Append(1, 1);
-        lineData.Append(2, 2);
-        _renderableSeries = new ObservableCollection<IRenderableSeriesViewModel>();
-        //RenderableSeries의 Add를 이용하여 원하는 만큼 시리즈를 추가할 수 있다.
-        //Binding은 RenderableSeries만 설정해주면 추가된 시리즈 모두 그래프에 표시!!
-        RenderableSeries.Add(new LineRenderableSeriesViewModel()
+        ```C#
+        public ObservableCollection<IRenderableSeriesViewModel> RenderableSeries
         {
-            StrokeThickness = 2,
-            Stroke = Colors.SteelBlue,
-            DataSeries = lineData,
-        });
-    }
-    ```
+            get => _renderableSeries; 
+            set => _renderableSeries = value;
+        }
+        ```
 
-    * MainWindow.xaml에서 RenderableSeries를 Binding한다.
-    RenderableSeries에서 SeriesBinding 기능이 제공되기에 해당 시리즈를 한번에 연결!
+    - MainViewModel.cs에서 Series를 만들고 RenderableSeries에 넣는다!
+        2D로 생성되는 일반적인 그래프의 경우에는 XyDataSeries를 이용한다.
 
-    ```WPF
-    <Grid DataContext="{StaticResource MainViewModel}">
+        ```C#
+        public MainViewModel()
+        {
+            // lineData가 1개의 시리즈
+            var lineData = new XyDataSeries<double, double>() { SeriesName = "TestingSeries" };
+            lineData.Append(0, 0);
+            lineData.Append(1, 1);
+            lineData.Append(2, 2);
+            _renderableSeries = new ObservableCollection<IRenderableSeriesViewModel>();
+            //RenderableSeries의 Add를 이용하여 원하는 만큼 시리즈를 추가할 수 있다.
+            //Binding은 RenderableSeries만 설정해주면 추가된 시리즈 모두 그래프에 표시!!
+            RenderableSeries.Add(new LineRenderableSeriesViewModel()
+            {
+                StrokeThickness = 2,
+                Stroke = Colors.SteelBlue,
+                DataSeries = lineData,
+            });
+        }
+        ```
 
-        <!-- Bind to ChartViewModel.RenderableSeries collection using SeriesBinding -->
-        <s:SciChartSurface RenderableSeries="{s:SeriesBinding RenderableSeries}" 
-                             ChartTitle="{Binding ChartTitle}">
+    - MainWindow.xaml에서 RenderableSeries를 Binding한다.
+        RenderableSeries에서 SeriesBinding 기능이 제공되기에 해당 시리즈를 한번에 연결!
 
-            <s:SciChartSurface.XAxis>
-                <s:NumericAxis AxisTitle="{Binding XAxisTitle}"/>
-            </s:SciChartSurface.XAxis>
+        ```WPF
+        <Grid DataContext="{StaticResource MainViewModel}">
 
-            <s:SciChartSurface.YAxis>
-                <s:NumericAxis AxisTitle="{Binding YAxisTitle}"/>
-            </s:SciChartSurface.YAxis>
-        </s:SciChartSurface>
-    </Grid>
-    ```
+            <!-- Bind to ChartViewModel.RenderableSeries collection using SeriesBinding -->
+            <s:SciChartSurface RenderableSeries="{s:SeriesBinding RenderableSeries}" 
+                                 ChartTitle="{Binding ChartTitle}">
+
+                <s:SciChartSurface.XAxis>
+                    <s:NumericAxis AxisTitle="{Binding XAxisTitle}"/>
+                </s:SciChartSurface.XAxis>
+
+                <s:SciChartSurface.YAxis>
+                    <s:NumericAxis AxisTitle="{Binding YAxisTitle}"/>
+                </s:SciChartSurface.YAxis>
+            </s:SciChartSurface>
+        </Grid>
+        ```
     
 ## 3 Series
 이번 파트에서는 주로 사용했던 선으로 된 그래프와 점으로 구성된 그래프를 다룰 예정이다.  
