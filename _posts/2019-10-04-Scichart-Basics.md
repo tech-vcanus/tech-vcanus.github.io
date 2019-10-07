@@ -53,6 +53,7 @@ namespace WpfAppName
 - 라이센스 키를 입력하고 그래프를 정상적으로 보려면 디버깅 모드로 실행 X   =>   디버그하지 않고 시작 O
 
 ## 2 Scichart 튜토리얼
+
 ### 참조 설정
 - Scichart 공식홈페이지에서 해당 프로그램 설치
 - WPF 프로젝트 생성
@@ -244,6 +245,7 @@ namespace SciChart.Mvvm.Tutorial
 이 두가지 그래프는 흔히 볼 수 있는 2D 그래프이며 X축과 Y축으로 이루어져있다.
 ![LineAndScatter](https://user-images.githubusercontent.com/41990925/66175621-6e816480-e695-11e9-8810-bdccb65bb2f0.png)
 따라서 그래프에 입력되는 데이터는 X축의 데이터, Y축의 데이터로 구성된다.
+
 ### 1) DataSeries 생성
 - DataSeries는 그래프에 나타낼 데이터라고 이해하면 된다.
 
@@ -256,7 +258,7 @@ namespace SciChart.Mvvm.Tutorial
 위에서 int는 X축의 데이터를 의미하고 double은 Y축의 데이터를 뜻한다.  
 물론 int, double, float 등 데이터타입은 숫자 데이터면 가능하다.  
 X축에 별도의 설정을 한다면 문자열을 X축에 넣을수 있지만 시도해보진 않았다.  
-[https://www.scichart.com/questions/wpf/i-want-to-display-a-character-string-on-the-x-axis](https://www.scichart.com/questions/wpf/i-want-to-display-a-character-string-on-the-x-axis)
+[X축 String 설정](https://www.scichart.com/questions/wpf/i-want-to-display-a-character-string-on-the-x-axis)
 
 ### 2) Collection에 DataSeries 추가
 - ObservableCollection<IRenderableSeriesViewModel>
@@ -332,6 +334,7 @@ Gaps의 경우에는 Null값은 없는 데이터로 취급하고, ClosedLines는
 둘 모두 X축의 간격은 1로 동일하다.
 ![BasicSeries](https://user-images.githubusercontent.com/41990925/66175640-717c5500-e695-11e9-82c8-019ec2177bd7.png)
 ![PointMarker](https://user-images.githubusercontent.com/41990925/66175652-73461880-e695-11e9-97df-21b1c67867ab.png)
+
 3. 그래프 속성 응용
 이전 순서에서 여러 속성으로 그래프의 모습을 설정할 수 있었다.  
 점으로 그래프를 나타내는 ScatterSeries도 별도로 있지만 위 코드에서 StrokeThickness의 속성을 0으로 설정하고,  
