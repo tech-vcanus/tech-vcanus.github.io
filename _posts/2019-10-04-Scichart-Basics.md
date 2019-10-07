@@ -60,6 +60,7 @@ namespace WpfAppName
 
 ### Scichart표면(Surface) 생성
 - XAML에 Scichart 연결
+
 ```WPF
 xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
 ```
@@ -105,11 +106,13 @@ xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
 
 - MainViewModel.cs에서 BindableObject를 상속받아 이용한다.  
 BindableObject는 INotifyPropertyChanged를 상속받고 있다.
+
 ```C#
 public class MainViewModel : BindableObject
 ```
 
 아래 코드처럼 Binding하는 변수에 대한 설정을 해주면 된다.
+
 ```C#
 using System.Collections.ObjectModel;
 using System.Windows.Media;
@@ -161,6 +164,7 @@ namespace SciChart.Mvvm.Tutorial
 
 - 시리즈 추가 (시리즈 : 하나의 그래프로 표시될 자료)
     * 여러개의 시리즈를 담을 수 있는 Collection을 생성한다. 이 컬렉션이 SciChart의 Binding대상
+    
     ```C#
     private ObservableCollection<IRenderableSeriesViewModel> _renderableSeries;
     ```
@@ -241,6 +245,7 @@ namespace SciChart.Mvvm.Tutorial
 따라서 그래프에 입력되는 데이터는 X축의 데이터, Y축의 데이터로 구성된다.
 ### 1) DataSeries 생성
 - DataSeries는 그래프에 나타낼 데이터라고 이해하면 된다.
+
 ```C#
     XyDataSeries<int, double> dataSeries = new XyDataSeries<int, double>();
     var dataSeries = new XyDataSeries<double, double>();
