@@ -28,21 +28,21 @@ $ sudo systemctl status docker.service
 Refer some documents about service registration. 
 The below make a docker container to be run automatically on boot.
 ```
-  $ vi /etc/systemd/system/docker_container_name.service
+$ vi /etc/systemd/system/docker_container_name.service
 ```
 ```
-  [Unit]
-  Description=Docker Container Service
-  Requires=docker.service
-  After=docker.service
+[Unit]
+Description=Docker Container Service
+Requires=docker.service
+After=docker.service
 
-  [Service]
-  Type=alyways
-  ExecStart=/usr/bin/docker start docker_container_name # <- modify here
-  ExecStop=/usr/bin/docker stop docker_container_name # <- modify here
+[Service]
+Type=alyways
+ExecStart=/usr/bin/docker start docker_container_name # <- modify here
+ExecStop=/usr/bin/docker stop docker_container_name # <- modify here
 
- [Install]
-  WantedBy=default.target
+[Install]
+WantedBy=default.target
 ```
 
 ### Run services inside docker container on boot
