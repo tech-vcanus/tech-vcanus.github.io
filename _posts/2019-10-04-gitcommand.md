@@ -2,10 +2,10 @@
 title: "Git command"
 data: 2019-10-04 00:00:00 -0000
 categories: tool 
-tags: development environment git
+tags: development environment git command
 ---
 
-Written by SGLee
+Written by SGLee, VCANUS
 
 # git command
 
