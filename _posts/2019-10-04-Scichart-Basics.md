@@ -16,7 +16,8 @@ Scichart는 WPF 프로젝트를 이용하기때문에 WPF에 대한 기본 지�
 ## 1 Scichart 유의할 점
 - 공식 홈페이지에서 Trial(1달 무료)버전을 다운받아 이용해볼 수 있다.
 - 설치를 하지 않는다면 프로젝트 참조에 뜨지 않는다.
-- 공식 홈페이지의 튜토리얼로 먼저 경험해본 이후 아래 예시들을 보는 것을 추천한다.
+- 공식 홈페이지의 튜토리얼로 먼저 경험해본 이후 아래 예시들을 보는 것을 추천한다.  
+공식 홈페이지 튜토리얼 : 
 [https://www.scichart.com/documentation/v5.x/webframe.html#Tutorial%2001%20-%20Referencing%20SciChart%20DLLs.html](https://www.scichart.com/documentation/v5.x/webframe.html#Tutorial%2001%20-%20Referencing%20SciChart%20DLLs.html)
 ![Tutorial](https://user-images.githubusercontent.com/41990925/66175658-73deaf00-e695-11e9-8143-c98c75ebcd34.png)
 - 정상적으로 설치하면 아래 화면처럼 다양한 그래프에 대한 예시들이 들어있다.
@@ -24,7 +25,7 @@ Scichart는 WPF 프로젝트를 이용하기때문에 WPF에 대한 기본 지�
 - 스크린샷 하단의 Chart Types에 있는 그래프를 선택하면 그래프 예시와 소스코드를 볼 수 있다.
 ![ChartExample](https://user-images.githubusercontent.com/41990925/66175623-6f19fb00-e695-11e9-980c-9e994ac297dc.png)
 ![SourceCodeExample](https://user-images.githubusercontent.com/41990925/66175624-6f19fb00-e695-11e9-9ebe-d276def7eb9d.png)
-- 링크는 Scichart의 Github 레파지토리 => https://github.com/ABTSoftware/SciChart.Wpf.Examples/tree/master/v5.x
+- 링크는 Scichart의 Github 레파지토리 => [Scichart Github](https://github.com/ABTSoftware/SciChart.Wpf.Examples/tree/master/v5.x)
 - 라이센스를 구매하고 해당 프로젝트의 App.xaml.cs에 라이센스 키를 입력해야한다.
 
 ```C#
