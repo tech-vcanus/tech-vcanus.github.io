@@ -18,7 +18,7 @@ $ sudo yum install docker
 
 ## Start docker on boot 
 A file of docker.service is already installed on /usr/lib/systemd/system. 
-```shell script
+```
 $ sudo systemctl enable docker.service
 $ sudo systemctl start docker.service
 $ sudo systemctl status docker.service
@@ -49,7 +49,7 @@ The below make a docker container to be run automatically on boot.
 make entry-point script (docker-entrypoint.sh). 
  - sleep prevents docker service from stopping after exit of script.
  - You have to use 'exec' instead of 'attach' because of sleep.
-```shell script
+```
 #!/bin/bash
 service service-name start
 while true;
@@ -65,7 +65,7 @@ execute bash with root
 $ docker exec -it -u root docker-container-name /bin/bash 
 ``` 
 Good example of 'docker-entrypoint.sh'
-```shell script
+```
 
 ```
 # Docker Command
