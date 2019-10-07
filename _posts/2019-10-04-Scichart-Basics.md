@@ -66,6 +66,7 @@ xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
 
 - Grid 내부에 Scichart를 생성
 - X축, Y축 설정   
+
 ```WPF
 <Window x:Class="SciChart.Mvvm.Tutorial.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
