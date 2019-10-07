@@ -154,7 +154,7 @@ Grid의 내부에 Control을 배치하며 View를 생성한다.
 </TextBlock>
 ```
 
-Code-Behind에서도 같은 결과를 낼 수 있는데, 자세한 내용은 https://blog.naver.com/syrch/221630969293를 참고
+Code-Behind에서도 같은 결과를 낼 수 있는데, 자세한 내용은 [여기를 참조](https://blog.naver.com/syrch/221630969293)를 참고
 
 #### 파일(?) 태그 및 초기 생성 태그
 - 해당 페이지의 넓이, 높이 등 크기 조절
@@ -230,7 +230,7 @@ Code-Behind에서도 같은 결과를 낼 수 있는데, 자세한 내용은 htt
     ```
 
 #### Panel의 종류
-각 패널에 대해서는 해당 링크 참고 : https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/
+각 패널에 대해서는 해당 링크 참고 : [https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/](https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/)
 - WrapPanel
 - StackPanel
 - DockPanel
