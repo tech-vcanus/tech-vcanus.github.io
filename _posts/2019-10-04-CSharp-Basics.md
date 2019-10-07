@@ -87,43 +87,43 @@ private string Test()
 #### var 제약조건  
 - private, public 등 전역변수로 사용할 수 없다. -> 지역변수로만 사용 가능.  
 
-```C#
-public var a = 10;
-public var b;
-```  
+    ```C#
+    public var a = 10;
+    public var b;
+    ```  
 
 - 전송은 가능하지만 return type을 var형식으로 할 수 없다.  
 
-```C#
-public var Method(){ }    // X
-```
+    ```C#
+    public var Method(){ }    // X
+    ```
 
 - 메소드의 매개변수로 지정할 수 없다.  
 
-```C#
-public void Method(var i){ }   // X
-```
+    ```C#
+    public void Method(var i){ }   // X
+    ```
 
 - null로 초기화를 할 수 없다.(참조타입의 경우 초기값 할당 이후 null로 초기화 가능)
 
-```C#
-var a = null;   // X
-var a = "Hi";
-a = null;       // O
-```
+    ```C#
+    var a = null;   // X
+    var a = "Hi";
+    a = null;       // O
+    ```
 
 - nullable로 사용할 수 없다.  
 
-```C#
-var? a = "aa";    // X
-```
+    ```C#
+    var? a = "aa";    // X
+    ```
 
 - 초기값과 다른 타입으로 사용할 수 없다.  
 
-```C#
-var a = 1;
-a = "Hi";    // X
-```
+    ```C#
+    var a = 1;
+    a = "Hi";    // X
+    ```
 
 ### ref, out 파라미터  
 JAVA와 C#은 모두 개체를 참조하는 메서드는 매개변수를 주소에 의한 참조로 전달한다.  
@@ -142,6 +142,7 @@ public void Cal(int a, int b, out int quotient, out int remainder)
   remainder = a % b;
 }
 ```  
+
 여기서 주목해야되는 것은 quitient, remainder의 타입을 이용할 때 선언한 것이다.  
 이전에 quotient와 remainder를 선언하지 않더라도 필요할 때 즉시 생성해서 이용할 수 있다.  
 사용하는 방법은 아래처럼 이용하면 된다.  
@@ -170,6 +171,7 @@ Call By Reference, Call By Value
 이 개념들은 C#에서 사용하는 참조변수 ref를 이용할 때 필요하다.  
 물론 out변수에서도 적용되는 말이지만 메소드 내에서 필요할때만 생성해서 쓰면 되기에 별도로 기술하지는 않았다.  
 사용하는 방법은 아래의 코드를 살펴보자.  
+
 ```C#
 //값을 리턴하는 Cal 메소드에서는 out과 ref의 차이만 있다.
 public void Cal(int a, int b, ref int quotient, ref int remainder)
@@ -237,6 +239,7 @@ ref는 해당 변수의 값을 메소드 내에서 변경하지 않더라도 에
 하지만 out은 해당 변수의 값을 메소드 내에서 변경 또는 할당하지 않는다면 에러가 발생한다.
 ![Out](https://user-images.githubusercontent.com/41990925/66175651-72ad8200-e695-11e9-90f7-2845c3874613.png)  
 ![Ref](https://user-images.githubusercontent.com/41990925/66175655-73461880-e695-11e9-9328-6a483d5f901f.png)  
+
 ### 대리자(Delegate)  
 대리자는 메소드의 파라미터로 메소드를 보낼 수 있게 해준다.  
 메소드에서 파라미터로 객체를 보내거나 int, string 등 데이터 타입을 보내주는 것은 자주 사용하던 일이다.  
@@ -436,33 +439,33 @@ string jsonContents = jsonObject.ToString();
 #### From Json  
 - JObject
 
-```C#
-JObject jsonObject = JObject.Parse(jsonContents);
-//JSON 오브젝트는 Key, Value로 이루어져있어 Dicitionary<String, Object>와 같이 변환이 가능하다.
-Dictionary<String, Object> dictionary = jsonObject.ToObject<<Dictionary<String, Object>>();
-```
+    ```C#
+    JObject jsonObject = JObject.Parse(jsonContents);
+    //JSON 오브젝트는 Key, Value로 이루어져있어 Dicitionary<String, Object>와 같이 변환이 가능하다.
+    Dictionary<String, Object> dictionary = jsonObject.ToObject<<Dictionary<String, Object>>();
+    ```
 
-만약 Value값만 추출해서 사용하려면 아래와 같이 Value를 이용한다.  
-```C#
-//해당 Dictionary의 Key로 이루어진 List를 생성
-List<String> keyList = new List<>(dictionary.Keys);
-//각 Key값에 따른 객체들을 반복문을 이용하여 꺼낼 수 있다.
-for(int i = 0; i < jsonObject.Count; i++){
-	Object obj = jsonObject.Value<Object>(keyList[i]);
-							//Value<데이터타입>(Key값)
-}
-```
+    만약 Value값만 추출해서 사용하려면 아래와 같이 Value를 이용한다.  
+    ```C#
+    //해당 Dictionary의 Key로 이루어진 List를 생성
+    List<String> keyList = new List<>(dictionary.Keys);
+    //각 Key값에 따른 객체들을 반복문을 이용하여 꺼낼 수 있다.
+    for(int i = 0; i < jsonObject.Count; i++){
+        Object obj = jsonObject.Value<Object>(keyList[i]);
+                                //Value<데이터타입>(Key값)
+    }
+    ```
 
 - JArray  
 
-```C#
-JArray jArray = JArray.Parse(jsonContents);
-foreach(JObject jObj in jArray){
-	JObject obj = (JObject)jObj;
-	//JObject로 변환 후에는 ToObject를 이용해 변환하거나, 반복문으로 Value만 구해낼 수 있다.
-	Dictionary<String, int> dictionary = obj.ToObject<Dictionary<String, int>>();
-}
-```
+    ```C#
+    JArray jArray = JArray.Parse(jsonContents);
+    foreach(JObject jObj in jArray){
+        JObject obj = (JObject)jObj;
+        //JObject로 변환 후에는 ToObject를 이용해 변환하거나, 반복문으로 Value만 구해낼 수 있다.
+        Dictionary<String, int> dictionary = obj.ToObject<Dictionary<String, int>>();
+    }
+    ```
 
 ## Windows Form  
 
