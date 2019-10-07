@@ -24,7 +24,7 @@ $ sudo systemctl start docker.service
 $ sudo systemctl status docker.service
 ```
 
-### Run docker container on boot 
+### Start docker container on boot 
 Refer some documents about service registration. 
 The below make a docker container to be run automatically on boot.
 ```
@@ -56,26 +56,29 @@ while true;
 do sleep 1d;
 done
 ```
+
 run entry-point script
 ```
 $ docker run -itd --name docker-container-name -p ##:## -v /opt/service/data: /data/ /bin/bash/ -c 'docker-entrypoint.sh'
 ```
+
 execute bash with root
 ```
 $ docker exec -it -u root docker-container-name /bin/bash 
 ``` 
-Good example of docker-entrypoint.sh
+
+good example of docker-entrypoint.sh
 ```
 # first arg is `-f` or `--some-option`
 # or first arg is `something.conf`
 if [ "${1#-}" != "$1" ] || [ "${1%.conf}" != "$1" ]; then
-        set -- redis-server "$@"
+	set -- redis-server "$@"
 fi
 
 # allow the container to be started with `--user`
 if [ "$1" = 'redis-server' -a "$(id -u)" = '0' ]; then
-        find . \! -user redis -exec chown redis '{}' +
-        exec gosu redis "$0" "$@"
+	find . \! -user redis -exec chown redis '{}' +
+	exec gosu redis "$0" "$@"
 fi
 
 exec "$@"
