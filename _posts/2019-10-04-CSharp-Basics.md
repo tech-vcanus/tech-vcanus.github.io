@@ -12,7 +12,7 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
 ## DataType  
 JAVA에서는 String을 대문자 String으로만 사용했지만 C#에서는 string, String 둘 다 가능하다.  
 숫자에 관한 데이터 타입은 JAVA와는 다르게 음수, 양수에 이용하는 데이터 타입이 다양하다.  
-([참조](https://blog.naver.com/syrch/221587473761))  
+([블로그 참조](https://blog.naver.com/syrch/221587473761))  
 
 ## Naming 규칙  
 Class의 이름은 JAVA의 클래스 명처럼 첫글자, 단어구분에 대문자!!  
@@ -290,7 +290,7 @@ Nullable은 숫자형식의 데이터는 null값을 가질 수 없지만 null을
 이는 C#에서도 동일하게 int에는 null값이 들어가지 못합니다.  
 
 ```C#
->int a = null;   // X
+int a = null;   // X
 ```  
 
 하지만 C#에서는 다음과 같이 한 기호를 넣어준다면 null값을 가질 수 있는 숫자 데이터가 생성됩니다.  
