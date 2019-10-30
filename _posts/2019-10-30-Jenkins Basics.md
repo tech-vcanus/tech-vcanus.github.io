@@ -67,7 +67,7 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
     Build까지만 이용하려면 Git, Github 두 가지가 필요하지만 추천 플러그인에 포함되어있다.
     단순히 Build까지 활용한다면 추가로 설정할 내용은 없다.  
     
-#### Job
+### Job
 1. 생성  
     ![run1](https://user-images.githubusercontent.com/41990925/67834758-9399b380-fb2b-11e9-9363-0c1ba0f37ca7.png)  
     Freestyle project로 생성!
@@ -103,13 +103,14 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
     스크린샷과는 다르게 Goals에는 package -D maven.test.skip=true를 입력한다.  
     -D maven.test.skip=true는 test코드를 실행해보지 않고 Build하는 옵션.
     
-#### Try Build
+### Try Build
 ![run-build](https://user-images.githubusercontent.com/41990925/67836296-95657600-fb2f-11e9-9e90-a1d5db9b262e.png)  
 우측의 Console Output을 클릭하면 Build 상황에 대한 로그화면이 뜬다.  
 성공한 경우 아래처럼 뜬다
 ![run-success](https://user-images.githubusercontent.com/41990925/67836311-9e564780-fb2f-11e9-80a8-492b42c65a46.png)  
 스크린샷에는 war파일로 packaging이 설정되어있너 war로 build가 된 상황이고, 이것은 pom.xml에서 <packaging>태그를 이용하면 간단하다.
-#### Github Webhook
+    
+### Github Webhook
 해당 Job의 구성에서 아래처럼 체크
 ![webhook setting1](https://user-images.githubusercontent.com/41990925/67837053-8384d280-fb31-11e9-9ff1-ba8395aee451.png)  
 이후 대상이 되는 Github Repository - settings - Webhooks로 이동하고 추가!
