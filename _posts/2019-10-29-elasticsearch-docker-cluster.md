@@ -10,9 +10,10 @@ $touch docker-compose.yml
 ```
 
 ## write docker-compose
-//  under 7.0 : discovery.zen.ping.unicast.hosts -> up 7.0 : discovery.seed_hosts
-//  under 7.0 : search.remote.connect -> up 7.0 : cluster.remote.connect
-//  under 7.0 : deprecated discovery.zen.minimum_master_nodes -> up 7.0 : must defined initial_master_nodes=masterNames
+### Breaking changes in 7.0 that makes elaticsearch cluster in docker
+> - under 7.0 : "discovery.zen.ping.unicast.hosts" -> up 7.0 : "discovery.seed_hosts"
+> - under 7.0 : "search.remote.connect" -> up 7.0 : "cluster.remote.connect"
+> - under 7.0 : deprecated "discovery.zen.minimum_master_nodes" -> up 7.0 : must defined "initial_master_nodes=masterNames"
 ```
 version: '3.7'
 services:
@@ -99,12 +100,12 @@ services:
       - 9302:9300
     networks:
       - esnet
-  esrouter: # Router #coordinating node
+  escoordinatioin: # Router #coordinating node
     image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
-    container_name: esrouter
+    container_name: escoordinatioin
     restart: always
     environment:
-      - node.name=esrouter
+      - node.name=escoordinatioin
       - cluster.name=docker-cluster
       - node.master=false
       - node.voting_only=false
@@ -146,7 +147,7 @@ networks:
   esnet:
 ```
 
-##make folder for docker volume
+##make folder for docker volume(for permission)
 ```
 $mkdir volume-folder-name[ex)es-data-1]
 ```
