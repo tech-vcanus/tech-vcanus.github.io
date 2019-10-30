@@ -14,6 +14,8 @@ $touch docker-compose.yml
 > - under 7.0 : "discovery.zen.ping.unicast.hosts" -> up 7.0 : "discovery.seed_hosts"
 > - under 7.0 : "search.remote.connect" -> up 7.0 : "cluster.remote.connect"
 > - under 7.0 : deprecated "discovery.zen.minimum_master_nodes" -> up 7.0 : must defined "initial_master_nodes=masterNames"
+
+### Fill the docker-compose.yml with under contents
 ```
 version: '3.7'
 services:
