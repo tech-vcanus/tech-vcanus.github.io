@@ -147,17 +147,17 @@ networks:
   esnet:
 ```
 
-##make folder for docker volume(for permission)
+## make folder for docker volume(for permission)
 ```
 $mkdir volume-folder-name[ex)es-data-1]
 ```
 
-##run docker-compose
+## run docker-compose
 ```
 $docker-compose up -d
 ```
 
-##stop docker-compose
+## stop docker-compose
 ```
 $docker-compose down
 ```
