@@ -7,17 +7,17 @@ tags: Jenkins Build
 
 Written By Young-rae Shin([https://github.com/lived1024](https://github.com/lived1024))  
 
-# Jenkins
-## 정의
+# Jenkins  
+## 정의  
 소프트웨어 개발 시 지속적으로 통합 서비스를 제공하는 툴.  
 일명 Continuous Intergration (CI)라고 표현한다.  
 예를 들어 Git을 사용할 때, Git의 Repository에 Push가 감지되면, Jenkins에서 자동으로 Build한다.  
 
 ## 설치
-### Requirements
+### Requirements  
 - JAVA(openJDK도 가능)
 - MAVEN
-- Git
+- Git  
 ### 설치 순서
 - 설치 파일 다운로드 : [공식 홈페이지](https://jenkins.io/) 다운로드
     ![install1](https://user-images.githubusercontent.com/41990925/67818875-3e8f7a80-faf6-11e9-9d6c-ac4d33fbd1d8.png)    
@@ -26,9 +26,9 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
     1. Window : 파일 압축해제 이후 설치파일 실행  
     2. Ubuntu : 설치 방법은 해당 [링크](https://fun25.co.kr/blog/jenkins-ubuntu-16-04-install/) 참조  
 - 초기 설정 포트
-    Jenkins default port : 8080 -> 변경 : 8000
+    Jenkins default port : 8080 -> 변경 : 8000  
     
-### 실행
+### 실행  
 #### 첫 실행
 - 주소창에 http://본인IP:8000 입력 (Window는 브라우저 자동 실행)
     ![run1](https://user-images.githubusercontent.com/41990925/67833073-ee7cdc00-fb26-11e9-98ef-59d469dec6cb.png)  
@@ -44,7 +44,7 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
     ![run6](https://user-images.githubusercontent.com/41990925/67833440-f8eba580-fb27-11e9-8b5d-dfe4d4b7810b.png)  
 - Jenkins에서 사용할 URL을 설정할 수 있다. 여기에서 Port를 다르게 적더라도 Jenkins 내부 설정파일에서 별도로 Port를 바꿔줘야 적용된다.
     ![run7](https://user-images.githubusercontent.com/41990925/67833438-f8eba580-fb27-11e9-935c-3c643704ace1.png)  
--위와 같은 화면이 나온다면 첫 실행은 성공적으로 진행된 것이다.
+-위와 같은 화면이 나온다면 첫 실행은 성공적으로 진행된 것이다.  
 #### Jenkins Settings : Jenkins 관리
 1. 시스템 설정 : Github Server 연동 설정  
     ![Setting1](https://user-images.githubusercontent.com/41990925/67833946-66e49c80-fb29-11e9-8a2d-56d0e634e8d7.png)  
@@ -65,7 +65,7 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
     ![Setting8](https://user-images.githubusercontent.com/41990925/67834405-ac559980-fb2a-11e9-8881-452ee90c8d04.png)  
 3. 플러그인 관리  
     Build까지만 이용하려면 Git, Github 두 가지가 필요하지만 추천 플러그인에 포함되어있다.
-    단순히 Build까지 활용한다면 추가로 설정할 내용은 없다.
+    단순히 Build까지 활용한다면 추가로 설정할 내용은 없다.  
 #### Job
 1. 생성  
     ![run1](https://user-images.githubusercontent.com/41990925/67834758-9399b380-fb2b-11e9-9363-0c1ba0f37ca7.png)  
