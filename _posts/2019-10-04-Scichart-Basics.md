@@ -258,7 +258,7 @@ Scichart는 WPF 프로젝트를 이용하기때문에 WPF에 대한 기본 지�
 
     위에서 int는 X축의 데이터를 의미하고 double은 Y축의 데이터를 뜻한다.  
     물론 int, double, float 등 데이터타입은 숫자 데이터면 가능하다.  
-    X축에 별도의 설정을 한다면 문자열을 X축에 넣을수 있지만 시도해보진 않았다.  
+    X축에 별도의 설정을 한다면 문자열을 X축에 넣을수 있다. 자세한 내용은 아래 링크를 이용하자.  
     [X축 String 설정](https://www.scichart.com/questions/wpf/i-want-to-display-a-character-string-on-the-x-axis)
 
 ### 2) Collection에 DataSeries 추가
