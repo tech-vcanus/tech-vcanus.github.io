@@ -1,6 +1,6 @@
 # Elasticsearch cluster on Docker Compose
 
-Written By KYRoh, VCANUS
+Written By KYRoh([github.com/tsedek](https://github.com/tsedek)), VCANUS
 
 # docker-compose
 
