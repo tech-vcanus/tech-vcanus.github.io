@@ -9,7 +9,7 @@ Written by BGKim, VCANUS
 
 # Docker Setting
 
-##Redis
+## Redis
 search and pull redis image
 ```
 $ docker search redis
