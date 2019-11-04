@@ -151,7 +151,7 @@ server.port=8082
 kitech.was.host=192.168.0.42
 kitech.was.port=8080
 ```
-
+ 
 # Run
 
 1. kitech-was
