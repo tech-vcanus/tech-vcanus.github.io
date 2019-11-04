@@ -66,8 +66,7 @@ create table and set base configuration.
 > create table ... (see the Query document)
 > set sql_safe_updates = 0;
 ```
-
-
+#
 
 # Project Module Setting
 
