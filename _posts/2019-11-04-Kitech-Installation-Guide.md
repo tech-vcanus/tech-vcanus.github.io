@@ -84,6 +84,7 @@ hierarchy
 ## setting
 pithos-nosql
 > src/main/resources/properties/redis.properties
+
 ```
 redis.host=192.168.0.xx
 redis.port=6379
@@ -91,6 +92,7 @@ redis.port=6379
 
 talaria
 >src/main/resources/properties/thrift_client.properties
+
 ```
 thrift.client.ip=192.168.0.xx #thrift server ip
 thrift.client.port=9091 #thrift server port
@@ -98,6 +100,7 @@ thrift.client.port=9091 #thrift server port
 
 kitech-collector
 >src/main/resources/properties/db.properties
+
 ```
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.url=jdbc:mysql://192.168.0.xx:3306/kitech?useSSL=false&allowMultiQueries=true&characterEncoding=UTF-8&autoReconnection=true
@@ -105,6 +108,7 @@ spring.datasource.username=kitechUser
 spring.datasource.password=password
 ```
 >src/main/resources/application.properties
+
 ```
 server.port=8081
 
@@ -117,6 +121,7 @@ kitech.binder.port=8082
 
 kitech-was
 >src/main/resources/properties/db.properties
+
 ```
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.url=jdbc:mysql://192.168.0.xx:3306/kitech?useSSL=false&allowMultiQueries=true&characterEncoding=UTF-8&autoReconnection=true
@@ -124,12 +129,14 @@ spring.datasource.username=kitechUser
 spring.datasource.password=password
 ```
 >src/main/resources/application.properties
+
 ```
 server.port=8080
 ```
 
 kitech-binder
 >src/main/resources/properties/db.properties
+
 ```
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.url=jdbc:mysql://192.168.0.xx:3306/kitech?useSSL=false&allowMultiQueries=true&characterEncoding=UTF-8&autoReconnection=true
@@ -137,6 +144,7 @@ spring.datasource.username=kitechUser
 spring.datasource.password=password
 ```
 >src/main/resources/application.properties
+
 ```
 server.port=8082
 
