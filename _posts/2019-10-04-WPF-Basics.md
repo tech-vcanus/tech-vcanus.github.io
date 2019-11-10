@@ -48,7 +48,7 @@ Written by Young-rae Shin([https://github.com/lived1024](https://github.com/live
 
 ### Model
 - 기존의 C# 코드를 이용하여 View의 기초 데이터를 담당한다.
-- Car 클래스, Person 클래스 등 직접 DataBinding하는 자료를 제외한 클래스들이 여기에 속한다.
+- Json을 요청하고 받아오는 클래스 등 직접 DataBinding하는 클래스를 제외한 클래스들이 여기에 속한다.
 - WAS를 이용한 프로그램을 개발할 때, WAS에서 데이터를 받아와 초기 데이터로 가공하는 역할을 담당한다.
 
 ### ViewModel
@@ -181,6 +181,7 @@ Code-Behind에서도 같은 결과를 낼 수 있는데, 자세한 내용은 [�
         ![UserControl include](https://user-images.githubusercontent.com/41990925/66175659-73deaf00-e695-11e9-9b26-10fc3009c8d9.png)
         ![UserControl Tag](https://user-images.githubusercontent.com/41990925/66175661-73deaf00-e695-11e9-8312-e637994c07b5.png)
     4. ResourceDictionary : 앱의 UI 또는 리소스를 정의하여 이용할 위치에 정의하여 사용할 수 있다.  
+        HTML의 외부 CSS파일과 외부 JS파일로 생각하면 된다.
         이용한 예제가 없어서 공식 홈페이지의 코드를 참조
 
         ```WPF
