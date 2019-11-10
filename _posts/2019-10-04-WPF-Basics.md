@@ -56,11 +56,8 @@ Written by Young-rae Shin([https://github.com/lived1024](https://github.com/live
 - 가공한 데이터는 DataBinding을 이용해 View를 제공하는 XAML파일(WPF)로 연결!
 - Main이 되는 XAML의 .cs파일에 작성할 수도 있지만 Resource를 설정하여 다른 파일에서 이용할 수도 있다.  
     ![예시](https://user-images.githubusercontent.com/41990925/66175633-70e3be80-e695-11e9-8964-41dd054742c1.png)  
-- WPF(XAML파일)에서 DataBinding을 설정하기도 하지만 ViewModel에서 설정할 수도 있다.
-    ![DataBinding in XAML](https://user-images.githubusercontent.com/41990925/66175635-70e3be80-e695-11e9-8365-33865aa7eef6.png)  
-Binding 뒤의 "Items", "IsExpanded"는 Code-Behind에서 설정한 변수의 이름
-    ![DataBinding in Code-Behind](https://user-images.githubusercontent.com/41990925/66175634-70e3be80-e695-11e9-8451-4c812de76d00.png)  
-단, 최상위 Window의 Code-Behind와 해당 XAML의 Code-Behind가 아니면 아래와 같은 에러를 볼 수 있다.  
+- 주로 Code-behind가 ViewModel을 담당한다. 별도의 설정을 통해 해당 파일의 cs파일이 아니더라도 연결하여 사용할 수 있다.  
+단, 최상위 Window의 Code-Behind와 해당 XAML의 Code-Behind가 아닌 클래스에서 컨트롤을 호출하려면 아래와 같은 에러를 볼 수 있다.  
     ![Not Static Control](https://user-images.githubusercontent.com/41990925/66175645-7214eb80-e695-11e9-8928-324ccc5ed6c0.png)
 
 ### View : XAML파일(WPF)
@@ -68,9 +65,9 @@ Binding 뒤의 "Items", "IsExpanded"는 Code-Behind에서 설정한 변수의 �
 - 마크업 언어로 구성되어 가독성이 뛰어나고, ViewModel과 연결하여 DataBinding을 이용할 수 있다.
 - 해당 파일을 생성하면 Code-Behind파일이 자동으로 생성된다.  
     ![Files](https://user-images.githubusercontent.com/41990925/66175636-70e3be80-e695-11e9-942f-87fdbf955f46.png)  
-- XAML파일에서 Event의 메소드명을 설정하면 Code-Behind에서 해당 이벤트를 구현하면 된다.
-    ![XAML Event](https://user-images.githubusercontent.com/41990925/66175667-750fdc00-e695-11e9-8a91-670f6f15a0a9.png)
-    ![Code-Behind Event](https://user-images.githubusercontent.com/41990925/66175626-6fb29180-e695-11e9-92d9-b2704f2bd05b.png)
+- 다음 화면은 XAML파일 생성시 초기 화면이다
+    ![Init](https://user-images.githubusercontent.com/41990925/68543256-1d813080-03f8-11ea-8691-44df3434b9f2.png)  
+- 화면의 Grid태그 내부에 각 Control을 배치할 수 있다. 사용가능한 종류는 아래의 Panel종류 항목 참조.
   
 # WPF 실전
 
@@ -86,7 +83,7 @@ Preview 화면의 우측 하단을 보면 초록색 박스가 있다. 박스 안
 
 ### WPF의 기초 태그
 
-#### Grid
+#### Grid - 기본 레이아웃
 Grid의 내부에 Control을 배치하며 View를 생성한다.
 화면은 기본적으로 Grid Layout으로 설정되어 있으며 아래처럼 화면을 분할할 수 있다
 
