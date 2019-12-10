@@ -13,7 +13,7 @@ $touch docker-compose.yml
 ### Breaking changes in 7.0 that makes elaticsearch cluster in docker
 - under 7.0 : "discovery.zen.ping.unicast.hosts" -> up 7.0 : "discovery.seed_hosts"
 - under 7.0 : "search.remote.connect" -> up 7.0 : "cluster.remote.connect"
-- under 7.0 : deprecated "discovery.zen.minimum_master_nodes" -> up 7.0 : must defined "initial_master_nodes=masterNames"
+- under 7.0 : deprecated "discovery.zen.minimum_master_nodes" -> up 7.0 : must defined "cluster.initial_master_nodes=masterNames"
 
 ### Fill the docker-compose.yml with under contents
 ```
@@ -31,6 +31,7 @@ services:
       - node.data=false
       - node.ingest=true
         #      - node.ml=false
+      - cluster.remote.connect=false
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster  
       - discovery.seed_hosts=esdata1,esdata2,esmaster
@@ -60,6 +61,7 @@ services:
       - node.data=true
       - node.ingest=false
         #      - node.ml=false
+      - cluster.remote.connect=false
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
       - discovery.seed_hosts=esdata1,esdata2,esmaster
@@ -87,6 +89,7 @@ services:
       - node.data=true
       - node.ingest=false
         #      - node.ml=false
+      - cluster.remote.connect=false
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
       - discovery.seed_hosts=esdata1,esdata2,esmaster
