@@ -61,7 +61,7 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
 2. Global Tool Configuration  
     Maven, Java, Git에 대한 설정을 한다.
     ![Setting7](https://user-images.githubusercontent.com/41990925/67834403-a9f33f80-fb2a-11e9-9e0a-e46511250cc7.png)  
-    Maven, Java는 설치폴더를, Git은 실행파일까지 Path를 잡아준다.
+    Maven, Java는 설치폴더를, Git은 실행파일까지 Path를 잡아준다. (bin 폴더 내부의 git.exe)
     ![Setting8](https://user-images.githubusercontent.com/41990925/67834405-ac559980-fb2a-11e9-8881-452ee90c8d04.png)  
 3. 플러그인 관리  
     Build까지만 이용하려면 Git, Github 두 가지가 필요하지만 추천 플러그인에 포함되어있다.
