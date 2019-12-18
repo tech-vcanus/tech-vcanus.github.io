@@ -54,36 +54,36 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
  1. Open pom.xml  
  2. Add local repository or jar files  
   - Add local repository in pom.xml
-   ```
-   <repositories>
-     <repository>
-       <id>local-repo</id>
-       <name>local</name>
-       <url>file://${project.basedir}/lib</url>
-     </repository>
-   </repositories>
-   ```
+    ```
+    <repositories>
+      <repository>
+        <id>local-repo</id>
+        <name>local</name>
+        <url>file://${project.basedir}/lib</url>
+      </repository>
+    </repositories>
+    ```
   - OR add local jar files in pom.xml like this
-   ```
-    <dependencies>
-     <dependency>
-       <groupId>org.chronotics</groupId>
-       <artifactId>pandora</artifactId>
-       <version>1.4-SNAPSHOT</version>
-       <scope>system</scope>
-       <systemPath>${project.basedir}/lib/pandora.jar</systemPath>
-     </dependency>
+    ```
+     <dependencies>
+      <dependency>
+        <groupId>org.chronotics</groupId>
+        <artifactId>pandora</artifactId>
+        <version>1.4-SNAPSHOT</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/pandora.jar</systemPath>
+      </dependency>
 
-     //set scope(system) and systemPath(jar file's path)
-     <dependency>
-       <groupId>com.vcanus</groupId>
-       <artifactId>pithos-nosql</artifactId>
-       <version>0.0.1-SNAPSHOT</version>
-       <scope>system</scope>
-       <systemPath>${project.basedir}/lib/pithos-nosql.jar</systemPath>
-     </dependency>
-    <dependencies>
-   ```
+      //set scope(system) and systemPath(jar file's path)
+      <dependency>
+        <groupId>com.vcanus</groupId>
+        <artifactId>pithos-nosql</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/pithos-nosql.jar</systemPath>
+      </dependency>
+     <dependencies>
+    ```
 
 # How to run jar file
 1. Go to the project directory where you want to run jar file located
