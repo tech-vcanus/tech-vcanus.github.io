@@ -53,7 +53,7 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
 # Add custom jar file to maven project
  1. Open pom.xml  
  2. Add local repository or jar files  
-  - Add local repository in pom.xml   
+  Add local repository in pom.xml   
     ```
     <repositories>
       <repository>
@@ -63,7 +63,7 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
       </repository>
     </repositories>
     ```   
-  - OR add local jar files in pom.xml like this   
+  OR add local jar files in pom.xml like this   
     ```
      <dependencies>
       <dependency>
