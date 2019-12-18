@@ -31,7 +31,7 @@
  ![Path](https://user-images.githubusercontent.com/41990925/71045085-006a1b00-2177-11ea-8b18-30208955f384.png)  
  3. Open console(like cmd, git-bash, terminal, etc...)  
  ![Open console](https://user-images.githubusercontent.com/41990925/71045174-5f2f9480-2177-11ea-870c-47d3ee303a64.png)  
- 4. Start build - Use maven build command  
+ 4. Start build : Use maven build command  
  You need to study maven command.
  ```
  $ mvn clean package -Dmaven.test.skip=true
