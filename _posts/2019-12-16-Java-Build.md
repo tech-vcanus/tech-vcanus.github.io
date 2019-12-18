@@ -65,6 +65,7 @@
       <systemPath>${project.basedir}/lib/pandora.jar</systemPath>
     </dependency>
 
+    //set scope(system) and systemPath(jar file's path)
     <dependency>
       <groupId>com.vcanus</groupId>
       <artifactId>pithos-nosql</artifactId>
