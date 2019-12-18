@@ -9,11 +9,11 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
 
 # IntelliJ
  1. File -> Project Structure  
- ![First](https://user-images.githubusercontent.com/41990925/70882756-157a6900-2014-11ea-9d9c-2d5b70e1abc6.png)  
+  ![First](https://user-images.githubusercontent.com/41990925/70882756-157a6900-2014-11ea-9d9c-2d5b70e1abc6.png)  
  2. Artifacts -> JAR -> From modules with dependencies  
- ![Second](https://user-images.githubusercontent.com/41990925/70882757-157a6900-2014-11ea-9b01-ea4d4a6e245c.png)  
+  ![Second](https://user-images.githubusercontent.com/41990925/70882757-157a6900-2014-11ea-9b01-ea4d4a6e245c.png)  
  3. Default setting  
- ![Third](https://user-images.githubusercontent.com/41990925/70882754-14e1d280-2014-11ea-8a3f-d2a53539d6f8.png)  
+  ![Third](https://user-images.githubusercontent.com/41990925/70882754-14e1d280-2014-11ea-8a3f-d2a53539d6f8.png)  
  
  - If you want to make executable jar  
    Please check MANIFEST.MF path at Default setting  
@@ -22,34 +22,34 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
    ![change path](https://user-images.githubusercontent.com/41990925/70882755-157a6900-2014-11ea-9389-2e582ca34d0f.png)  
  
  4. A screen similar to the following is displayed  
- ![Register artifacts](https://user-images.githubusercontent.com/41990925/70882750-14493c00-2014-11ea-8772-9229606899e0.png)  
+  ![Register artifacts](https://user-images.githubusercontent.com/41990925/70882750-14493c00-2014-11ea-8772-9229606899e0.png)  
  5. Confirm Main-Class at MANIFEST.MF  
- ![MANIFEST.MF](https://user-images.githubusercontent.com/41990925/70882752-14e1d280-2014-11ea-9a97-b81436e56105.png)  
+  ![MANIFEST.MF](https://user-images.githubusercontent.com/41990925/70882752-14e1d280-2014-11ea-9a97-b81436e56105.png)  
  6. Build -> Build Artifacts  
- ![Build Menu](https://user-images.githubusercontent.com/41990925/70882748-14493c00-2014-11ea-9825-ae90e839c5e8.png)  
+  ![Build Menu](https://user-images.githubusercontent.com/41990925/70882748-14493c00-2014-11ea-9825-ae90e839c5e8.png)  
  7. First, Clean => Second, Build  
- ![Build Popup](https://user-images.githubusercontent.com/41990925/70882751-14e1d280-2014-11ea-832c-7008acdd6b74.png)  
+  ![Build Popup](https://user-images.githubusercontent.com/41990925/70882751-14e1d280-2014-11ea-832c-7008acdd6b74.png)  
  8. Confirm JAR file in project base directory  
- ![Jar File](https://user-images.githubusercontent.com/41990925/70882749-14493c00-2014-11ea-95e7-f3ae6b6f7b4e.png)  
+  ![Jar File](https://user-images.githubusercontent.com/41990925/70882749-14493c00-2014-11ea-95e7-f3ae6b6f7b4e.png)  
  
 # Maven
  1. Install Maven  
- The screen below can be seen after installation
- ![Maven Version](https://user-images.githubusercontent.com/41990925/71044871-42df2800-2176-11ea-96f7-5e8ce6c4901e.png)  
+  The screen below can be seen after installation
+  ![Maven Version](https://user-images.githubusercontent.com/41990925/71044871-42df2800-2176-11ea-96f7-5e8ce6c4901e.png)  
  2. Go to the project directory where you want to build module("pom.xml" is located)  
- ![Path](https://user-images.githubusercontent.com/41990925/71045085-006a1b00-2177-11ea-8b18-30208955f384.png)  
+  ![Path](https://user-images.githubusercontent.com/41990925/71045085-006a1b00-2177-11ea-8b18-30208955f384.png)  
  3. Open console(like cmd, git-bash, terminal, etc...)  
- ![Open console](https://user-images.githubusercontent.com/41990925/71045174-5f2f9480-2177-11ea-870c-47d3ee303a64.png)  
+  ![Open console](https://user-images.githubusercontent.com/41990925/71045174-5f2f9480-2177-11ea-870c-47d3ee303a64.png)  
  4. Start build : Use maven build command  
- You need to study maven command.
- ```
- $ mvn clean package -Dmaven.test.skip=true
- $ mvn clean package spring-boot:repackage -Dmaven.test.skip=true
- ```
- ![Input build command](https://user-images.githubusercontent.com/41990925/71045395-1d531e00-2178-11ea-8a43-4be3403cbe5d.png)  
+  You need to study maven command.
+  ```
+  $ mvn clean package -Dmaven.test.skip=true
+  $ mvn clean package spring-boot:repackage -Dmaven.test.skip=true
+  ```
+  ![Input build command](https://user-images.githubusercontent.com/41990925/71045395-1d531e00-2178-11ea-8a43-4be3403cbe5d.png)  
  5. If you see "BUILD SUCCESS", it's complete  
- ![Build Success](https://user-images.githubusercontent.com/41990925/71045498-791da700-2178-11ea-953d-44a78da3ef54.png)
- ![Build File Path](https://user-images.githubusercontent.com/41990925/71047750-29db7480-2180-11ea-93ad-e98eed151b49.png)
+  ![Build Success](https://user-images.githubusercontent.com/41990925/71045498-791da700-2178-11ea-953d-44a78da3ef54.png)
+  ![Build File Path](https://user-images.githubusercontent.com/41990925/71047750-29db7480-2180-11ea-93ad-e98eed151b49.png)
 
 # Add custom jar file to maven project
  1. Open pom.xml  
@@ -90,8 +90,8 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
 1. Go to the project directory where you want to run jar file located
 2. Open console  
 3. Input command
-```
-$ java -jar filename.jar
-```
-![Run jar command](https://user-images.githubusercontent.com/41990925/71047954-d0277a00-2180-11ea-8e4d-59ea5acd3612.png)
-![Run](https://user-images.githubusercontent.com/41990925/71047977-f0573900-2180-11ea-80b9-6348577f30e7.png)
+ ```
+ $ java -jar filename.jar
+ ```
+ ![Run jar command](https://user-images.githubusercontent.com/41990925/71047954-d0277a00-2180-11ea-8e4d-59ea5acd3612.png)
+ ![Run](https://user-images.githubusercontent.com/41990925/71047977-f0573900-2180-11ea-80b9-6348577f30e7.png)
