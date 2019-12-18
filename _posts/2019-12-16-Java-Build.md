@@ -53,7 +53,7 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
 # Add custom jar file to maven project
  1. Open pom.xml  
  2. Add local repository or jar files  
-  - Add local repository in pom.xml
+  - Add local repository in pom.xml   
     ```
     <repositories>
       <repository>
@@ -62,8 +62,8 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
         <url>file://${project.basedir}/lib</url>
       </repository>
     </repositories>
-    ```
-  - OR add local jar files in pom.xml like this
+    ```   
+  - OR add local jar files in pom.xml like this   
     ```
      <dependencies>
       <dependency>
@@ -83,7 +83,7 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
         <systemPath>${project.basedir}/lib/pithos-nosql.jar</systemPath>
       </dependency>
      <dependencies>
-    ```
+    ```   
 
 # How to run jar file
 1. Go to the project directory where you want to run jar file located
