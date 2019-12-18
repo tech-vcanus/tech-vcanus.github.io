@@ -25,12 +25,13 @@
  
 # Maven
  1. Install Maven  
+ The screen below can be seen after installation
  ![Maven Version](https://user-images.githubusercontent.com/41990925/71044871-42df2800-2176-11ea-96f7-5e8ce6c4901e.png)  
  2. Go to the project directory where you want to build module  
  ![Path](https://user-images.githubusercontent.com/41990925/71045085-006a1b00-2177-11ea-8b18-30208955f384.png)  
  3. Open console(like cmd, git-bash, terminal, etc...)  
  ![Open console](https://user-images.githubusercontent.com/41990925/71045174-5f2f9480-2177-11ea-870c-47d3ee303a64.png)  
  4. Start build - Use maven build command  
- ![input build command](https://user-images.githubusercontent.com/41990925/71045395-1d531e00-2178-11ea-8a43-4be3403cbe5d.png)  
+ ![Input build command](https://user-images.githubusercontent.com/41990925/71045395-1d531e00-2178-11ea-8a43-4be3403cbe5d.png)  
  5. If you see "BUILD SUCCESS", it's complete  
- 
+ ![Build Success](https://user-images.githubusercontent.com/41990925/71045498-791da700-2178-11ea-953d-44a78da3ef54.png)
