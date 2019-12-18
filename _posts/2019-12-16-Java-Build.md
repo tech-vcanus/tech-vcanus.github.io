@@ -52,8 +52,8 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
 
 # Add custom jar file to maven project
  1. Open pom.xml  
- 2. Add local repository or jar files  
-  Add local repository in pom.xml   
+ 2. Add local repository or jar files!!  
+  if you want to add local repository in pom.xml   
     ```
     <repositories>
       <repository>
