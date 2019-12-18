@@ -27,11 +27,50 @@
  1. Install Maven  
  The screen below can be seen after installation
  ![Maven Version](https://user-images.githubusercontent.com/41990925/71044871-42df2800-2176-11ea-96f7-5e8ce6c4901e.png)  
- 2. Go to the project directory where you want to build module  
+ 2. Go to the project directory where you want to build module where "pom.xml" is located  
  ![Path](https://user-images.githubusercontent.com/41990925/71045085-006a1b00-2177-11ea-8b18-30208955f384.png)  
  3. Open console(like cmd, git-bash, terminal, etc...)  
  ![Open console](https://user-images.githubusercontent.com/41990925/71045174-5f2f9480-2177-11ea-870c-47d3ee303a64.png)  
  4. Start build - Use maven build command  
+ You need to study maven command.
+ ```
+ $ mvn clean package -Dmaven.test.skip=true
+ $ mvn clean package spring-boot:repackage -Dmaven.test.skip=true
+ ```
  ![Input build command](https://user-images.githubusercontent.com/41990925/71045395-1d531e00-2178-11ea-8a43-4be3403cbe5d.png)  
  5. If you see "BUILD SUCCESS", it's complete  
  ![Build Success](https://user-images.githubusercontent.com/41990925/71045498-791da700-2178-11ea-953d-44a78da3ef54.png)
+
+# Add custom jar file to maven project
+ 1. Open pom.xml  
+ 2. Add local repository or jar files  
+  ## Add local repository in pom.xml
+  ```
+  <repositories>
+    <repository>
+      <id>local-repo</id>
+      <name>local</name>
+      <url>file://${project.basedir}/lib</url>
+    </repository>
+  </repositories>
+  ```
+  ## OR add local jar files in pom.xml like this
+  ```
+   <dependencies>
+    <dependency>
+      <groupId>org.chronotics</groupId>
+      <artifactId>pandora</artifactId>
+      <version>1.4-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/pandora.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>com.vcanus</groupId>
+      <artifactId>pithos-nosql</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/pithos-nosql.jar</systemPath>
+    </dependency>
+   <dependencies>
+  ```
