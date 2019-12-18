@@ -42,7 +42,8 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
     ![run5](https://user-images.githubusercontent.com/41990925/67833442-f9843c00-fb27-11e9-87b7-92b7edb302af.png)  
 - admin 계정을 추가하지 않는다면 Save and Continue
     ![run6](https://user-images.githubusercontent.com/41990925/67833440-f8eba580-fb27-11e9-8b5d-dfe4d4b7810b.png)  
-- Jenkins에서 사용할 URL을 설정할 수 있다. 여기에서 Port를 다르게 적더라도 Jenkins 내부 설정파일에서 별도로 Port를 바꿔줘야 적용된다.
+- Jenkins에서 사용할 URL을 설정할 수 있다. 여기에서 Port를 다르게 적더라도 Jenkins 내부 설정파일에서 별도로 Port를 바꿔줘야 적용된다.  
+    Jenkins 설치 폴더의 jenkins.xml에서 변경할 수 있다.
     ![run7](https://user-images.githubusercontent.com/41990925/67833438-f8eba580-fb27-11e9-935c-3c643704ace1.png)  
 -위와 같은 화면이 나온다면 첫 실행은 성공적으로 진행된 것이다.  
 #### Jenkins Settings : Jenkins 관리
