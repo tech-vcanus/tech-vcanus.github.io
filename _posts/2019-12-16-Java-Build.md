@@ -16,10 +16,10 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
  ![Third](https://user-images.githubusercontent.com/41990925/70882754-14e1d280-2014-11ea-8a3f-d2a53539d6f8.png)  
  
  - If you want to make executable jar  
-  Please check MANIFEST.MF path at Default setting  
-  ![default](https://user-images.githubusercontent.com/41990925/70882753-14e1d280-2014-11ea-8b13-034e5bb40105.png)  
-  Change path! (java -> resources)  
-  ![change path](https://user-images.githubusercontent.com/41990925/70882755-157a6900-2014-11ea-9389-2e582ca34d0f.png)  
+   Please check MANIFEST.MF path at Default setting  
+   ![default](https://user-images.githubusercontent.com/41990925/70882753-14e1d280-2014-11ea-8b13-034e5bb40105.png)  
+   Change path! (java -> resources)  
+   ![change path](https://user-images.githubusercontent.com/41990925/70882755-157a6900-2014-11ea-9389-2e582ca34d0f.png)  
  
  4. A screen similar to the following is displayed  
  ![Register artifacts](https://user-images.githubusercontent.com/41990925/70882750-14493c00-2014-11ea-8772-9229606899e0.png)  
@@ -55,36 +55,36 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
  1. Open pom.xml  
  2. Add local repository or jar files  
   - Add local repository in pom.xml
-  ```
-  <repositories>
-    <repository>
-      <id>local-repo</id>
-      <name>local</name>
-      <url>file://${project.basedir}/lib</url>
-    </repository>
-  </repositories>
-  ```
+   ```
+   <repositories>
+     <repository>
+       <id>local-repo</id>
+       <name>local</name>
+       <url>file://${project.basedir}/lib</url>
+     </repository>
+   </repositories>
+   ```
   - OR add local jar files in pom.xml like this
-  ```
-   <dependencies>
-    <dependency>
-      <groupId>org.chronotics</groupId>
-      <artifactId>pandora</artifactId>
-      <version>1.4-SNAPSHOT</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/pandora.jar</systemPath>
-    </dependency>
+   ```
+    <dependencies>
+     <dependency>
+       <groupId>org.chronotics</groupId>
+       <artifactId>pandora</artifactId>
+       <version>1.4-SNAPSHOT</version>
+       <scope>system</scope>
+       <systemPath>${project.basedir}/lib/pandora.jar</systemPath>
+     </dependency>
 
-    //set scope(system) and systemPath(jar file's path)
-    <dependency>
-      <groupId>com.vcanus</groupId>
-      <artifactId>pithos-nosql</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/pithos-nosql.jar</systemPath>
-    </dependency>
-   <dependencies>
-  ```
+     //set scope(system) and systemPath(jar file's path)
+     <dependency>
+       <groupId>com.vcanus</groupId>
+       <artifactId>pithos-nosql</artifactId>
+       <version>0.0.1-SNAPSHOT</version>
+       <scope>system</scope>
+       <systemPath>${project.basedir}/lib/pithos-nosql.jar</systemPath>
+     </dependency>
+    <dependencies>
+   ```
 
 # How to run jar file
 1. Go to the project directory where you want to run jar file located
