@@ -164,3 +164,6 @@ Content type은 application/json 선택!
  ```
  $vi /etc/default/jenkins  
  ```
+ 
+### Nexus를 이용한 배포(Deploy)
+ - [Nexus 서버에 배포](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev2:dep:nexus) 참조
