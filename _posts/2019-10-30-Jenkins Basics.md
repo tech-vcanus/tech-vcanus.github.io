@@ -132,7 +132,6 @@ Content type은 application/json 선택!
  - Mac에서 jenkins 설치시 localhost, 127.0.0.1만 허용되고 192.168.0.xx는 접속이 안되는 경우가 있었다.  
  이 경우 아래 화면처럼 httpListenAddress를 삭제(or 주석)하면 정상적인 이용이 가능하다.  
  Port도 해당 이 파일에서 수정가능
- ![Mac default setting](https://user-images.githubusercontent.com/41990925/71219577-ebbd8c80-2308-11ea-8338-12a2b9727fcc.png)  
- 또한 git의 path는 "which git"으로 경로를 찾을 수 있다.
- - Mac에서 jenkins 설정 시 default path
+ ![Mac default setting](https://user-images.githubusercontent.com/41990925/71219577-ebbd8c80-2308-11ea-8338-12a2b9727fcc.png)    
+ - Mac에서 jenkins 설정 시 default path (git의 경로는 "which git"으로 경로를 찾을 수 있다.)
  ![Mac default path](https://user-images.githubusercontent.com/41990925/71220206-1f99b180-230b-11ea-8fb7-a4d57c57d4e5.png)
