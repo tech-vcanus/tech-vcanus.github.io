@@ -25,9 +25,9 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
     ![install2](https://user-images.githubusercontent.com/41990925/67818877-418a6b00-faf6-11e9-9997-1c225155714f.png)  
     1. Window : 파일 압축해제 이후 설치파일 실행  
     2. Ubuntu : 설치 방법은 해당 [링크](https://fun25.co.kr/blog/jenkins-ubuntu-16-04-install/) 참조  
-- 초기 설정 포트
-    Jenkins default port : 8080 -> ex) 8000  
-    Windows : 설치폴더 내 jenkins.xml
+- 초기 설정 포트  
+    Jenkins default port : 8080 -> ex) 8000  (본 문서에서는 port를 8000번으로 변경했다고 가정 후 진행)  
+    Windows : 설치폴더 내 jenkins.xml  
     Ubuntu
     ```
     $vi /etc/default/jenkins
@@ -35,6 +35,17 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
     Mac
     ```
     $vi /usr/local/Cellar/jenkins/2.x.x/homebrew.mxcl.jenkins.plist
+    ```
+- Port변경 후 Jenkins 재시작 필요  
+    Window : Ctrl + Shift + Esc => Service => jenkins 우클릭 후 재시작  
+    Ubuntu
+    ```
+    $sudo service jenkins restart
+    ```
+    Mac
+    ```
+    $brew services stop jenkins
+    $brew services start jenkins
     ```
     
 ### 실행  
