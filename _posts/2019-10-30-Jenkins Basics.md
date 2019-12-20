@@ -135,4 +135,4 @@ Content type은 application/json 선택!
  ![Mac default setting](https://user-images.githubusercontent.com/41990925/71219577-ebbd8c80-2308-11ea-8338-12a2b9727fcc.png)  
  또한 git의 path는 "which git"으로 경로를 찾을 수 있다.
  - Mac에서 jenkins 설정 시 default path
- ![Mac default path](https://user-images.githubusercontent.com/41990925/67834405-ac559980-fb2a-11e9-8881-452ee90c8d04.png)
+ ![Mac default path](https://user-images.githubusercontent.com/41990925/71220206-1f99b180-230b-11ea-8fb7-a4d57c57d4e5.png)
