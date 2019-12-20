@@ -26,7 +26,16 @@ Written By Young-rae Shin([https://github.com/lived1024](https://github.com/live
     1. Window : 파일 압축해제 이후 설치파일 실행  
     2. Ubuntu : 설치 방법은 해당 [링크](https://fun25.co.kr/blog/jenkins-ubuntu-16-04-install/) 참조  
 - 초기 설정 포트
-    Jenkins default port : 8080 -> 변경 : 8000  
+    Jenkins default port : 8080 -> ex) 8000  
+    Windows : 설치폴더 내 jenkins.xml
+    Ubuntu
+    ```
+    $vi /etc/default/jenkins
+    ```
+    Mac
+    ```
+    $vi /usr/local/Cellar/jenkins/2.x.x/homebrew.mxcl.jenkins.plist
+    ```
     
 ### 실행  
 #### 첫 실행
@@ -134,4 +143,6 @@ Content type은 application/json 선택!
  Port도 해당 이 파일에서 수정가능
  ![Mac default setting](https://user-images.githubusercontent.com/41990925/71219577-ebbd8c80-2308-11ea-8338-12a2b9727fcc.png)    
  - Mac에서 jenkins 설정 시 default path (git의 경로는 "which git"으로 경로를 찾을 수 있다.)
- ![Mac default path](https://user-images.githubusercontent.com/41990925/71220206-1f99b180-230b-11ea-8fb7-a4d57c57d4e5.png)
+ ![Mac default path](https://user-images.githubusercontent.com/41990925/71220206-1f99b180-230b-11ea-8fb7-a4d57c57d4e5.png)  
+ - Ubuntu의 기본 설정 파일 : /etc/default/jenkins  
+ 해당 위치에서 jenkins에서 사용할 port번호를 변경
