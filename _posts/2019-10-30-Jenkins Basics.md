@@ -153,7 +153,14 @@ Content type은 application/json 선택!
  이 경우 아래 화면처럼 httpListenAddress를 삭제(or 주석)하면 정상적인 이용이 가능하다.  
  Port도 해당 이 파일에서 수정가능
  ![Mac default setting](https://user-images.githubusercontent.com/41990925/71219577-ebbd8c80-2308-11ea-8338-12a2b9727fcc.png)    
+ 해당 경로는 아래와 같다
+ ```
+ $vi /usr/local/Cellar/jenkins/2.x.x/homebrew.mxcl.jenkins.plist
+ ```
+ 
  - Mac에서 jenkins 설정 시 default path (git의 경로는 "which git"으로 경로를 찾을 수 있다.)
  ![Mac default path](https://user-images.githubusercontent.com/41990925/71220206-1f99b180-230b-11ea-8fb7-a4d57c57d4e5.png)  
- - Ubuntu의 기본 설정 파일 : /etc/default/jenkins  
- 해당 위치에서 jenkins에서 사용할 port번호를 변경
+ - Ubuntu의 기본 설정 파일
+ ```
+ $vi /etc/default/jenkins  
+ ```
