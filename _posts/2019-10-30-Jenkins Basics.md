@@ -166,4 +166,10 @@ Content type은 application/json 선택!
  ```
  
 ### Nexus를 이용한 배포(Deploy)
- - [Nexus 서버에 배포](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev2:dep:nexus) 참조
+ - [Nexus 서버에 배포](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev2:dep:nexus) 참조   
+ 
+### Build Path 변경
+ 1. [고급] 클릭  
+ ![Change workspace1](https://user-images.githubusercontent.com/41990925/71466921-6d7b5180-2804-11ea-8bdf-c7f1103fd038.png)  
+ 2. Set custom workspace path  
+ ![Change workspace2](https://user-images.githubusercontent.com/41990925/71466922-6d7b5180-2804-11ea-8d63-171d34d80f96.png)
