@@ -1,6 +1,8 @@
 # InfluxDB
 Written By KYRoh([github.com/tsedek](https://github.com/tsedek)), VCANUS
 
+[reference Document](https://docs.influxdata.com/influxdb/v1.7/query_language/spec/)
+
 ## RDB vs InfluxDB
 |RDB|InfluxDB|
 |:---:|:---:|
