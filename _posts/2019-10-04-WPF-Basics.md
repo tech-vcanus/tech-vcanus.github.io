@@ -7,7 +7,7 @@ tags: C# WPF Basics MVVM
 
 Written by Young-rae Shin([https://github.com/lived1024](https://github.com/lived1024))
 
-해당 문서는 WPF를 이용한 MVVC 디자인 패턴에 대한 내용을 설명할 것입니다.
+해당 문서는 WPF를 이용한 MVVM 디자인 패턴에 대한 내용을 설명할 것입니다.
 아래 링크에서 더 자세한 설명을 볼 수 있습니다.  
 참고사이트 : [The complete WPF tutorial](https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/)
 
