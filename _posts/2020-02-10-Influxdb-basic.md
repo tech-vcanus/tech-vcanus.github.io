@@ -70,6 +70,7 @@ $docker exec -it <ContainerName> influxdb [-username <USERNAME> -password <PASSW
  Float|ex: 1, 1.0, 1.e+12, 1.E+12|FieldValueS
  Integer|ex: 1i|FieldValue
  Boolean|ex: t, T, true, True, TRUE<br> f, F, false,False, FALSE|FieldValue
+ String|Length limit 64KB|Measurement, TagKey, TagValue <br> FieldKey, FieldValue
  Timestamp|Unix nanosecond timestamp|Timestamps
 
 ## Baisc DDL
