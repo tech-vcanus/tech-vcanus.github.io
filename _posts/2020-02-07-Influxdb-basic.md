@@ -1,4 +1,4 @@
-# InfluxDB
+# InfluxDB Basic
 
 Written By [KYRoh(tsedek)](https://github.com/tsedek), VCANUS
 
@@ -91,11 +91,11 @@ $docker exec -it <ContainerName> influxdb [-username <USERNAME> -password <PASSW
 ## Basic Query
 
 ### Insert
-- INSERT Mesurement,TagKey=TagValue[,TagKey=TagValue] FieldKey=FieldValue[,TagKey=TagValue] [TimeStmap(Not Recommanded)]
+- INSERT Mesurement,TagKey=TagValue[,TagKey=TagValue] FieldKey=FieldValue[,TagKey=TagValue] [TimeStmap]
 
 ### Select
 - SELECT FieldKey(or WildCard)[Mathematical Operators][,FieldKey, TagKey] From Mesurement[,Mesurement] Where Key=Value[(AND\|OR)Key=Value] [LIMIT ]
-> - Syntax Tag in where; Where "TagKey" (operation) 'TagValue'
+> - Syntax Tag in where; Where "TagKey" (operation; =, >..etc) 'TagValue'
   
 ### Delete
 - DELETE FROM Mesurement [FROM_clause \| WHERE_clause \| FROM_cluase WHERE_cluase]
