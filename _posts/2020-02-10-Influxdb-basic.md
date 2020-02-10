@@ -95,7 +95,7 @@ $docker exec -it <ContainerName> influxdb [-username <USERNAME> -password <PASSW
 
 ### Select
 - SELECT FieldKey(or WildCard)[Mathematical Operators][,FieldKey, TagKey] From Mesurement[,Mesurement] Where Key=Value[(AND\|OR)Key=Value] [LIMIT ]
-- Syntax Tag in where; Where "TagKey" (operation) 'TagValue'
+> - Syntax Tag in where; Where "TagKey" (operation) 'TagValue'
   
 ### Delete
 - DELETE FROM Mesurement [FROM_clause \| WHERE_clause \| FROM_cluase WHERE_cluase]
