@@ -67,7 +67,7 @@ $docker exec -it <ContainerName> influxdb [-username <USERNAME> -password <PASSW
 
  DataType|Description|Elements
  :-------:|:-------:|:-------:
- Float|ex: 1, 1.0, 1.e+12, 1.E+12|FieldValueS
+ Float|ex: 1, 1.0, 1.e+12, 1.E+12|FieldValue
  Integer|ex: 1i|FieldValue
  Boolean|ex: t, T, true, True, TRUE<br> f, F, false,False, FALSE|FieldValue
  String|Length limit 64KB|Measurement, TagKey, TagValue <br> FieldKey, FieldValue
