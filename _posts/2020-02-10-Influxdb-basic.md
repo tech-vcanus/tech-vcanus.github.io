@@ -5,14 +5,15 @@ Written By [KYRoh(tsedek)](https://github.com/tsedek), VCANUS
 [reference Document](https://docs.influxdata.com/influxdb/v1.7/query_language/spec/)
 
 ## RDB vs InfluxDB
- RDB | InfluxDB
- :-------:|:-------:
- database | database 
- table | measurement
- column | key 
- PK or indexed column | tag key (only string) 
- unindexed column | field key 
- SET of index entries | series 
+
+  RDB | InfluxDB
+  :-------:|:-------:
+  database | database 
+  table | measurement
+  column | key 
+  PK or indexed column | tag key
+  unindexed column | field key 
+  SET of index entries | series 
 
 ## Install on Docker
 default admin user
