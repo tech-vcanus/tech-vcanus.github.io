@@ -11,7 +11,7 @@ Written By [KYRoh(tsedek)](https://github.com/tsedek), VCANUS
   database | database 
   table | measurement
   column | key 
-  PK or indexed column | tag key
+  PK or indexed column | tag key(only string)
   unindexed column | field key 
   SET of index entries | series 
 
@@ -64,12 +64,13 @@ $docker exec -it <ContainerName> influxdb [-username <USERNAME> -password <PASSW
 [Document about Auth](https://docs.influxdata.com/influxdb/v1.7/administration/authentication_and_authorization/#user-management-commands)
 
 ## Data types
-DataType|Description|Elements
-:-------:|:-------:|:-------:
-Float|ex: 1, 1.0, 1.e+12, 1.E+12|FieldValueS
-Integer|ex: 1i|FieldValue
-Boolean|ex: t, T, true, True, TRUE f, F, false,False, FALSE|FieldValue
-Timestamp|Unix nanosecond timestamp|Timestamps
+
+ DataType|Description|Elements
+ :-------:|:-------:|:-------:
+ Float|ex: 1, 1.0, 1.e+12, 1.E+12|FieldValueS
+ Integer|ex: 1i|FieldValue
+ Boolean|ex: t, T, true, True, TRUE<br> f, F, false,False, FALSE|FieldValue
+ Timestamp|Unix nanosecond timestamp|Timestamps
 
 ## Baisc DDL
 - CREATE DATABASE \<DATABASE>
@@ -97,8 +98,3 @@ Timestamp|Unix nanosecond timestamp|Timestamps
   
 ### Delete
 - DELETE FROM Mesurement [FROM_clause \| WHERE_clause \| FROM_cluase WHERE_cluase]
-
-## Result time about multiple insert Test on Spring InfluxDB API
-- 100,000 : average 294ms, 250ms
-- 500,000 : average 1493ms, 1267ms
-- 1,000,000 : average 3238ms, 2812ms
