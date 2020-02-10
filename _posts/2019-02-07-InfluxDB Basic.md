@@ -5,7 +5,7 @@ Written By KYRoh([github.com/tsedek](https://github.com/tsedek)), VCANUS
 
 ## RDB vs InfluxDB
 |RDB|InfluxDB|
-|:---:|:---:|
+|:-------:|:-------:|
 |database|database|
 |table|measurement|
 |column|key|
@@ -63,13 +63,13 @@ $docker exec -it <ContainerName> influxdb [-username <USERNAME> -password <PASSW
 [Document about Auth](https://docs.influxdata.com/influxdb/v1.7/administration/authentication_and_authorization/#user-management-commands)
 
 ## Data types
-DataType | Description | Elements
-:---:|:---:|:---:
-Float|ex: 1, 1.0, 1.e+12, 1.E+12|FieldValue
-Integer|ex: 1i|FieldValue
-Boolean|ex: t, T, true, True, TRUE <br> f, F, false, False, FALSE|FieldValue
-String|Length limit 64KB|Measurement, TagKey, TagValue <br> FieldKey, FieldValue
-Timestamp|Unix nanosecond timestamp|Timestamps
+|DataType | Description | Elements|
+|:-------:|:-------:|:-------:|
+|Float|ex: 1, 1.0, 1.e+12, 1.E+12|FieldValue|
+|Integer|ex: 1i|FieldValue|
+|Boolean|ex: t, T, true, True, TRUE <br> f, F, false, |False, FALSE|FieldValue|
+|String|Length limit 64KB|Measurement, TagKey, TagValue |<br> FieldKey, FieldValue|
+|Timestamp|Unix nanosecond timestamp|Timestamps|
 
 ## Baisc DDL
 - CREATE DATABASE \<DATABASE>
