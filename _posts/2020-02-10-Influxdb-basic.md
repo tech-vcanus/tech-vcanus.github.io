@@ -6,7 +6,6 @@ Written By [KYRoh(tsedek)](https://github.com/tsedek), VCANUS
 
 ## RDB vs InfluxDB
 RDB|InfluxDB
-:-------:|:-------:
 database|database
 table|measurement
 column|key|
@@ -67,8 +66,7 @@ DataType|Description|Elements
 :-------:|:-------:|:-------:
 Float|ex: 1, 1.0, 1.e+12, 1.E+12|FieldValueS
 Integer|ex: 1i|FieldValue
-Boolean|ex: t, T, true, True, TRUE <br> f, F, false,False, FALSE|FieldValue
-String|Length limit 64KB|Measurement, TagKey, TagValue <br> FieldKey, FieldValue
+Boolean|ex: t, T, true, True, TRUE f, F, false,False, FALSE|FieldValue
 Timestamp|Unix nanosecond timestamp|Timestamps
 
 ## Baisc DDL
