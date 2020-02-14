@@ -16,7 +16,9 @@ Written By [KYRoh(tsedek)](https://github.com/tsedek), VCANUS
   SET of index entries | series 
 
 ## Install on Docker
+
 default admin user
+
 ```
 $ docker run -d \
     -p 8086:8086 \
@@ -30,6 +32,7 @@ $ docker run -d \
 ```
 
 default is non-auth, configured from config file
+
 ```
 $ docker run --rm influxdb influxd config > influxdb.conf
 $ docker run -d \
@@ -42,26 +45,31 @@ $ docker run -d \
 ```
 
 ## InfluxDB CLI on Docker Container
+
 ```
-$docker exec -it <ContainerName> influxdb
+$docker exec -it <ContainerName> influxdb influx -precision rfc3339
 >auth
 ```
+
 ```
-$docker exec -it <ContainerName> influxdb [-username <USERNAME> -password <PASSWORD> -database <DATABASENAME>]
+$docker exec -it <ContainerName> influxdb [-username <USERNAME> -password <PASSWORD> -database <DATABASENAME>] -precision rfc3339
 ```
 
 ## Auth Command
+
 ### Administrator
+
 - CREATE USER \<USERNAME> WITH PASSWORD '\<PASSWORD>' WITH ALL PRIVILEGES
 - GRANT ALL PRIVILEGES TO \<USERNAME>
 - REVOKE ALL PRIVILEGES FROM \<USERNAME>
   
 ### Non-Admin(Normal User)
+
 - CREATE USER \<USERNAME> WITH PASSWORD '\<PASSWORD>'
 - GRANT [ALL,READ,WRITE] ON \<DATABASENAME> TO \<USERNAME>
 - REVOKE [ALL,READ,WRITE] ON \<DATABASENAME> TO \<USERNAME>
 
-[Document about Auth](https://docs.influxdata.com/influxdb/v1.7/administration/authentication_and_authorization/#user-management-commands)
+reference : [Document](https://docs.influxdata.com/influxdb/v1.7/administration/authentication_and_authorization/#user-management-commands)
 
 ## Data types
 
@@ -74,28 +82,52 @@ $docker exec -it <ContainerName> influxdb [-username <USERNAME> -password <PASSW
  Timestamp|Unix nanosecond timestamp|Timestamps
 
 ## Baisc DDL
+
 - CREATE DATABASE \<DATABASE>
 - DROP DATABASE \<DATABASE>
+- DROP MEASUREMENT \<measurement_name>
+
+reference : [Document](https://docs.influxdata.com/influxdb/v1.7/query_language/database_management/)
 
 ## Basic Client Command
+
 - SHOW USERS
 - SHOW DATABASES
 - USE \<DATABASE>
-- SHOW MEASUREMENTS
-- SHOW TAG KEYS
-- SHOW FILED KEYS
-- SHOW SERIES
+- SHOW MEASUREMENTS [ON <database_name>]
+- SHOW TAG KEYS [ON <database_name>] [FROM <measurement_name>][WHERE_clause][LIMIT_cluase]
+- SHOW SERIES [ON <database_name>] [FROM <measurement_name>][WHERE_clause][LIMIT_cluase]
+- SHOW FIELD KEYS [ON <database_name>] [FROM <measurement_name>]
 - SHOW RETENTION POLICIES ON \<DATABASE>
+- SETTINGS
   
+reference : [Document](https://docs.influxdata.com/influxdb/v1.7/query_language/schema_exploration)
 
 ## Basic Query
 
 ### Insert
-- INSERT Mesurement,TagKey=TagValue[,TagKey=TagValue] FieldKey=FieldValue[,TagKey=TagValue] [TimeStmap]
 
-### Select
-- SELECT FieldKey(or WildCard)[Mathematical Operators][,FieldKey, TagKey] From Mesurement[,Mesurement] Where Key=Value[(AND\|OR)Key=Value] [LIMIT ]
-> - Syntax Tag in where; Where "TagKey" (operation; =, >..etc) 'TagValue'
+- INSERT Mesurement,TagKey=TagValue[,TagKey=TagValue] FieldKey=FieldValue[,TagKey=TagValue] [TimeStmap]
   
 ### Delete
+
 - DELETE FROM Mesurement [FROM_clause \| WHERE_clause \| FROM_cluase WHERE_cluase]
+
+### Select
+
+- SELECT FieldKey(| *) [Mathematical Operators] [,FieldKey, TagKey] From Mesurement[,Mesurement] Where Key (operation) Value[(AND\|OR) Key (operation) Value] [GROUP BY * | <tag_key>[,<tag_key]] [ORDER BY time DESC] [LIMIT \<n>]
+  
+> - Syntax Tag in where; Where "TagKey" (operation; =, <>, !=) 'TagValue'
+
+reference(Document)<br>
+[Data exploration](https://docs.influxdata.com/influxdb/v1.7/query_language/data_exploration/) <br>
+[InfluxQL reference](https://docs.influxdata.com/influxdb/v1.7/query_language/spec/) <br>
+[Line protocol reference](https://docs.influxdata.com/influxdb/v1.7/write_protocols/line_protocol_reference/)
+
+## Retention
+
+- CREATE RETENTION POLICY <retention_name> ON <database_name> DURATION <duration_time> REPLICATION \<n> [SHARD DURATION \<duration>] [DEFAULT]
+
+- ALTER RETENTION POLICY <retention_name> ON <database_name> DURATION <duration_time> REPLICATION \<n> [SHARD DURATION \<duration>] [DEFAULT]
+
+reference : [Document](https://docs.influxdata.com/influxdb/v1.7/query_language/database_management/#create-retention-policies-with-create-retention-policy)
