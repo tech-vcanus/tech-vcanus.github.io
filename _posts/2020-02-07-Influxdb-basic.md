@@ -93,12 +93,12 @@ reference : [Document](https://docs.influxdata.com/influxdb/v1.7/query_language/
 
 - SHOW USERS
 - SHOW DATABASES
-- USE \<DATABASE>
 - SHOW MEASUREMENTS [ON <database_name>]
 - SHOW TAG KEYS [ON <database_name>] [FROM <measurement_name>][WHERE_clause][LIMIT_cluase]
 - SHOW SERIES [ON <database_name>] [FROM <measurement_name>][WHERE_clause][LIMIT_cluase]
 - SHOW FIELD KEYS [ON <database_name>] [FROM <measurement_name>]
 - SHOW RETENTION POLICIES ON \<DATABASE>
+- USE \<DATABASE>[,\<retention_policy>]
 - SETTINGS
   
 reference : [Document](https://docs.influxdata.com/influxdb/v1.7/query_language/schema_exploration)
