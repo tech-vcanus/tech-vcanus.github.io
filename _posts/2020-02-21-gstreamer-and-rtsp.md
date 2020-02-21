@@ -11,8 +11,6 @@ Written By [Nuri Na](https://github.com/nurring), [KJ Jang](https://github.com/j
 
 `GStreamer` is a pipeline-based multimedia framework, can build a system that reads files in one format, processes them, and exports them in another.   
 
- is a pipeline-based multimedia framework, can build a system that reads files in one format, processes them, and exports them in another.   
-
 In this project, we use `RTSP` as networking protocol, a network control protocol used for streaming media servers.
 
 
