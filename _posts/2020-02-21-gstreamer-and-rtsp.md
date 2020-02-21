@@ -7,8 +7,6 @@ tags: Server, GStreamer, RTSP
 
 ---
 
-# GStreamer and RTSP
-
 Written By [Nuri Na](https://github.com/nurring), [KJ Jang](https://github.com/jjangchan), VCANUS
 
 `GStreamer` is a pipeline-based multimedia framework, can build a system that reads files in one format, processes them, and exports them in another.   
