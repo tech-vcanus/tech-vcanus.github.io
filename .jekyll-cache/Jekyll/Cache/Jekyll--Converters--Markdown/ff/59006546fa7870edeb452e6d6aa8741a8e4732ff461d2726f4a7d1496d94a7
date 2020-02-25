@@ -1,0 +1,56 @@
+I"<p>Written by BGKim, VCANUS</p>
+
+<h1 id="install-centos-8">Install CentOS 8</h1>
+
+<h2 id="make-install-usb">Make install USB</h2>
+<ol>
+  <li>centos 홈페이지에서 파일을 다운을 받는다.(https://www.centos.org/)</li>
+  <li>8GB이상의 USB를 준비한다.</li>
+  <li>USB를 연결하고, Rufus 홈페이지에서 Rufus를 다운받은 뒤 실행(https://rufus.ie/)</li>
+  <li>실행 화면에서 기본사항들을 적절히 세팅 후 파티션 방식을 GPT로 설정 후 시작</li>
+</ol>
+
+<h2 id="install-os">Install OS</h2>
+<ol>
+  <li>USB를 연결 후 부팅. (cent os 화면이 안나올 시, 바이오스 부팅 설정)</li>
+  <li>화면이 나오면 Install 클릭. 키보드, 언어, 시간 설정</li>
+  <li>install destination(설치 목적지)에서 OS설치 디스크를 선택하고, 저장소 구성이 필요시 Custom을 통하여 진행, 그렇지 않을시 automatic을 통한 진행</li>
+</ol>
+
+<h1 id="install-nvidia-graphic-driver">Install Nvidia Graphic driver</h1>
+<ol>
+  <li>nvidia 홈페이지에서 Long Lived Branch Version 다운, 권한 변경(https://www.nvidia.com/en-us/drivers/unix/)
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ chmod +x NVIDIA-Linux-x86_64-4xx.run
+</code></pre></div>    </div>
+  </li>
+  <li>nvidia 홈페이지에서 CUDA Toolkit 버전 확인 후 설치 명령어 확인 후 terminal에 입력(https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=CentOS&amp;target_version=8&amp;target_type=runfilelocal)
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
+$ sudo sh cuda_10.1.243_418.87.00_linux.run
+</code></pre></div>    </div>
+  </li>
+  <li>루트로 변경 후 기본 dev tools 다운
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo su
+# dnf groupinstall "Development Tools"
+# dnf install libglvnd-devel elfutils-libelf-devel "kernel-devel-uname-r == $(uname -r)"
+</code></pre></div>    </div>
+  </li>
+  <li>Nouveau driver를 Grub부트메뉴에서 사용안하도록 변경
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># grub2-editenv - set "$(grub2-editenv - list | grep kernelopts) nouveau.modeset=0"
+</code></pre></div>    </div>
+  </li>
+  <li>cli화면에서만 설치가 가능하기에 설정 후 reboot
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># systemctl set-default multi-user.target
+# reboot
+</code></pre></div>    </div>
+  </li>
+  <li>설치를 진행
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># bash NVIDIA-Linux-x86_64-4xx.run
+</code></pre></div>    </div>
+  </li>
+  <li>Gui로 변경 후 reboot
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># systemctl set-default graphical.target
+# reboot
+</code></pre></div>    </div>
+  </li>
+</ol>
+:ET

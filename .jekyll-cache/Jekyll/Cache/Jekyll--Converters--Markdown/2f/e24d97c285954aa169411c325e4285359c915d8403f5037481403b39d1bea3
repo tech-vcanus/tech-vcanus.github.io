@@ -1,0 +1,100 @@
+I"õ<p>Written by SGLee, VCANUS</p>
+
+<h1 id="command">Command</h1>
+
+<h2 id="replacement">replacement</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:%s/src/target/c (confirm)
+:%s/src/target/g (global)
+:#,#s/src/target (line to line)
+</code></pre></div></div>
+
+<h2 id="undo">undo</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>u
+</code></pre></div></div>
+
+<h2 id="redo">redo</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ctrl + R
+</code></pre></div></div>
+
+<h2 id="comment">comment</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Visual Block (Shift + V)
+:
+:'&lt;, '&gt; (auto)
+:'&lt;, '&gt; norm i // (or #)
+</code></pre></div></div>
+
+<h2 id="uncomment">uncomment</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Visual Block (Shift + V)
+:
+:'&lt;, '&gt; (auto)
+:'&lt;, '&gt; norm #x (#: 2 for //, 1 for #, # means the the number of character to be removed)
+</code></pre></div></div>
+
+<h2 id="copy-multi-line-to-buffer">copy multi-line(#,#) to buffer</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:#,#y
+</code></pre></div></div>
+
+<h2 id="paste-buffer-to-the-next-of-the-specific-line">paste buffer to the next of the specific line(#)</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:#pu
+</code></pre></div></div>
+
+<h2 id="move-to-the-next-word">move to the next word</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>w
+</code></pre></div></div>
+
+<h2 id="move-to-the-previous-word">move to the previous word</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>b
+</code></pre></div></div>
+
+<h2 id="move-to-the-next-word-space">move to the next word (space)</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>W
+</code></pre></div></div>
+
+<h2 id="move-to-the-previous-word-space">move to the previous word (space)</h2>
+<p>B</p>
+
+<h2 id="delete-the-word">delete the word</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>v =&gt; w =&gt; d or x
+</code></pre></div></div>
+
+<h2 id="copy-lines-from-the-other-file-and-paste-it-to-the-current-file">copy lines from the other file and paste it to the current file</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:e theotherfilename
+yy (or :#,#y)
+ctrl ^ (*: back to the current file)
+p
+</code></pre></div></div>
+
+<h2 id="indentoutdent">indent/outdent</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Visual Block (Shift + V)
+&lt; 
+&gt;
+</code></pre></div></div>
+
+<h2 id="auto-alignment">auto alignment</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Visual Block (Shift + V)
+=
+</code></pre></div></div>
+
+<h2 id="backward-page">backward page</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ctrl b
+</code></pre></div></div>
+
+<h2 id="forward-page">forward page</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ctrl f
+</code></pre></div></div>
+
+<h2 id="begin-page">begin page</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gg
+</code></pre></div></div>
+
+<h2 id="end-page">end page</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>G
+</code></pre></div></div>
+
+<h2 id="save-file-with-root">save file with root</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:w !sudo tee %
+</code></pre></div></div>
+
+<h1 id="color-change">Color change</h1>
+<p>â€¦</p>
+:ET

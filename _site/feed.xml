@@ -1,0 +1,1491 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-25T18:14:25+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">VCANUS’s Technical Blog</title><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><entry><title type="html">Elasticsearch &amp;amp; Query DSL</title><link href="http://localhost:4000/development/querydsl-for-elasticsearch/" rel="alternate" type="text/html" title="Elasticsearch &amp; Query DSL" /><published>2020-02-24T00:00:00+09:00</published><updated>2020-02-24T00:00:00+09:00</updated><id>http://localhost:4000/development/querydsl-for-elasticsearch</id><content type="html" xml:base="http://localhost:4000/development/querydsl-for-elasticsearch/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt;, VCANUS&lt;/p&gt;
+
+&lt;h2 id=&quot;about&quot;&gt;About&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;JVM: Elasticsearch는 자바 애플리케이션으로 Java 설치 필요&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;HTTP / RESTful API: REST API를 통해 조작&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;JSON: 내부에 JSON으로 저장, 요청/응답도 JSON 형식&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;역색인(Inverted Index) 구조: 단어 검색 시 해당 단어가 포함된 모든 document를 가리킴&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Index/type/document : 엘라스틱 서치의 데이터 계층.  &lt;code class=&quot;highlighter-rouge&quot;&gt;/&amp;lt;indexName&amp;gt;/&amp;lt;typeName&amp;gt;/&amp;lt;documentName&amp;gt;&lt;/code&gt; 로 표현 &lt;br /&gt;
+현재는 type를 구분하지 않도록 하고 있으며, /indexName/&lt;code class=&quot;highlighter-rouge&quot;&gt;_doc&lt;/code&gt;/documentName으로 사용&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;indexing&quot;&gt;Indexing&lt;/h2&gt;
+
+&lt;p&gt;인덱스 생성&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//**Example**&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;PUT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lecture&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// lecture 인덱스 생성&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;PUT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lecture&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_doc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 인덱스가 없을 경우 인덱스 생성, title 필드에 value 저장 (Schemeless)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;근대 중국사&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;mapping&quot;&gt;Mapping&lt;/h2&gt;
+
+&lt;p&gt;인덱스에 필드와 데이터 포맷을 정의&lt;/p&gt;
+
+&lt;p&gt;가능한 데이터 타입은 text, keyword, date, long, double, boolean, &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/ip.html&quot;&gt;ip&lt;/a&gt;, &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html&quot;&gt;geo_point&lt;/a&gt; 등&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//**Example**&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;PUT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lecture&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_mapping&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;professor&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;major&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//text와 keyword 두 가지로 정의&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;&quot;fields&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;raw&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;keyword&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//fields.raw&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;semester&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;student_count&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;unit&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;rating&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;report_due_date&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;format&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;yyyy-MM-dd&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;school_location&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;geo_point&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//좌표값. lat/lon 키를 가짐. geohash 가능. &lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;insertupdate&quot;&gt;Insert/Update&lt;/h2&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//**Example**&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;PUT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lecture&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_doc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;중국 고전 강독&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;professor&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;나민구&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;major&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;중국어&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// text와 keyword 두 가지 타입으로 mapping&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;semester&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;1학기&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;student_count&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;unit&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;rating&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;report_due_date&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;2020-03-10&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;school_location&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;lat&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;37&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;401376&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;lon&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;127&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;110516&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;PUT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lecture&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_doc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;현대중국정치&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;professor&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;오승렬&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;major&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;중국어&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;semester&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;1학기&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;student_count&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;unit&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;rating&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;report_due_date&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;2020-03-24&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;school_location&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;drm3btev3e86&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//geohash&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;uri-search&quot;&gt;URI Search&lt;/h2&gt;
+
+&lt;p&gt;URL에 파라미터를 넘겨 문서 조회, 간단한 테스트에 유용&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;## Example&lt;/span&gt;
+curl &lt;span class=&quot;nt&quot;&gt;-XGET&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'localhost:9200/&amp;lt;indexName&amp;gt;/_search?q=&amp;lt;검색어&amp;gt;&amp;amp;sort=&amp;lt;정렬기준&amp;gt;'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;query-dsl&quot;&gt;Query DSL&lt;/h2&gt;
+
+&lt;p&gt;Request Body 검색에 이용되는 JSON 구조를 지원, 다양한 검색 조건 조합에 용이하며 재사용이 가능해 일반적으로 사용됨&lt;/p&gt;
+
+&lt;h4 id=&quot;query-dsl-구조&quot;&gt;Query DSL 구조&lt;/h4&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//리턴 결과 개수 지정&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;from&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//몇 번째 문서부터 가져올 지 지정&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;timeout&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//결과 받는 데까지 걸리는 시간&lt;/span&gt;
+  
+  &lt;span class=&quot;s&quot;&gt;&quot;_source&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//특정 필드만 출력하고 싶을 때 사용&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;query&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//검색 조건문 작성&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;aggs&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//통계 및 집계&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;sort&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//출력 조건&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;​&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;* 아래 예시를 통해 확인할 사항&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;must 연산과 조건 쿼리&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Elasticsearch&lt;/th&gt;
+          &lt;th&gt;SQL&lt;/th&gt;
+          &lt;th&gt;설명&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;must : [field]&lt;/td&gt;
+          &lt;td&gt;AND &lt;column&gt; = &lt;조건&gt;&lt;/조건&gt;&lt;/column&gt;&lt;/td&gt;
+          &lt;td&gt;반드시 조건에 만족하는 문서만&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;must_not : [field]&lt;/td&gt;
+          &lt;td&gt;AND &lt;column&gt; != &lt;조건&gt;&lt;/조건&gt;&lt;/column&gt;&lt;/td&gt;
+          &lt;td&gt;조건을 만족하지 않는 문서&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;should : [field]&lt;/td&gt;
+          &lt;td&gt;OR &lt;column&gt; = &lt;조건&gt;&lt;/조건&gt;&lt;/column&gt;&lt;/td&gt;
+          &lt;td&gt;여러 조건 중 하나 이상 만족하는 문서&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;filter : [field]&lt;/td&gt;
+          &lt;td&gt;&lt;column&gt; IN &lt;조건&gt;&lt;/조건&gt;&lt;/column&gt;&lt;/td&gt;
+          &lt;td&gt;조건을 포함하는 문서&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;쿼리 컨텍스트와 필터 컨텍스트&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt; &lt;/th&gt;
+          &lt;th&gt;쿼리 컨텍스트&lt;/th&gt;
+          &lt;th&gt;필터 컨텍스트&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;용도&lt;/td&gt;
+          &lt;td&gt;전문 검색 시&lt;/td&gt;
+          &lt;td&gt;조건 검색 시 (Yes/No)&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;특징&lt;/td&gt;
+          &lt;td&gt;분석기에 의해 분석&lt;br /&gt;연관성 관련 Score를 계산&lt;br /&gt;루씬 레벨에서 분석 - 상대적으로 느림&lt;/td&gt;
+          &lt;td&gt;Yes/No로 단순 판별&lt;br /&gt;연관성 관련 계산 X&lt;br /&gt;엘라스틱서치 레벨에서 분석 - 상대적으로 빠름&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;사용 예&lt;/td&gt;
+          &lt;td&gt;문장 분석&lt;/td&gt;
+          &lt;td&gt;‘major’ 필드 값이 ‘중국어’인지 여부&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Match 쿼리 - 형태소 분석을 통해 term을 분리, 별도의 operator 필드가 없으면 term을 대상으로 OR 연산을 수행함&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//**Example**&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// SELECT title FROM ( SELECT * FROM lecture WHERE major = '중국어' )&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// WHERE title = '%현대%' OR title = '%중국%';&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lecture&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_search&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;from&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//첫 페이지부터&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//다섯 개 문서만 조회&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;query&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//2. 쿼리 컨텍스트&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;bool&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;&quot;must&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//1. 반드시 조건에 만족하는 문서만 검색&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&quot;match&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;//3. match&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;현대 중국&quot;&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;&quot;filter&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//2. 필터 컨텍스트&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;term&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&quot;major&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;중국어&quot;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;_source&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;rating&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;//보고 싶은 필드만 필터링&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;sort&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//정렬&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+      &lt;span class=&quot;s&quot;&gt;&quot;rating&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;order&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;asc&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// cf ) operator 적용&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;&quot;match&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+              &lt;span class=&quot;s&quot;&gt;&quot;query&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;현대 중국&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+              &lt;span class=&quot;s&quot;&gt;&quot;operator&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;and&quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;aggregations집계&quot;&gt;Aggregations(집계)&lt;/h2&gt;
+
+&lt;p&gt;SQL보다 강력한 집계 기능 제공 - 여러 aggs 중첩, 날짜/위치 정보 집계, 분산처리 등&lt;/p&gt;
+
+&lt;p&gt;집계 시 문서를 평가한 후 기준에 만족하는 문서를 그룹화 하고, 그것을 토대로 집계 수행&lt;/p&gt;
+
+&lt;h4 id=&quot;집계-구문-구조&quot;&gt;집계 구문 구조&lt;/h4&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;query&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;aggregations&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//혹은 aggs&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;&quot;aggregations&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;집계 이름&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;집계 타입&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//terms, date_histogram, sum ...&lt;/span&gt;
+      &lt;span class=&quot;err&quot;&gt;집계&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;타입에&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;맞는&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;조건&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;내용&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;meta&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;메타&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;데이터&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;조건&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;내용&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//메타 필드 가능&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aggregations&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;서브&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;집계&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//서브 집계 가능&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;집계 이름2&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//집계 중첩 가능&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;​&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//**Example**&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// SELECT avg(rating) as average_rating FROM lecture GROUP BY ranges;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;POST&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lecture&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_search&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//집계된 문서들의 데이터는 불필요하므로 0&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;aggs&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;group_by_student_count&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//그룹화&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;&quot;range&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;field&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;student_count&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;ranges&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;from&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 이상 (&amp;lt;=)&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;&quot;to&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 미만 (&amp;lt;)&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;from&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;&quot;to&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;&quot;aggs&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//집계&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;average_rating&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&quot;avg&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;field&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;rating&quot;&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// SELECT major, avg(rating) from  lecture GROUP BY major;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lecture&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_search&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// get/post 섞어서 쓸 수 있음&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;aggs&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;group_by_major&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//그룹화&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;&quot;terms&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;field&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;major.raw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;order&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;_key&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;asc&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;&quot;aggs&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//집계&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;average_rating&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&quot;avg&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;field&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;rating&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;​&lt;/p&gt;
+
+&lt;h4 id=&quot;확장-통계-집계&quot;&gt;확장 통계 집계&lt;/h4&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lecture&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_search&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;aggs&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;mongtangda&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;&quot;extended_stats&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//count, min, max, avg, sum 외 제곱합, 분산, 표준편차 등.. &lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;field&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;student_count&quot;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;shards--replicas&quot;&gt;Shards &amp;amp; Replicas&lt;/h2&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;PUT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lecture&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;settings&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;index&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;&quot;number_of_shards&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;&quot;number_of_replicas&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="Elasticsearch" /><category term="QueryDSL" /><summary type="html">Written By Nuri Na, VCANUS</summary></entry><entry><title type="html">GStreamer and RTSP</title><link href="http://localhost:4000/development/gstreamer-and-rtsp/" rel="alternate" type="text/html" title="GStreamer and RTSP" /><published>2020-02-21T00:00:00+09:00</published><updated>2020-02-21T00:00:00+09:00</updated><id>http://localhost:4000/development/gstreamer-and-rtsp</id><content type="html" xml:base="http://localhost:4000/development/gstreamer-and-rtsp/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt;, &lt;a href=&quot;https://github.com/jjangchan&quot;&gt;KJ Jang&lt;/a&gt;, VCANUS&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GStreamer&lt;/code&gt; is a pipeline-based multimedia framework, can build a system that reads files in one format, processes them, and exports them in another.&lt;/p&gt;
+
+&lt;p&gt;In this project, we use &lt;code class=&quot;highlighter-rouge&quot;&gt;RTSP&lt;/code&gt; as networking protocol, a network control protocol used for streaming media servers.&lt;/p&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;h4 id=&quot;gstreamer&quot;&gt;GStreamer&lt;/h4&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; gstreamer1.0-tools &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+gstreamer1.0-plugins-base &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+gstreamer1.0-plugins-good &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+gstreamer1.0-plugins-bad &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+gstreamer1.0-plugins-ugly &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+gstreamer1.0-libav &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+python-gst-1.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;rtsp-server&quot;&gt;RTSP Server&lt;/h4&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gir1.2-gst-rtsp-server-1.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;architecture&quot;&gt;Architecture&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/gstreamer_rtsp.png&quot; alt=&quot;architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;gstreamer-basic&quot;&gt;GStreamer Basic&lt;/h2&gt;
+
+&lt;h4 id=&quot;foundations&quot;&gt;Foundations&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Elements&lt;/p&gt;
+
+    &lt;p&gt;Every Plugin can be &lt;em&gt;element&lt;/em&gt;. One element has one specific function.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Pads&lt;/p&gt;
+
+    &lt;p&gt;A &lt;em&gt;pad&lt;/em&gt; is an Element’s input and output, it can connect other elements(&lt;em&gt;like plug or port&lt;/em&gt;).   A pad for input called &lt;em&gt;sink&lt;/em&gt; and a pad for output called&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Bins, Pipelines&lt;/p&gt;
+
+    &lt;p&gt;A &lt;em&gt;bin&lt;/em&gt; is a container for a collection of elements.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Pipelines&lt;/p&gt;
+
+    &lt;p&gt;A &lt;em&gt;pipeline&lt;/em&gt; is a top-level bin. you set it to &lt;code class=&quot;highlighter-rouge&quot;&gt;PAUSED&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;PLAYING&lt;/code&gt; state, data flow will start and media processing will take place.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;command-line-tools&quot;&gt;Command line tools&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;gst-launch-1.0&lt;/p&gt;
+
+    &lt;p&gt;Build and run a GStreamer pipelines&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Format&lt;/span&gt;
+gst-launch-1.0 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;OPTIONS] PIPELINE-DESCRIPTION
+&lt;span class=&quot;c&quot;&gt;# Example ~ Display only MPEG-1 video file, outputting to an X display window&lt;/span&gt;
+gst-launch-1.0 filesrc &lt;span class=&quot;nv&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;videofile.mpg &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; dvddemux &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; mpeg2dec &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; xvimagesink
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;More Information about gst-launch-1.0 &lt;a href=&quot;https://gstreamer.freedesktop.org/documentation/tools/gst-launch.html?gi-language=c&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;gst-inspect-1.0&lt;/p&gt;
+
+    &lt;p&gt;Print information about a GStreamer plugin or element&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Example&lt;/span&gt;
+gst-inspect-1.0 audiotestsrc
+  
+&lt;span class=&quot;c&quot;&gt;# and results&lt;/span&gt;
+Factory Details:
+  Rank                     none &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  Long-name                Audio &lt;span class=&quot;nb&quot;&gt;test source
+  &lt;/span&gt;Klass                    Source/Audio
+  Description              Creates audio &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;signals of given frequency and volume
+  Author                   Stefan Kost &amp;lt;ensonic@users.sf.net&amp;gt;
+  
+Plugin Details:
+  Name                     audiotestsrc
+  Description              Creates audio &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;signals of given frequency and volume
+  Filename                 /usr/lib/gstreamer-1.0/libgstaudiotestsrc.so
+  Version                  1.8.1
+  License                  LGPL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;code-with-c-java-script-python&quot;&gt;Code with C, Java Script, Python&lt;/h4&gt;
+
+&lt;p&gt;Without above CLI Commands, You can build application using GStreamer Plug-ins with C, Java Script, Python.  Check out the API refernece &lt;a href=&quot;https://gstreamer.freedesktop.org/documentation/gstreamer/running.html?gi-language=c&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="Server" /><category term="GStreamer" /><category term="RTSP" /><summary type="html">Written By Nuri Na, KJ Jang, VCANUS</summary></entry><entry><title type="html">Kinematics</title><link href="http://localhost:4000/research/Kinematics/" rel="alternate" type="text/html" title="Kinematics" /><published>2020-02-20T00:00:00+09:00</published><updated>2020-02-20T00:00:00+09:00</updated><id>http://localhost:4000/research/Kinematics</id><content type="html" xml:base="http://localhost:4000/research/Kinematics/">&lt;p&gt;Written by BGKim, VCANUS&lt;/p&gt;
+
+&lt;h1 id=&quot;homogeneous-matrix동차-행렬&quot;&gt;Homogeneous Matrix(동차 행렬)&lt;/h1&gt;
+
+&lt;p&gt;방향성을 가진 점을 좌표와 축을 이용해 표현한 행렬&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|r11, r12, r13, x|
+|r21, r22, r23, y|
+|r31, r32, r33, z|
+|  0,   0,   0, 1|
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;r11 r21 r31 : x축 벡터&lt;br /&gt;
+r12 r22 r32 : y축 벡터&lt;br /&gt;
+r13 r23 r33 : z축 벡터&lt;br /&gt;
+x y z : 좌표&lt;/p&gt;
+
+&lt;h1 id=&quot;dhdenavit-hartenberg-parameter&quot;&gt;DH(Denavit-Hartenberg) Parameter&lt;/h1&gt;
+
+&lt;p&gt;각각의 Axis 관계를 4개의 parameter로 표현한 방식&lt;/p&gt;
+&lt;h2 id=&quot;table&quot;&gt;table&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;i&lt;/th&gt;
+      &lt;th&gt;alpha&lt;/th&gt;
+      &lt;th&gt;a&lt;/th&gt;
+      &lt;th&gt;d&lt;/th&gt;
+      &lt;th&gt;theta&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;~&lt;/td&gt;
+      &lt;td&gt;~&lt;/td&gt;
+      &lt;td&gt;~&lt;/td&gt;
+      &lt;td&gt;~&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;~&lt;/td&gt;
+      &lt;td&gt;~&lt;/td&gt;
+      &lt;td&gt;~&lt;/td&gt;
+      &lt;td&gt;~&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;n&lt;/td&gt;
+      &lt;td&gt;~&lt;/td&gt;
+      &lt;td&gt;~&lt;/td&gt;
+      &lt;td&gt;~&lt;/td&gt;
+      &lt;td&gt;~&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;alpha(Twist) : x축을 기준으로 변환 각도&lt;br /&gt;
+a(Length) : x축을 기준으로 거리&lt;br /&gt;
+d(Offset) : z축을 기준으로 거리&lt;br /&gt;
+theta(Angle) : z축 기준으로 변환 각도&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;*x축 : arm의 기준 축 &lt;br /&gt;
+*z축 : arm의 회전 축 &lt;br /&gt;
+*기본적으로 오른손 법칙을 따른다&lt;/p&gt;
+
+&lt;h1 id=&quot;forward-kinematics정기구학&quot;&gt;Forward Kinematics(정기구학)&lt;/h1&gt;
+
+&lt;p&gt;축의 관계를 통해 마지막 점의 vector와 point를 얻는 이론&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ex)
+R = R_1 * R_2 * R_3 * R_4 * R_5 * R_6
+// R1..R6는 각 축의 동차행렬을 의미
+// R은 모든 축의 영향을 받은 동차행렬이 반환된다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;get-each-axis-homogeneous-matrix&quot;&gt;Get each axis Homogeneous Matrix&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;R_n = RotZ(theta) * Trans(0,0,d) * Trans(a,0,0) * RotX(alpha)
+
+function RotZ(v){
+    return Matrix[
+        [cos(v), -sin(v), 0, 0]
+        [sin(v), cos(v), 0, 0]
+        [0, 0, 1, 0]
+        [0, 0, 0, 1]
+    ]
+}
+    
+function RotX(v){
+    return Matrix[
+        [1, 0, 0, 0]
+        [0, cos(v), -sin(v), 0]
+        [0, sin(v), cos(v), 0]
+        [0, 0, 0, 1]
+    ]
+}
+
+Trans(x, y, z){
+    return Matrix[
+        [1, 0, 0, x]
+        [0, 1, 0, y]
+        [0, 0, 1, z]
+        [0, 0, 0, 1]
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;*위 식을 보기 전 알아야 할 개념은 현재 축에서 다음 축으로 이동하기 위해서 어떻게 이동하고 어떻게 각도를 변환 할 지 아는 것이다.&lt;br /&gt;
+*각 arm axis를 점,축 그림으로 그려 축사이의 관계를 볼 줄 알아야 한다&lt;/p&gt;
+
+&lt;h1 id=&quot;inverse-kinematics역기구학&quot;&gt;Inverse Kinematics(역기구학)&lt;/h1&gt;
+
+&lt;p&gt;정기구학과 반대되는 개념으로, 끝점의 좌표와 vector를 알 때 각 축의 회전각을 구하는 이론이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;analytical-solution&quot;&gt;Analytical Solution&lt;/h2&gt;
+
+&lt;p&gt;정기구학 식(R = R_1 * .. *R_n)에서 R_1…R_n을 역행렬을 취하면서 theta_1..theta_n의 방정식을 구하는 방식이다&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ex)
+R[2,2] = r33
+(R_1 * .. *R_n)[2,2] = -cos(theta2) 일 때
+
+theta2 = acos(-r33)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;approximating-solution-with-jacobian&quot;&gt;Approximating Solution With Jacobian&lt;/h2&gt;
+
+&lt;p&gt;근삿값을 구하는 이론으로, 각 theta의 오차를 줄여가면서 목적 좌표에 도달하게 한다&lt;br /&gt; 
+ R_1 * .. *R_n의 식이 복잡하여 수식을 풀기 까다로워 질 때 사용하면 유용하다&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ex)
+px = R_1 * .. *R_n[0,3]
+py = R_1 * .. *R_n[1,3]
+pz = R_1 * .. *R_n[2,3]
+
+*diff(식, 미분대상) : 미분 함수
+JacobianMatrix = 
+[
+    [diff(px, theta1), diff(py, theta1), diff(pz, theta1)]
+    [diff(px, theta2), diff(py, theta2), diff(pz, theta2)]
+    ...
+    [diff(px, thetaN), diff(py, thetaN), diff(pz, thetaN)]
+]
+
+
+*Jacobian 풀이
+do{
+    resutTheta_n+1 = resutTheta_n 
+        + invJacobianMatrix(resutTheta_n) * (targetPosition - presentPosition)
+}while(resutTheta_n+1 - resultTheta_n &amp;lt; epsilon)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="Forward" /><category term="Kinematics," /><category term="Inverse" /><category term="Kinematics," /><category term="DH" /><category term="Parameter," /><category term="Homogeneous" /><category term="Matrix" /><summary type="html">Written by BGKim, VCANUS</summary></entry><entry><title type="html">Telegraf Basic</title><link href="http://localhost:4000/development/telegraf.md/" rel="alternate" type="text/html" title="Telegraf Basic" /><published>2020-02-14T00:00:00+09:00</published><updated>2020-02-14T00:00:00+09:00</updated><id>http://localhost:4000/development/telegraf.md</id><content type="html" xml:base="http://localhost:4000/development/telegraf.md/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt;, VCANUS&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/influxdata/telegraf&quot;&gt;Telegraf&lt;/a&gt; is an agent for collecting metrics and writing them into InfluxDB or other possible outputs.&lt;/p&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Linux(Ubuntu):&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-sL&lt;/span&gt; https://repos.influxdata.com/influxdb.key | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-key add -
+&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /etc/lsb-release
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;deb https://repos.influxdata.com/&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DISTRIB_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DISTRIB_CODENAME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; stable&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sudo tee&lt;/span&gt; /etc/apt/sources.list.d/influxdb.list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;macOS&lt;/p&gt;
+
+    &lt;div class=&quot;language-properties highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;brew&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;update&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;brew&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;telegraf&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Docker&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; yourContainerName &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; hostPortNo:ContainerPortNo &lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#모니터링 할 plugin과 데이터를 push할 DB 포트&lt;/span&gt;
+telegraf:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;configuration&quot;&gt;Configuration&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;File Location
+    &lt;ul&gt;
+      &lt;li&gt;Linux(Ubuntu) : &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/telegraf/telegraf.conf&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;macOS: &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/etc/telegraf.conf&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create a configuration file with specific inputs and outputs&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;telegraf &lt;span class=&quot;nt&quot;&gt;-input-filter&lt;/span&gt; &amp;lt;pluginname&amp;gt;:&amp;lt;pluginname&amp;gt; &lt;span class=&quot;nt&quot;&gt;-output-filter&lt;/span&gt; &amp;lt;outputDBname&amp;gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; telegraf.conf
+&lt;span class=&quot;c&quot;&gt;# Example ~ generate config with only cpu input &amp;amp; influxdb output plugins defined&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;## telegraf --input-filter cpu --output-filter influxdb config&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create a sample configuration file&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;telegraf &lt;span class=&quot;nt&quot;&gt;-sample-config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; telegraf.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;start-the-telegraf-service&quot;&gt;Start the Telegraf service&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;service telegraf start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once Telegraf is up and running, it will start collecting metrics and writing them to the local InfluxDB.&lt;/p&gt;
+
+&lt;h2 id=&quot;plugins&quot;&gt;Plugins&lt;/h2&gt;
+
+&lt;p&gt;Telegraf supports various plugins and allows to add custom plugins.&lt;/p&gt;
+
+&lt;p&gt;Check available &lt;a href=&quot;https://github.com/influxdata/telegraf/blob/master/README.md#input-plugins&quot;&gt;input&lt;/a&gt; and &lt;a href=&quot;https://github.com/influxdata/telegraf/blob/master/README.md#output-plugins&quot;&gt;output&lt;/a&gt; plugins.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="Telegraf" /><category term="InfluxDB" /><category term="Grafana" /><summary type="html">Written By Nuri Na, VCANUS</summary></entry><entry><title type="html">Influxdb Basic</title><link href="http://localhost:4000/Influxdb-basic/" rel="alternate" type="text/html" title="Influxdb Basic" /><published>2020-02-07T00:00:00+09:00</published><updated>2020-02-07T00:00:00+09:00</updated><id>http://localhost:4000/Influxdb-basic</id><content type="html" xml:base="http://localhost:4000/Influxdb-basic/">&lt;h1 id=&quot;influxdb-basic&quot;&gt;InfluxDB Basic&lt;/h1&gt;
+
+&lt;p&gt;Written By &lt;a href=&quot;https://github.com/tsedek&quot;&gt;KYRoh(tsedek)&lt;/a&gt;, VCANUS&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.influxdata.com/influxdb/v1.7/query_language/spec/&quot;&gt;reference Document&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;rdb-vs-influxdb&quot;&gt;RDB vs InfluxDB&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;RDB&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;InfluxDB&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;database&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;database&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;table&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;measurement&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;column&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;key&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;PK or indexed column&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;tag key(only string)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;unindexed column&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;field key&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;SET of index entries&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;series&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;install-on-docker&quot;&gt;Install on Docker&lt;/h2&gt;
+
+&lt;p&gt;default admin user&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker run -d \
+    -p 8086:8086 \
+    --name influxdb \
+    -v $PWD:/var/lib/influxdb \
+    -e INFLUXDB_HTTP_AUTH_ENABLED=true \
+    -e INFLUXDB_ADMIN_ENABLED=true \
+    -e INFLUXDB_ADMIN_USER=admin \
+    -e INFLUXDB_ADMIN_PASSWORD=1234 \
+    influxdb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;default is non-auth, configured from config file&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker run --rm influxdb influxd config &amp;gt; influxdb.conf
+$ docker run -d \
+    -p 8086:8086 \
+    --name influxdb \
+    -v $PWD/data:/var/lib/influxdb \
+    -v $PWD/influxdb.conf:/etc/influxdb/influxdb.conf \
+    influxdb \
+    - config /etc/influxdb/influxdb.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;influxdb-cli-on-docker-container&quot;&gt;InfluxDB CLI on Docker Container&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$docker exec -it &amp;lt;ContainerName&amp;gt; influxdb influx -precision rfc3339
+&amp;gt;auth
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$docker exec -it &amp;lt;ContainerName&amp;gt; influxdb [-username &amp;lt;USERNAME&amp;gt; -password &amp;lt;PASSWORD&amp;gt; -database &amp;lt;DATABASENAME&amp;gt;] -precision rfc3339
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;auth-command&quot;&gt;Auth Command&lt;/h2&gt;
+
+&lt;h3 id=&quot;administrator&quot;&gt;Administrator&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CREATE USER &amp;lt;USERNAME&amp;gt; WITH PASSWORD ‘&amp;lt;PASSWORD&amp;gt;’ WITH ALL PRIVILEGES&lt;/li&gt;
+  &lt;li&gt;GRANT ALL PRIVILEGES TO &amp;lt;USERNAME&amp;gt;&lt;/li&gt;
+  &lt;li&gt;REVOKE ALL PRIVILEGES FROM &amp;lt;USERNAME&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;non-adminnormal-user&quot;&gt;Non-Admin(Normal User)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CREATE USER &amp;lt;USERNAME&amp;gt; WITH PASSWORD ‘&amp;lt;PASSWORD&amp;gt;’&lt;/li&gt;
+  &lt;li&gt;GRANT [ALL,READ,WRITE] ON &amp;lt;DATABASENAME&amp;gt; TO &amp;lt;USERNAME&amp;gt;&lt;/li&gt;
+  &lt;li&gt;REVOKE [ALL,READ,WRITE] ON &amp;lt;DATABASENAME&amp;gt; TO &amp;lt;USERNAME&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;reference : &lt;a href=&quot;https://docs.influxdata.com/influxdb/v1.7/administration/authentication_and_authorization/#user-management-commands&quot;&gt;Document&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;data-types&quot;&gt;Data types&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;DataType&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Description&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Elements&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Float&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;ex: 1, 1.0, 1.e+12, 1.E+12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FieldValue&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Integer&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;ex: 1i&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FieldValue&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Boolean&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;ex: t, T, true, True, TRUE&lt;br /&gt; f, F, false,False, FALSE&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FieldValue&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;String&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Length limit 64KB&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Measurement, TagKey, TagValue &lt;br /&gt; FieldKey, FieldValue&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Timestamp&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Unix nanosecond timestamp&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Timestamps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;baisc-ddl&quot;&gt;Baisc DDL&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CREATE DATABASE &amp;lt;DATABASE&amp;gt;&lt;/li&gt;
+  &lt;li&gt;DROP DATABASE &amp;lt;DATABASE&amp;gt;&lt;/li&gt;
+  &lt;li&gt;DROP MEASUREMENT &amp;lt;measurement_name&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;reference : &lt;a href=&quot;https://docs.influxdata.com/influxdb/v1.7/query_language/database_management/&quot;&gt;Document&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;basic-client-command&quot;&gt;Basic Client Command&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SHOW USERS&lt;/li&gt;
+  &lt;li&gt;SHOW DATABASES&lt;/li&gt;
+  &lt;li&gt;SHOW MEASUREMENTS [ON &amp;lt;database_name&amp;gt;]&lt;/li&gt;
+  &lt;li&gt;SHOW TAG KEYS [ON &amp;lt;database_name&amp;gt;] [FROM &amp;lt;measurement_name&amp;gt;][WHERE_clause][LIMIT_cluase]&lt;/li&gt;
+  &lt;li&gt;SHOW SERIES [ON &amp;lt;database_name&amp;gt;] [FROM &amp;lt;measurement_name&amp;gt;][WHERE_clause][LIMIT_cluase]&lt;/li&gt;
+  &lt;li&gt;SHOW FIELD KEYS [ON &amp;lt;database_name&amp;gt;] [FROM &amp;lt;measurement_name&amp;gt;]&lt;/li&gt;
+  &lt;li&gt;SHOW RETENTION POLICIES ON &amp;lt;DATABASE&amp;gt;&lt;/li&gt;
+  &lt;li&gt;USE &amp;lt;DATABASE&amp;gt;[,&amp;lt;retention_policy&amp;gt;]&lt;/li&gt;
+  &lt;li&gt;SETTINGS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;reference : &lt;a href=&quot;https://docs.influxdata.com/influxdb/v1.7/query_language/schema_exploration&quot;&gt;Document&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;basic-query&quot;&gt;Basic Query&lt;/h2&gt;
+
+&lt;h3 id=&quot;insert&quot;&gt;Insert&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;INSERT Mesurement,TagKey=TagValue[,TagKey=TagValue] FieldKey=FieldValue[,TagKey=TagValue] [TimeStmap]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;delete&quot;&gt;Delete&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DELETE FROM Mesurement [FROM_clause | WHERE_clause | FROM_cluase WHERE_cluase]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;select&quot;&gt;Select&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SELECT FieldKey(| *) [Mathematical Operators] [,FieldKey, TagKey] From Mesurement[,Mesurement] Where Key (operation) Value[(AND|OR) Key (operation) Value] [GROUP BY * | &lt;tag_key&gt;[,&amp;lt;tag_key]] [ORDER BY time DESC] [LIMIT \&lt;n&gt;]&lt;/n&gt;&lt;/tag_key&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Syntax Tag in where : tag value - Single quote&lt;/li&gt;
+    &lt;li&gt;Where TagKey (operation; =, &amp;lt;&amp;gt;, !=) ‘TagValue’&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;reference(Document)&lt;br /&gt;
+&lt;a href=&quot;https://docs.influxdata.com/influxdb/v1.7/query_language/data_exploration/&quot;&gt;Data exploration&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;https://docs.influxdata.com/influxdb/v1.7/query_language/spec/&quot;&gt;InfluxQL reference&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;https://docs.influxdata.com/influxdb/v1.7/write_protocols/line_protocol_reference/&quot;&gt;Line protocol reference&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;retention&quot;&gt;Retention&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;CREATE RETENTION POLICY &lt;retention_name&gt; ON &lt;database_name&gt; DURATION &lt;duration_time&gt; REPLICATION \&lt;n&gt; [SHARD DURATION \&lt;duration&gt;] [DEFAULT]&lt;/duration&gt;&lt;/n&gt;&lt;/duration_time&gt;&lt;/database_name&gt;&lt;/retention_name&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;ALTER RETENTION POLICY &lt;retention_name&gt; ON &lt;database_name&gt; DURATION &lt;duration_time&gt; REPLICATION \&lt;n&gt; [SHARD DURATION \&lt;duration&gt;] [DEFAULT]&lt;/duration&gt;&lt;/n&gt;&lt;/duration_time&gt;&lt;/database_name&gt;&lt;/retention_name&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;reference : &lt;a href=&quot;https://docs.influxdata.com/influxdb/v1.7/query_language/database_management/#create-retention-policies-with-create-retention-policy&quot;&gt;Document&lt;/a&gt;&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><summary type="html">InfluxDB Basic</summary></entry><entry><title type="html">Java Build</title><link href="http://localhost:4000/development/Java-Build/" rel="alternate" type="text/html" title="Java Build" /><published>2019-12-16T00:00:00+09:00</published><updated>2019-12-16T00:00:00+09:00</updated><id>http://localhost:4000/development/Java-Build</id><content type="html" xml:base="http://localhost:4000/development/Java-Build/">&lt;p&gt;Written By Young-rae Shin(&lt;a href=&quot;https://github.com/lived1024&quot;&gt;https://github.com/lived1024&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h1 id=&quot;intellij&quot;&gt;IntelliJ&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;File -&amp;gt; Project Structure&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/70882756-157a6900-2014-11ea-9d9c-2d5b70e1abc6.png&quot; alt=&quot;First&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Artifacts -&amp;gt; JAR -&amp;gt; From modules with dependencies&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/70882757-157a6900-2014-11ea-9b01-ea4d4a6e245c.png&quot; alt=&quot;Second&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Default setting&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/70882754-14e1d280-2014-11ea-8a3f-d2a53539d6f8.png&quot; alt=&quot;Third&quot; /&gt;&lt;br /&gt;
+  If you want to make executable jar&lt;br /&gt;
+  Please check MANIFEST.MF path at Default setting&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/70882753-14e1d280-2014-11ea-8b13-034e5bb40105.png&quot; alt=&quot;default&quot; /&gt;&lt;br /&gt;
+  Change path! (java -&amp;gt; resources)&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/70882755-157a6900-2014-11ea-9389-2e582ca34d0f.png&quot; alt=&quot;change path&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;A screen similar to the following is displayed&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/70882750-14493c00-2014-11ea-8772-9229606899e0.png&quot; alt=&quot;Register artifacts&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Confirm Main-Class at MANIFEST.MF&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/70882752-14e1d280-2014-11ea-9a97-b81436e56105.png&quot; alt=&quot;MANIFEST.MF&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Build -&amp;gt; Build Artifacts&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/70882748-14493c00-2014-11ea-9825-ae90e839c5e8.png&quot; alt=&quot;Build Menu&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;First, Clean =&amp;gt; Second, Build&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/70882751-14e1d280-2014-11ea-832c-7008acdd6b74.png&quot; alt=&quot;Build Popup&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Confirm JAR file in project base directory&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/70882749-14493c00-2014-11ea-95e7-f3ae6b6f7b4e.png&quot; alt=&quot;Jar File&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;maven&quot;&gt;Maven&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;Install Maven&lt;br /&gt;
+  The screen below can be seen after installation
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71044871-42df2800-2176-11ea-96f7-5e8ce6c4901e.png&quot; alt=&quot;Maven Version&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Go to the project directory where you want to build module(“pom.xml” is located)&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71045085-006a1b00-2177-11ea-8b18-30208955f384.png&quot; alt=&quot;Path&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Open console(like cmd, git-bash, terminal, etc…)&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71045174-5f2f9480-2177-11ea-870c-47d3ee303a64.png&quot; alt=&quot;Open console&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Start build : Use maven build command&lt;br /&gt;
+  You need to study maven command.
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $ mvn clean package -Dmaven.test.skip=true
+  $ mvn clean package spring-boot:repackage -Dmaven.test.skip=true
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71045395-1d531e00-2178-11ea-8a43-4be3403cbe5d.png&quot; alt=&quot;Input build command&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;If you see “BUILD SUCCESS”, it’s complete&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71045498-791da700-2178-11ea-953d-44a78da3ef54.png&quot; alt=&quot;Build Success&quot; /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71047750-29db7480-2180-11ea-93ad-e98eed151b49.png&quot; alt=&quot;Build File Path&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;add-custom-jar-file-to-maven-project&quot;&gt;Add custom jar file to maven project&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;Open pom.xml&lt;/li&gt;
+  &lt;li&gt;Add local repository or jar files!!&lt;br /&gt;
+  if you want to add local repository in pom.xml
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;repositories&amp;gt;
+  &amp;lt;repository&amp;gt;
+    &amp;lt;id&amp;gt;local-repo&amp;lt;/id&amp;gt;
+    &amp;lt;name&amp;gt;local&amp;lt;/name&amp;gt;
+    &amp;lt;url&amp;gt;file://${project.basedir}/lib&amp;lt;/url&amp;gt;
+  &amp;lt;/repository&amp;gt;
+&amp;lt;/repositories&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;OR add local jar files in pom.xml like this&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &amp;lt;dependencies&amp;gt;
+  &amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.chronotics&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;pandora&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.4-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;scope&amp;gt;system&amp;lt;/scope&amp;gt;
+    &amp;lt;systemPath&amp;gt;${project.basedir}/lib/pandora.jar&amp;lt;/systemPath&amp;gt;
+  &amp;lt;/dependency&amp;gt;
+
+  //set scope(system) and systemPath(jar file's path)
+  &amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;com.vcanus&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;pithos-nosql&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;0.0.1-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;scope&amp;gt;system&amp;lt;/scope&amp;gt;
+    &amp;lt;systemPath&amp;gt;${project.basedir}/lib/pithos-nosql.jar&amp;lt;/systemPath&amp;gt;
+  &amp;lt;/dependency&amp;gt;
+ &amp;lt;dependencies&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;how-to-run-jar-file&quot;&gt;How to run jar file&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;Go to the project directory where you want to run jar file located&lt;/li&gt;
+  &lt;li&gt;Open console&lt;/li&gt;
+  &lt;li&gt;Input command
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $ java -jar filename.jar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71047954-d0277a00-2180-11ea-8e4d-59ea5acd3612.png&quot; alt=&quot;Run jar command&quot; /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71047977-f0573900-2180-11ea-80b9-6348577f30e7.png&quot; alt=&quot;Run&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="JAVA" /><category term="Build" /><category term="Maven" /><category term="IntelliJ" /><summary type="html">Written By Young-rae Shin(https://github.com/lived1024)</summary></entry><entry><title type="html">Log Rolling</title><link href="http://localhost:4000/development/Log-Rolling/" rel="alternate" type="text/html" title="Log Rolling" /><published>2019-10-31T00:00:00+09:00</published><updated>2019-10-31T00:00:00+09:00</updated><id>http://localhost:4000/development/Log-Rolling</id><content type="html" xml:base="http://localhost:4000/development/Log-Rolling/">&lt;p&gt;Written by BGKim, VCANUS&lt;/p&gt;
+
+&lt;h1 id=&quot;log4j2&quot;&gt;Log4j2&lt;/h1&gt;
+
+&lt;h2 id=&quot;add-maven-dependency&quot;&gt;Add maven dependency&lt;/h2&gt;
+&lt;p&gt;pom.xml&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-boot-starter&amp;lt;/artifactId&amp;gt;
+    &amp;lt;exclusions&amp;gt;
+        &amp;lt;exclusion&amp;gt;
+            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;spring-boot-starter-logging&amp;lt;/artifactId&amp;gt;
+        &amp;lt;/exclusion&amp;gt;
+    &amp;lt;/exclusions&amp;gt;
+&amp;lt;/dependency&amp;gt;
+
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-boot-starter-log4j2&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.projectlombok&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;lombok&amp;lt;/artifactId&amp;gt;
+    &amp;lt;optional&amp;gt;true&amp;lt;/optional&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;spring-boot-starter&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;‘spring-boot-starter’의 기본 로깅을 제외 시킨다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;lombok&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;클래스 상단에 @log4j2을 사용, log작성시 로거객체 생성이 필요없다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;add-log4j2xml-in-folder-resources&quot;&gt;Add log4j2.xml in folder resources&lt;/h2&gt;
+&lt;p&gt;log4j2.xml&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Configuration&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;status=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;warn&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;moniterInterval=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;30&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Properties&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;LOG_PATTERN&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;%d{yyyy-MM-dd HH:mm:ss.SSS} %p %M %m%n&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Property&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;LOG_ROOT&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;log&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Property&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Properties&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Appenders&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Console&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Console&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SYSTEM_OUT&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;follow=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;PatternLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;pattern=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${LOG_PATTERN}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Console&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RollingFile&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;RollingFile&quot;&lt;/span&gt;
+                     &lt;span class=&quot;na&quot;&gt;fileName=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${LOG_ROOT}/application.log&quot;&lt;/span&gt;
+                     &lt;span class=&quot;na&quot;&gt;filePattern=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${LOG_ROOT}/application-%d{yyyy-MM-dd}-%i.log&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;PatternLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;pattern=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${LOG_PATTERN}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Policies&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;SizeBasedTriggeringPolicy&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;size=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;300KB&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;TimeBasedTriggeringPolicy&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;interval=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Policies&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;DefaultRolloverStrategy&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;max=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/RollingFile&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Appenders&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Loggers&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Logger&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;level=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;info&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;com.vcanus&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;additivity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;AppenderRef&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;RollingFile&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Logger&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Root&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;level=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;info&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;AppenderRef&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Console&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Root&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Loggers&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Configuration&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&amp;lt;Configuration status=”warn” moniterInterval=”30”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;‘status’는 로그 로딩시에 하는 로깅 기준 레벨이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;‘moniterInterval’은 설정 변경을 체크하는 주기, 변경시 재설정.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;lt;Property name=””&amp;gt;value&amp;lt;&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;미리 사용할 자원을 설정할 수 있다. 여기서는 로그패턴과 루트경로를 설정하였다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;lt;Appenders&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;실제 로그를 작성해주는 객체. Console, RollingFile, File, JDBC, Kafka 등 많은 appender를 지원한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;lt;Policies&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;RollingFile의 설정을 할 수 있다. 크기, 시간을 트리거로 새로운 로그를 생성 (패턴에서 %i 부분이 변한다)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;lt;DefaultRolloverStrategy max=”2” \/&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;rolling되어 쌓이는 개수의 최대를 설정, ex)1-1.log 1-2.log 1-3.log(x) 2-1.log 2-2.log&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;lt;Logger level=”info” name=”com.vcanus” additivity=”false”&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;로그 객체이다. level설정, name설정, additivity설정이 가능하다&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;위에서 정의한 appender를 설정하여 원하는 로그방식으로 출력&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;name을 패키지 경로 사용시 해당 경로의 로그만 출력&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;additivity는 상위로거(패키지 상위 로거 혹은 루트로거)의 전달을 받을지 설정&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;use&quot;&gt;Use&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Log4j2
+public class TempClass{
+    
+    public tempMethod(){
+        log.debug(&quot;debug level&quot;);
+        log.info(&quot;info level&quot;);
+        log.warn(&quot;warn level&quot;);
+        log.error(&quot;error level&quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="Log" /><category term="rolling" /><category term="configuration" /><summary type="html">Written by BGKim, VCANUS</summary></entry><entry><title type="html">CentOS 8 Install</title><link href="http://localhost:4000/development/CentOS-8-Install/" rel="alternate" type="text/html" title="CentOS 8 Install" /><published>2019-10-31T00:00:00+09:00</published><updated>2019-10-31T00:00:00+09:00</updated><id>http://localhost:4000/development/CentOS-8-Install</id><content type="html" xml:base="http://localhost:4000/development/CentOS-8-Install/">&lt;p&gt;Written by BGKim, VCANUS&lt;/p&gt;
+
+&lt;h1 id=&quot;install-centos-8&quot;&gt;Install CentOS 8&lt;/h1&gt;
+
+&lt;h2 id=&quot;make-install-usb&quot;&gt;Make install USB&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;centos 홈페이지에서 파일을 다운을 받는다.(https://www.centos.org/)&lt;/li&gt;
+  &lt;li&gt;8GB이상의 USB를 준비한다.&lt;/li&gt;
+  &lt;li&gt;USB를 연결하고, Rufus 홈페이지에서 Rufus를 다운받은 뒤 실행(https://rufus.ie/)&lt;/li&gt;
+  &lt;li&gt;실행 화면에서 기본사항들을 적절히 세팅 후 파티션 방식을 GPT로 설정 후 시작&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;install-os&quot;&gt;Install OS&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;USB를 연결 후 부팅. (cent os 화면이 안나올 시, 바이오스 부팅 설정)&lt;/li&gt;
+  &lt;li&gt;화면이 나오면 Install 클릭. 키보드, 언어, 시간 설정&lt;/li&gt;
+  &lt;li&gt;install destination(설치 목적지)에서 OS설치 디스크를 선택하고, 저장소 구성이 필요시 Custom을 통하여 진행, 그렇지 않을시 automatic을 통한 진행&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;install-nvidia-graphic-driver&quot;&gt;Install Nvidia Graphic driver&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;nvidia 홈페이지에서 Long Lived Branch Version 다운, 권한 변경(https://www.nvidia.com/en-us/drivers/unix/)
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ chmod +x NVIDIA-Linux-x86_64-4xx.run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;nvidia 홈페이지에서 CUDA Toolkit 버전 확인 후 설치 명령어 확인 후 terminal에 입력(https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;amp;target_arch=x86_64&amp;amp;target_distro=CentOS&amp;amp;target_version=8&amp;amp;target_type=runfilelocal)
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
+$ sudo sh cuda_10.1.243_418.87.00_linux.run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;루트로 변경 후 기본 dev tools 다운
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo su
+# dnf groupinstall &quot;Development Tools&quot;
+# dnf install libglvnd-devel elfutils-libelf-devel &quot;kernel-devel-uname-r == $(uname -r)&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Nouveau driver를 Grub부트메뉴에서 사용안하도록 변경
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# grub2-editenv - set &quot;$(grub2-editenv - list | grep kernelopts) nouveau.modeset=0&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;cli화면에서만 설치가 가능하기에 설정 후 reboot
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# systemctl set-default multi-user.target
+# reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;설치를 진행
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# bash NVIDIA-Linux-x86_64-4xx.run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Gui로 변경 후 reboot
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# systemctl set-default graphical.target
+# reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="install" /><category term="CentOS" /><category term="8" /><category term="and" /><category term="graphic" /><category term="driver" /><summary type="html">Written by BGKim, VCANUS</summary></entry><entry><title type="html">How to use Jenkins - Basic</title><link href="http://localhost:4000/development/Jenkins-Basics/" rel="alternate" type="text/html" title="How to use Jenkins - Basic" /><published>2019-10-30T00:00:00+09:00</published><updated>2019-10-30T00:00:00+09:00</updated><id>http://localhost:4000/development/Jenkins%20Basics</id><content type="html" xml:base="http://localhost:4000/development/Jenkins-Basics/">&lt;p&gt;Written By Young-rae Shin(&lt;a href=&quot;https://github.com/lived1024&quot;&gt;https://github.com/lived1024&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h1 id=&quot;jenkins&quot;&gt;Jenkins&lt;/h1&gt;
+&lt;h2 id=&quot;정의&quot;&gt;정의&lt;/h2&gt;
+&lt;p&gt;소프트웨어 개발 시 지속적으로 통합 서비스를 제공하는 툴.&lt;br /&gt;
+일명 Continuous Intergration (CI)라고 표현한다.&lt;br /&gt;
+예를 들어 Git을 사용할 때, Git의 Repository에 Push가 감지되면, Jenkins에서 자동으로 Build, Deploy한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;설치&quot;&gt;설치&lt;/h2&gt;
+&lt;h3 id=&quot;requirements&quot;&gt;Requirements&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;JAVA(openJDK도 가능)&lt;/li&gt;
+  &lt;li&gt;MAVEN&lt;/li&gt;
+  &lt;li&gt;Git
+    &lt;h3 id=&quot;설치-순서&quot;&gt;설치 순서&lt;/h3&gt;
+  &lt;/li&gt;
+  &lt;li&gt;설치 파일 다운로드 : &lt;a href=&quot;https://jenkins.io/&quot;&gt;공식 홈페이지&lt;/a&gt; 다운로드&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67818875-3e8f7a80-faf6-11e9-9d6c-ac4d33fbd1d8.png&quot; alt=&quot;install1&quot; /&gt;  &lt;br /&gt;
+  아래 화면에서 LTS버전으로 OS에 맞게 다운받는다!&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67818877-418a6b00-faf6-11e9-9997-1c225155714f.png&quot; alt=&quot;install2&quot; /&gt;
+    &lt;ol&gt;
+      &lt;li&gt;Window : 파일 압축해제 이후 설치파일 실행&lt;/li&gt;
+      &lt;li&gt;Ubuntu : 설치 방법은 해당 &lt;a href=&quot;https://fun25.co.kr/blog/jenkins-ubuntu-16-04-install/&quot;&gt;링크&lt;/a&gt; 참조&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;초기 설정 포트&lt;br /&gt;
+  Jenkins default port : 8080 -&amp;gt; ex) 8000  (본 문서에서는 port를 8000번으로 변경했다고 가정 후 진행)&lt;br /&gt;
+  Windows : 설치폴더 내 jenkins.xml&lt;br /&gt;
+  Ubuntu
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $vi /etc/default/jenkins
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;Mac&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $vi /usr/local/Cellar/jenkins/2.x.x/homebrew.mxcl.jenkins.plist
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Port변경 후 Jenkins 재시작 필요&lt;br /&gt;
+  Window : Ctrl + Shift + Esc =&amp;gt; Service =&amp;gt; jenkins 우클릭 후 재시작&lt;br /&gt;
+  Ubuntu
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $sudo service jenkins restart
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;Mac&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $brew services stop jenkins
+  $brew services start jenkins
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;실행&quot;&gt;실행&lt;/h3&gt;
+&lt;h4 id=&quot;첫-실행&quot;&gt;첫 실행&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;주소창에 http://본인IP:8000 입력 (Window는 브라우저 자동 실행)&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833073-ee7cdc00-fb26-11e9-98ef-59d469dec6cb.png&quot; alt=&quot;run1&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;위 화면 이후 아래와 같은 화면이 나온다.&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833072-ee7cdc00-fb26-11e9-9ee7-b9ee97fbd8b6.png&quot; alt=&quot;run2&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;빨간색으로 강조된 경로에 있는 파일을 열어 해당 내용을 빈 칸에 넣는다.(스크린샷의 경로는 윈도우)&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833447-f9843c00-fb27-11e9-96d9-1078c30fa5a4.png&quot; alt=&quot;run3&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;플러그인은 추천받은 그대로 이용&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833444-f9843c00-fb27-11e9-848f-fd9688f54aef.png&quot; alt=&quot;run4&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;플러그인 설치화면을 넘어가면 admin 계정을 설정할 수 있다.&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833442-f9843c00-fb27-11e9-87b7-92b7edb302af.png&quot; alt=&quot;run5&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;admin 계정을 추가하지 않는다면 Save and Continue&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833440-f8eba580-fb27-11e9-8b5d-dfe4d4b7810b.png&quot; alt=&quot;run6&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Jenkins에서 사용할 URL을 설정할 수 있다. 여기에서 Port를 다르게 적더라도 Jenkins 내부 설정파일에서 별도로 Port를 바꿔줘야 적용된다.&lt;br /&gt;
+  Jenkins 설치 폴더의 jenkins.xml에서 변경할 수 있다.&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833438-f8eba580-fb27-11e9-935c-3c643704ace1.png&quot; alt=&quot;run7&quot; /&gt;&lt;br /&gt;
+-위와 같은 화면이 나온다면 첫 실행은 성공적으로 진행된 것이다.
+    &lt;h4 id=&quot;jenkins-settings--jenkins-관리&quot;&gt;Jenkins Settings : Jenkins 관리&lt;/h4&gt;
+    &lt;ol&gt;
+      &lt;li&gt;시스템 설정 : Github Server 연동 설정&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833946-66e49c80-fb29-11e9-8a2d-56d0e634e8d7.png&quot; alt=&quot;Setting1&quot; /&gt;&lt;br /&gt;
+  Github Server의 Name은 알아서 넣고, URL은 그대로 놔둔다.&lt;br /&gt;
+  그리고 Credentioal를 추가해야하는데 Github에서 토큰을 발급받아야한다.&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833945-66e49c80-fb29-11e9-9238-d55ab421ff53.png&quot; alt=&quot;Setting2&quot; /&gt;&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834191-1c175480-fb2a-11e9-9715-b88049a8dec4.png&quot; alt=&quot;Setting3&quot; /&gt;&lt;br /&gt;
+  해당 페이지에서 발급!&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834190-1c175480-fb2a-11e9-886a-7cf265ce36ef.png&quot; alt=&quot;Setting4&quot; /&gt;&lt;br /&gt;
+  발급받은 Token을 아래 화면처럼 등록!&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834187-1c175480-fb2a-11e9-8070-cd7d01813cea.png&quot; alt=&quot;Setting5&quot; /&gt;&lt;br /&gt;
+  Test 버튼을 누르면 정상적인 접속을 확인할 수 있다.&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834185-1b7ebe00-fb2a-11e9-9de9-20dc49fece66.png&quot; alt=&quot;Setting6&quot; /&gt;&lt;/li&gt;
+      &lt;li&gt;Global Tool Configuration&lt;br /&gt;
+  Maven, Java, Git에 대한 설정을 한다.&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834403-a9f33f80-fb2a-11e9-9e0a-e46511250cc7.png&quot; alt=&quot;Setting7&quot; /&gt;&lt;br /&gt;
+  Maven, Java는 설치폴더를, Git은 실행파일까지 Path를 잡아준다. (bin 폴더 내부의 git.exe)&lt;br /&gt;
+  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834405-ac559980-fb2a-11e9-8881-452ee90c8d04.png&quot; alt=&quot;Setting8&quot; /&gt;&lt;/li&gt;
+      &lt;li&gt;플러그인 관리&lt;br /&gt;
+  Build까지만 이용하려면 Git, Github 두 가지가 필요하지만 추천 플러그인에 포함되어있다.&lt;br /&gt;
+  단순히 Build까지 활용한다면 추가로 설정할 내용은 없다.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;job-생성-및-설정&quot;&gt;Job 생성 및 설정&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;생성&lt;br /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834758-9399b380-fb2b-11e9-9363-0c1ba0f37ca7.png&quot; alt=&quot;run1&quot; /&gt;&lt;br /&gt;
+ Freestyle project로 생성!&lt;br /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834757-93011d00-fb2b-11e9-9b69-1454ac9aaa48.png&quot; alt=&quot;run2&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;설정&lt;br /&gt;
+ Github의 레파지토리를 아래 두 곳에 붙여넣는다.&lt;br /&gt;
+ 일반적인 http 프로토콜을 이용할 경우 에러가 발생하는 경우도 있다고 하니 git 프로토콜을 추천!&lt;br /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835041-4f5ae300-fb2c-11e9-9587-fe5b9f783101.png&quot; alt=&quot;run3&quot; /&gt;&lt;br /&gt;
+ 깃 프로토콜은 아래에서 볼 수 있다.&lt;br /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835040-4f5ae300-fb2c-11e9-9ae1-ff48bf3c779d.png&quot; alt=&quot;run4&quot; /&gt;&lt;br /&gt;
+ SSH를 이용하여 연동을 완료해야 정상적으로 연결된다.&lt;br /&gt;
+ SSH 인증을 통과하지 못한다면 이전 스크린샷처럼 Repositories에 빨간 글씨로 표시된다.&lt;br /&gt;
+ SSH키 생성은 아래 코드를 이용하면 된다
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $ssh-keygen -t rsa
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;SSH키 발급은 아래의 절차대로 따르자&lt;br /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834756-93011d00-fb2b-11e9-835f-6fb3ced7b27b.png&quot; alt=&quot;run5-ssh1&quot; /&gt;&lt;br /&gt;
+ 엔터만 눌러 발급할 경우 경로, 파일명은 default로 생성된다.&lt;br /&gt;
+ 스크린샷처럼 경로와 이름을 입력하면 그대로 생성.&lt;br /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834755-93011d00-fb2b-11e9-92f8-99679922a623.png&quot; alt=&quot;run5-ssh2&quot; /&gt;&lt;br /&gt;
+ pub확장자를 가진 파일은 아래처럼 등록!&lt;br /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835384-2c7cfe80-fb2d-11e9-8705-31fdfebb5253.png&quot; alt=&quot;run6&quot; /&gt;&lt;br /&gt;
+ 대상이 되는 Github Repository의 Settings - Deploy Keys&lt;br /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835393-3141b280-fb2d-11e9-8e9e-ec6958e4c0dd.png&quot; alt=&quot;run7&quot; /&gt;&lt;br /&gt;
+ pub확장자로 생성된 파일을 메모장 또는 vi로 열어 해당 내용을 Key에 입력하고, 다른 파일은 Jenkins에 사용&lt;br /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835041-4f5ae300-fb2c-11e9-9587-fe5b9f783101.png&quot; alt=&quot;run3&quot; /&gt;&lt;br /&gt;
+ 위 스크린샷에서 빨간 글씨 밑의 Credentials에 추가!&lt;br /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835588-b5943580-fb2d-11e9-8f00-a7a9b1cd3aa0.png&quot; alt=&quot;run8&quot; /&gt;&lt;br /&gt;
+ 남은 파일 또한 메모장 또는 vi로 열어 해당 내용을 Credentials에 등록한다.&lt;br /&gt;
+ 문제없이 등록되면 아래 화면처럼 빨간 글씨가 사라진다.&lt;br /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835586-b5943580-fb2d-11e9-948e-075863eec31c.png&quot; alt=&quot;run9&quot; /&gt;&lt;br /&gt;
+ Branch 입력 부분은 입력하지 않으면 모든 브랜치에 해당되고, 특정 브랜치만 할 경우에 입력하면 된다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Build&lt;br /&gt;
+ Build 탭에서는 아래처럼 Invoke top-level Maven targets를 추가하고 등록된 Maven을 이용한다.&lt;br /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835828-584cb400-fb2e-11e9-832a-9fab1d8ad06f.png&quot; alt=&quot;build1&quot; /&gt;&lt;br /&gt;
+ 스크린샷과는 다르게 Goals에는 package -D maven.test.skip=true를 입력한다.&lt;br /&gt;
+ -D maven.test.skip=true는 test코드를 실행해보지 않고 Build하는 옵션.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;build-test&quot;&gt;Build test&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67836296-95657600-fb2f-11e9-9e90-a1d5db9b262e.png&quot; alt=&quot;run-build&quot; /&gt;&lt;br /&gt;
+우측의 Console Output을 클릭하면 Build 상황에 대한 로그화면이 뜬다.&lt;br /&gt;
+성공한 경우 아래처럼 뜬다.&lt;br /&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67836311-9e564780-fb2f-11e9-80a8-492b42c65a46.png&quot; alt=&quot;run-success&quot; /&gt;&lt;br /&gt;
+스크린샷에는 war파일로 packaging이 설정되어있너 war로 build가 된 상황이고, 이것은 pom.xml에서 &lt;packaging&gt;태그를 이용하면 간단하다.&lt;/packaging&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;github-webhook-setting-push---auto-build&quot;&gt;Github Webhook setting (push -&amp;gt; auto build)&lt;/h3&gt;
+&lt;p&gt;해당 Job의 구성에서 아래처럼 체크&lt;br /&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67837053-8384d280-fb31-11e9-9ff1-ba8395aee451.png&quot; alt=&quot;webhook setting1&quot; /&gt;&lt;br /&gt;
+이후 대상이 되는 Github Repository - settings - Webhooks로 이동하고 추가!&lt;br /&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67837371-3bb27b00-fb32-11e9-87ae-5e83ca2165c2.png&quot; alt=&quot;webhook setting2&quot; /&gt;&lt;br /&gt;
+Payload URL에는 포트포워딩된 IP와 Port를 입력하고 /github-webhook/를 꼭 붙여준다!&lt;br /&gt;
+Ex) http://127.0.0.1:9999/github-webhook/&lt;br /&gt;
+Content type은 application/json 선택!&lt;br /&gt;
+연결에 성공한 경우 아래 화면처럼 초록색 체크 표시가 생긴다.&lt;br /&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67837721-0a867a80-fb33-11e9-8c80-6adeb950f086.png&quot; alt=&quot;hook status&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이후 github에 push를 한다면 자동으로 build!&lt;/p&gt;
+
+&lt;h3 id=&quot;os에-따른-settings&quot;&gt;OS에 따른 settings&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Mac에서 jenkins 설치시 localhost, 127.0.0.1만 허용되고 192.168.0.xx는 접속이 안되는 경우가 있었다.&lt;br /&gt;
+ 이 경우 아래 화면처럼 httpListenAddress를 삭제(or 주석)하면 정상적인 이용이 가능하다.&lt;br /&gt;
+ Port도 해당 이 파일에서 수정가능
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71219577-ebbd8c80-2308-11ea-8338-12a2b9727fcc.png&quot; alt=&quot;Mac default setting&quot; /&gt;  &lt;br /&gt;
+ 해당 파일 실행은 아래 command를 입력하면 된다.
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $vi /usr/local/Cellar/jenkins/2.x.x/homebrew.mxcl.jenkins.plist
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Mac에서 jenkins 설정 시 default path (git의 경로는 “which git”으로 경로를 찾을 수 있다.)
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71220206-1f99b180-230b-11ea-8fb7-a4d57c57d4e5.png&quot; alt=&quot;Mac default path&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Ubuntu 기본 설정 파일 열기
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $vi /etc/default/jenkins  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;nexus를-이용한-배포deploy&quot;&gt;Nexus를 이용한 배포(Deploy)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev2:dep:nexus&quot;&gt;Nexus 서버에 배포&lt;/a&gt; 참조&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;build-path-변경&quot;&gt;Build Path 변경&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;[고급] 클릭&lt;br /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71467097-1924a180-2805-11ea-970e-e547da75b641.png&quot; alt=&quot;Change workspace1&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Set custom workspace path&lt;br /&gt;
+ &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71467098-1924a180-2805-11ea-86f5-7eefd32c4408.png&quot; alt=&quot;Change workspace2&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="Jenkins" /><category term="Build" /><summary type="html">Written By Young-rae Shin(https://github.com/lived1024)</summary></entry><entry><title type="html">Elasticsearch Docker Cluster</title><link href="http://localhost:4000/elasticsearch-docker-cluster/" rel="alternate" type="text/html" title="Elasticsearch Docker Cluster" /><published>2019-10-29T00:00:00+09:00</published><updated>2019-10-29T00:00:00+09:00</updated><id>http://localhost:4000/elasticsearch-docker-cluster</id><content type="html" xml:base="http://localhost:4000/elasticsearch-docker-cluster/">&lt;h1 id=&quot;elasticsearch-cluster-on-docker-compose&quot;&gt;Elasticsearch cluster on Docker Compose&lt;/h1&gt;
+
+&lt;p&gt;Written By KYRoh(&lt;a href=&quot;https://github.com/tsedek&quot;&gt;github.com/tsedek&lt;/a&gt;), VCANUS&lt;/p&gt;
+
+&lt;h1 id=&quot;docker-compose&quot;&gt;docker-compose&lt;/h1&gt;
+
+&lt;h2 id=&quot;create-docker-composeyml&quot;&gt;create docker-compose.yml&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$touch docker-compose.yml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;write-docker-compose&quot;&gt;write docker-compose&lt;/h2&gt;
+&lt;h3 id=&quot;breaking-changes-in-70-that-makes-elaticsearch-cluster-in-docker&quot;&gt;Breaking changes in 7.0 that makes elaticsearch cluster in docker&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;under 7.0 : “discovery.zen.ping.unicast.hosts” -&amp;gt; up 7.0 : “discovery.seed_hosts”&lt;/li&gt;
+  &lt;li&gt;under 7.0 : “search.remote.connect” -&amp;gt; up 7.0 : “cluster.remote.connect”&lt;/li&gt;
+  &lt;li&gt;under 7.0 : deprecated “discovery.zen.minimum_master_nodes” -&amp;gt; up 7.0 : must defined “cluster.initial_master_nodes=masterNames”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;fill-the-docker-composeyml-with-under-contents&quot;&gt;Fill the docker-compose.yml with under contents&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;version: '3.7'
+services:
+  esmaster: # Master (NO data)
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    container_name: esmaster
+    restart: always
+    environment:
+      - node.name=esmaster
+      - cluster.name=docker-cluster
+      - node.master=true
+        #      - node.voting_only=false
+      - node.data=false
+      - node.ingest=true
+        #      - node.ml=false
+      - cluster.remote.connect=false
+      - bootstrap.memory_lock=true
+      - cluster.initial_master_nodes=esmaster  
+      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - &quot;ES_JAVA_OPTS=-Xms1g -Xmx1g&quot;
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elasticsearch/es-master:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - esnet
+    stdin_open: true
+    tty: true
+  esdata1: # Data 1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    container_name: esdata1
+    restart: always
+    environment:
+      - node.name=esdata1
+      - cluster.name=docker-cluster
+      - node.master=false
+        #      - node.voting_only=false
+      - node.data=true
+      - node.ingest=false
+        #      - node.ml=false
+      - cluster.remote.connect=false
+      - bootstrap.memory_lock=true
+      - cluster.initial_master_nodes=esmaster
+      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - &quot;ES_JAVA_OPTS=-Xms2g -Xmx2g&quot;
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elasticsearch/es-data-1:/usr/share/elasticsearch/data
+    ports:
+      - 9201:9200
+      - 9301:9300
+    networks:
+      - esnet
+  esdata2: # Data 2
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    container_name: esdata2
+    restart: always
+    environment:
+      - node.name=esdata2
+      - cluster.name=docker-cluster
+      - node.master=false
+        #      - node.voting_only=false
+      - node.data=true
+      - node.ingest=false
+        #      - node.ml=false
+      - cluster.remote.connect=false
+      - bootstrap.memory_lock=true
+      - cluster.initial_master_nodes=esmaster
+      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - &quot;ES_JAVA_OPTS=-Xms2g -Xmx2g&quot;
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elasticsearch/es-data-2:/usr/share/elasticsearch/data
+    ports:
+      - 9202:9200
+      - 9302:9300
+    networks:
+      - esnet
+  escoordinatioin: # Router #coordinating node
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    container_name: escoordinatioin
+    restart: always
+    environment:
+      - node.name=escoordinatioin
+      - cluster.name=docker-cluster
+      - node.master=false
+      - node.voting_only=false
+      - node.data=false
+      - node.ingest=false
+      - node.ml=false
+      - cluster.remote.connect=false
+      - bootstrap.memory_lock=true
+      - cluster.initial_master_nodes=esmaster
+      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - &quot;ES_JAVA_OPTS=-Xms4g -Xmx4g&quot;
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elasticsearch/es-router:/usr/share/elasticsearch/data
+    ports:
+      - 9203:9200
+      - 9303:9300
+    networks:
+      - esnet
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.4.0
+    container_name: kibana
+    restart: always
+    environment:
+      ELASTICSEARCH_HOSTS: http://esmaster:9200
+    depends_on:
+      - esmaster
+      - esdata1
+      - esdata2
+      - esrouter
+    networks:
+      - esnet
+    ports:
+      - 5601:5601
+networks:
+  esnet:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;make-folder-for-docker-volumefor-permission&quot;&gt;make folder for docker volume(for permission)&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$mkdir volume-folder-name[ex)es-data-1]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;run-docker-compose&quot;&gt;run docker-compose&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$docker-compose up -d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;stop-docker-compose&quot;&gt;stop docker-compose&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$docker-compose down
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><summary type="html">Elasticsearch cluster on Docker Compose</summary></entry></feed>

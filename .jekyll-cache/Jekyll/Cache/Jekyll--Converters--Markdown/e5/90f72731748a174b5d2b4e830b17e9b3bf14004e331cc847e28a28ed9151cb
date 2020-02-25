@@ -1,0 +1,72 @@
+I"�<p>Written By <a href="https://github.com/nurring">Nuri Na</a>, VCANUS</p>
+
+<p><a href="https://github.com/influxdata/telegraf">Telegraf</a> is an agent for collecting metrics and writing them into InfluxDB or other possible outputs.</p>
+
+<h2 id="installation">Installation</h2>
+
+<ul>
+  <li>
+    <p>Linux(Ubuntu):</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sL</span> https://repos.influxdata.com/influxdb.key | <span class="nb">sudo </span>apt-key add -
+<span class="nb">source</span> /etc/lsb-release
+<span class="nb">echo</span> <span class="s2">"deb https://repos.influxdata.com/</span><span class="k">${</span><span class="nv">DISTRIB_ID</span><span class="p">,,</span><span class="k">}</span><span class="s2"> </span><span class="k">${</span><span class="nv">DISTRIB_CODENAME</span><span class="k">}</span><span class="s2"> stable"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/influxdb.list
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>macOS</p>
+
+    <div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">brew</span> <span class="err">update</span>
+<span class="err">brew</span> <span class="err">install</span> <span class="err">telegraf</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Docker</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="se">\</span>
+<span class="nt">--name</span> yourContainerName <span class="se">\</span>
+<span class="nt">-p</span> hostPortNo:ContainerPortNo <span class="se">\ </span><span class="c">#모니터링 할 plugin과 데이터를 push할 DB 포트</span>
+telegraf:latest
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="configuration">Configuration</h2>
+
+<ul>
+  <li>File Location
+    <ul>
+      <li>Linux(Ubuntu) : <code class="highlighter-rouge">/etc/telegraf/telegraf.conf</code></li>
+      <li>macOS: <code class="highlighter-rouge">/usr/local/etc/telegraf.conf</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>Create a configuration file with specific inputs and outputs</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>telegraf <span class="nt">-input-filter</span> &lt;pluginname&gt;:&lt;pluginname&gt; <span class="nt">-output-filter</span> &lt;outputDBname&gt; <span class="o">&gt;</span> telegraf.conf
+<span class="c"># Example ~ generate config with only cpu input &amp; influxdb output plugins defined</span>
+<span class="c">## telegraf --input-filter cpu --output-filter influxdb config</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create a sample configuration file</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>telegraf <span class="nt">-sample-config</span> <span class="o">&gt;</span> telegraf.conf
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="start-the-telegraf-service">Start the Telegraf service</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>service telegraf start
+</code></pre></div></div>
+
+<p>Once Telegraf is up and running, it will start collecting metrics and writing them to the local InfluxDB.</p>
+
+<h2 id="plugins">Plugins</h2>
+
+<p>Telegraf supports various plugins and allows to add custom plugins.</p>
+
+<p>Check available <a href="https://github.com/influxdata/telegraf/blob/master/README.md#input-plugins">input</a> and <a href="https://github.com/influxdata/telegraf/blob/master/README.md#output-plugins">output</a> plugins.</p>
+
+:ET

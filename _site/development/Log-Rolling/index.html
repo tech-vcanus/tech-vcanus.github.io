@@ -1,0 +1,687 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Log Rolling - VCANUS’s Technical Blog</title>
+<meta name="description" content="Written by BGKim, VCANUS">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="VCANUS's Technical Blog">
+<meta property="og:title" content="Log Rolling">
+<meta property="og:url" content="http://localhost:4000/development/Log-Rolling/">
+
+
+  <meta property="og:description" content="Written by BGKim, VCANUS">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-10-31T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/Log-Rolling/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="VCANUS's Technical Blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          VCANUS's Technical Blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Log Rolling">
+    <meta itemprop="description" content="Written by BGKim, VCANUS">
+    <meta itemprop="datePublished" content="October 31, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Log Rolling
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Written by BGKim, VCANUS</p>
+
+<h1 id="log4j2">Log4j2</h1>
+
+<h2 id="add-maven-dependency">Add maven dependency</h2>
+<p>pom.xml</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+    &lt;exclusions&gt;
+        &lt;exclusion&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-logging&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-log4j2&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+    &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+    &lt;optional&gt;true&lt;/optional&gt;
+&lt;/dependency&gt;
+</code></pre></div></div>
+<p>spring-boot-starter</p>
+<blockquote>
+  <p>‘spring-boot-starter’의 기본 로깅을 제외 시킨다.</p>
+</blockquote>
+
+<p>lombok</p>
+<blockquote>
+  <p>클래스 상단에 @log4j2을 사용, log작성시 로거객체 생성이 필요없다.</p>
+</blockquote>
+
+<h2 id="add-log4j2xml-in-folder-resources">Add log4j2.xml in folder resources</h2>
+<p>log4j2.xml</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;Configuration</span> <span class="na">status=</span><span class="s">"warn"</span> <span class="na">moniterInterval=</span><span class="s">"30"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Properties&gt;</span>
+        <span class="nt">&lt;Property</span> <span class="na">name=</span><span class="s">"LOG_PATTERN"</span><span class="nt">&gt;</span>%d{yyyy-MM-dd HH:mm:ss.SSS} %p %M %m%n<span class="nt">&lt;/Property&gt;</span>
+        <span class="nt">&lt;Property</span> <span class="na">name=</span><span class="s">"LOG_ROOT"</span><span class="nt">&gt;</span>log<span class="nt">&lt;/Property&gt;</span>
+    <span class="nt">&lt;/Properties&gt;</span>
+    <span class="nt">&lt;Appenders&gt;</span>
+        <span class="nt">&lt;Console</span> <span class="na">name=</span><span class="s">"Console"</span> <span class="na">target=</span><span class="s">"SYSTEM_OUT"</span> <span class="na">follow=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;PatternLayout</span> <span class="na">pattern=</span><span class="s">"${LOG_PATTERN}"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Console&gt;</span>
+
+        <span class="nt">&lt;RollingFile</span> <span class="na">name=</span><span class="s">"RollingFile"</span>
+                     <span class="na">fileName=</span><span class="s">"${LOG_ROOT}/application.log"</span>
+                     <span class="na">filePattern=</span><span class="s">"${LOG_ROOT}/application-%d{yyyy-MM-dd}-%i.log"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;PatternLayout</span> <span class="na">pattern=</span><span class="s">"${LOG_PATTERN}"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;Policies&gt;</span>
+                <span class="nt">&lt;SizeBasedTriggeringPolicy</span> <span class="na">size=</span><span class="s">"300KB"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;TimeBasedTriggeringPolicy</span> <span class="na">interval=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/Policies&gt;</span>
+            <span class="nt">&lt;DefaultRolloverStrategy</span> <span class="na">max=</span><span class="s">"3"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/RollingFile&gt;</span>
+
+    <span class="nt">&lt;/Appenders&gt;</span>
+    <span class="nt">&lt;Loggers&gt;</span>
+        <span class="nt">&lt;Logger</span> <span class="na">level=</span><span class="s">"info"</span> <span class="na">name=</span><span class="s">"com.vcanus"</span> <span class="na">additivity=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;AppenderRef</span> <span class="na">ref=</span><span class="s">"RollingFile"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Logger&gt;</span>
+
+        <span class="nt">&lt;Root</span> <span class="na">level=</span><span class="s">"info"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;AppenderRef</span> <span class="na">ref=</span><span class="s">"Console"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Root&gt;</span>
+    <span class="nt">&lt;/Loggers&gt;</span>
+<span class="nt">&lt;/Configuration&gt;</span>
+</code></pre></div></div>
+<p>&lt;Configuration status=”warn” moniterInterval=”30”&gt;</p>
+<blockquote>
+  <p>‘status’는 로그 로딩시에 하는 로깅 기준 레벨이다.</p>
+</blockquote>
+
+<blockquote>
+  <p>‘moniterInterval’은 설정 변경을 체크하는 주기, 변경시 재설정.</p>
+</blockquote>
+
+<p>&lt;Property name=””&gt;value&lt;&gt;</p>
+<blockquote>
+  <p>미리 사용할 자원을 설정할 수 있다. 여기서는 로그패턴과 루트경로를 설정하였다.</p>
+</blockquote>
+
+<p>&lt;Appenders&gt;</p>
+<blockquote>
+  <p>실제 로그를 작성해주는 객체. Console, RollingFile, File, JDBC, Kafka 등 많은 appender를 지원한다.</p>
+</blockquote>
+
+<p>&lt;Policies&gt;</p>
+<blockquote>
+  <p>RollingFile의 설정을 할 수 있다. 크기, 시간을 트리거로 새로운 로그를 생성 (패턴에서 %i 부분이 변한다)</p>
+</blockquote>
+
+<p>&lt;DefaultRolloverStrategy max=”2” \/&gt;</p>
+<blockquote>
+  <p>rolling되어 쌓이는 개수의 최대를 설정, ex)1-1.log 1-2.log 1-3.log(x) 2-1.log 2-2.log</p>
+</blockquote>
+
+<p>&lt;Logger level=”info” name=”com.vcanus” additivity=”false”&gt;</p>
+<blockquote>
+  <p>로그 객체이다. level설정, name설정, additivity설정이 가능하다</p>
+</blockquote>
+
+<blockquote>
+  <p>위에서 정의한 appender를 설정하여 원하는 로그방식으로 출력</p>
+</blockquote>
+
+<blockquote>
+  <p>name을 패키지 경로 사용시 해당 경로의 로그만 출력</p>
+</blockquote>
+
+<blockquote>
+  <p>additivity는 상위로거(패키지 상위 로거 혹은 루트로거)의 전달을 받을지 설정</p>
+</blockquote>
+
+<h2 id="use">Use</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Log4j2
+public class TempClass{
+    
+    public tempMethod(){
+        log.debug("debug level");
+        log.info("info level");
+        log.warn("warn level");
+        log.error("error level");
+    }
+}
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#configuration" class="page__taxonomy-item" rel="tag">configuration</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#log" class="page__taxonomy-item" rel="tag">Log</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#rolling" class="page__taxonomy-item" rel="tag">rolling</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-10-31T00:00:00+09:00">October 31, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Log+Rolling%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FLog-Rolling%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FLog-Rolling%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FLog-Rolling%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/CentOS-8-Install/" class="pagination--pager" title="CentOS 8 Install
+">Previous</a>
+    
+    
+      <a href="/development/Java-Build/" class="pagination--pager" title="Java Build
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/querydsl-for-elasticsearch/" rel="permalink">Elasticsearch &amp; Query DSL
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 24 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-and-rtsp/" rel="permalink">GStreamer and RTSP
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/research/Kinematics/" rel="permalink">Kinematics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 20 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/telegraf.md/" rel="permalink">Telegraf Basic
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 14 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 VCANUS's Technical Blog. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

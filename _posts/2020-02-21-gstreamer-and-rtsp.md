@@ -3,7 +3,7 @@
 title: "GStreamer and RTSP"
 data: 2020-02-21
 categories: development
-tags: Server, GStreamer, RTSP
+tags: Server GStreamer RTSP
 
 ---
 

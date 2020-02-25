@@ -1,0 +1,622 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>CentOS 8 Install - VCANUS’s Technical Blog</title>
+<meta name="description" content="Written by BGKim, VCANUS">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="VCANUS's Technical Blog">
+<meta property="og:title" content="CentOS 8 Install">
+<meta property="og:url" content="http://localhost:4000/development/CentOS-8-Install/">
+
+
+  <meta property="og:description" content="Written by BGKim, VCANUS">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-10-31T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/CentOS-8-Install/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="VCANUS's Technical Blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          VCANUS's Technical Blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="CentOS 8 Install">
+    <meta itemprop="description" content="Written by BGKim, VCANUS">
+    <meta itemprop="datePublished" content="October 31, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">CentOS 8 Install
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Written by BGKim, VCANUS</p>
+
+<h1 id="install-centos-8">Install CentOS 8</h1>
+
+<h2 id="make-install-usb">Make install USB</h2>
+<ol>
+  <li>centos 홈페이지에서 파일을 다운을 받는다.(https://www.centos.org/)</li>
+  <li>8GB이상의 USB를 준비한다.</li>
+  <li>USB를 연결하고, Rufus 홈페이지에서 Rufus를 다운받은 뒤 실행(https://rufus.ie/)</li>
+  <li>실행 화면에서 기본사항들을 적절히 세팅 후 파티션 방식을 GPT로 설정 후 시작</li>
+</ol>
+
+<h2 id="install-os">Install OS</h2>
+<ol>
+  <li>USB를 연결 후 부팅. (cent os 화면이 안나올 시, 바이오스 부팅 설정)</li>
+  <li>화면이 나오면 Install 클릭. 키보드, 언어, 시간 설정</li>
+  <li>install destination(설치 목적지)에서 OS설치 디스크를 선택하고, 저장소 구성이 필요시 Custom을 통하여 진행, 그렇지 않을시 automatic을 통한 진행</li>
+</ol>
+
+<h1 id="install-nvidia-graphic-driver">Install Nvidia Graphic driver</h1>
+<ol>
+  <li>nvidia 홈페이지에서 Long Lived Branch Version 다운, 권한 변경(https://www.nvidia.com/en-us/drivers/unix/)
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ chmod +x NVIDIA-Linux-x86_64-4xx.run
+</code></pre></div>    </div>
+  </li>
+  <li>nvidia 홈페이지에서 CUDA Toolkit 버전 확인 후 설치 명령어 확인 후 terminal에 입력(https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=CentOS&amp;target_version=8&amp;target_type=runfilelocal)
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
+$ sudo sh cuda_10.1.243_418.87.00_linux.run
+</code></pre></div>    </div>
+  </li>
+  <li>루트로 변경 후 기본 dev tools 다운
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo su
+# dnf groupinstall "Development Tools"
+# dnf install libglvnd-devel elfutils-libelf-devel "kernel-devel-uname-r == $(uname -r)"
+</code></pre></div>    </div>
+  </li>
+  <li>Nouveau driver를 Grub부트메뉴에서 사용안하도록 변경
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># grub2-editenv - set "$(grub2-editenv - list | grep kernelopts) nouveau.modeset=0"
+</code></pre></div>    </div>
+  </li>
+  <li>cli화면에서만 설치가 가능하기에 설정 후 reboot
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># systemctl set-default multi-user.target
+# reboot
+</code></pre></div>    </div>
+  </li>
+  <li>설치를 진행
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># bash NVIDIA-Linux-x86_64-4xx.run
+</code></pre></div>    </div>
+  </li>
+  <li>Gui로 변경 후 reboot
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># systemctl set-default graphical.target
+# reboot
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#8" class="page__taxonomy-item" rel="tag">8</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#and" class="page__taxonomy-item" rel="tag">and</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#centos" class="page__taxonomy-item" rel="tag">CentOS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#driver" class="page__taxonomy-item" rel="tag">driver</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#graphic" class="page__taxonomy-item" rel="tag">graphic</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#install" class="page__taxonomy-item" rel="tag">install</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-10-31T00:00:00+09:00">October 31, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=CentOS+8+Install%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FCentOS-8-Install%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FCentOS-8-Install%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FCentOS-8-Install%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/Jenkins-Basics/" class="pagination--pager" title="How to use Jenkins - Basic
+">Previous</a>
+    
+    
+      <a href="/development/Log-Rolling/" class="pagination--pager" title="Log Rolling
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/querydsl-for-elasticsearch/" rel="permalink">Elasticsearch &amp; Query DSL
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 24 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-and-rtsp/" rel="permalink">GStreamer and RTSP
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/research/Kinematics/" rel="permalink">Kinematics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 20 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/telegraf.md/" rel="permalink">Telegraf Basic
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 14 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 VCANUS's Technical Blog. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

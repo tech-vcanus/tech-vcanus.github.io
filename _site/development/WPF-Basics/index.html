@@ -1,0 +1,907 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>WPF Basics - VCANUS’s Technical Blog</title>
+<meta name="description" content="Written by Young-rae Shin(https://github.com/lived1024)">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="VCANUS's Technical Blog">
+<meta property="og:title" content="WPF Basics">
+<meta property="og:url" content="http://localhost:4000/development/WPF-Basics/">
+
+
+  <meta property="og:description" content="Written by Young-rae Shin(https://github.com/lived1024)">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-10-04T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/WPF-Basics/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="VCANUS's Technical Blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          VCANUS's Technical Blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="WPF Basics">
+    <meta itemprop="description" content="Written by Young-rae Shin(https://github.com/lived1024)">
+    <meta itemprop="datePublished" content="October 04, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">WPF Basics
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Written by Young-rae Shin(<a href="https://github.com/lived1024">https://github.com/lived1024</a>)</p>
+
+<p>해당 문서는 WPF를 이용한 MVVM 디자인 패턴에 대한 내용을 설명할 것입니다.
+아래 링크에서 더 자세한 설명을 볼 수 있습니다.<br />
+참고사이트 : <a href="https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/">The complete WPF tutorial</a></p>
+
+<h1 id="wpf의-정의">WPF의 정의</h1>
+
+<h2 id="mvvc-패턴이란">MVVC 패턴이란?</h2>
+<ul>
+  <li>MVVC 패턴은 MVC패턴에서 개량된 것으로, Model - View - ViewModel로 이루어져 있다.</li>
+  <li>Model : View에서 나타내기위한 데이터의 원본이라고 볼 수 있다.</li>
+  <li>View : 사용자에게 보여지는 GUI</li>
+  <li>ViewModel : Model에 있는 데이터를 View에서 보여주기위해 적절한 데이터로 가공하는 역할이다.</li>
+</ul>
+
+<h2 id="wpf-vs-winform">WPF vs Winform</h2>
+<p>둘 모두 응용SW의 개발에 이용하며 GUI의 미리보기(Preview)를 지원해서 개발에 편리함을 더해준다.</p>
+<ul>
+  <li>Winform : 전통적인 방식으로 오랜 기간 이용되었으며 국내에서는 C# 응용SW의 대부분을 차지하고 있다.
+    <ul>
+      <li>장점
+        <ol>
+          <li>안정성이 뛰어나다.</li>
+          <li>한글로 된 자료가 많아 진입장벽이 낮은 편이다.</li>
+          <li>무료, 유료로 기존 개발자가 개발한 다양한 컨트롤을 이용할 수 있다.</li>
+        </ol>
+      </li>
+      <li>단점
+        <ol>
+          <li>유연성이 부족하다 -&gt; Control 내부에 다양한 Control을 넣기 힘듦 : Button 내부에 Image와 TextBox를 동시에 넣기 등</li>
+          <li>모든 코드가 C#으로 이루어져있어 디자이너와 분업하기 힘들다.</li>
+          <li>가독성이 좋지 못하다.</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>WPF : MVVC패턴 중에서 View를 담당하며 마크업 언어(태그)를 이용한다.
+    <ul>
+      <li>장점
+        <ol>
+          <li>비교적 최신으로 최근 기준에 부합한다.</li>
+          <li>WPF의 대표적인 프로그램으로는 Visual Studio</li>
+          <li>각종 컨트롤을 Customizing하기 용이하다. -&gt; Ex) Winform은 Button내에 Image삽입이 번거롭지만 WPF는 쉽게 가능하다.</li>
+          <li>XAML파일은 디자이너, C#(Code-Behind)은 개발자가 담당하여 업무의 분리가 용이하다.</li>
+          <li>뛰어난 가독성</li>
+          <li>Windows기반 프로그램과 Web기반 프로그램의 개발에 모두 이용할 수 있다.</li>
+        </ol>
+      </li>
+      <li>단점
+        <ol>
+          <li>국내에서는 WinForm을 주로 이용하기에 자료를 찾기 어렵다. - 대형 서점에 입문용 책이 없는 경우도 많다.</li>
+          <li>1번의 이유로 필요한 정보는 영어로 찾아야한다.</li>
+          <li>외국에서는 인기가 많다고 하지만 아직까지는 국내 점유율이 처참하다고 한다. -&gt; WinForm 10 : WPF 1 정도의 비율</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="wpf를-이용한-mvvc패턴의-기초visual-studio">WPF를 이용한 MVVC패턴의 기초(Visual Studio)</h2>
+
+<h3 id="model">Model</h3>
+<ul>
+  <li>기존의 C# 코드를 이용하여 View의 기초 데이터를 담당한다.</li>
+  <li>Json을 요청하고 받아오는 클래스 등 직접 DataBinding하는 클래스를 제외한 클래스들이 여기에 속한다.</li>
+  <li>WAS를 이용한 프로그램을 개발할 때, WAS에서 데이터를 받아와 초기 데이터로 가공하는 역할을 담당한다.</li>
+</ul>
+
+<h3 id="viewmodel">ViewModel</h3>
+<ul>
+  <li>Model의 데이터를 View에서 이용할 수 있도록 가공한다.</li>
+  <li>가공한 데이터는 DataBinding을 이용해 View를 제공하는 XAML파일(WPF)로 연결!</li>
+  <li>Main이 되는 XAML의 .cs파일에 작성할 수도 있지만 Resource를 설정하여 다른 파일에서 이용할 수도 있다.<br />
+  <img src="https://user-images.githubusercontent.com/41990925/66175633-70e3be80-e695-11e9-8964-41dd054742c1.png" alt="예시" /></li>
+  <li>주로 Code-behind가 ViewModel을 담당한다. 별도의 설정을 통해 해당 파일의 cs파일이 아니더라도 연결하여 사용할 수 있다.<br />
+단, 최상위 Window의 Code-Behind와 해당 XAML의 Code-Behind가 아닌 클래스에서 컨트롤을 호출하려면 아래와 같은 에러를 볼 수 있다.<br />
+  <img src="https://user-images.githubusercontent.com/41990925/66175645-7214eb80-e695-11e9-8928-324ccc5ed6c0.png" alt="Not Static Control" /></li>
+</ul>
+
+<h3 id="view--xaml파일wpf">View : XAML파일(WPF)</h3>
+<ul>
+  <li>UI를 담당한다고 볼 수 있다.</li>
+  <li>마크업 언어로 구성되어 가독성이 뛰어나고, ViewModel과 연결하여 DataBinding을 이용할 수 있다.</li>
+  <li>해당 파일을 생성하면 Code-Behind파일이 자동으로 생성된다.<br />
+  <img src="https://user-images.githubusercontent.com/41990925/66175636-70e3be80-e695-11e9-942f-87fdbf955f46.png" alt="Files" /></li>
+  <li>다음 화면은 XAML파일 생성시 초기 화면이다
+  <img src="https://user-images.githubusercontent.com/41990925/68543256-1d813080-03f8-11ea-8691-44df3434b9f2.png" alt="Init" /></li>
+  <li>화면의 Grid태그 내부에 각 Control을 배치할 수 있다. 사용가능한 종류는 아래의 Panel종류 항목 참조.</li>
+</ul>
+
+<h1 id="wpf-실전">WPF 실전</h1>
+
+<h2 id="프로젝트-살펴보기---이-항목에서는-model을-제외한-viewmodel과-view에-대해서만-기술한다">프로젝트 살펴보기 - 이 항목에서는 Model을 제외한 ViewModel과 View에 대해서만 기술한다.</h2>
+
+<h3 id="생성-화면">생성 화면</h3>
+<p><img src="https://user-images.githubusercontent.com/41990925/66175631-704b2800-e695-11e9-9fbd-b47a0f1fdc77.png" alt="First Screen" />
+<img src="https://user-images.githubusercontent.com/41990925/66175632-704b2800-e695-11e9-929b-47ed5a5c6ce4.png" alt="First Screen2" /><br />
+Preview 화면의 우측 하단을 보면 초록색 박스가 있다. 박스 안의 버튼을 이용하여 아래와 같이 화면 조정 가능<br />
+<img src="https://user-images.githubusercontent.com/41990925/66175663-74774580-e695-11e9-977c-7f36318dcaed.png" alt="Vertical Screen" />
+<img src="https://user-images.githubusercontent.com/41990925/66175666-750fdc00-e695-11e9-92f1-018c501a3ad7.png" alt="WPF Screen" />
+<img src="https://user-images.githubusercontent.com/41990925/66175653-73461880-e695-11e9-94a6-d4b769674050.png" alt="Preview Screen" /></p>
+
+<h3 id="wpf의-기초-태그">WPF의 기초 태그</h3>
+
+<h4 id="grid---기본-레이아웃">Grid - 기본 레이아웃</h4>
+<p>Grid의 내부에 Control을 배치하며 View를 생성한다.
+화면은 기본적으로 Grid Layout으로 설정되어 있으며 아래처럼 화면을 분할할 수 있다</p>
+
+<pre><code class="language-WPF">&lt;Grid&gt;
+  &lt;!--ColumnDefinitions은 Grid 내부의 Column에 대한 정의를 한다.--&gt;
+  &lt;Grid.ColumnDefinitions&gt;
+    &lt;!--ColumnDefinition을 1개 추가할 때마다 Grid의 Column은 1개씩 늘어난다--&gt;
+    &lt;!--Width, Height의 값에 *을 넣으면 해당 비율로 크기가 맞춰진다
+    &lt;!--*를 넣지 않는다면 해당 픽셀(?)만큼만 생성!--&gt;
+    &lt;ColumnDefinition Width="*"/&gt;
+    &lt;ColumnDefinition Width="*"/&gt;
+    &lt;ColumnDefinition Width="200"/&gt;
+  &lt;/Grid.ColumnDefinitions&gt;
+
+  &lt;!--RowDefinitions은 Grid 내부의 Row에 대한 정의를 한다.--&gt;
+  &lt;Grid.RowDefinitions&gt;
+    &lt;!--RowDefinition을 1개 추가할 때마다 Grid의 Row는 1개씩 늘어난다--&gt;
+    &lt;!--Width, Height의 값에 *을 넣으면 해당 비율로 크기가 맞춰진다
+            *를 넣지 않는다면 해당 픽셀(?)만큼만 생성!--&gt;
+    &lt;RowDefinition Height="*"/&gt;
+    &lt;RowDefinition Height="*"/&gt;
+    &lt;RowDefinition Height="100"/&gt;
+    &lt;/Grid.RowDefinitions&gt;
+&lt;/Grid&gt;
+</code></pre>
+
+<p><img src="https://user-images.githubusercontent.com/41990925/66175638-717c5500-e695-11e9-9af9-8427289089ef.png" alt="Grid" /></p>
+<ul>
+  <li>Control의 배치는 아래화면처럼 Grid.Row 와 Grid.Column을 이용하여 지정할 수 있다.</li>
+</ul>
+
+<pre><code class="language-WPF">&lt;TextBlock Text="C0, R0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/&gt;
+
+&lt;TextBlock Text="C0, R1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/&gt;
+      
+&lt;TextBlock Text="C0, R2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/&gt;
+
+&lt;TextBlock Text="C1, R0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/&gt;
+
+&lt;TextBlock Text="C2, R0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/&gt;
+
+&lt;TextBlock Text="C1, R1" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/&gt;
+
+&lt;TextBlock Text="C1, R2" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/&gt;
+
+&lt;TextBlock Text="C2, R1" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/&gt;
+
+&lt;TextBlock Text="C2, R2" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/&gt;
+</code></pre>
+
+<p><img src="https://user-images.githubusercontent.com/41990925/66175639-717c5500-e695-11e9-957f-f51aa6ae7d04.png" alt="Location" /></p>
+<ul>
+  <li>각종 속성들은 아래처럼 해당 태그의 child tag로 이용할 수 있다. 아래 코드는 모두 동일한 결과를 나타낸다.</li>
+</ul>
+
+<pre><code class="language-WPF">&lt;TextBlock Text="C0, R1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/&gt;
+</code></pre>
+
+<pre><code class="language-WPF">&lt;TextBlock&gt;
+  &lt;TextBlock.Text&gt;C0, R1&lt;/TextBlock.Text&gt;
+  &lt;TextBlock.FontSize&gt;40&lt;/TextBlock.FontSize&gt;
+  &lt;TextBlock.HorizontalAlignment&gt;Center&lt;/TextBlock.HorizontalAlignment&gt;
+  &lt;TextBlock.VerticalAlignment&gt;Center&lt;/TextBlock.VerticalAlignment&gt;
+  &lt;Grid.Row&gt;1&lt;/Grid.Row&gt;
+&lt;/TextBlock&gt;
+</code></pre>
+
+<p>Code-Behind에서도 같은 결과를 낼 수 있는데, 자세한 내용은 <a href="https://blog.naver.com/syrch/221630969293">여기를 참조</a>를 참고</p>
+
+<h4 id="파일-태그-및-초기-생성-태그">파일(?) 태그 및 초기 생성 태그</h4>
+<ul>
+  <li>해당 페이지의 넓이, 높이 등 크기 조절</li>
+  <li>해당 페이지의 ClassName과 사용할 Namespace들의 별칭을 설정할 수 있다.</li>
+  <li>
+    <p>아래 코드는 WPF 프로젝트 생성 당시 자동으로 생성되는 코드.</p>
+
+    <pre><code class="language-WPF">  &lt;Window x:Class="WpfAppName.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppName"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="1000"&gt;
+
+    &lt;Grid&gt;
+    &lt;/Grid&gt;
+  &lt;/Window&gt;
+</code></pre>
+
+    <p><img src="https://user-images.githubusercontent.com/41990925/66175641-7214eb80-e695-11e9-8c05-467bae882ba4.png" alt="Whole Tag" /></p>
+  </li>
+  <li>사용되는 태그 종류
+    <ol>
+      <li>Window : 응용 프로그램의 새 창을 의미한다. 주로 해당 프로젝트에서 Main이 되는 화면에 사용</li>
+      <li>Page : Window 내부의 페이지를 뜻한다. Window나 UserControl에서 Frame을 이용하여 include할 수 있다. (include시 권장 X)</li>
+      <li>UserControl : 다른 컨트롤을 추가하는 것과 같은 방식으로 UI에 추가할 수 있는 재사용 가능한 화면 (include시 권장 O)
+ <img src="https://user-images.githubusercontent.com/41990925/66175659-73deaf00-e695-11e9-9b26-10fc3009c8d9.png" alt="UserControl include" />
+ <img src="https://user-images.githubusercontent.com/41990925/66175661-73deaf00-e695-11e9-8312-e637994c07b5.png" alt="UserControl Tag" /></li>
+      <li>
+        <p>ResourceDictionary : 앱의 UI 또는 리소스를 정의하여 이용할 위치에 정의하여 사용할 수 있다.<br />
+ HTML의 외부 CSS파일과 외부 JS파일로 생각하면 된다.
+ 이용한 예제가 없어서 공식 홈페이지의 코드를 참조</p>
+
+        <pre><code class="language-WPF"> &lt;!-- Dictionary1.xaml --&gt;
+ &lt;ResourceDictionary
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:local="using:MSDNSample"&gt;
+
+     &lt;SolidColorBrush x:Key="brush" Color="Red"/&gt;
+
+ &lt;/ResourceDictionary&gt;
+</code></pre>
+
+        <pre><code class="language-WPF"> &lt;Page
+     x:Class="MSDNSample.MainPage"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"&gt;
+     &lt;Page.Resources&gt;
+         &lt;ResourceDictionary&gt;
+             &lt;ResourceDictionary.MergedDictionaries&gt;
+                 &lt;ResourceDictionary Source="Dictionary1.xaml"/&gt;
+             &lt;/ResourceDictionary.MergedDictionaries&gt;
+
+             &lt;x:String x:Key="greeting"&gt;Hello world&lt;/x:String&gt;
+
+         &lt;/ResourceDictionary&gt;
+     &lt;/Page.Resources&gt;
+
+     &lt;TextBlock Foreground="{StaticResource brush}" Text="{StaticResource greeting}" VerticalAlignment="Center"/&gt;
+ &lt;/Page&gt;
+</code></pre>
+
+        <p>위 코드와 같이 ResourceDictionary로 필요한 설정 후, 여러 View에서 Resource로 참고하여 이용할 수 있다.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Namespace 설정</p>
+
+    <pre><code class="language-WPF">  &lt;!-- xmlns의 뒤에 해당 페이지에서 부를 별칭을 설정한다. --&gt;
+  xmlns:name="clr-namespace:NamespaceName" 
+  &lt;!-- 해당 페이지에 include할 경우 --&gt;
+  &lt;name:class&gt;
+</code></pre>
+  </li>
+</ul>
+
+<h4 id="panel의-종류">Panel의 종류</h4>
+<p>각 패널에 대해서는 해당 링크 참고 : <a href="https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/">https://www.wpf-tutorial.com/Localization/LanguageStatus/ko/</a></p>
+<ul>
+  <li>WrapPanel</li>
+  <li>StackPanel</li>
+  <li>DockPanel</li>
+  <li>Grid</li>
+  <li>GirdSplitter</li>
+  <li>Canvas</li>
+</ul>
+
+<h3 id="databinding">DataBinding</h3>
+<h4 id="databinding-in-wpf">DataBinding in WPF</h4>
+<ul>
+  <li>
+    <p>Code-behind : View의 Code-Behind에서 작성한 예 =&gt; this.DataContext = this; 만 추가!</p>
+
+    <pre><code class="language-WPF">  namespace WpfAppName
+  {
+    /// &lt;summary&gt;
+    /// MainWindow.xaml에 대한 상호 작용 논리
+    /// &lt;/summary&gt;
+    public partial class MainWindow : Window
+    {
+        private string str = "TEST";
+        public string Str { get =&gt; str; set =&gt; str = value; }
+        public MainWindow()
+        {
+            InitializeComponent();
+            this.DataContext = this;  // 추가 내용
+        }
+    }
+  }
+</code></pre>
+  </li>
+  <li>
+    <p>WPF : 예제에서는 TextBlock =&gt; Text에 DataBinding을 시킨다. { } 를 열고, Binding 변수이름 을 작성해주면 끝!</p>
+
+    <pre><code class="language-WPF">  &lt;TextBlock Text = "{Binding Str"}/&gt;
+</code></pre>
+
+    <p><img src="https://user-images.githubusercontent.com/41990925/66175664-74774580-e695-11e9-8e0d-dd4ec8b992e6.png" alt="WPF Binding" /></p>
+    <ul>
+      <li>결과 화면
+  <img src="https://user-images.githubusercontent.com/41990925/66175622-6f19fb00-e695-11e9-9e0d-f4d44cb89280.png" alt="Binding Result" /></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="databinding-in-c">DataBinding in C#</h4>
+<ul>
+  <li>
+    <p>Code-behind : 여기서 Data를 가공하고, Binding시킨다.</p>
+
+    <pre><code class="language-C#">  namespace WpfAppName
+  {
+    /// &lt;summary&gt;
+    /// MainWindow.xaml에 대한 상호 작용 논리
+    /// &lt;/summary&gt;
+    public partial class MainWindow : Window
+    {
+        private string str = "TEST";
+        public string Str { get =&gt; str; set =&gt; str = value; }
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            this.firstTextBlock.Text = Str;
+        }
+    }
+  }  
+</code></pre>
+  </li>
+  <li>
+    <p>WPF : 디자인을 하고, x:Name으로 Binding할 컨트롤의 이름을 설정한다.</p>
+
+    <pre><code class="language-WPF">  &lt;TextBlock x:Name="firstTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40"/&gt;
+</code></pre>
+    <p><img src="https://user-images.githubusercontent.com/41990925/66175644-7214eb80-e695-11e9-8c27-c6c69a4512b4.png" alt="Naming" /></p>
+  </li>
+</ul>
+
+<h3 id="create-event">Create Event</h3>
+<ol>
+  <li>XAML파일에서 Event를 등록할 Control을 생성한다.</li>
+  <li>아래 화면처럼 해당 태그 내에서 Event를 찾는다.
+ <img src="https://user-images.githubusercontent.com/41990925/66175627-6fb29180-e695-11e9-828d-4d06585a1454.png" alt="Create Event" /></li>
+  <li>Event를 선택하고 메소드 명을 자동생성하도록 새 이벤트 처리기를 클릭 or Enter를 입력하면 자동으로 생성되며 Binding까지 된다.
+ <img src="https://user-images.githubusercontent.com/41990925/66175628-6fb29180-e695-11e9-80d3-2ec4dd804aa0.png" alt="Create Event2" />
+ <img src="https://user-images.githubusercontent.com/41990925/66175629-704b2800-e695-11e9-87b5-6920a289180a.png" alt="Create Event3" /></li>
+  <li>Code-behind에서 확인하면 해당 이름의 이벤트가 생성된 것을 볼 수 있다.
+ <img src="https://user-images.githubusercontent.com/41990925/66175630-704b2800-e695-11e9-95bd-7f2caaa27458.png" alt="Create Event4" /></li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#basics" class="page__taxonomy-item" rel="tag">Basics</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#c" class="page__taxonomy-item" rel="tag">C#</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#mvvm" class="page__taxonomy-item" rel="tag">MVVM</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#wpf" class="page__taxonomy-item" rel="tag">WPF</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-10-04T00:00:00+09:00">October 04, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=WPF+Basics%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FWPF-Basics%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FWPF-Basics%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FWPF-Basics%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/Scichart-Basics/" class="pagination--pager" title="Scichart Basics
+">Previous</a>
+    
+    
+      <a href="/development/devenv/" class="pagination--pager" title="Setting for Development Environment
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/querydsl-for-elasticsearch/" rel="permalink">Elasticsearch &amp; Query DSL
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 24 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-and-rtsp/" rel="permalink">GStreamer and RTSP
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/research/Kinematics/" rel="permalink">Kinematics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 20 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/telegraf.md/" rel="permalink">Telegraf Basic
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 14 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 VCANUS's Technical Blog. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

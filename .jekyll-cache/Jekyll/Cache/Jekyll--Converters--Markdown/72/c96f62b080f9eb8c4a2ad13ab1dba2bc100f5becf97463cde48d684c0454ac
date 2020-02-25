@@ -1,0 +1,98 @@
+I"	<p>Written By Young-rae Shin(<a href="https://github.com/lived1024">https://github.com/lived1024</a>)</p>
+
+<h1 id="intellij">IntelliJ</h1>
+<ol>
+  <li>File -&gt; Project Structure<br />
+  <img src="https://user-images.githubusercontent.com/41990925/70882756-157a6900-2014-11ea-9d9c-2d5b70e1abc6.png" alt="First" /></li>
+  <li>Artifacts -&gt; JAR -&gt; From modules with dependencies<br />
+  <img src="https://user-images.githubusercontent.com/41990925/70882757-157a6900-2014-11ea-9b01-ea4d4a6e245c.png" alt="Second" /></li>
+  <li>
+    <p>Default setting<br />
+  <img src="https://user-images.githubusercontent.com/41990925/70882754-14e1d280-2014-11ea-8a3f-d2a53539d6f8.png" alt="Third" /><br />
+  If you want to make executable jar<br />
+  Please check MANIFEST.MF path at Default setting<br />
+  <img src="https://user-images.githubusercontent.com/41990925/70882753-14e1d280-2014-11ea-8b13-034e5bb40105.png" alt="default" /><br />
+  Change path! (java -&gt; resources)<br />
+  <img src="https://user-images.githubusercontent.com/41990925/70882755-157a6900-2014-11ea-9389-2e582ca34d0f.png" alt="change path" /></p>
+  </li>
+  <li>A screen similar to the following is displayed<br />
+  <img src="https://user-images.githubusercontent.com/41990925/70882750-14493c00-2014-11ea-8772-9229606899e0.png" alt="Register artifacts" /></li>
+  <li>Confirm Main-Class at MANIFEST.MF<br />
+  <img src="https://user-images.githubusercontent.com/41990925/70882752-14e1d280-2014-11ea-9a97-b81436e56105.png" alt="MANIFEST.MF" /></li>
+  <li>Build -&gt; Build Artifacts<br />
+  <img src="https://user-images.githubusercontent.com/41990925/70882748-14493c00-2014-11ea-9825-ae90e839c5e8.png" alt="Build Menu" /></li>
+  <li>First, Clean =&gt; Second, Build<br />
+  <img src="https://user-images.githubusercontent.com/41990925/70882751-14e1d280-2014-11ea-832c-7008acdd6b74.png" alt="Build Popup" /></li>
+  <li>Confirm JAR file in project base directory<br />
+  <img src="https://user-images.githubusercontent.com/41990925/70882749-14493c00-2014-11ea-95e7-f3ae6b6f7b4e.png" alt="Jar File" /></li>
+</ol>
+
+<h1 id="maven">Maven</h1>
+<ol>
+  <li>Install Maven<br />
+  The screen below can be seen after installation
+  <img src="https://user-images.githubusercontent.com/41990925/71044871-42df2800-2176-11ea-96f7-5e8ce6c4901e.png" alt="Maven Version" /></li>
+  <li>Go to the project directory where you want to build module(“pom.xml” is located)<br />
+  <img src="https://user-images.githubusercontent.com/41990925/71045085-006a1b00-2177-11ea-8b18-30208955f384.png" alt="Path" /></li>
+  <li>Open console(like cmd, git-bash, terminal, etc…)<br />
+  <img src="https://user-images.githubusercontent.com/41990925/71045174-5f2f9480-2177-11ea-870c-47d3ee303a64.png" alt="Open console" /></li>
+  <li>Start build : Use maven build command<br />
+  You need to study maven command.
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  $ mvn clean package -Dmaven.test.skip=true
+  $ mvn clean package spring-boot:repackage -Dmaven.test.skip=true
+</code></pre></div>    </div>
+    <p><img src="https://user-images.githubusercontent.com/41990925/71045395-1d531e00-2178-11ea-8a43-4be3403cbe5d.png" alt="Input build command" /></p>
+  </li>
+  <li>If you see “BUILD SUCCESS”, it’s complete<br />
+  <img src="https://user-images.githubusercontent.com/41990925/71045498-791da700-2178-11ea-953d-44a78da3ef54.png" alt="Build Success" />
+  <img src="https://user-images.githubusercontent.com/41990925/71047750-29db7480-2180-11ea-93ad-e98eed151b49.png" alt="Build File Path" /></li>
+</ol>
+
+<h1 id="add-custom-jar-file-to-maven-project">Add custom jar file to maven project</h1>
+<ol>
+  <li>Open pom.xml</li>
+  <li>Add local repository or jar files!!<br />
+  if you want to add local repository in pom.xml
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;repositories&gt;
+  &lt;repository&gt;
+    &lt;id&gt;local-repo&lt;/id&gt;
+    &lt;name&gt;local&lt;/name&gt;
+    &lt;url&gt;file://${project.basedir}/lib&lt;/url&gt;
+  &lt;/repository&gt;
+&lt;/repositories&gt;
+</code></pre></div>    </div>
+    <p>OR add local jar files in pom.xml like this</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> &lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.chronotics&lt;/groupId&gt;
+    &lt;artifactId&gt;pandora&lt;/artifactId&gt;
+    &lt;version&gt;1.4-SNAPSHOT&lt;/version&gt;
+    &lt;scope&gt;system&lt;/scope&gt;
+    &lt;systemPath&gt;${project.basedir}/lib/pandora.jar&lt;/systemPath&gt;
+  &lt;/dependency&gt;
+
+  //set scope(system) and systemPath(jar file's path)
+  &lt;dependency&gt;
+    &lt;groupId&gt;com.vcanus&lt;/groupId&gt;
+    &lt;artifactId&gt;pithos-nosql&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+    &lt;scope&gt;system&lt;/scope&gt;
+    &lt;systemPath&gt;${project.basedir}/lib/pithos-nosql.jar&lt;/systemPath&gt;
+  &lt;/dependency&gt;
+ &lt;dependencies&gt;
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h1 id="how-to-run-jar-file">How to run jar file</h1>
+<ol>
+  <li>Go to the project directory where you want to run jar file located</li>
+  <li>Open console</li>
+  <li>Input command
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ java -jar filename.jar
+</code></pre></div>    </div>
+    <p><img src="https://user-images.githubusercontent.com/41990925/71047954-d0277a00-2180-11ea-8e4d-59ea5acd3612.png" alt="Run jar command" />
+ <img src="https://user-images.githubusercontent.com/41990925/71047977-f0573900-2180-11ea-80b9-6348577f30e7.png" alt="Run" /></p>
+  </li>
+</ol>
+:ET

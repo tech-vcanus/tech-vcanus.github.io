@@ -1,0 +1,133 @@
+I"�<p>Written by BGKim, VCANUS</p>
+
+<h1 id="log4j2">Log4j2</h1>
+
+<h2 id="add-maven-dependency">Add maven dependency</h2>
+<p>pom.xml</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+    &lt;exclusions&gt;
+        &lt;exclusion&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-logging&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-log4j2&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+    &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+    &lt;optional&gt;true&lt;/optional&gt;
+&lt;/dependency&gt;
+</code></pre></div></div>
+<p>spring-boot-starter</p>
+<blockquote>
+  <p>‘spring-boot-starter’의 기본 로깅을 제외 시킨다.</p>
+</blockquote>
+
+<p>lombok</p>
+<blockquote>
+  <p>클래스 상단에 @log4j2을 사용, log작성시 로거객체 생성이 필요없다.</p>
+</blockquote>
+
+<h2 id="add-log4j2xml-in-folder-resources">Add log4j2.xml in folder resources</h2>
+<p>log4j2.xml</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;Configuration</span> <span class="na">status=</span><span class="s">"warn"</span> <span class="na">moniterInterval=</span><span class="s">"30"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Properties&gt;</span>
+        <span class="nt">&lt;Property</span> <span class="na">name=</span><span class="s">"LOG_PATTERN"</span><span class="nt">&gt;</span>%d{yyyy-MM-dd HH:mm:ss.SSS} %p %M %m%n<span class="nt">&lt;/Property&gt;</span>
+        <span class="nt">&lt;Property</span> <span class="na">name=</span><span class="s">"LOG_ROOT"</span><span class="nt">&gt;</span>log<span class="nt">&lt;/Property&gt;</span>
+    <span class="nt">&lt;/Properties&gt;</span>
+    <span class="nt">&lt;Appenders&gt;</span>
+        <span class="nt">&lt;Console</span> <span class="na">name=</span><span class="s">"Console"</span> <span class="na">target=</span><span class="s">"SYSTEM_OUT"</span> <span class="na">follow=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;PatternLayout</span> <span class="na">pattern=</span><span class="s">"${LOG_PATTERN}"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Console&gt;</span>
+
+        <span class="nt">&lt;RollingFile</span> <span class="na">name=</span><span class="s">"RollingFile"</span>
+                     <span class="na">fileName=</span><span class="s">"${LOG_ROOT}/application.log"</span>
+                     <span class="na">filePattern=</span><span class="s">"${LOG_ROOT}/application-%d{yyyy-MM-dd}-%i.log"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;PatternLayout</span> <span class="na">pattern=</span><span class="s">"${LOG_PATTERN}"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;Policies&gt;</span>
+                <span class="nt">&lt;SizeBasedTriggeringPolicy</span> <span class="na">size=</span><span class="s">"300KB"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;TimeBasedTriggeringPolicy</span> <span class="na">interval=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/Policies&gt;</span>
+            <span class="nt">&lt;DefaultRolloverStrategy</span> <span class="na">max=</span><span class="s">"3"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/RollingFile&gt;</span>
+
+    <span class="nt">&lt;/Appenders&gt;</span>
+    <span class="nt">&lt;Loggers&gt;</span>
+        <span class="nt">&lt;Logger</span> <span class="na">level=</span><span class="s">"info"</span> <span class="na">name=</span><span class="s">"com.vcanus"</span> <span class="na">additivity=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;AppenderRef</span> <span class="na">ref=</span><span class="s">"RollingFile"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Logger&gt;</span>
+
+        <span class="nt">&lt;Root</span> <span class="na">level=</span><span class="s">"info"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;AppenderRef</span> <span class="na">ref=</span><span class="s">"Console"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Root&gt;</span>
+    <span class="nt">&lt;/Loggers&gt;</span>
+<span class="nt">&lt;/Configuration&gt;</span>
+</code></pre></div></div>
+<p>&lt;Configuration status=”warn” moniterInterval=”30”&gt;</p>
+<blockquote>
+  <p>‘status’는 로그 로딩시에 하는 로깅 기준 레벨이다.</p>
+</blockquote>
+
+<blockquote>
+  <p>‘moniterInterval’은 설정 변경을 체크하는 주기, 변경시 재설정.</p>
+</blockquote>
+
+<p>&lt;Property name=””&gt;value&lt;&gt;</p>
+<blockquote>
+  <p>미리 사용할 자원을 설정할 수 있다. 여기서는 로그패턴과 루트경로를 설정하였다.</p>
+</blockquote>
+
+<p>&lt;Appenders&gt;</p>
+<blockquote>
+  <p>실제 로그를 작성해주는 객체. Console, RollingFile, File, JDBC, Kafka 등 많은 appender를 지원한다.</p>
+</blockquote>
+
+<p>&lt;Policies&gt;</p>
+<blockquote>
+  <p>RollingFile의 설정을 할 수 있다. 크기, 시간을 트리거로 새로운 로그를 생성 (패턴에서 %i 부분이 변한다)</p>
+</blockquote>
+
+<p>&lt;DefaultRolloverStrategy max=”2” \/&gt;</p>
+<blockquote>
+  <p>rolling되어 쌓이는 개수의 최대를 설정, ex)1-1.log 1-2.log 1-3.log(x) 2-1.log 2-2.log</p>
+</blockquote>
+
+<p>&lt;Logger level=”info” name=”com.vcanus” additivity=”false”&gt;</p>
+<blockquote>
+  <p>로그 객체이다. level설정, name설정, additivity설정이 가능하다</p>
+</blockquote>
+
+<blockquote>
+  <p>위에서 정의한 appender를 설정하여 원하는 로그방식으로 출력</p>
+</blockquote>
+
+<blockquote>
+  <p>name을 패키지 경로 사용시 해당 경로의 로그만 출력</p>
+</blockquote>
+
+<blockquote>
+  <p>additivity는 상위로거(패키지 상위 로거 혹은 루트로거)의 전달을 받을지 설정</p>
+</blockquote>
+
+<h2 id="use">Use</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Log4j2
+public class TempClass{
+    
+    public tempMethod(){
+        log.debug("debug level");
+        log.info("info level");
+        log.warn("warn level");
+        log.error("error level");
+    }
+}
+</code></pre></div></div>
+:ET

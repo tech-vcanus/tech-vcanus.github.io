@@ -1,0 +1,907 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Setting for Development Environment - VCANUS’s Technical Blog</title>
+<meta name="description" content="Written by SGLee, VCANUS">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="VCANUS's Technical Blog">
+<meta property="og:title" content="Setting for Development Environment">
+<meta property="og:url" content="http://localhost:4000/development/devenv/">
+
+
+  <meta property="og:description" content="Written by SGLee, VCANUS">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-10-04T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/devenv/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="VCANUS's Technical Blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          VCANUS's Technical Blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Setting for Development Environment">
+    <meta itemprop="description" content="Written by SGLee, VCANUS">
+    <meta itemprop="datePublished" content="October 04, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Setting for Development Environment
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Written by SGLee, VCANUS</p>
+
+<h1 id="install-graphic-driver">Install Graphic driver</h1>
+<h2 id="install-nvidia-driver-on-centos">Install Nvidia driver on CentOS</h2>
+<ol>
+  <li>nvidia 홈페이지에서 Long Lived Branch Version 다운, 권한 변경(https://www.nvidia.com/en-us/drivers/unix/)
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ chmod +x NVIDIA-Linux-x86_64-4xx.run
+</code></pre></div>    </div>
+  </li>
+  <li>nvidia 홈페이지에서 CUDA Toolkit 버전 확인 후 설치 명령어 확인 후 terminal에 입력(https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=CentOS&amp;target_version=8&amp;target_type=runfilelocal)
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
+$ sudo sh cuda_10.1.243_418.87.00_linux.run
+</code></pre></div>    </div>
+  </li>
+  <li>루트로 변경 후 기본 dev tools 다운
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo su
+# dnf groupinstall "Development Tools"
+# dnf install libglvnd-devel elfutils-libelf-devel "kernel-devel-uname-r == $(uname -r)"
+</code></pre></div>    </div>
+  </li>
+  <li>Nouveau driver를 Grub부트메뉴에서 사용안하도록 변경
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># grub2-editenv - set "$(grub2-editenv - list | grep kernelopts) nouveau.modeset=0"
+</code></pre></div>    </div>
+  </li>
+  <li>cli화면에서만 설치가 가능하기에 설정 후 reboot
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># systemctl set-default multi-user.target
+# reboot
+</code></pre></div>    </div>
+  </li>
+  <li>설치를 진행
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># bash NVIDIA-Linux-x86_64-4xx.run
+</code></pre></div>    </div>
+  </li>
+  <li>Gui로 변경 후 reboot
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># systemctl set-default graphical.target
+# reboot
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="install-nvidia-driver-ubuntu-1804v2">Install Nvidia driver (Ubuntu 18.04v2)</h2>
+<ol>
+  <li>add ppa:graphics-drivers/ppa
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo add-apt-repository ppa:graphics-drivers/ppa
+</code></pre></div>    </div>
+  </li>
+  <li>install graphic driver
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo apt install nvidia-driver-418
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h1 id="install-machine-learning-environment">Install Machine Learning Environment</h1>
+<h2 id="install-cuda-driver">Install cuda driver</h2>
+<ol>
+  <li>installation instruction
+    <ul>
+      <li>refer to https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html</li>
+    </ul>
+  </li>
+  <li>check the installation
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $nvcc --version
+</code></pre></div>    </div>
+  </li>
+  <li>add path into .bashrc if you can not run nvcc although you’ve installed cuda
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> CUDA_HOME=/usr/local/cuda
+ export PATH=$CUDA_HOME/bin:$PATH
+</code></pre></div>    </div>
+  </li>
+  <li>update .bashrc
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $source ~/.bashrc
+</code></pre></div>    </div>
+    <h2 id="install-cudnn">Install cuDNN</h2>
+    <ul>
+      <li>refer https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html</li>
+      <li>notice: check the version of cuda and cuDNN</li>
+    </ul>
+  </li>
+</ol>
+
+<h1 id="update-repository">Update Repository</h1>
+<ol>
+  <li>update yum
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum -y update
+ $ sudo yum -y install yum-utils
+</code></pre></div>    </div>
+  </li>
+  <li>install epel repository
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum -y install epel-release
+</code></pre></div>    </div>
+  </li>
+  <li>install ius repository
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+</code></pre></div>    </div>
+  </li>
+  <li>update yum again
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum -y update
+</code></pre></div>    </div>
+  </li>
+  <li>install default environment
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum groupinstall "Development Tools" "Development Libraries"
+</code></pre></div>    </div>
+    <p>For Ubuntu,</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo apt install build-essential
+ $ sudo apt install ubuntu-restricted-extras (to intall extra media codecs)
+</code></pre></div>    </div>
+    <p><em>** important **</em>
+ *** after update and upgrade, do step.0 process again</p>
+  </li>
+</ol>
+
+<h1 id="install-cmake">Install Cmake</h1>
+<ol>
+  <li>install curl-devel zlib-devel (the cmake with Https support is needed for installing opencv) 
+https://github.com/opencv/opencv_contrib/issues/1131 (check skvark’s comment and ./bootstrap –system-curl. from the version of Cmake-3.12, –system-curls might be not needed for Https support)
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum -y install curl-devel zlib-devel
+</code></pre></div>    </div>
+    <p>For Ubuntu,</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo apt install libcurl4-openssl-dev zlib1g-dev
+</code></pre></div>    </div>
+  </li>
+  <li>goto https://cmake.org, and download the latest stable install file</li>
+  <li>tar -zxvf cmake-xxxversionxxx.tar.gz</li>
+  <li>cd cmake-xxxversionxxx</li>
+  <li>install
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ ./bootstrap --system-curl
+ $ sudo make
+ $ sudo make install
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h1 id="install-javaopenjdk-and-modify-environment">Install Java(openjdk), and modify environment</h1>
+<ol>
+  <li>search and install openjdk
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ yum search openjdk
+ $ sudo yum install java-1.8.0-openjdk
+ $ sudo yum install java-1.8.0-openjdk-devel
+</code></pre></div>    </div>
+  </li>
+  <li>add the below to .bash_profile
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk (or /etc/alternatives/java_sdk_1.8.0_openjdk)
+ $ export JAVA_HOME
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h1 id="install-maven">Install Maven</h1>
+<ol>
+  <li>goto maven webpage(https://maven.apache.org), and download the binary install file</li>
+  <li>copy to /opt, and unzip the file
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo cp ~/Downloads/apache-maven-xxx.tar.gz /opt/
+ $ cd opt
+ $ sudo tar -zxvf apache-maven-xxx.tar.gz
+</code></pre></div>    </div>
+  </li>
+  <li>make the link, and update environment
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo ln -s apache-maven-xxx maven
+ $ vi ~/.bash_profile
+ $ MAVEN_HOME=/opt/maven
+ $ export PATH=$MAVEN_HOME/bin:$PATH
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h1 id="install-ant">Install Ant</h1>
+<ol>
+  <li>goto ant webpage(https://ant.apache.org), and download the binary install file</li>
+  <li>copy to /opt, and unzip the file
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo cp ~/Downloads/apache-ant-xxx.tar.gz /opt/
+ $ cd opt
+ $ sudo tar -zxvf apahce-ant-xxx.tar.gz
+</code></pre></div>    </div>
+    <p>For Ubuntu,
+ You can just install ant with apt on Ubuntu18.04. Check the installed path if you use apt.</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo apt install ant
+</code></pre></div>    </div>
+  </li>
+  <li>make the link, and update environment
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo ln -s apache-ant-xxx ant
+ $ vi ~/.bash_profile
+ $ ANT_HOME=/opt/ant
+ $ export PATH=$ANT_HOME/bin:$PATH
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h1 id="update-source">Update Source</h1>
+<ul>
+  <li>Centos: .bash_profile, Ubuntu: .profile
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ source ~/.bash_profile
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="install-environmentpython-other-libraries-to-install-opencv">Install Environment(Python, other libraries) to install opencv</h1>
+<ol>
+  <li>upgrade and update
+ ```
+ $ sudo yum update
+ $ sudo yum upgrade</li>
+  <li>install python2xx and tools
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum install python-devel
+ $ sudo yum install python-pip
+</code></pre></div>    </div>
+  </li>
+  <li>install python36 and tools
+    <ul>
+      <li>CentOS7: python36u, Ubutu18.04: python3
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum -y install python36
+ $ sudo yum -y install python36-devel
+ $ sudo yum -y install python36-pip
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>install python packages
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ python --version (check the version of python2x)
+ $ sudo pip install numpy (this is for version 2.7x)
+ $ python3.6 --version (check the version of python3x)
+ $ sudo pip3.6 install numpy (this is for version 3.6x)
+</code></pre></div>    </div>
+    <h1 id="install-virtual-envirionment">Install Virtual Envirionment</h1>
+    <p>https://wsvincent.com/install-python3-mac/</p>
+    <h2 id="install-virtualenv-and-set-environment">install virtualenv and set environment</h2>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$sudo apt install pip3 python3-dev (python36 for CentOS)
+$pip3 install (--userId) virtualenv (check PermissionError can be occurred without 'userId')
+$cd ~/
+$mkdir virtualenvs
+$cd virtualenvs
+$source .profile (if path is not updated)
+$virtualenv --python=python3.6 your_virtualenv_name
+</code></pre></div>    </div>
+    <h2 id="run-virtualenv">run virtualenv</h2>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$source ./your_virtualenv_name/bin/activate
+$pip3 install ...
+...
+$which python3
+/home/your_id/virtualenvs/your_virtialenv_name/bin/python3 (important!!)
+$deactivate
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h1 id="install-opencv">Install OpenCV</h1>
+<ol>
+  <li>install additional packages for opencv (CentOS, check the newest way)
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum install curl-devel zlib-devel
+ $ sudo yum install gtk+-devel gtk2-devel gtk3-devel
+ $ sudo yum install git pkgconfig (they might be installed)
+ $ sudo yum install libpng-devel libjpeg-turbo-devel jasper-devel openexr-devel libtiff-devel libwebp-devel (to support various image format)
+ $ sudo yum install libdc1394-devel libv4l-devel (for video format)
+ $ sudo yum install gstreamer-dev gstreamer-plugins-base-devel gstreamer1-dev gstreamer1-plugins-base-devel 
+ $ sudo yum install tbb-devel eigen3-devel
+ $ sudo yum install epel-release (might be installed in the environment setting step)
+ $ sudo rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm 
+ $ sudo yum install ffmpeg ffmpeg-dev (for libavcodec libavformat libavutil libswscale libavresample)
+
+</code></pre></div>    </div>
+    <p>For Ubuntu,</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo apt install git pkg-config (default for development)
+ $ sudo apt install libcurl4-gnutls-dev libcurl4-openssl-dev
+ $ sudo apt install libgtk-3-dev libgtk2.0-dev
+ $ sudo apt install libpng-dev libjpeg-dev libjpeg-turbo8-dev libtiff-dev libwebp-dev
+ $ sudo apt install libdc1394-22-dev libv4l-dev 
+ $ sudo apt install libavcodec-dev libavformat-dev ***
+ $ sudo apt install libxvidcore-dev libx264-dev ***
+ $ sudo apt-get install gstreamer1.0-opencv libgstreamer1.0-dev 
+ $ sudo apt install libtbb-dev libeigen3-dev
+ $ sudo apt install ffmpeg libswscale-dev
+ $ sudo apt install libavcodec-dev libavformat-dev libavutil-dev libsescale-dev libavresample-dev
+ $ sudo apt install libatlas-base-dev gfortran ***
+ $ sudo apt install libgoogle-glog-dev
+</code></pre></div>    </div>
+  </li>
+  <li>set virtual envirionment for opencv</li>
+  <li>prepair install file
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ mkdir opencv
+ $ cd opencv
+ $ git clone https://github.com/opencv/opencv_contrib.git
+ $ git clone https://github.com/opencv/opencv.git
+ $ mkdir build (this is &lt;opencv_build_derectory&gt; as the below)
+</code></pre></div>    </div>
+  </li>
+  <li>install opencv-contrib (you can use xfeature2 with opencv_contrib version), https://github.com/opencv/opencv_contrib
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ cd &lt;opencv_build_directory&gt;
+ $ cmake -DOPENCV_EXTRA_MODULES_PATH=&lt;opencv_contrib&gt;/modules &lt;opencv_source_directory&gt; -DOPENCV_ENABLE_NONFREE=ON
+ $ make -j5
+ $ sudo make install
+</code></pre></div>    </div>
+    <h1 id="how-to-fix-locale-error">How to fix locale error</h1>
+    <p>Edit /etc/environment and add the following. Replace en_US with your actual locale if you are not using en_US:</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LC_ALL="en_US.UTF-8"
+LC_CTYPE="en_US.UTF-8"
+LANGUAGE="en_US.UTF-8"
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h1 id="install-boost-and-thrift">Install Boost and Thrift</h1>
+<ol>
+  <li>install additional packages for thrift
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum install wget autoconf automake bison (might be installed) (flex?)
+ $ sudo yum install libevent-devel
+ $ sudo yum install zlib-devel
+ $ sudo yum install openssl-devel
+ $ sudo yum install nodejs
+</code></pre></div>    </div>
+    <p>For Ubuntu,</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo apt install git wget autoconf automake bison
+ $ sudo apt install libevent-dev zlib1g-dev libcurl4-openssl-dev
+ $ sudo apt install libtool
+ $ sudo apt install pkg-config curl flex
+ $ sudo apt install nodejs
+ $ sudo apt install npm
+</code></pre></div>    </div>
+  </li>
+  <li>go to the boost site (http://www.boost.org), and download the install file</li>
+  <li>unzip the downloaed file
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ tar -zxvf boost_1_6xx.tar.gz
+</code></pre></div>    </div>
+  </li>
+  <li>install boost
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ cd boost_1_6xx
+ $ sudo ./bootstrap.sh
+ $ sudo ./b2 install
+ $ sudo ./b2 --with-test --prefix=/opt/boost install (building the unit test framework and install boost at $boost_installation_prefix)
+</code></pre></div>    </div>
+  </li>
+  <li>install thrift
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ git clone https://github.com/apache/thrift
+ $ cd thrift
+ $ ./bootstrap.sh
+ $ ./configure --with-boost=/opt/boost --without-ruby --without-lua
+ $ make
+ $ sudo make install
+</code></pre></div>    </div>
+
+    <p>The default ruby version of CentOS is 2.0, but thrift 0.12 needs over 2.3.
+ It is not easy to install ruby 2.3 with other libraries, such as bundler…
+ So, I recommend –without-ruby
+ If you meet bundler version problem (version down could be needed) during make, uninstall bundler and reinstall</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ gem uninstall bundler
+ $ gem install bundler --version '1.11'
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#development" class="page__taxonomy-item" rel="tag">development</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#environment" class="page__taxonomy-item" rel="tag">environment</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#installation" class="page__taxonomy-item" rel="tag">installation</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#setup" class="page__taxonomy-item" rel="tag">setup</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-10-04T00:00:00+09:00">October 04, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Setting+for+Development+Environment%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fdevenv%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fdevenv%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fdevenv%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/WPF-Basics/" class="pagination--pager" title="WPF Basics
+">Previous</a>
+    
+    
+      <a href="/tool/gitcommand/" class="pagination--pager" title="Git command
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/querydsl-for-elasticsearch/" rel="permalink">Elasticsearch &amp; Query DSL
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 24 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-and-rtsp/" rel="permalink">GStreamer and RTSP
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/research/Kinematics/" rel="permalink">Kinematics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 20 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/telegraf.md/" rel="permalink">Telegraf Basic
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 14 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 VCANUS's Technical Blog. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

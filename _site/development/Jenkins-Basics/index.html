@@ -1,0 +1,735 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>How to use Jenkins - Basic - VCANUS’s Technical Blog</title>
+<meta name="description" content="Written By Young-rae Shin(https://github.com/lived1024)">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="VCANUS's Technical Blog">
+<meta property="og:title" content="How to use Jenkins - Basic">
+<meta property="og:url" content="http://localhost:4000/development/Jenkins-Basics/">
+
+
+  <meta property="og:description" content="Written By Young-rae Shin(https://github.com/lived1024)">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-10-30T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/Jenkins-Basics/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="VCANUS's Technical Blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          VCANUS's Technical Blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="How to use Jenkins - Basic">
+    <meta itemprop="description" content="Written By Young-rae Shin(https://github.com/lived1024)">
+    <meta itemprop="datePublished" content="October 30, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">How to use Jenkins - Basic
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Written By Young-rae Shin(<a href="https://github.com/lived1024">https://github.com/lived1024</a>)</p>
+
+<h1 id="jenkins">Jenkins</h1>
+<h2 id="정의">정의</h2>
+<p>소프트웨어 개발 시 지속적으로 통합 서비스를 제공하는 툴.<br />
+일명 Continuous Intergration (CI)라고 표현한다.<br />
+예를 들어 Git을 사용할 때, Git의 Repository에 Push가 감지되면, Jenkins에서 자동으로 Build, Deploy한다.</p>
+
+<h2 id="설치">설치</h2>
+<h3 id="requirements">Requirements</h3>
+<ul>
+  <li>JAVA(openJDK도 가능)</li>
+  <li>MAVEN</li>
+  <li>Git
+    <h3 id="설치-순서">설치 순서</h3>
+  </li>
+  <li>설치 파일 다운로드 : <a href="https://jenkins.io/">공식 홈페이지</a> 다운로드<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67818875-3e8f7a80-faf6-11e9-9d6c-ac4d33fbd1d8.png" alt="install1" />  <br />
+  아래 화면에서 LTS버전으로 OS에 맞게 다운받는다!<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67818877-418a6b00-faf6-11e9-9997-1c225155714f.png" alt="install2" />
+    <ol>
+      <li>Window : 파일 압축해제 이후 설치파일 실행</li>
+      <li>Ubuntu : 설치 방법은 해당 <a href="https://fun25.co.kr/blog/jenkins-ubuntu-16-04-install/">링크</a> 참조</li>
+    </ol>
+  </li>
+  <li>초기 설정 포트<br />
+  Jenkins default port : 8080 -&gt; ex) 8000  (본 문서에서는 port를 8000번으로 변경했다고 가정 후 진행)<br />
+  Windows : 설치폴더 내 jenkins.xml<br />
+  Ubuntu
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  $vi /etc/default/jenkins
+</code></pre></div>    </div>
+    <p>Mac</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  $vi /usr/local/Cellar/jenkins/2.x.x/homebrew.mxcl.jenkins.plist
+</code></pre></div>    </div>
+  </li>
+  <li>Port변경 후 Jenkins 재시작 필요<br />
+  Window : Ctrl + Shift + Esc =&gt; Service =&gt; jenkins 우클릭 후 재시작<br />
+  Ubuntu
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  $sudo service jenkins restart
+</code></pre></div>    </div>
+    <p>Mac</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  $brew services stop jenkins
+  $brew services start jenkins
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="실행">실행</h3>
+<h4 id="첫-실행">첫 실행</h4>
+<ul>
+  <li>주소창에 http://본인IP:8000 입력 (Window는 브라우저 자동 실행)<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67833073-ee7cdc00-fb26-11e9-98ef-59d469dec6cb.png" alt="run1" /></li>
+  <li>위 화면 이후 아래와 같은 화면이 나온다.<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67833072-ee7cdc00-fb26-11e9-9ee7-b9ee97fbd8b6.png" alt="run2" /></li>
+  <li>빨간색으로 강조된 경로에 있는 파일을 열어 해당 내용을 빈 칸에 넣는다.(스크린샷의 경로는 윈도우)<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67833447-f9843c00-fb27-11e9-96d9-1078c30fa5a4.png" alt="run3" /></li>
+  <li>플러그인은 추천받은 그대로 이용<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67833444-f9843c00-fb27-11e9-848f-fd9688f54aef.png" alt="run4" /></li>
+  <li>플러그인 설치화면을 넘어가면 admin 계정을 설정할 수 있다.<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67833442-f9843c00-fb27-11e9-87b7-92b7edb302af.png" alt="run5" /></li>
+  <li>admin 계정을 추가하지 않는다면 Save and Continue<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67833440-f8eba580-fb27-11e9-8b5d-dfe4d4b7810b.png" alt="run6" /></li>
+  <li>Jenkins에서 사용할 URL을 설정할 수 있다. 여기에서 Port를 다르게 적더라도 Jenkins 내부 설정파일에서 별도로 Port를 바꿔줘야 적용된다.<br />
+  Jenkins 설치 폴더의 jenkins.xml에서 변경할 수 있다.<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67833438-f8eba580-fb27-11e9-935c-3c643704ace1.png" alt="run7" /><br />
+-위와 같은 화면이 나온다면 첫 실행은 성공적으로 진행된 것이다.
+    <h4 id="jenkins-settings--jenkins-관리">Jenkins Settings : Jenkins 관리</h4>
+    <ol>
+      <li>시스템 설정 : Github Server 연동 설정<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67833946-66e49c80-fb29-11e9-8a2d-56d0e634e8d7.png" alt="Setting1" /><br />
+  Github Server의 Name은 알아서 넣고, URL은 그대로 놔둔다.<br />
+  그리고 Credentioal를 추가해야하는데 Github에서 토큰을 발급받아야한다.<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67833945-66e49c80-fb29-11e9-9238-d55ab421ff53.png" alt="Setting2" /><br />
+  <img src="https://user-images.githubusercontent.com/41990925/67834191-1c175480-fb2a-11e9-9715-b88049a8dec4.png" alt="Setting3" /><br />
+  해당 페이지에서 발급!<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67834190-1c175480-fb2a-11e9-886a-7cf265ce36ef.png" alt="Setting4" /><br />
+  발급받은 Token을 아래 화면처럼 등록!<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67834187-1c175480-fb2a-11e9-8070-cd7d01813cea.png" alt="Setting5" /><br />
+  Test 버튼을 누르면 정상적인 접속을 확인할 수 있다.<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67834185-1b7ebe00-fb2a-11e9-9de9-20dc49fece66.png" alt="Setting6" /></li>
+      <li>Global Tool Configuration<br />
+  Maven, Java, Git에 대한 설정을 한다.<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67834403-a9f33f80-fb2a-11e9-9e0a-e46511250cc7.png" alt="Setting7" /><br />
+  Maven, Java는 설치폴더를, Git은 실행파일까지 Path를 잡아준다. (bin 폴더 내부의 git.exe)<br />
+  <img src="https://user-images.githubusercontent.com/41990925/67834405-ac559980-fb2a-11e9-8881-452ee90c8d04.png" alt="Setting8" /></li>
+      <li>플러그인 관리<br />
+  Build까지만 이용하려면 Git, Github 두 가지가 필요하지만 추천 플러그인에 포함되어있다.<br />
+  단순히 Build까지 활용한다면 추가로 설정할 내용은 없다.</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="job-생성-및-설정">Job 생성 및 설정</h3>
+<ol>
+  <li>생성<br />
+ <img src="https://user-images.githubusercontent.com/41990925/67834758-9399b380-fb2b-11e9-9363-0c1ba0f37ca7.png" alt="run1" /><br />
+ Freestyle project로 생성!<br />
+ <img src="https://user-images.githubusercontent.com/41990925/67834757-93011d00-fb2b-11e9-9b69-1454ac9aaa48.png" alt="run2" /></li>
+  <li>설정<br />
+ Github의 레파지토리를 아래 두 곳에 붙여넣는다.<br />
+ 일반적인 http 프로토콜을 이용할 경우 에러가 발생하는 경우도 있다고 하니 git 프로토콜을 추천!<br />
+ <img src="https://user-images.githubusercontent.com/41990925/67835041-4f5ae300-fb2c-11e9-9587-fe5b9f783101.png" alt="run3" /><br />
+ 깃 프로토콜은 아래에서 볼 수 있다.<br />
+ <img src="https://user-images.githubusercontent.com/41990925/67835040-4f5ae300-fb2c-11e9-9ae1-ff48bf3c779d.png" alt="run4" /><br />
+ SSH를 이용하여 연동을 완료해야 정상적으로 연결된다.<br />
+ SSH 인증을 통과하지 못한다면 이전 스크린샷처럼 Repositories에 빨간 글씨로 표시된다.<br />
+ SSH키 생성은 아래 코드를 이용하면 된다
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ssh-keygen -t rsa
+</code></pre></div>    </div>
+    <p>SSH키 발급은 아래의 절차대로 따르자<br />
+ <img src="https://user-images.githubusercontent.com/41990925/67834756-93011d00-fb2b-11e9-835f-6fb3ced7b27b.png" alt="run5-ssh1" /><br />
+ 엔터만 눌러 발급할 경우 경로, 파일명은 default로 생성된다.<br />
+ 스크린샷처럼 경로와 이름을 입력하면 그대로 생성.<br />
+ <img src="https://user-images.githubusercontent.com/41990925/67834755-93011d00-fb2b-11e9-92f8-99679922a623.png" alt="run5-ssh2" /><br />
+ pub확장자를 가진 파일은 아래처럼 등록!<br />
+ <img src="https://user-images.githubusercontent.com/41990925/67835384-2c7cfe80-fb2d-11e9-8705-31fdfebb5253.png" alt="run6" /><br />
+ 대상이 되는 Github Repository의 Settings - Deploy Keys<br />
+ <img src="https://user-images.githubusercontent.com/41990925/67835393-3141b280-fb2d-11e9-8e9e-ec6958e4c0dd.png" alt="run7" /><br />
+ pub확장자로 생성된 파일을 메모장 또는 vi로 열어 해당 내용을 Key에 입력하고, 다른 파일은 Jenkins에 사용<br />
+ <img src="https://user-images.githubusercontent.com/41990925/67835041-4f5ae300-fb2c-11e9-9587-fe5b9f783101.png" alt="run3" /><br />
+ 위 스크린샷에서 빨간 글씨 밑의 Credentials에 추가!<br />
+ <img src="https://user-images.githubusercontent.com/41990925/67835588-b5943580-fb2d-11e9-8f00-a7a9b1cd3aa0.png" alt="run8" /><br />
+ 남은 파일 또한 메모장 또는 vi로 열어 해당 내용을 Credentials에 등록한다.<br />
+ 문제없이 등록되면 아래 화면처럼 빨간 글씨가 사라진다.<br />
+ <img src="https://user-images.githubusercontent.com/41990925/67835586-b5943580-fb2d-11e9-948e-075863eec31c.png" alt="run9" /><br />
+ Branch 입력 부분은 입력하지 않으면 모든 브랜치에 해당되고, 특정 브랜치만 할 경우에 입력하면 된다.</p>
+  </li>
+  <li>Build<br />
+ Build 탭에서는 아래처럼 Invoke top-level Maven targets를 추가하고 등록된 Maven을 이용한다.<br />
+ <img src="https://user-images.githubusercontent.com/41990925/67835828-584cb400-fb2e-11e9-832a-9fab1d8ad06f.png" alt="build1" /><br />
+ 스크린샷과는 다르게 Goals에는 package -D maven.test.skip=true를 입력한다.<br />
+ -D maven.test.skip=true는 test코드를 실행해보지 않고 Build하는 옵션.</li>
+</ol>
+
+<h3 id="build-test">Build test</h3>
+<p><img src="https://user-images.githubusercontent.com/41990925/67836296-95657600-fb2f-11e9-9e90-a1d5db9b262e.png" alt="run-build" /><br />
+우측의 Console Output을 클릭하면 Build 상황에 대한 로그화면이 뜬다.<br />
+성공한 경우 아래처럼 뜬다.<br />
+<img src="https://user-images.githubusercontent.com/41990925/67836311-9e564780-fb2f-11e9-80a8-492b42c65a46.png" alt="run-success" /><br />
+스크린샷에는 war파일로 packaging이 설정되어있너 war로 build가 된 상황이고, 이것은 pom.xml에서 <packaging>태그를 이용하면 간단하다.</packaging></p>
+
+<h3 id="github-webhook-setting-push---auto-build">Github Webhook setting (push -&gt; auto build)</h3>
+<p>해당 Job의 구성에서 아래처럼 체크<br />
+<img src="https://user-images.githubusercontent.com/41990925/67837053-8384d280-fb31-11e9-9ff1-ba8395aee451.png" alt="webhook setting1" /><br />
+이후 대상이 되는 Github Repository - settings - Webhooks로 이동하고 추가!<br />
+<img src="https://user-images.githubusercontent.com/41990925/67837371-3bb27b00-fb32-11e9-87ae-5e83ca2165c2.png" alt="webhook setting2" /><br />
+Payload URL에는 포트포워딩된 IP와 Port를 입력하고 /github-webhook/를 꼭 붙여준다!<br />
+Ex) http://127.0.0.1:9999/github-webhook/<br />
+Content type은 application/json 선택!<br />
+연결에 성공한 경우 아래 화면처럼 초록색 체크 표시가 생긴다.<br />
+<img src="https://user-images.githubusercontent.com/41990925/67837721-0a867a80-fb33-11e9-8c80-6adeb950f086.png" alt="hook status" /></p>
+
+<p>이후 github에 push를 한다면 자동으로 build!</p>
+
+<h3 id="os에-따른-settings">OS에 따른 settings</h3>
+<ul>
+  <li>Mac에서 jenkins 설치시 localhost, 127.0.0.1만 허용되고 192.168.0.xx는 접속이 안되는 경우가 있었다.<br />
+ 이 경우 아래 화면처럼 httpListenAddress를 삭제(or 주석)하면 정상적인 이용이 가능하다.<br />
+ Port도 해당 이 파일에서 수정가능
+ <img src="https://user-images.githubusercontent.com/41990925/71219577-ebbd8c80-2308-11ea-8338-12a2b9727fcc.png" alt="Mac default setting" />  <br />
+ 해당 파일 실행은 아래 command를 입력하면 된다.
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $vi /usr/local/Cellar/jenkins/2.x.x/homebrew.mxcl.jenkins.plist
+</code></pre></div>    </div>
+  </li>
+  <li>Mac에서 jenkins 설정 시 default path (git의 경로는 “which git”으로 경로를 찾을 수 있다.)
+ <img src="https://user-images.githubusercontent.com/41990925/71220206-1f99b180-230b-11ea-8fb7-a4d57c57d4e5.png" alt="Mac default path" /></li>
+  <li>Ubuntu 기본 설정 파일 열기
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $vi /etc/default/jenkins  
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="nexus를-이용한-배포deploy">Nexus를 이용한 배포(Deploy)</h3>
+<ul>
+  <li><a href="https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev2:dep:nexus">Nexus 서버에 배포</a> 참조</li>
+</ul>
+
+<h3 id="build-path-변경">Build Path 변경</h3>
+<ol>
+  <li>[고급] 클릭<br />
+ <img src="https://user-images.githubusercontent.com/41990925/71467097-1924a180-2805-11ea-970e-e547da75b641.png" alt="Change workspace1" /></li>
+  <li>Set custom workspace path<br />
+ <img src="https://user-images.githubusercontent.com/41990925/71467098-1924a180-2805-11ea-86f5-7eefd32c4408.png" alt="Change workspace2" /></li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#build" class="page__taxonomy-item" rel="tag">Build</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#jenkins" class="page__taxonomy-item" rel="tag">Jenkins</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-10-30T00:00:00+09:00">October 30, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=How+to+use+Jenkins+-+Basic%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FJenkins-Basics%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FJenkins-Basics%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FJenkins-Basics%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/elasticsearch-docker-cluster/" class="pagination--pager" title="Elasticsearch Docker Cluster
+">Previous</a>
+    
+    
+      <a href="/development/CentOS-8-Install/" class="pagination--pager" title="CentOS 8 Install
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/querydsl-for-elasticsearch/" rel="permalink">Elasticsearch &amp; Query DSL
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 24 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-and-rtsp/" rel="permalink">GStreamer and RTSP
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/research/Kinematics/" rel="permalink">Kinematics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 20 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/telegraf.md/" rel="permalink">Telegraf Basic
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 14 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 VCANUS's Technical Blog. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

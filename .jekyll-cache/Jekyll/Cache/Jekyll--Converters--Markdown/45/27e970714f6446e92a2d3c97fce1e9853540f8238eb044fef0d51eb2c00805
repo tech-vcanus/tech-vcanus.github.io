@@ -1,0 +1,243 @@
+I"qL<p>Written By <a href="https://github.com/nurring">Nuri Na</a>, VCANUS</p>
+
+<h2 id="about">About</h2>
+
+<ul>
+  <li>
+    <p>JVM: Elasticsearch는 자바 애플리케이션으로 Java 설치 필요</p>
+  </li>
+  <li>
+    <p>HTTP / RESTful API: REST API를 통해 조작</p>
+  </li>
+  <li>
+    <p>JSON: 내부에 JSON으로 저장, 요청/응답도 JSON 형식</p>
+  </li>
+  <li>
+    <p>역색인(Inverted Index) 구조: 단어 검색 시 해당 단어가 포함된 모든 document를 가리킴</p>
+  </li>
+  <li>
+    <p>Index/type/document : 엘라스틱 서치의 데이터 계층.  <code class="highlighter-rouge">/&lt;indexName&gt;/&lt;typeName&gt;/&lt;documentName&gt;</code> 로 표현 <br />
+현재는 type를 구분하지 않도록 하고 있으며, /indexName/<code class="highlighter-rouge">_doc</code>/documentName으로 사용</p>
+  </li>
+</ul>
+
+<h2 id="indexing">Indexing</h2>
+
+<p>인덱스 생성</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//**Example**</span>
+<span class="n">PUT</span> <span class="n">lecture</span> <span class="c1">// lecture 인덱스 생성</span>
+
+<span class="n">PUT</span> <span class="n">lecture</span><span class="o">/</span><span class="n">_doc</span><span class="o">/</span><span class="mi">1</span> <span class="c1">// 인덱스가 없을 경우 인덱스 생성, title 필드에 value 저장 (Schemeless)</span>
+<span class="p">{</span>
+  <span class="s">"title"</span><span class="o">:</span> <span class="s">"근대 중국사"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="mapping">Mapping</h2>
+
+<p>인덱스에 필드와 데이터 포맷을 정의</p>
+
+<p>가능한 데이터 타입은 text, keyword, date, long, double, boolean, <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/ip.html">ip</a>, <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html">geo_point</a> 등</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//**Example**</span>
+<span class="n">PUT</span> <span class="n">lecture</span><span class="o">/</span><span class="n">_mapping</span>
+<span class="p">{</span>
+  <span class="s">"properties"</span><span class="o">:</span><span class="p">{</span>
+    <span class="s">"title"</span><span class="o">:</span><span class="p">{</span><span class="s">"type"</span><span class="o">:</span><span class="s">"text"</span><span class="p">},</span>
+    <span class="s">"professor"</span><span class="o">:</span><span class="p">{</span><span class="s">"type"</span><span class="o">:</span><span class="s">"text"</span><span class="p">},</span>
+    <span class="s">"major"</span><span class="o">:</span><span class="p">{</span> <span class="c1">//text와 keyword 두 가지로 정의</span>
+      <span class="s">"type"</span><span class="o">:</span><span class="s">"text"</span><span class="p">,</span>
+      <span class="s">"fields"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s">"raw"</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s">"type"</span><span class="o">:</span><span class="s">"keyword"</span> <span class="c1">//fields.raw</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s">"semester"</span><span class="o">:</span><span class="p">{</span><span class="s">"type"</span><span class="o">:</span><span class="s">"text"</span><span class="p">},</span>
+    <span class="s">"student_count"</span><span class="o">:</span><span class="p">{</span><span class="s">"type"</span><span class="o">:</span><span class="s">"integer"</span><span class="p">},</span>
+    <span class="s">"unit"</span><span class="o">:</span><span class="p">{</span><span class="s">"type"</span><span class="o">:</span><span class="s">"integer"</span><span class="p">},</span>
+    <span class="s">"rating"</span><span class="o">:</span><span class="p">{</span><span class="s">"type"</span><span class="o">:</span><span class="s">"integer"</span><span class="p">},</span>
+    <span class="s">"report_due_date"</span><span class="o">:</span><span class="p">{</span><span class="s">"type"</span><span class="o">:</span><span class="s">"date"</span><span class="p">,</span><span class="s">"format"</span><span class="o">:</span><span class="s">"yyyy-MM-dd"</span><span class="p">},</span>
+    <span class="s">"school_location"</span><span class="o">:</span><span class="p">{</span><span class="s">"type"</span><span class="o">:</span><span class="s">"geo_point"</span><span class="p">}</span> <span class="c1">//좌표값. lat/lon 키를 가짐. geohash 가능. </span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="insertupdate">Insert/Update</h2>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//**Example**</span>
+<span class="n">PUT</span> <span class="n">lecture</span><span class="o">/</span><span class="n">_doc</span><span class="o">/</span><span class="mi">1</span>
+<span class="p">{</span>
+  <span class="s">"title"</span><span class="o">:</span> <span class="s">"중국 고전 강독"</span><span class="p">,</span>
+  <span class="s">"professor"</span><span class="o">:</span> <span class="s">"나민구"</span><span class="p">,</span>
+  <span class="s">"major"</span><span class="o">:</span> <span class="s">"중국어"</span><span class="p">,</span> <span class="c1">// text와 keyword 두 가지 타입으로 mapping</span>
+  <span class="s">"semester"</span><span class="o">:</span> <span class="s">"1학기"</span><span class="p">,</span>
+  <span class="s">"student_count"</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="s">"unit"</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s">"rating"</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+  <span class="s">"report_due_date"</span><span class="o">:</span> <span class="s">"2020-03-10"</span><span class="p">,</span>
+  <span class="s">"school_location"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s">"lat"</span><span class="o">:</span><span class="mi">37</span><span class="p">.</span><span class="mi">401376</span><span class="p">,</span>
+    <span class="s">"lon"</span><span class="o">:</span><span class="mi">127</span><span class="p">.</span><span class="mi">110516</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">PUT</span> <span class="n">lecture</span><span class="o">/</span><span class="n">_doc</span><span class="o">/</span><span class="mi">2</span>
+<span class="p">{</span>
+  <span class="s">"title"</span><span class="o">:</span> <span class="s">"현대중국정치"</span><span class="p">,</span>
+  <span class="s">"professor"</span><span class="o">:</span> <span class="s">"오승렬"</span><span class="p">,</span>
+  <span class="s">"major"</span><span class="o">:</span> <span class="s">"중국어"</span><span class="p">,</span>
+  <span class="s">"semester"</span><span class="o">:</span> <span class="s">"1학기"</span><span class="p">,</span>
+  <span class="s">"student_count"</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="s">"unit"</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="s">"rating"</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="s">"report_due_date"</span><span class="o">:</span> <span class="s">"2020-03-24"</span><span class="p">,</span>
+  <span class="s">"school_location"</span><span class="o">:</span> <span class="s">"drm3btev3e86"</span> <span class="c1">//geohash</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="uri-search">URI Search</h2>
+
+<p>URL에 파라미터를 넘겨 문서 조회, 간단한 테스트에 유용</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">## Example</span>
+curl <span class="nt">-XGET</span> <span class="s1">'localhost:9200/&lt;indexName&gt;/_search?q=&lt;검색어&gt;&amp;sort=&lt;정렬기준&gt;'</span>
+</code></pre></div></div>
+
+<h2 id="query-dsl">Query DSL</h2>
+
+<p>Request Body 검색에 이용되는 JSON 구조를 지원, 다양한 검색 조건 조합에 용이하며 재사용이 가능해 일반적으로 사용됨</p>
+
+<h4 id="query-dsl-구조">Query DSL 구조</h4>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s">"size"</span><span class="o">:</span> <span class="c1">//리턴 결과 개수 지정</span>
+  <span class="s">"from"</span><span class="o">:</span> <span class="c1">//몇 번째 문서부터 가져올 지 지정</span>
+  <span class="s">"timeout"</span><span class="o">:</span> <span class="c1">//결과 받는 데까지 걸리는 시간</span>
+  
+  <span class="s">"_source"</span><span class="o">:</span> <span class="c1">//특정 필드만 출력하고 싶을 때 사용</span>
+  <span class="s">"query"</span> <span class="o">:</span> <span class="p">{</span> <span class="p">}</span> <span class="c1">//검색 조건문 작성</span>
+  <span class="s">"aggs"</span> <span class="o">:</span> <span class="p">{</span> <span class="p">}</span> <span class="c1">//통계 및 집계</span>
+  <span class="s">"sort"</span> <span class="o">:</span> <span class="p">{</span> <span class="p">}</span> <span class="c1">//출력 조건</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//**Example**</span>
+
+<span class="c1">// select professor from ( select * from lecture where major = 중국어과 );</span>
+<span class="n">POST</span> <span class="n">lecture</span><span class="o">/</span><span class="n">_search</span>
+<span class="p">{</span>
+  <span class="s">"from"</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">//첫 페이지부터</span>
+  <span class="s">"size"</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span> <span class="c1">//5개 문서만 조회</span>
+  <span class="s">"query"</span><span class="o">:</span> <span class="p">{</span> <span class="c1">//**쿼리 컨텍스트 - 전문 검색. 연관성 score를 계산하여 결과 도출. 필터링을 먼저 거쳐 query 조건이 2개인 경우보다 빨라짐</span>
+    <span class="s">"bool"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s">"must"</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s">"match"</span><span class="o">:</span> <span class="p">{</span>  <span class="c1">//'match' - 형태소 분석을 통해 현대/중국 2개 텀으로 분리하여 'or' 연산함</span>
+            <span class="s">"title"</span><span class="o">:</span> <span class="s">"현대 중국"</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s">"filter"</span><span class="o">:</span> <span class="p">{</span> <span class="c1">//**필터 컨텍스트 - Y/N 단순 판별로 쿼리 컨텍스트보다 빠름</span>
+        <span class="s">"term"</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s">"major"</span><span class="o">:</span> <span class="s">"중국어"</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s">"_source"</span><span class="o">:</span> <span class="p">[</span> <span class="s">"title"</span><span class="p">,</span> <span class="s">"rating"</span> <span class="p">],</span>  <span class="c1">//보고 싶은 필드만 필터링</span>
+  <span class="s">"sort"</span><span class="o">:</span> <span class="p">[</span> <span class="c1">//정렬</span>
+    <span class="p">{</span> 
+      <span class="s">"rating"</span><span class="o">:</span> <span class="p">{</span> <span class="s">"order"</span><span class="o">:</span> <span class="s">"asc"</span> <span class="p">}</span> 
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="aggregations집계">Aggregations(집계)</h2>
+
+<p>SQL보다 강력한 집계 기능 제공 - 여러 aggs 중첩, 날짜/위치 정보 집계, 분산처리 등</p>
+
+<p>집계 시 문서를 평가한 후 기준에 만족하는 문서를 그룹화 하고, 그것을 토대로 집계를 수행</p>
+
+<h4 id="집계-구문-구조">집계 구문 구조</h4>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s">"query"</span><span class="o">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">},</span>
+  <span class="s">"aggregations"</span> <span class="o">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span> <span class="c1">//혹은 aggs</span>
+<span class="p">}</span>
+
+<span class="s">"aggregations"</span><span class="o">:</span> <span class="p">{</span>
+  <span class="s">"집계 이름"</span><span class="o">:</span><span class="p">{</span>
+    <span class="s">"집계 타입"</span><span class="o">:</span><span class="p">{</span> <span class="c1">//terms, date_histogram, sum ...</span>
+      <span class="err">집계</span> <span class="err">타입에</span> <span class="err">맞는</span> <span class="err">조건</span> <span class="err">내용</span>
+    <span class="p">},</span>
+    <span class="p">[,</span> <span class="s">"meta"</span> <span class="o">:</span> <span class="p">{</span> <span class="err">메타</span> <span class="err">데이터</span> <span class="err">조건</span> <span class="err">내용</span> <span class="p">}]</span><span class="o">?</span> <span class="c1">//메타 필드 가능</span>
+    <span class="p">[,</span> <span class="s">"aggregations"</span> <span class="o">:</span> <span class="p">{</span> <span class="p">[</span> <span class="err">서브</span> <span class="err">집계</span> <span class="p">]</span><span class="o">+</span> <span class="p">}</span> <span class="p">]</span><span class="o">?</span> <span class="c1">//서브 집계 가능</span>
+  <span class="p">}</span>
+  <span class="p">[,</span><span class="s">"집계 이름2"</span> <span class="o">:</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}]</span><span class="o">*</span> <span class="c1">//집계 중첩 가능</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//**Example**</span>
+
+<span class="c1">// 학생수 범위(group_by_student_count) 별 강의 평점(average_rating)</span>
+<span class="c1">// SELECT avg(rating) as average_rating FROM lecture GROUP BY 학생 수 범위(..)</span>
+<span class="n">POST</span> <span class="n">lecture</span><span class="o">/</span><span class="n">_search</span>
+<span class="p">{</span>
+  <span class="s">"size"</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">//지정한 field만 검색 됨</span>
+  <span class="s">"aggs"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s">"group_by_student_count"</span><span class="o">:</span> <span class="p">{</span> <span class="c1">//그룹화</span>
+      <span class="s">"range"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s">"field"</span><span class="o">:</span> <span class="s">"student_count"</span><span class="p">,</span>
+        <span class="s">"ranges"</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span> <span class="s">"from"</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">// 이상 (&lt;=)</span>
+            <span class="s">"to"</span><span class="o">:</span> <span class="mi">11</span> <span class="p">},</span> <span class="c1">// 미만 (&lt;)</span>
+          <span class="p">{</span> <span class="s">"from"</span><span class="o">:</span> <span class="mi">11</span><span class="p">,</span>
+            <span class="s">"to"</span><span class="o">:</span> <span class="mi">21</span> <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s">"aggs"</span><span class="o">:</span> <span class="p">{</span> <span class="c1">//집계</span>
+        <span class="s">"average_rating"</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s">"avg"</span><span class="o">:</span> <span class="p">{</span> <span class="s">"field"</span><span class="o">:</span> <span class="s">"rating"</span>  <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// SELECT major, avg(rating) from  lecture GROUP BY major;</span>
+<span class="n">GET</span> <span class="n">lecture</span><span class="o">/</span><span class="n">_search</span>
+<span class="p">{</span>
+  <span class="s">"size"</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">"aggs"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s">"group_by_major"</span><span class="o">:</span><span class="p">{</span> <span class="c1">//그룹화</span>
+      <span class="s">"terms"</span><span class="o">:</span><span class="p">{</span>
+        <span class="s">"field"</span><span class="o">:</span> <span class="s">"major.raw"</span><span class="p">,</span>
+        <span class="s">"order"</span> <span class="o">:</span> <span class="p">{</span> <span class="s">"_key"</span> <span class="o">:</span> <span class="s">"asc"</span> <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="s">"aggs"</span><span class="o">:</span> <span class="p">{</span> <span class="c1">//집계</span>
+        <span class="s">"average_rating"</span><span class="o">:</span><span class="p">{</span>
+          <span class="s">"avg"</span><span class="o">:</span><span class="p">{</span> <span class="s">"field"</span><span class="o">:</span> <span class="s">"rating"</span> <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="shards--replicas">Shards &amp; Replicas</h2>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">PUT</span> <span class="n">lecture</span>
+<span class="p">{</span>
+  <span class="s">"settings"</span><span class="o">:</span><span class="p">{</span>
+    <span class="s">"index"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s">"number_of_shards"</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="s">"number_of_replicas"</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+:ET

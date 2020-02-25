@@ -1,0 +1,102 @@
+I"±<p>Written By <a href="https://github.com/nurring">Nuri Na</a>, <a href="https://github.com/jjangchan">KJ Jang</a>, VCANUS</p>
+
+<p><code class="highlighter-rouge">GStreamer</code> is a pipeline-based multimedia framework, can build a system that reads files in one format, processes them, and exports them in another.</p>
+
+<p>In this project, we use <code class="highlighter-rouge">RTSP</code> as networking protocol, a network control protocol used for streaming media servers.</p>
+
+<h2 id="installation">Installation</h2>
+
+<h4 id="gstreamer">GStreamer</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> apt <span class="nb">install</span> <span class="nt">-y</span> gstreamer1.0-tools <span class="se">\</span>
+gstreamer1.0-plugins-base <span class="se">\</span>
+gstreamer1.0-plugins-good <span class="se">\</span>
+gstreamer1.0-plugins-bad <span class="se">\</span>
+gstreamer1.0-plugins-ugly <span class="se">\</span>
+gstreamer1.0-libav <span class="se">\</span>
+python-gst-1.0
+</code></pre></div></div>
+
+<h4 id="rtsp-server">RTSP Server</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>gir1.2-gst-rtsp-server-1.0
+</code></pre></div></div>
+
+<h2 id="architecture">Architecture</h2>
+
+<p><img src="/assets/images/gstreamer_rtsp.png" alt="architecture" /></p>
+
+<h2 id="gstreamer-basic">GStreamer Basic</h2>
+
+<h4 id="foundations">Foundations</h4>
+
+<ul>
+  <li>
+    <p>Elements</p>
+
+    <p>Every Plugin can be <em>element</em>. One element has one specific function.</p>
+  </li>
+  <li>
+    <p>Pads</p>
+
+    <p>A <em>pad</em> is an Elementâ€™s input and output, it can connect other elements(<em>like plug or port</em>).   A pad for input called <em>sink</em> and a pad for output called</p>
+  </li>
+  <li>
+    <p>Bins, Pipelines</p>
+
+    <p>A <em>bin</em> is a container for a collection of elements.</p>
+  </li>
+  <li>
+    <p>Pipelines</p>
+
+    <p>A <em>pipeline</em> is a top-level bin. you set it to <code class="highlighter-rouge">PAUSED</code> or <code class="highlighter-rouge">PLAYING</code> state, data flow will start and media processing will take place.</p>
+  </li>
+</ul>
+
+<h4 id="command-line-tools">Command line tools</h4>
+
+<ul>
+  <li>
+    <p>gst-launch-1.0</p>
+
+    <p>Build and run a GStreamer pipelines</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Format</span>
+gst-launch-1.0 <span class="o">[</span>OPTIONS] PIPELINE-DESCRIPTION
+<span class="c"># Example ~ Display only MPEG-1 video file, outputting to an X display window</span>
+gst-launch-1.0 filesrc <span class="nv">location</span><span class="o">=</span>videofile.mpg <span class="o">!</span> dvddemux <span class="o">!</span> mpeg2dec <span class="o">!</span> xvimagesink
+</code></pre></div>    </div>
+
+    <p>More Information about gst-launch-1.0 <a href="https://gstreamer.freedesktop.org/documentation/tools/gst-launch.html?gi-language=c">here</a>.</p>
+  </li>
+  <li>
+    <p>gst-inspect-1.0</p>
+
+    <p>Print information about a GStreamer plugin or element</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Example</span>
+gst-inspect-1.0 audiotestsrc
+  
+<span class="c"># and results</span>
+Factory Details:
+  Rank                     none <span class="o">(</span>0<span class="o">)</span>
+  Long-name                Audio <span class="nb">test source
+  </span>Klass                    Source/Audio
+  Description              Creates audio <span class="nb">test </span>signals of given frequency and volume
+  Author                   Stefan Kost &lt;ensonic@users.sf.net&gt;
+  
+Plugin Details:
+  Name                     audiotestsrc
+  Description              Creates audio <span class="nb">test </span>signals of given frequency and volume
+  Filename                 /usr/lib/gstreamer-1.0/libgstaudiotestsrc.so
+  Version                  1.8.1
+  License                  LGPL
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="code-with-c-java-script-python">Code with C, Java Script, Python</h4>
+
+<p>Without above CLI Commands, You can build application using GStreamer Plug-ins with C, Java Script, Python.  Check out the API refernece <a href="https://gstreamer.freedesktop.org/documentation/gstreamer/running.html?gi-language=c">here</a>.</p>
+
+:ET
