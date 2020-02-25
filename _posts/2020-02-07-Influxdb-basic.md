@@ -1,6 +1,6 @@
 # InfluxDB Basic
 
-Written By [KYRoh(tsedek)](https://github.com/tsedek), VCANUS
+Written By [David Roh](https://github.com/tsedek), VCANUS
 
 [reference Document](https://docs.influxdata.com/influxdb/v1.7/query_language/spec/)
 
