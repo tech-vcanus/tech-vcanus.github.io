@@ -105,12 +105,12 @@ services:
       - 9302:9300
     networks:
       - esnet
-  escoordinatioin: # Router #coordinating node
+  escoordinator: # Router #coordinating node
     image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
-    container_name: escoordinatioin
+    container_name: escoordinator
     restart: always
     environment:
-      - node.name=escoordinatioin
+      - node.name=escoordinator
       - cluster.name=docker-cluster
       - node.master=false
       - node.voting_only=false
@@ -127,7 +127,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - ./elasticsearch/es-router:/usr/share/elasticsearch/data
+      - ./elasticsearch/es-coordinator:/usr/share/elasticsearch/data
     ports:
       - 9203:9200
       - 9303:9300
@@ -143,7 +143,7 @@ services:
       - esmaster
       - esdata1
       - esdata2
-      - esrouter
+      - escoordinator
     networks:
       - esnet
     ports:
