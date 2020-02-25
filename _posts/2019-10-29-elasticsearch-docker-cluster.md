@@ -143,7 +143,7 @@ services:
       - esmaster
       - esdata1
       - esdata2
-      - esrouter
+      - escoordinator
     networks:
       - esnet
     ports:
