@@ -33,7 +33,8 @@ services:
         #      - node.ml=false
       - cluster.remote.connect=false
       - bootstrap.memory_lock=true
-      - cluster.initial_master_nodes=esmaster  
+      - cluster.initial_master_nodes=esmaster
+      - xpack.monitoring.collection.enabled=true
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     ulimits:
       memlock:
