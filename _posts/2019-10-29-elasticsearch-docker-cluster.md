@@ -20,7 +20,7 @@ $touch docker-compose.yml
 version: '3.7'
 services:
   esmaster: # Master (NO data)
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     container_name: esmaster
     restart: always
     environment:
@@ -34,7 +34,6 @@ services:
       - cluster.remote.connect=false
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster  
-      - discovery.seed_hosts=esdata1,esdata2,esmaster
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     ulimits:
       memlock:
@@ -50,7 +49,7 @@ services:
     stdin_open: true
     tty: true
   esdata1: # Data 1
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     container_name: esdata1
     restart: always
     environment:
@@ -64,7 +63,7 @@ services:
       - cluster.remote.connect=false
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
-      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - discovery.seed_hosts=esmaster
       - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
     ulimits:
       memlock:
@@ -78,7 +77,7 @@ services:
     networks:
       - esnet
   esdata2: # Data 2
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     container_name: esdata2
     restart: always
     environment:
@@ -92,7 +91,7 @@ services:
       - cluster.remote.connect=false
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
-      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - discovery.seed_hosts=esmaster
       - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
     ulimits:
       memlock:
@@ -106,7 +105,7 @@ services:
     networks:
       - esnet
   escoordinator: # Router #coordinating node
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     container_name: escoordinator
     restart: always
     environment:
@@ -120,7 +119,7 @@ services:
       - cluster.remote.connect=false
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
-      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - discovery.seed_hosts=esmaster
       - "ES_JAVA_OPTS=-Xms4g -Xmx4g"
     ulimits:
       memlock:
@@ -134,22 +133,18 @@ services:
     networks:
       - esnet
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.4.0
+    image: docker.elastic.co/kibana/kibana:7.6.0
     container_name: kibana
     restart: always
     environment:
       ELASTICSEARCH_HOSTS: http://esmaster:9200
-    depends_on:
-      - esmaster
-      - esdata1
-      - esdata2
-      - escoordinator
     networks:
       - esnet
     ports:
       - 5601:5601
 networks:
   esnet:
+#   driver: bridge
 ```
 
 ## make folder for docker volume(for permission)
