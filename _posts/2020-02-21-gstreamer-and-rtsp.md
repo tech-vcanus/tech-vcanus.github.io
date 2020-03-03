@@ -17,7 +17,7 @@ In this project, we use `RTSP` as networking protocol, a network control protoco
 
 ## Installation
 
-#### GStreamer
+### GStreamer
 
 ```shell
 sudo apt update && apt install -y gstreamer1.0-tools \
@@ -29,7 +29,7 @@ gstreamer1.0-libav \
 python-gst-1.0
 ```
 
-#### RTSP Server
+### RTSP Server
 
 ```shell
 sudo apt-get install gir1.2-gst-rtsp-server-1.0
@@ -45,7 +45,7 @@ sudo apt-get install gir1.2-gst-rtsp-server-1.0
 
 ## GStreamer Basic
 
-#### Foundations
+### Foundations
 
 - Elements
 
@@ -63,7 +63,7 @@ sudo apt-get install gir1.2-gst-rtsp-server-1.0
 
   A *pipeline* is a top-level bin. you set it to `PAUSED` or `PLAYING` state, data flow will start and media processing will take place.
 
-#### Command line tools
+### Command line tools
 
 - gst-launch-1.0
 
@@ -102,7 +102,66 @@ sudo apt-get install gir1.2-gst-rtsp-server-1.0
     License                  LGPL
   ```
 
-#### Code with C, Java Script, Python
+### v4l2 
+
+1. v4l-utils 설치
+    ```bash
+    $ sudo apt-get install v4l-utils
+    ```
+2. 지원 이미지 포맷
+   ```bash
+    $ v4l2-ctl --list-formats
+   ```
+3. 지원 이미지 포맷 & 해상도
+    ```bash
+    $ v4l2-ctl --list-formats-ext
+   ```
+4. 특정 디바이스 정보
+    ```bash
+    $ v4l2-ctl -d /dev/video1 --list-formats
+   ```
+5. 카메라 모든 정보 확인
+    ```bash
+    $ v4l2-ctl --all
+   ```
+
+### Gstreamer-RTSP-Server-Build
+
+1. Download
+    - gst-rtsp-server https://gstreamer.freedesktop.org/src/gst-rtsp-server/ .Focus on version 1.14.2 tar.xz.asc
+
+2. Unpack tar.xz files
+    ```bash
+   tar -xf <filename>
+   ```
+
+3. Change into each of the unpacked dirs
+
+4. Execute these commands in each directory 
+    ```bash
+   cd gst-rtsp-server-1.14.2
+   ./configure
+   make
+   sudo make install
+   ```
+./autogen.sh 오류 : You need to have gtk-doc >= 1.12 installed to build Gstreamer RTSP server Library configure failed
+  
+   ```bash
+    해결 : sudo apt-get install gtk-doc-tool
+   ```
+
+### Run Gstreamer-RTSP-Server
+example) dev/video0에 연결 된 MJPEG 코덱 카메라 Gstreamer 파이프 라인
+```bash
+./test-launch  --gst-debug=3 '( v4l2src device=/dev/video0 ! jpegdec ! videoconvert ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=0 min-threshold-time=0 ! x264enc ! video/x-h264,width=1024,height=576,framerate=30/1 ! h264parse ! rtph264pay name=pay0 pt=96 )'
+```
+- jpegdec : Decodes jpeg images.
+- videoconvert : Convert video frames between a great variety of video formats.
+- x264enc : This element encodes raw video into H264 compressed data, also otherwise known as MPEG-4 AVC (Advanced Video Codec).
+- h264parse : Parses H.264 streams
+- rtph264pay : Payload-encode H264 video into RTP packets (RFC 3984)
+
+### Code with C, Java Script, Python
 
 Without above CLI Commands, You can build application using GStreamer Plug-ins with C, Java Script, Python.  Check out the API refernece [here](https://gstreamer.freedesktop.org/documentation/gstreamer/running.html?gi-language=c).
 
