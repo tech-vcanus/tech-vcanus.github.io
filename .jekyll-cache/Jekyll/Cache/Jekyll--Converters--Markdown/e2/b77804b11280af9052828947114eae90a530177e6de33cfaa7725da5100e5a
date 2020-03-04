@@ -1,0 +1,20 @@
+I"�<ul class="toc__menu">
+  <li><a href="#about">About</a></li>
+  <li><a href="#indexing">Indexing</a></li>
+  <li><a href="#mapping">Mapping</a></li>
+  <li><a href="#insertupdate">Insert/Update</a></li>
+  <li><a href="#uri-search">URI Search</a></li>
+  <li><a href="#query-dsl">Query DSL</a>
+    <ul>
+      <li><a href="#query-dsl-구조">Query DSL 구조</a></li>
+    </ul>
+  </li>
+  <li><a href="#aggregations집계">Aggregations(집계)</a>
+    <ul>
+      <li><a href="#집계-구문-구조">집계 구문 구조</a></li>
+      <li><a href="#확장-통계-집계">확장 통계 집계</a></li>
+    </ul>
+  </li>
+  <li><a href="#shards--replicas">Shards &amp; Replicas</a></li>
+</ul>
+:ET

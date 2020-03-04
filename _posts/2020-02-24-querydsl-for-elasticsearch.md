@@ -3,6 +3,8 @@ title: "Elasticsearch & Query DSL"
 data: 2020-02-24
 categories: development
 tags: Elasticsearch QueryDSL
+toc: true
+toc_sticky: true
 ---
 
 Written By [Nuri Na](https://github.com/nurring), VCANUS
@@ -123,8 +125,7 @@ curl -XGET 'localhost:9200/<indexName>/_search?q=<검색어>&sort=<정렬기준>
 Request Body 검색에 이용되는 JSON 구조를 지원, 다양한 검색 조건 조합에 용이하며 재사용이 가능해 일반적으로 사용됨
 
 
-
-#### Query DSL 구조
+### Query DSL 구조
 
 ```c
 {
@@ -141,27 +142,7 @@ Request Body 검색에 이용되는 JSON 구조를 지원, 다양한 검색 조�
 
 ​      
 
-_* 아래 예시를 통해 확인할 사항_
-
-1. must 연산과 조건 쿼리
-
-   | Elasticsearch      | SQL                    | 설명                                 |
-   | ------------------ | ---------------------- | ------------------------------------ |
-   | must : [field]     | AND <column> = <조건>  | 반드시 조건에 만족하는 문서만        |
-   | must_not : [field] | AND <column> != <조건> | 조건을 만족하지 않는 문서            |
-   | should : [field]   | OR <column> = <조건>   | 여러 조건 중 하나 이상 만족하는 문서 |
-   | filter : [field]   | <column> IN <조건>     | 조건을 포함하는 문서                 |
-
-2. 쿼리 컨텍스트와 필터 컨텍스트
-
-   |         | 쿼리 컨텍스트                                                | 필터 컨텍스트                                                |
-   | ------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-   | 용도    | 전문 검색 시                                                 | 조건 검색 시 (Yes/No)                                        |
-   | 특징    | 분석기에 의해 분석<br />연관성 관련 Score를 계산<br />루씬 레벨에서 분석 - 상대적으로 느림 | Yes/No로 단순 판별<br />연관성 관련 계산 X<br />엘라스틱서치 레벨에서 분석 - 상대적으로 빠름 |
-   | 사용 예 | 문장 분석                                                    | 'major' 필드 값이 '중국어'인지 여부                          |
-
-3. Match 쿼리 - 형태소 분석을 통해 term을 분리, 별도의 operator 필드가 없으면 term을 대상으로 OR 연산을 수행함
-
+_* 아래 예시의 주석에 해당하는 번호를 확인할 것_
 ```c
 //**Example**
 
@@ -196,16 +177,35 @@ POST lecture/_search
 }
 ```
 
-```c
-// cf ) operator 적용
-"match": {
-            "title": {
-              "query" : "현대 중국",
-              "operator" : "and"
-            }
-          }
-```
 
+1. must 연산과 조건 쿼리
+
+   | Elasticsearch      | SQL                    | 설명                                 |
+   | ------------------ | ---------------------- | ------------------------------------ |
+   | must : [field]     | AND <column> = <조건>  | 반드시 조건에 만족하는 문서만        |
+   | must_not : [field] | AND <column> != <조건> | 조건을 만족하지 않는 문서            |
+   | should : [field]   | OR <column> = <조건>   | 여러 조건 중 하나 이상 만족하는 문서 |
+   | filter : [field]   | <column> IN <조건>     | 조건을 포함하는 문서                 |
+
+2. 쿼리 컨텍스트와 필터 컨텍스트
+
+   |         | 쿼리 컨텍스트                                                | 필터 컨텍스트                                                |
+   | ------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+   | 용도    | 전문 검색 시                                                 | 조건 검색 시 (Yes/No)                                        |
+   | 특징    | 분석기에 의해 분석<br />연관성 관련 Score를 계산<br />루씬 레벨에서 분석 - 상대적으로 느림 | Yes/No로 단순 판별<br />연관성 관련 계산 X<br />엘라스틱서치 레벨에서 분석 - 상대적으로 빠름 |
+   | 사용 예 | 문장 분석                                                    | 'major' 필드 값이 '중국어'인지 여부                          |
+
+3. Match 쿼리 - 형태소 분석을 통해 term을 분리, 별도의 operator 필드가 없으면 term을 대상으로 OR 연산을 수행함
+
+  ```c
+  // cf ) operator를 적용하는 경우
+  "match": {
+              "title": {
+                "query" : "현대 중국",
+                "operator" : "and"
+              }
+            }
+  ```
 
 
 ## Aggregations(집계)
@@ -216,7 +216,7 @@ SQL보다 강력한 집계 기능 제공 - 여러 aggs 중첩, 날짜/위치 정
 
 
 
-#### 집계 구문 구조
+### 집계 구문 구조
 
 ```c
 {
@@ -287,7 +287,7 @@ GET lecture/_search?size=0 // get/post 섞어서 쓸 수 있음
 
 ​     
 
-#### 확장 통계 집계
+### 확장 통계 집계
 
 ```c
 GET lecture/_search?size=0
