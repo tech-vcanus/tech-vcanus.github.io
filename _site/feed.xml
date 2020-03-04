@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-25T18:14:25+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">VCANUS’s Technical Blog</title><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><entry><title type="html">Elasticsearch &amp;amp; Query DSL</title><link href="http://localhost:4000/development/querydsl-for-elasticsearch/" rel="alternate" type="text/html" title="Elasticsearch &amp; Query DSL" /><published>2020-02-24T00:00:00+09:00</published><updated>2020-02-24T00:00:00+09:00</updated><id>http://localhost:4000/development/querydsl-for-elasticsearch</id><content type="html" xml:base="http://localhost:4000/development/querydsl-for-elasticsearch/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt;, VCANUS&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-04T11:41:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">VCANUS’s Technical Blog</title><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><entry><title type="html">Elasticsearch &amp;amp; Query DSL</title><link href="http://localhost:4000/development/querydsl-for-elasticsearch/" rel="alternate" type="text/html" title="Elasticsearch &amp; Query DSL" /><published>2020-02-24T00:00:00+09:00</published><updated>2020-02-24T00:00:00+09:00</updated><id>http://localhost:4000/development/querydsl-for-elasticsearch</id><content type="html" xml:base="http://localhost:4000/development/querydsl-for-elasticsearch/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt;, VCANUS&lt;/p&gt;
 
 &lt;h2 id=&quot;about&quot;&gt;About&lt;/h2&gt;
 
@@ -341,13 +341,15 @@ curl &lt;span class=&quot;nt&quot;&gt;-XGET&lt;/span&gt; &lt;span class=&quot;s1
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="Elasticsearch" /><category term="QueryDSL" /><summary type="html">Written By Nuri Na, VCANUS</summary></entry><entry><title type="html">GStreamer and RTSP</title><link href="http://localhost:4000/development/gstreamer-and-rtsp/" rel="alternate" type="text/html" title="GStreamer and RTSP" /><published>2020-02-21T00:00:00+09:00</published><updated>2020-02-21T00:00:00+09:00</updated><id>http://localhost:4000/development/gstreamer-and-rtsp</id><content type="html" xml:base="http://localhost:4000/development/gstreamer-and-rtsp/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt;, &lt;a href=&quot;https://github.com/jjangchan&quot;&gt;KJ Jang&lt;/a&gt;, VCANUS&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GStreamer&lt;/code&gt; is a pipeline-based multimedia framework, can build a system that reads files in one format, processes them, and exports them in another.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GStreamer&lt;/code&gt; 는 파이프라인 기반의 멀티미디어 프레임워크이다. 특정 포맷의 파일을 읽고, 처리하여, 다른 포맷으로 전달하는 시스템을 빌드할 수 있다.&lt;/p&gt;
 
-&lt;p&gt;In this project, we use &lt;code class=&quot;highlighter-rouge&quot;&gt;RTSP&lt;/code&gt; as networking protocol, a network control protocol used for streaming media servers.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RTSP&lt;/code&gt; 는 미디어 서버 스트리밍에 이용되는 네트워크 프로토콜이다.&lt;/p&gt;
 
 &lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
 
-&lt;h4 id=&quot;gstreamer&quot;&gt;GStreamer&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;Ubuntu18.04 기준&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;gstreamer&quot;&gt;GStreamer&lt;/h3&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; gstreamer1.0-tools &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 gstreamer1.0-plugins-base &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
@@ -355,52 +357,90 @@ gstreamer1.0-plugins-good &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 gstreamer1.0-plugins-bad &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 gstreamer1.0-plugins-ugly &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 gstreamer1.0-libav &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-python-gst-1.0
+python-gst-1.0 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;rtsp-server&quot;&gt;RTSP Server&lt;/h4&gt;
+&lt;h3 id=&quot;rtsp-server&quot;&gt;RTSP Server&lt;/h3&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gir1.2-gst-rtsp-server-1.0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;architecture&quot;&gt;Architecture&lt;/h2&gt;
+&lt;h3 id=&quot;v4l2&quot;&gt;v4l2&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;v4l-utils
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;real-time-streaming-architecture&quot;&gt;Real Time Streaming Architecture&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/gstreamer_rtsp.png&quot; alt=&quot;architecture&quot; /&gt;&lt;/p&gt;
 
+&lt;h2 id=&quot;v4l2-basic&quot;&gt;V4L2 Basic&lt;/h2&gt;
+
+&lt;p&gt;Video for Linux ~ 리눅스에서 카메라 입력을 받기 위한 표준 인터페이스&lt;/p&gt;
+
+&lt;p&gt;dev 디렉토리 내 video* 장치 파일이 생성 되고, 사용자 프로그램이 커널을 통해 시스템 하드웨어에 접근할 수 있다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;지원 이미지 포맷&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; v4l2-ctl &lt;span class=&quot;nt&quot;&gt;--list-formats&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;지원 이미지 포맷 &amp;amp; 해상도&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;v4l2-ctl &lt;span class=&quot;nt&quot;&gt;--list-formats-ext&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;특정 디바이스 정보&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;v4l2-ctl &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; /dev/video0 &lt;span class=&quot;nt&quot;&gt;--list-formats&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;카메라 모든 정보 확인&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;v4l2-ctl &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
 &lt;h2 id=&quot;gstreamer-basic&quot;&gt;GStreamer Basic&lt;/h2&gt;
 
-&lt;h4 id=&quot;foundations&quot;&gt;Foundations&lt;/h4&gt;
+&lt;h3 id=&quot;foundations&quot;&gt;Foundations&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;Elements&lt;/p&gt;
 
-    &lt;p&gt;Every Plugin can be &lt;em&gt;element&lt;/em&gt;. One element has one specific function.&lt;/p&gt;
+    &lt;p&gt;모든 플러그인은 &lt;code class=&quot;highlighter-rouge&quot;&gt;element&lt;/code&gt;가 될 수 있다. 하나의 element는 하나의 특정한 기능을 한다.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Pads&lt;/p&gt;
 
-    &lt;p&gt;A &lt;em&gt;pad&lt;/em&gt; is an Element’s input and output, it can connect other elements(&lt;em&gt;like plug or port&lt;/em&gt;).   A pad for input called &lt;em&gt;sink&lt;/em&gt; and a pad for output called&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pad&lt;/code&gt;는 element의 인풋과 아웃풋으로 element를 연결한다(플러그나 포트처럼). 인풋쪽을 sink, 아웃풋 쪽을 source라고 한다.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Bins, Pipelines&lt;/p&gt;
 
-    &lt;p&gt;A &lt;em&gt;bin&lt;/em&gt; is a container for a collection of elements.&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bin&lt;/code&gt;은 element들을 담는 컨테이너이다.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Pipelines&lt;/p&gt;
 
-    &lt;p&gt;A &lt;em&gt;pipeline&lt;/em&gt; is a top-level bin. you set it to &lt;code class=&quot;highlighter-rouge&quot;&gt;PAUSED&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;PLAYING&lt;/code&gt; state, data flow will start and media processing will take place.&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pipeline&lt;/code&gt;은 최상위 레벨의 bin이다.  &lt;code class=&quot;highlighter-rouge&quot;&gt;PAUSED&lt;/code&gt; / &lt;code class=&quot;highlighter-rouge&quot;&gt;PLAYING&lt;/code&gt; 등 상태를 지정하여 데이터 흐름을 제어할 수 있다.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;command-line-tools&quot;&gt;Command line tools&lt;/h4&gt;
+&lt;h3 id=&quot;command-line-tools&quot;&gt;Command line tools&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;gst-launch-1.0&lt;/p&gt;
 
-    &lt;p&gt;Build and run a GStreamer pipelines&lt;/p&gt;
+    &lt;p&gt;GStreamer 파이프라인을 빌드, 실행&lt;/p&gt;
 
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Format&lt;/span&gt;
 gst-launch-1.0 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;OPTIONS] PIPELINE-DESCRIPTION
@@ -413,12 +453,12 @@ gst-launch-1.0 filesrc &lt;span class=&quot;nv&quot;&gt;location&lt;/span&gt;&lt
   &lt;li&gt;
     &lt;p&gt;gst-inspect-1.0&lt;/p&gt;
 
-    &lt;p&gt;Print information about a GStreamer plugin or element&lt;/p&gt;
+    &lt;p&gt;GStreamer의 플러그인/엘리먼트 정보 확인&lt;/p&gt;
 
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Example&lt;/span&gt;
 gst-inspect-1.0 audiotestsrc
   
-&lt;span class=&quot;c&quot;&gt;# and results&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ...and results&lt;/span&gt;
 Factory Details:
   Rank                     none &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
   Long-name                Audio &lt;span class=&quot;nb&quot;&gt;test source
@@ -436,9 +476,132 @@ Plugin Details:
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;code-with-c-java-script-python&quot;&gt;Code with C, Java Script, Python&lt;/h4&gt;
+&lt;h3 id=&quot;gstreamer-rtsp-server-build&quot;&gt;Gstreamer-RTSP-Server-Build&lt;/h3&gt;
 
-&lt;p&gt;Without above CLI Commands, You can build application using GStreamer Plug-ins with C, Java Script, Python.  Check out the API refernece &lt;a href=&quot;https://gstreamer.freedesktop.org/documentation/gstreamer/running.html?gi-language=c&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="Server" /><category term="GStreamer" /><category term="RTSP" /><summary type="html">Written By Nuri Na, KJ Jang, VCANUS</summary></entry><entry><title type="html">Kinematics</title><link href="http://localhost:4000/research/Kinematics/" rel="alternate" type="text/html" title="Kinematics" /><published>2020-02-20T00:00:00+09:00</published><updated>2020-02-20T00:00:00+09:00</updated><id>http://localhost:4000/research/Kinematics</id><content type="html" xml:base="http://localhost:4000/research/Kinematics/">&lt;p&gt;Written by BGKim, VCANUS&lt;/p&gt;
+&lt;p&gt;파이프라인을 빌드하도록 컴파일, element를 구성할 변수들을 잡아 실행하면 실시간 스트리밍이 시작된다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;다운로드 gst-rtsp-servr-1.14.2.tar.xz&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.14.2.tar.xz&quot;&gt;Download Link&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;압축 해제
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;tar&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-xf&lt;/span&gt; gst-rtsp-server-1.14.2.tar.xz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;디렉토리 이동&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;gst-rtsp-server-1.14.2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;GStreamer 컴파일
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./configure &lt;span class=&quot;c&quot;&gt;# Makefile을 만들어줌&lt;/span&gt;
+make &lt;span class=&quot;c&quot;&gt;# Makefile을 컴파일&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;make &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#실행 &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;em&gt;./configure 오류 발생 시&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gtk-doc-tool
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;실행&lt;/p&gt;
+
+    &lt;p&gt;example) dev/video0에 연결 된 MJPEG 코덱 카메라 Gstreamer 파이프 라인&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./test-launch  &lt;span class=&quot;nt&quot;&gt;--gst-debug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3 &lt;span class=&quot;s1&quot;&gt;'( v4l2src device=/dev/video0 ! jpegdec ! videoconvert ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=0 min-threshold-time=0 ! x264enc ! video/x-h264,width=1024,height=576,framerate=30/1 ! h264parse ! rtph264pay name=pay0 pt=96 )'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;jpegdec : jpeg 이미지 디코딩&lt;/li&gt;
+      &lt;li&gt;videoconvert : 비디오 프레임 간 포맷 컨버팅&lt;/li&gt;
+      &lt;li&gt;x264enc : Raw video를 h264 데이터로 압축(a.k.a MPEG-4 AVC)&lt;/li&gt;
+      &lt;li&gt;h264parse : Parses H.264 streams&lt;/li&gt;
+      &lt;li&gt;rtph264pay : Payload-encode H264 video into RTP packets (RFC 3984)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;opencv를-이용한-client쪽-처리&quot;&gt;OpenCV를 이용한 Client쪽 처리&lt;/h2&gt;
+
+&lt;p&gt;RTSP로 들어오는 영상을 받아 처리, PyQt로 GUI를 구성하여 실시간 영상을 재생/정지한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;## Example
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;cv2&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;threading&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PyQt5&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QtWidgets&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PyQt5&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QtGui&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PyQt5&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QtCore&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;running&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;running&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;rtsp://ip주소:8554/test&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 현재 rtsp 서버 주소
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;cap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VideoCapture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# cv2로 비디오 캡처
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CAP_PROP_FRAME_WIDTH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 비디오 너비 값 가져오기
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CAP_PROP_FRAME_HEIGHT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 비디오 높이 값 가져오기
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;resize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# pyQt5 라벨에 사이즈 지정
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;running&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# stream 읽어오기
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cvtColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cv2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;COLOR_BGR2RGB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 비디오 컬러값 지정
+&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 높이 , 너비 , R(ed), G(reen), B(lue)
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;qImg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QtGui&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QtGui&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Format_RGB888&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 스트림 이미지 가져오기
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;pixmap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QtGui&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QPixmap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fromImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qImg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#img 포맷을 지원 해주는 객체
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setPixmap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pixmap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 라벨에 set
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;QtWidgets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QMessageBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;about&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;win&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ERROR&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Cannot read frame.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cannot read frame.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;release&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 비디오 캡쳐 종료
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Thread end.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;running&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;running&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stoped ..&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;global&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;running&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;running&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threading&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#쓰레드
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;th&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;started ..&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onExit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;exit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;# GUI 구성
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QtWidgets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QApplication&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;win&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QtWidgets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QWidget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;vbox&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QtWidgets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QVBoxLayout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QtWidgets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;btn_start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QtWidgets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QPushButton&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Camera On&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;btn_stop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QtWidgets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QPushButton&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Camera Off&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;vbox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addWidget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;vbox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addWidget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;btn_start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;vbox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addWidget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;btn_stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;win&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setLayout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vbox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;win&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# GUI 버튼 액션 설정
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;btn_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clicked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;btn_stop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clicked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;aboutToQuit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;onExit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exec_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="Server" /><category term="GStreamer" /><category term="RTSP" /><summary type="html">Written By Nuri Na, KJ Jang, VCANUS</summary></entry><entry><title type="html">Kinematics</title><link href="http://localhost:4000/research/Kinematics/" rel="alternate" type="text/html" title="Kinematics" /><published>2020-02-20T00:00:00+09:00</published><updated>2020-02-20T00:00:00+09:00</updated><id>http://localhost:4000/research/Kinematics</id><content type="html" xml:base="http://localhost:4000/research/Kinematics/">&lt;p&gt;Written by BGKim, VCANUS&lt;/p&gt;
 
 &lt;h1 id=&quot;homogeneous-matrix동차-행렬&quot;&gt;Homogeneous Matrix(동차 행렬)&lt;/h1&gt;
 
@@ -655,7 +818,7 @@ telegraf:latest
 
 &lt;p&gt;Check available &lt;a href=&quot;https://github.com/influxdata/telegraf/blob/master/README.md#input-plugins&quot;&gt;input&lt;/a&gt; and &lt;a href=&quot;https://github.com/influxdata/telegraf/blob/master/README.md#output-plugins&quot;&gt;output&lt;/a&gt; plugins.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="Telegraf" /><category term="InfluxDB" /><category term="Grafana" /><summary type="html">Written By Nuri Na, VCANUS</summary></entry><entry><title type="html">Influxdb Basic</title><link href="http://localhost:4000/Influxdb-basic/" rel="alternate" type="text/html" title="Influxdb Basic" /><published>2020-02-07T00:00:00+09:00</published><updated>2020-02-07T00:00:00+09:00</updated><id>http://localhost:4000/Influxdb-basic</id><content type="html" xml:base="http://localhost:4000/Influxdb-basic/">&lt;h1 id=&quot;influxdb-basic&quot;&gt;InfluxDB Basic&lt;/h1&gt;
 
-&lt;p&gt;Written By &lt;a href=&quot;https://github.com/tsedek&quot;&gt;KYRoh(tsedek)&lt;/a&gt;, VCANUS&lt;/p&gt;
+&lt;p&gt;Written By &lt;a href=&quot;https://github.com/tsedek&quot;&gt;David Roh&lt;/a&gt;, VCANUS&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://docs.influxdata.com/influxdb/v1.7/query_language/spec/&quot;&gt;reference Document&lt;/a&gt;&lt;/p&gt;
 
@@ -1326,7 +1489,7 @@ Content type은 application/json 선택!&lt;br /&gt;
  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71467098-1924a180-2805-11ea-86f5-7eefd32c4408.png&quot; alt=&quot;Change workspace2&quot; /&gt;&lt;/li&gt;
 &lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="Jenkins" /><category term="Build" /><summary type="html">Written By Young-rae Shin(https://github.com/lived1024)</summary></entry><entry><title type="html">Elasticsearch Docker Cluster</title><link href="http://localhost:4000/elasticsearch-docker-cluster/" rel="alternate" type="text/html" title="Elasticsearch Docker Cluster" /><published>2019-10-29T00:00:00+09:00</published><updated>2019-10-29T00:00:00+09:00</updated><id>http://localhost:4000/elasticsearch-docker-cluster</id><content type="html" xml:base="http://localhost:4000/elasticsearch-docker-cluster/">&lt;h1 id=&quot;elasticsearch-cluster-on-docker-compose&quot;&gt;Elasticsearch cluster on Docker Compose&lt;/h1&gt;
 
-&lt;p&gt;Written By KYRoh(&lt;a href=&quot;https://github.com/tsedek&quot;&gt;github.com/tsedek&lt;/a&gt;), VCANUS&lt;/p&gt;
+&lt;p&gt;Written By &lt;a href=&quot;[github.com/tsedek](https://github.com/tsedek)&quot;&gt;David Roh&lt;/a&gt;, VCANUS&lt;/p&gt;
 
 &lt;h1 id=&quot;docker-compose&quot;&gt;docker-compose&lt;/h1&gt;
 
@@ -1346,7 +1509,7 @@ Content type은 application/json 선택!&lt;br /&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;version: '3.7'
 services:
   esmaster: # Master (NO data)
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     container_name: esmaster
     restart: always
     environment:
@@ -1359,8 +1522,9 @@ services:
         #      - node.ml=false
       - cluster.remote.connect=false
       - bootstrap.memory_lock=true
-      - cluster.initial_master_nodes=esmaster  
-      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - cluster.initial_master_nodes=esmaster
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.collection.enabled=true
       - &quot;ES_JAVA_OPTS=-Xms1g -Xmx1g&quot;
     ulimits:
       memlock:
@@ -1376,7 +1540,7 @@ services:
     stdin_open: true
     tty: true
   esdata1: # Data 1
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     container_name: esdata1
     restart: always
     environment:
@@ -1390,7 +1554,7 @@ services:
       - cluster.remote.connect=false
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
-      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - discovery.seed_hosts=esmaster
       - &quot;ES_JAVA_OPTS=-Xms2g -Xmx2g&quot;
     ulimits:
       memlock:
@@ -1404,7 +1568,7 @@ services:
     networks:
       - esnet
   esdata2: # Data 2
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     container_name: esdata2
     restart: always
     environment:
@@ -1418,7 +1582,7 @@ services:
       - cluster.remote.connect=false
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
-      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - discovery.seed_hosts=esmaster
       - &quot;ES_JAVA_OPTS=-Xms2g -Xmx2g&quot;
     ulimits:
       memlock:
@@ -1431,12 +1595,12 @@ services:
       - 9302:9300
     networks:
       - esnet
-  escoordinatioin: # Router #coordinating node
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
-    container_name: escoordinatioin
+  escoordinator: # Router #coordinating node
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    container_name: escoordinator
     restart: always
     environment:
-      - node.name=escoordinatioin
+      - node.name=escoordinator
       - cluster.name=docker-cluster
       - node.master=false
       - node.voting_only=false
@@ -1446,36 +1610,32 @@ services:
       - cluster.remote.connect=false
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
-      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - discovery.seed_hosts=esmaster
       - &quot;ES_JAVA_OPTS=-Xms4g -Xmx4g&quot;
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - ./elasticsearch/es-router:/usr/share/elasticsearch/data
+      - ./elasticsearch/es-coordinator:/usr/share/elasticsearch/data
     ports:
       - 9203:9200
       - 9303:9300
     networks:
       - esnet
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.4.0
+    image: docker.elastic.co/kibana/kibana:7.6.0
     container_name: kibana
     restart: always
     environment:
       ELASTICSEARCH_HOSTS: http://esmaster:9200
-    depends_on:
-      - esmaster
-      - esdata1
-      - esdata2
-      - esrouter
     networks:
       - esnet
     ports:
       - 5601:5601
 networks:
   esnet:
+#   driver: bridge
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;make-folder-for-docker-volumefor-permission&quot;&gt;make folder for docker volume(for permission)&lt;/h2&gt;

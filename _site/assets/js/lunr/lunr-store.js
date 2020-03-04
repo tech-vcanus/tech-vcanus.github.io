@@ -35,7 +35,7 @@ var store = [{
         "url": "http://localhost:4000/development/docker-manual/",
         "teaser":null},{
         "title": "Elasticsearch Docker Cluster",
-        "excerpt":"Elasticsearch cluster on Docker Compose Written By KYRoh(github.com/tsedek), VCANUS docker-compose create docker-compose.yml $touch docker-compose.yml write docker-compose Breaking changes in 7.0 that makes elaticsearch cluster in docker under 7.0 : “discovery.zen.ping.unicast.hosts” -&gt; up 7.0 : “discovery.seed_hosts” under 7.0 : “search.remote.connect” -&gt; up 7.0 : “cluster.remote.connect” under 7.0 : deprecated “discovery.zen.minimum_master_nodes” -&gt;...","categories": [],
+        "excerpt":"Elasticsearch cluster on Docker Compose Written By David Roh, VCANUS docker-compose create docker-compose.yml $touch docker-compose.yml write docker-compose Breaking changes in 7.0 that makes elaticsearch cluster in docker under 7.0 : “discovery.zen.ping.unicast.hosts” -&gt; up 7.0 : “discovery.seed_hosts” under 7.0 : “search.remote.connect” -&gt; up 7.0 : “cluster.remote.connect” under 7.0 : deprecated “discovery.zen.minimum_master_nodes”...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/elasticsearch-docker-cluster/",
         "teaser":null},{
@@ -60,7 +60,7 @@ var store = [{
         "url": "http://localhost:4000/development/Java-Build/",
         "teaser":null},{
         "title": "Influxdb Basic",
-        "excerpt":"InfluxDB Basic Written By KYRoh(tsedek), VCANUS reference Document RDB vs InfluxDB RDB InfluxDB database database table measurement column key PK or indexed column tag key(only string) unindexed column field key SET of index entries series Install on Docker default admin user $ docker run -d \\ -p 8086:8086 \\ --name...","categories": [],
+        "excerpt":"InfluxDB Basic Written By David Roh, VCANUS reference Document RDB vs InfluxDB RDB InfluxDB database database table measurement column key PK or indexed column tag key(only string) unindexed column field key SET of index entries series Install on Docker default admin user $ docker run -d \\ -p 8086:8086 \\...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/Influxdb-basic/",
         "teaser":null},{
@@ -75,7 +75,7 @@ var store = [{
         "url": "http://localhost:4000/research/Kinematics/",
         "teaser":null},{
         "title": "GStreamer and RTSP",
-        "excerpt":"Written By Nuri Na, KJ Jang, VCANUS GStreamer is a pipeline-based multimedia framework, can build a system that reads files in one format, processes them, and exports them in another. In this project, we use RTSP as networking protocol, a network control protocol used for streaming media servers. Installation GStreamer...","categories": ["development"],
+        "excerpt":"Written By Nuri Na, KJ Jang, VCANUS GStreamer 는 파이프라인 기반의 멀티미디어 프레임워크이다. 특정 포맷의 파일을 읽고, 처리하여, 다른 포맷으로 전달하는 시스템을 빌드할 수 있다. RTSP 는 미디어 서버 스트리밍에 이용되는 네트워크 프로토콜이다. Installation Ubuntu18.04 기준 GStreamer sudo apt update &amp;&amp; apt install -y gstreamer1.0-tools \\ gstreamer1.0-plugins-base \\ gstreamer1.0-plugins-good \\...","categories": ["development"],
         "tags": ["Server","GStreamer","RTSP"],
         "url": "http://localhost:4000/development/gstreamer-and-rtsp/",
         "teaser":null},{

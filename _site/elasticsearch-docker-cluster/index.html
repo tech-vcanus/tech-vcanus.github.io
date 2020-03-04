@@ -274,7 +274,7 @@
         
         <h1 id="elasticsearch-cluster-on-docker-compose">Elasticsearch cluster on Docker Compose</h1>
 
-<p>Written By KYRoh(<a href="https://github.com/tsedek">github.com/tsedek</a>), VCANUS</p>
+<p>Written By <a href="[github.com/tsedek](https://github.com/tsedek)">David Roh</a>, VCANUS</p>
 
 <h1 id="docker-compose">docker-compose</h1>
 
@@ -294,7 +294,7 @@
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>version: '3.7'
 services:
   esmaster: # Master (NO data)
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     container_name: esmaster
     restart: always
     environment:
@@ -307,8 +307,9 @@ services:
         #      - node.ml=false
       - cluster.remote.connect=false
       - bootstrap.memory_lock=true
-      - cluster.initial_master_nodes=esmaster  
-      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - cluster.initial_master_nodes=esmaster
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.collection.enabled=true
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     ulimits:
       memlock:
@@ -324,7 +325,7 @@ services:
     stdin_open: true
     tty: true
   esdata1: # Data 1
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     container_name: esdata1
     restart: always
     environment:
@@ -338,7 +339,7 @@ services:
       - cluster.remote.connect=false
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
-      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - discovery.seed_hosts=esmaster
       - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
     ulimits:
       memlock:
@@ -352,7 +353,7 @@ services:
     networks:
       - esnet
   esdata2: # Data 2
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     container_name: esdata2
     restart: always
     environment:
@@ -366,7 +367,7 @@ services:
       - cluster.remote.connect=false
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
-      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - discovery.seed_hosts=esmaster
       - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
     ulimits:
       memlock:
@@ -379,12 +380,12 @@ services:
       - 9302:9300
     networks:
       - esnet
-  escoordinatioin: # Router #coordinating node
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
-    container_name: escoordinatioin
+  escoordinator: # Router #coordinating node
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    container_name: escoordinator
     restart: always
     environment:
-      - node.name=escoordinatioin
+      - node.name=escoordinator
       - cluster.name=docker-cluster
       - node.master=false
       - node.voting_only=false
@@ -394,36 +395,32 @@ services:
       - cluster.remote.connect=false
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
-      - discovery.seed_hosts=esdata1,esdata2,esmaster
+      - discovery.seed_hosts=esmaster
       - "ES_JAVA_OPTS=-Xms4g -Xmx4g"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - ./elasticsearch/es-router:/usr/share/elasticsearch/data
+      - ./elasticsearch/es-coordinator:/usr/share/elasticsearch/data
     ports:
       - 9203:9200
       - 9303:9300
     networks:
       - esnet
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.4.0
+    image: docker.elastic.co/kibana/kibana:7.6.0
     container_name: kibana
     restart: always
     environment:
       ELASTICSEARCH_HOSTS: http://esmaster:9200
-    depends_on:
-      - esmaster
-      - esdata1
-      - esdata2
-      - esrouter
     networks:
       - esnet
     ports:
       - 5601:5601
 networks:
   esnet:
+#   driver: bridge
 </code></pre></div></div>
 
 <h2 id="make-folder-for-docker-volumefor-permission">make folder for docker volume(for permission)</h2>
@@ -537,7 +534,7 @@ networks:
 
 
 
-  1 minute read
+  3 minute read
 </p>
      -->
     
