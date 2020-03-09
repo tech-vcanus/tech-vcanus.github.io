@@ -1,6 +1,6 @@
 ---
 title: "Elasticsearch & Query DSL"
-data: 2020-02-24
+date: 2020-02-24
 categories: development
 tags: Elasticsearch QueryDSL
 toc: true

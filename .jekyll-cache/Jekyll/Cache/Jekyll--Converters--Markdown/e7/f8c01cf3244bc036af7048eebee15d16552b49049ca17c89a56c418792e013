@@ -1,0 +1,25 @@
+I"ó<ul class="toc__menu">
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#concepts">Concepts</a></li>
+  <li><a href="#zookeeper">Zookeeper</a></li>
+  <li><a href="#basic-tutorials">Basic Tutorials</a>
+    <ul>
+      <li><a href="#setting-up-and-running">Setting up and Running</a></li>
+      <li><a href="#starting-zookeeper">Starting Zookeeper</a></li>
+      <li><a href="#starting-kafka">Starting Kafka</a></li>
+      <li><a href="#create-topics">Create Topics</a></li>
+      <li><a href="#delete-topics">Delete Topics</a></li>
+      <li><a href="#sending-messages">Sending Messages</a></li>
+      <li><a href="#consuming-messages">Consuming Messages</a></li>
+    </ul>
+  </li>
+  <li><a href="#accessing-kafka-in-python">Accessing Kafka in Python</a>
+    <ul>
+      <li><a href="#setting-up-libraries">Setting up libraries</a></li>
+      <li><a href="#producerpy">producer.py</a></li>
+      <li><a href="#consumerpy">consumer.py</a></li>
+      <li><a href="#run">Run</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

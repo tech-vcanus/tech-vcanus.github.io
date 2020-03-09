@@ -83,4 +83,9 @@ var store = [{
         "excerpt":"Written By Nuri Na, VCANUS About JVM: Elasticsearch는 자바 애플리케이션으로 Java 설치 필요 HTTP / RESTful API: REST API를 통해 조작 JSON: 내부에 JSON으로 저장, 요청/응답도 JSON 형식 역색인(Inverted Index) 구조: 단어 검색 시 해당 단어가 포함된 모든 document를 가리킴 Index/type/document : 엘라스틱 서치의 데이터 계층. /&lt;indexName&gt;/&lt;typeName&gt;/&lt;documentName&gt; 로 표현 현재는...","categories": ["development"],
         "tags": ["Elasticsearch","QueryDSL"],
         "url": "http://localhost:4000/development/querydsl-for-elasticsearch/",
+        "teaser":null},{
+        "title": "Apache Kafka Basic",
+        "excerpt":"Written By Nuri Na, VCANUS Overview Apache Kafka는 오픈소스 데이터 스트림 플랫폼으로, 대용량 실시간 로그 처리에 특화된 메시징 시스템이다. 메시지를 메모리가 아닌 파일 시스템에 저장하며, 분산형 시스템으로 노드 고장과 데이터 손실에 대비한다. consumer가 broker로부터 직접 메시지를 가지고 가는 pull 방식으로 동작, 자신의 처리 능력만큼만 가져가게 된다. Concepts 이미지 출처 :...","categories": ["development"],
+        "tags": ["Kafka"],
+        "url": "http://localhost:4000/development/apache-kafka-basic/",
         "teaser":null}]

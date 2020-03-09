@@ -1,0 +1,821 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Apache Kafka Basic - VCANUS’s Technical Blog</title>
+<meta name="description" content="Written By Nuri Na, VCANUS">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="VCANUS's Technical Blog">
+<meta property="og:title" content="Apache Kafka Basic">
+<meta property="og:url" content="http://localhost:4000/development/apache-kafka-basic/">
+
+
+  <meta property="og:description" content="Written By Nuri Na, VCANUS">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-03-05T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/apache-kafka-basic/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="VCANUS's Technical Blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          VCANUS's Technical Blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Apache Kafka Basic">
+    <meta itemprop="description" content="Written By Nuri Na, VCANUS">
+    <meta itemprop="datePublished" content="March 05, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Apache Kafka Basic
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#concepts">Concepts</a></li>
+  <li><a href="#zookeeper">Zookeeper</a></li>
+  <li><a href="#basic-tutorials">Basic Tutorials</a>
+    <ul>
+      <li><a href="#setting-up-and-running">Setting up and Running</a></li>
+      <li><a href="#starting-zookeeper">Starting Zookeeper</a></li>
+      <li><a href="#starting-kafka">Starting Kafka</a></li>
+      <li><a href="#create-topics">Create Topics</a></li>
+      <li><a href="#delete-topics">Delete Topics</a></li>
+      <li><a href="#sending-messages">Sending Messages</a></li>
+      <li><a href="#consuming-messages">Consuming Messages</a></li>
+    </ul>
+  </li>
+  <li><a href="#accessing-kafka-in-python">Accessing Kafka in Python</a>
+    <ul>
+      <li><a href="#setting-up-libraries">Setting up libraries</a></li>
+      <li><a href="#producerpy">producer.py</a></li>
+      <li><a href="#consumerpy">consumer.py</a></li>
+      <li><a href="#run">Run</a></li>
+    </ul>
+  </li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>Written By <a href="https://github.com/nurring">Nuri Na</a>, VCANUS</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>Apache Kafka는 오픈소스 데이터 스트림 플랫폼으로, 대용량 실시간 로그 처리에 특화된 메시징 시스템이다.</p>
+
+<p>메시지를 메모리가 아닌 파일 시스템에 저장하며, 분산형 시스템으로 노드 고장과 데이터 손실에 대비한다.</p>
+
+<p>consumer가 broker로부터 직접 메시지를 가지고 가는 pull 방식으로 동작, 자신의 처리 능력만큼만 가져가게 된다.</p>
+
+<h2 id="concepts">Concepts</h2>
+
+<p><img src="/assets/images/kafkaconcept.png" alt="kafkaconcept1" /></p>
+
+<p><em>이미지 출처 : [https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05]</em></p>
+
+<p><img src="/assets/images/kafkacluster.png" alt="kafkaconcept1" /></p>
+
+<p><em>이미지 출처 : [https://kafka.apache.org/intro]</em></p>
+
+<ul>
+  <li>Producers : 메세지 생산(발행: publish)을 담당. 토픽을 선택하여 데이터를 발행한다.</li>
+  <li>
+    <p>Consumers : 토픽을 선택 구독하여 데이터를 소비한다.</p>
+  </li>
+  <li>
+    <p>Broker : 메세지 교환을 담당하는 모든 요소. Kafka는 싱글노드 혹은 클러스터로 구성할 수 있다.</p>
+  </li>
+  <li>
+    <p>Topic</p>
+  </li>
+  <li>
+    <p>Log : 한 개의 메세지</p>
+  </li>
+  <li>Offset : 파티션 내에서 각 메세지가 가지는 Unique Id</li>
+</ul>
+
+<h2 id="zookeeper">Zookeeper</h2>
+
+<p>분산코디네이터. 브로커를 모니터링하고, 토픽, 파티션을 관리한다.</p>
+
+<h2 id="basic-tutorials">Basic Tutorials</h2>
+
+<h3 id="setting-up-and-running">Setting up and Running</h3>
+
+<p><a href="https://kafka.apache.org/downloads">Apache Kafka website</a> 에서 바이너리 파일을 다운로드</p>
+
+<p>JVM언어를 기반으로 하므로 Java 7 이상 버전이 필요함</p>
+
+<h3 id="starting-zookeeper">Starting Zookeeper</h3>
+
+<p>Kafka는 Zookeeper에 의존하므로 Zookeeper를 먼저 구동한다.</p>
+
+<p><em>Kafka 설치 디렉토리를 ${KAFKA_PATH}로 통일하여 기술함</em></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">${</span><span class="nv">KAFKA_PATH</span><span class="k">}</span>/bin/zookeeper-server-start.sh config/zookeeper.properties
+</code></pre></div></div>
+
+<p>​</p>
+
+<h3 id="starting-kafka">Starting Kafka</h3>
+
+<p>Kafka 브로커 서버를 구동한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">${</span><span class="nv">KAFKA_PATH</span><span class="k">}</span>/bin/kafka-server-start.sh config/server.properties
+</code></pre></div></div>
+
+<h3 id="create-topics">Create Topics</h3>
+
+<p>메세지는 토픽에 전달된다. 다음 명령어는 test라는 토픽을 생성한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">${</span><span class="nv">KAFKA_PATH</span><span class="k">}</span>/bin/kafka-topics.sh <span class="nt">--create</span> <span class="nt">--zookeeper</span> localhost:2181 <span class="nt">--replication-factor</span> 1 <span class="nt">--partitions</span> 1 <span class="nt">--topic</span> <span class="nb">test</span>
+</code></pre></div></div>
+
+<p>다음 명령어로 생성된 토픽의 전체 목록을 확인</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">${</span><span class="nv">KAFKA_PATH</span><span class="k">}</span>/bin/kafka-topics.sh <span class="nt">--list</span> <span class="nt">--zookeeper</span> localhost:2181
+</code></pre></div></div>
+
+<h3 id="delete-topics">Delete Topics</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">${</span><span class="nv">KAFKA_PATH</span><span class="k">}</span>/kafka-topics.sh <span class="nt">--delete</span> <span class="nt">--zookeeper</span> localhost:2181 <span class="nt">--replication-factor</span> 1 <span class="nt">--partition</span> 1 <span class="nt">--topic</span> <span class="nb">test</span>
+</code></pre></div></div>
+
+<h3 id="sending-messages">Sending Messages</h3>
+
+<p><code class="highlighter-rouge">producer</code>는 토픽에 메세지를 전송한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">${</span><span class="nv">KAFKA_PATH</span><span class="k">}</span>/bin/kafka-console-producer.sh <span class="nt">--broker-list</span> localhost:9092 <span class="nt">--topic</span> <span class="nb">test</span>
+<span class="o">&gt;</span>Hello World
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">${KAFKA_PATH}/config/server.properties</code> 설정파일 <code class="highlighter-rouge">listeners</code> 에 9092포트가 기본으로 설정되어 있다. 해당 브로커의 test 토픽으로 메세지가 전송된다.</p>
+
+<p>보낸 메세지는 로컬 디스크에 저장된다. 설정파일 <code class="highlighter-rouge">log.dirs</code>에서 경로를 설정한다. 저장된 메세지는 소비되면서 사라지는 것이 아니라 <code class="highlighter-rouge">log.retintion.hours</code> 에서 설정한 시간 만큼 유지된다.</p>
+
+<h3 id="consuming-messages">Consuming Messages</h3>
+
+<p>정해진 topic 에 producer 가 메세지를 발행해놓으면 consumer 가 필요할때 해당 메세지를 가져간다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 해당 토픽에 저장된 메세지 모두 가져오기</span>
+<span class="k">${</span><span class="nv">KAFKA_PATH</span><span class="k">}</span>/bin/kafka-console-consumer.sh <span class="nt">--bootstrap-server</span> localhost:9092 <span class="nt">--topic</span> <span class="nb">test</span> <span class="nt">--from-beginning</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">--from-beginning</code> 을 제거하면 실시간 발생되는 메세지를 받아온다.</p>
+
+<h2 id="accessing-kafka-in-python">Accessing Kafka in Python</h2>
+
+<p>RTSP 프로토콜로 영상을 받아 openCV로 렌더링, flask 웹서버를 이용해 영상을 띄우는 예제</p>
+
+<h3 id="setting-up-libraries">Setting up libraries</h3>
+
+<ol>
+  <li>
+    <p>파이썬 버추얼 환경을 설정(<a href="[https://medium.com/@dan_kim/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%B4%88%EC%8B%AC%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-pip-%EA%B7%B8%EB%A6%AC%EA%B3%A0-virtualenv-%EC%86%8C%EA%B0%9C-a53512fab3c2](https://medium.com/@dan_kim/파이썬-초심자를-위한-pip-그리고-virtualenv-소개-a53512fab3c2)">virtualenv 참고</a>)한다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>virtualenv <span class="nb">env</span>
+<span class="nb">.</span> <span class="nb">env</span>/bin/activate
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>파이썬에 필요한 라이브러리를 설치한다. 카프카, OpneCV, Flask.</p>
+  </li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>kafka-python opencv-contrib-python Flask
+</code></pre></div></div>
+
+<h3 id="producerpy">producer.py</h3>
+
+<p>Producer는 RTSP 스트리밍 데이터를 카프카 서버에 발행한다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">kafka</span> <span class="kn">import</span> <span class="n">KafkaProducer</span>
+
+<span class="n">topic</span> <span class="o">=</span> <span class="s">"rtsp-stream"</span> 
+
+<span class="k">def</span> <span class="nf">publish_camera</span><span class="p">():</span>
+    <span class="s">"""
+    특정한 토픽에 비디오 스트림을 발행한다. 카프카 서버는 localhost:9092
+    """</span>
+
+    <span class="c1"># Producer를 설정한다
+</span>    <span class="n">producer</span> <span class="o">=</span> <span class="n">KafkaProducer</span><span class="p">(</span><span class="n">bootstrap_servers</span><span class="o">=</span><span class="s">'localhost:9092'</span><span class="p">)</span>
+
+    <span class="n">gst</span> <span class="o">=</span> <span class="s">"rtsp://서버 ip 주소"</span> <span class="c1"># 예) rtsp://192.168.0.108:8554/test
+</span>    <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="n">gst</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span><span class="p">(</span><span class="bp">True</span><span class="p">):</span>
+            <span class="n">success</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            
+            <span class="n">ret</span><span class="p">,</span> <span class="nb">buffer</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imencode</span><span class="p">(</span><span class="s">'.jpeg'</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span> <span class="c1">#buffer에 이미지를 받아
+</span>            <span class="n">producer</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span> <span class="nb">buffer</span><span class="o">.</span><span class="n">tobytes</span><span class="p">())</span> <span class="c1">#설정한 producer의 해당 토픽으로 send
+</span>            
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Exiting."</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="s">"""
+    Producer는 rtsp 스트리밍 데이터를 카프카 서버에 발행한다.
+    """</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"publihing feed!"</span><span class="p">)</span>
+    <span class="n">publish_camera</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="consumerpy">consumer.py</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">Response</span><span class="p">,</span> <span class="n">render_template</span>
+<span class="kn">from</span> <span class="nn">kafka</span> <span class="kn">import</span> <span class="n">KafkaConsumer</span>
+
+<span class="c1"># Kafka Consumer 작동
+</span><span class="n">topic</span> <span class="o">=</span> <span class="s">"rtsp-stream"</span>
+
+<span class="n">consumer</span> <span class="o">=</span> <span class="n">KafkaConsumer</span><span class="p">(</span>
+    <span class="n">topic</span><span class="p">,</span> 
+    <span class="n">bootstrap_servers</span><span class="o">=</span><span class="p">[</span><span class="s">'localhost:9092'</span><span class="p">])</span>
+
+
+<span class="c1"># Set the consumer in a Flask App
+</span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="o">@</span><span class="n">app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/video_feed'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">'GET'</span><span class="p">])</span> <span class="c1"># /video_feed로 페이지 접속
+</span><span class="k">def</span> <span class="nf">video_feed</span><span class="p">():</span>
+    <span class="s">"""
+    mimetype으로 multipart/x-mixed-replace를 설정
+    Flask에서 파이프라인으로 들어오는 새 value가 기존 이미지를 대체
+    (화면의 이미지가 새 이미지로 지속적으로 업데이트)
+    """</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span>
+        <span class="n">get_video_stream</span><span class="p">(),</span> 
+        <span class="n">mimetype</span><span class="o">=</span><span class="s">'multipart/x-mixed-replace; boundary=frame'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_video_stream</span><span class="p">():</span>
+    <span class="s">"""
+    카프카 서버에서 스트리밍되는 이미지를 받아 Flask가 읽을 수 있는 포맷으로 변경
+    """</span>
+    <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">consumer</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="p">(</span><span class="n">b</span><span class="s">'--frame</span><span class="se">\r\n</span><span class="s">'</span>
+               <span class="n">b</span><span class="s">'Content-Type: image/jpeg</span><span class="se">\r\n\r\n</span><span class="s">'</span> <span class="o">+</span> <span class="n">msg</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="n">b</span><span class="s">'</span><span class="se">\r\n\r\n</span><span class="s">'</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">'0.0.0.0'</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h3 id="run">Run</h3>
+
+<ol>
+  <li>
+    <p>Zookeeper와 Kafka 서버를 구동한다. (Basic Tutorials 참고)</p>
+  </li>
+  <li>
+    <p>파이썬 버추얼 환경 설정 후 consumer.py를 실행한다</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">.</span> <span class="n">env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">python</span> <span class="n">consumer</span><span class="o">.</span><span class="n">py</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>https://0.0.0.0:5000/video_feed 접속</p>
+
+    <p>클라이언트는 설정한 토픽으로부터 데이터 스트림을 받아오지만, 토픽은 아직 비어있으므로 아무것도 뜨지 않는다.</p>
+  </li>
+  <li>
+    <p>새로운 터미널에서 producer.py를 실행한다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span> <span class="nb">env</span>/bin/activate
+python producer.py
+</code></pre></div>    </div>
+
+    <p>토픽에 데이터가 발행됨에 따라 https://0.0.0.0:5000/video_feed 에서도 구독한 토픽의 데이터를 가져오고, 스트리밍 영상이 재생된다.</p>
+  </li>
+</ol>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#kafka" class="page__taxonomy-item" rel="tag">Kafka</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-03-05T00:00:00+09:00">March 05, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Apache+Kafka+Basic%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fapache-kafka-basic%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fapache-kafka-basic%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fapache-kafka-basic%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/querydsl-for-elasticsearch/" class="pagination--pager" title="Elasticsearch &amp; Query DSL
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/querydsl-for-elasticsearch/" rel="permalink">Elasticsearch &amp; Query DSL
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 24 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-and-rtsp/" rel="permalink">GStreamer and RTSP
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/research/Kinematics/" rel="permalink">Kinematics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 20 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/telegraf.md/" rel="permalink">Telegraf Basic
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 14 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 VCANUS's Technical Blog. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
