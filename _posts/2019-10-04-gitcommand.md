@@ -17,7 +17,7 @@ $ git config --global user.email <user email>
 $ git remote add origin <repository url>
 $ git fetch origin
 $ git fetch (default is origin)
-$ git fetch vcanus (target remote is vcanus)
+$ git fetch vcanus (target remote(upstream) is vcanus)
 $ git pull origin master (develop, feature/topic)
 $ git add <file name>
 // to all files
