@@ -61,3 +61,21 @@ Written by SGLee, VCANUS
         </plugins>
     </build>
  ```
+### add annotation to main .java file
+ Application.java
+ ```
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+ import org.springframework.context.ApplicationContext;
+ import org.springframework.context.annotation.ComponentScan;
+
+ @SpringBootApplication
+ @ComponentScan(basePackages = {"com.vcanus"})
+ public class Application {
+     public static void main(String[] args) {
+         System.out.println("Hello World");
+         ApplicationContext context = SpringApplication
+                 .run(Application.class, args);
+     }
+ }
+ ```
