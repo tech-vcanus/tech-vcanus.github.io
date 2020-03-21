@@ -40,9 +40,9 @@ Written by SGLee, VCANUS
  $ mvn compile // to make class file
  $ mvn package // to make jar or war file
  ```
-## Intellij Setup
+## IntellJ configuration to make package
 ### configuration pom.xml
- - add <build><plugins><plubin>... to pom.xml
+ add <build><plugins><plubin>... to pom.xml
  You will see a message "no main manifest attribute, in xx.jar" when you run xx.jar file after "mvn package".
  pom.xml
  ```
@@ -73,3 +73,4 @@ Written by SGLee, VCANUS
      }
  }
  ```
+## IntelliJ Configuration to deploy package to Github
