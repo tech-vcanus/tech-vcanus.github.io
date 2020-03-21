@@ -25,7 +25,7 @@ Written by SGLee, VCANUS
  ```
  $ ln -s apache-maven-x.x.x maven
  ```
-### configuration
+### configuration and use Maven in IntelliJ
  1. update environment variable. modify .bash_profile(MAC) or .bashrc(Ubuntu)
  ```
  $ vi ~/.bash_profile
@@ -34,4 +34,30 @@ Written by SGLee, VCANUS
  MAVEN_HOME=/opt/maven
  export PATH=$MAVEN_HOME/bin:$PATH
  ```
- 
+ 2. use Maven command Terminal in Intellij
+ ```
+ $ mvn clean
+ $ mvn compile // to make class file
+ $ mvn package // to make jar or war file
+ ```
+### configuration pom.xml
+ - add <build><plugins><plubin>... to pom.xml
+ You will see a message "no main manifest attribute, in xx.jar" when you run xx.jar file after "mvn package".
+ pom.xml
+ ```
+     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>repackage</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+            </plugin>
+        </plugins>
+    </build>
+ ```
