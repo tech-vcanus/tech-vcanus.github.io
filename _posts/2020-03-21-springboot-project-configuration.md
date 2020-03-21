@@ -17,6 +17,7 @@ Written by SGLee, VCANUS
  <img width="624" alt="image" src="https://user-images.githubusercontent.com/44759045/77221313-09122900-6b8c-11ea-9809-3f9aa24cdf89.png">
 
 ## Maven setup
+
 ### install
  1. download binary file from apache maven (https://maven.apache.org/download.cgi)
  2. decompress file to installation folder (ex: /opt/)
@@ -25,6 +26,7 @@ Written by SGLee, VCANUS
  ```
  $ ln -s apache-maven-x.x.x maven
  ```
+ 
 ### configuration and use Maven in IntelliJ
  1. update environment variable. modify .bash_profile(MAC) or .bashrc(Ubuntu)
  ```
@@ -40,13 +42,15 @@ Written by SGLee, VCANUS
  $ mvn compile // to make class file
  $ mvn package // to make jar or war file
  ```
+ 
 ## IntellJ configuration to make package
+
 ### configuration pom.xml
  add <build><plugins><plubin>... to pom.xml
  You will see a message "no main manifest attribute, in xx.jar" when you run xx.jar file after "mvn package".
  pom.xml
  ```
-     <build>
+      <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -55,7 +59,8 @@ Written by SGLee, VCANUS
         </plugins>
     </build>
  ```
-### add annotation to main
+ 
+### add annotation to main class
  @SpringBootApplication
  @ComponentScan(basePackages = {"com.vcanus"})
  ```
@@ -64,7 +69,8 @@ Written by SGLee, VCANUS
  import org.springframework.context.ApplicationContext;
  import org.springframework.context.annotation.ComponentScan;
 
-
+ @SpringBootApplication
+ @ComponentScan(basePackages = {"com.vcanus"})
  public class Application {
      public static void main(String[] args) {
          System.out.println("Hello World");
@@ -73,6 +79,7 @@ Written by SGLee, VCANUS
      }
  }
  ```
+ 
 ## IntelliJ Configuration to deploy package to Github
 ### make Github token 
 https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
