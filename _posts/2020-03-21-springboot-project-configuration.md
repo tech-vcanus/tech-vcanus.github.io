@@ -74,3 +74,14 @@ Written by SGLee, VCANUS
  }
  ```
 ## IntelliJ Configuration to deploy package to Github
+### make Github token 
+https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
+### setup .m2/settings.xml
+https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages
+### run mvn
+```
+$ mvn clean 
+$ mvn compile
+$ mvn package
+$ mvn deploy
+```
