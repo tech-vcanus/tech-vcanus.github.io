@@ -161,13 +161,13 @@ plt.show()       # matplotlib.show() : 그래프 표시
 
 인 신호가 섞여 있음을 나타낸다.       
 
-**5. 표본 숫자에 따른 fft 적용 결과 비교**     
+**5. 표본 숫자 N에 따른 fft 적용 결과 비교**    
     
-![fft-graph](https://user-images.githubusercontent.com/58065100/77515530-05e4a900-6ebc-11ea-9035-54495493c96c.png)   
-N = 500 일 때  
+![fft-graph](https://user-images.githubusercontent.com/58065100/77515530-05e4a900-6ebc-11ea-9035-54495493c96c.png)        
+N = 500 일 때       
 
      
-![fft-graph](https://user-images.githubusercontent.com/58065100/77515551-1006a780-6ebc-11ea-85a1-7d7df62e3968.png)   
-N = 5000 일 때        
+![fft-graph](https://user-images.githubusercontent.com/58065100/77515551-1006a780-6ebc-11ea-85a1-7d7df62e3968.png)        
+N = 5000 일 때             
 
 Sampling frequency가 높을수록 결과가 정확해진다.
