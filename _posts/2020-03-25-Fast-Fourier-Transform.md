@@ -23,6 +23,7 @@ Written By Park SunHong, VCANUS
       
 ## **1. 이론적 배경**
 ### **1-1. Fourier Transform의 개념**
+![fftconcept](https://user-images.githubusercontent.com/58065100/77515440-e2b9f980-6ebb-11ea-9d51-de281b91c57e.png)  
 
 $$
 X(w)=\int_{-\infty}^{\infty}x(t)e^{-jwt}dt
@@ -62,14 +63,11 @@ $$
 ## **2. 파이썬으로 FFT 수행하기**
 ### **2-1. 사용할 패키지 소개**
 ```
-$ from scipy import fftpack
 $ import matplotlib.pyplot as plt
 $ import numpy as np
 ```
 1. numpy : 수학 및 과학 연산을 위한 패키지.    
 2. matplotlib.pyplot : 그래프 그릴 때 이용.  
-3. scipy : 과학, 분석, 엔지니어링에 필요한 과학적 컴퓨팅 영역을 위한 패키지  
-    - numpy에도 fft 함수가 있다.
 
 ### **2-2. numpy.fft.fft 함수**  
 
@@ -100,11 +98,11 @@ amplitude2 = 4 	# 두 번째 신호 : 주파수 20, 진폭 4
 freq_sampling3 = 30
 amplitude3 = 2 	# 세 번째 신호 : 주파수 30, 진폭 2
 time = np.linspace(0, 6, 500)     # time 축 배열 생성. 0~6초 사이에 500개의 sample을 딴다는 의미.
-* linspace(start, end, num) : 첫 번째 원소가 start, 마지막 원소가 end, length가 num인, 등차수열 배열을 만들어주는 함수
 y = amplitude1*np.sin(2*np.pi*freq_sampling1*time) +
 amplitude2*np.sin(2*np.pi*freq_sampling2*time) +
 amplitude3*np.sin(2*np.pi*freq_sampling3*time)     # 위에서 만든 세 개의 신호를 합성해 y축 배열 생성.
 ```   
+* linspace(start, end, num) : 첫 번째 원소가 start, 마지막 원소가 end, length가 num인, 등차수열 배열을 만들어주는 함수  
 
 **2. 생성한 합성 신호를 그래프로 그려보기**  
 
@@ -115,6 +113,9 @@ plt.xlim(0,6)      # matplotlib. xlim(x축 시작점, x축 끝점)
 plt.show()      # matplotlib.show() : 그래프 표시
 
 ```
+![signal-graph](https://user-images.githubusercontent.com/58065100/77515495-f49b9c80-6ebb-11ea-938f-c755661bed9b.png)  
+
+
 **3. fft 함수 적용하고 후처리하기** 
 
 ```
@@ -140,10 +141,33 @@ plt.figure(figsize=(10,6))    # 그래프 크기 설정
 plt.plot(freq, (2/amp.size)*amp[0:amp.size//2])    # matplotlib.plot(x축 배열, y축 배열)
 ```
 
-(2/amp.size)*amp[0:amp.size//2]  
+* (2/amp.size)*amp[0:amp.size//2]에 대해 :  
    1. ((진폭값)*2)/(배열의 크기) 를 amp 배열의 앞 절반 각각의 원소에 적용.  
    2. frequency 배열을 절반 잘랐으므로 amp 배열도 앞 절반만 이용하게 된다.
    3. 표본의 크기가 커지면 복수 주기의 값이 여러 번 쌓이므로 진폭의 상대적 비율은 유지되지만 진폭의 절대적 크기가 커짐.
    4. 따라서 진폭의 크기를 표준화 해주어야 하므로 배열 크기로 나눔.
    5. amp 배열을 절반만 이용하는데 배열 크기로 나누어줬으므로 2를 곱해준다.
 
+```
+plt.show()       # matplotlib.show() : 그래프 표시
+```  
+![fft-graph](https://user-images.githubusercontent.com/58065100/77515530-05e4a900-6ebc-11ea-9035-54495493c96c.png)  
+
+<fft 결과 그래프>
+
+주파수 10, 진폭 5  
+주파수 20, 진폭 4  
+주파수 30, 진폭 2  
+
+인 신호가 섞여 있음을 나타낸다.
+
+**5.표본 숫자에 따른 fft 적용 결과 비교**
+
+
+1. N = 500  
+![fft-graph](https://user-images.githubusercontent.com/58065100/77515530-05e4a900-6ebc-11ea-9035-54495493c96c.png)  
+
+2. N = 5000  
+![fft-graph](https://user-images.githubusercontent.com/58065100/77515551-1006a780-6ebc-11ea-85a1-7d7df62e3968.png)
+
+Sampling frequency가 높을수록 결과가 정확해진다.
