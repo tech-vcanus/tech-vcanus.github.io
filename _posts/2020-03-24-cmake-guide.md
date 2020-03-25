@@ -2,7 +2,7 @@
 title: CMake Guide
 date: 2020-03-24
 categories: development
-tags: HLS Server Streaming
+tags: CMake C C++
 toc: true
 toc_sticky: true
 

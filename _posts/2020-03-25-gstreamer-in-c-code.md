@@ -1,8 +1,8 @@
 ---
-title: Basic GStreamer Guide in C
+title: GStreamer in C code
 date: 2020-03-25
 categories: development
-tags: HLS Server Streaming
+tags: GStreamer C C++
 toc: true
 toc_sticky: true
 
