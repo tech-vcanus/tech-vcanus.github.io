@@ -170,9 +170,11 @@ https://docs.docker.com/engine/reference/builder/
     Add loop.sh /usr/local/bin/loop.sh 
     ENTRYPOINT ["/usr/local/bin/loop.sh"] # exec form CMD ["1"]
     ```
+ - VOLUME
 ## Reference
 http://pyrasis.com/book/DockerForTheReallyImpatient/Chapter07/06
 https://bluese05.tistory.com/77
+https://joont92.github.io/docker/volume-container-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0/
 
 # Docker compose
 ## Example
