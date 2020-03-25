@@ -1,6 +1,6 @@
 ---
 title: Basic GStreamer Guide in C
-date: 2020-03-12
+date: 2020-03-25
 categories: development
 tags: HLS Server Streaming
 toc: true
