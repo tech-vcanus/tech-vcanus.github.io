@@ -6,7 +6,7 @@ tags: FFT
 use_math: true
 ---
 
-Written By Park SunHong
+Written By Park SunHong, VCANUS
 
 ## 차례
 1. 이론적 배경   
