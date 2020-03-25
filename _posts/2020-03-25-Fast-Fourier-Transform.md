@@ -1,8 +1,13 @@
 ---
+title: "Fast Fourier Transform"
+data: 2020-03-25 00:00:00 -0000
+categories: development 
+tags: FFT
 use_math: true
 ---
 
-# Fast Fourier Transform
+Written By Park SunHong
+
 ## 차례
 1. 이론적 배경   
     1-1. Fourier Series (푸리에 급수)   
