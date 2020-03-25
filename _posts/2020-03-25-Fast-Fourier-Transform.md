@@ -11,12 +11,12 @@ Written By Park SunHong, VCANUS
 ## 차례
 1. 이론적 배경   
     1-1. Fourier Transform의 개념   
-    1-2. DFT란?
+    1-2. DFT란?  
     1-3. FFT란?
 
 2. 파이썬으로 FFT 수행하기   
     2-1. 사용할 패키지 소개   
-    2-2. numpy.fft.fft 함수 
+    2-2. numpy.fft.fft 함수   
     2-3. 예제 코드 및 설명
 
 
