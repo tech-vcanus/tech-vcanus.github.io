@@ -153,10 +153,10 @@ plt.show()       # matplotlib.show() : 그래프 표시
 ```  
 ![fft-graph](https://user-images.githubusercontent.com/58065100/77515530-05e4a900-6ebc-11ea-9035-54495493c96c.png)  
 
-<fft 결과 그래프>
+fft 결과 그래프  
 
-주파수 10, 진폭 5  
-주파수 20, 진폭 4  
-주파수 30, 진폭 2  
+주파수 10, 진폭 5      
+주파수 20, 진폭 4      
+주파수 30, 진폭 2      
 
 인 신호가 섞여 있음을 나타낸다.    
