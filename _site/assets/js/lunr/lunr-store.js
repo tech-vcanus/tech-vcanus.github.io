@@ -88,4 +88,19 @@ var store = [{
         "excerpt":"Written By Nuri Na, VCANUS Overview Apache Kafka는 오픈소스 데이터 스트림 플랫폼으로, 대용량 실시간 로그 처리에 특화된 메시징 시스템이다. 메시지를 메모리가 아닌 파일 시스템에 저장하며, 분산형 시스템으로 노드 고장과 데이터 손실에 대비한다. consumer가 broker로부터 직접 메시지를 가지고 가는 pull 방식으로 동작, 자신의 처리 능력만큼만 가져가게 된다. Concepts 이미지 출처 :...","categories": ["development"],
         "tags": ["Kafka"],
         "url": "http://localhost:4000/development/apache-kafka-basic/",
+        "teaser":null},{
+        "title": "HTTP Live Streaming (HLS)",
+        "excerpt":"Written By Nuri Na, VCANUS   Overview   Concepts      이미지 출처 : https://developer.apple.com/documentation/http_live_streaming   ","categories": ["development"],
+        "tags": ["HLS","Server","Streaming"],
+        "url": "http://localhost:4000/development/http-live-streaming/",
+        "teaser":null},{
+        "title": "CMake Guide",
+        "excerpt":"Written By Nuri Na, VCANUS Makefile 리눅스 환경에서 소스 코드를 빌드하는데 다음 명령어를 사용한다. make 이 때 make는 소스 코드 디렉토리에 포함된 Makefile이라는 이름의 스크립트를 읽어 순서대로 수행한다. Makefile의 기본 구조는 다음과 같다. #환경 변수 CC=gcc CFLAGS=-g -Wall OBJS=main.o foo.o bar.o TARGET=app.out #규칙 블록 구조 $(TARGET): $(OBJS) $(CC) -o $@...","categories": ["development"],
+        "tags": ["HLS","Server","Streaming"],
+        "url": "http://localhost:4000/development/cmake-guide/",
+        "teaser":null},{
+        "title": "Basic GStreamer Guide in C",
+        "excerpt":"Written By Nuri Na, VCANUS Basic Concepts Media Source, demuxer, decoder, encoder, converter, sink등 각각 하나의 기능을 가진 element들로 pipeline을 조합하고 Pipline의 상태를 play하는 것이 기본 컨셉이다. 주요 용어는 다음과 같다. Element 파이프라인 내에서 수행할 기능은 각각 하나의 element로 준비되어있다. element들을 엮어 pipeline을 구성한다. Pad element를 연결해주는 고리(혹은 플러그나 포트)로,...","categories": ["development"],
+        "tags": ["HLS","Server","Streaming"],
+        "url": "http://localhost:4000/development/gstreamer-in-c-code/",
         "teaser":null}]
