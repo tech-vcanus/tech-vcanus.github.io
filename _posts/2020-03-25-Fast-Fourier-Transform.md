@@ -52,8 +52,8 @@ $$
 1. DFT의 연산 속도를 높이는 알고리즘  
 2. Cooley-Tukey 알고리즘을 가장 많이 이용  
 3. $O(n^2)$ 의 연산량을 O(nlogn)으로 줄여줌  
-4. DFT의 부분유사성 이용
-    - N-DFT를 a(=짝수 N/2-DFT)와 b(=홀수 N/2-DFT)로 나눔
+4. DFT의 부분유사성 이용. 
+    - N-DFT를 a(=짝수 N/2-DFT)와 b(=홀수 N/2-DFT)로 나눔. 
     - N-DFT의 앞 절반값은 a+b, 뒤 절반값은 a-b  
 5. 재귀적으로 연산 가능  
 6. 샘플 수(N)가 $2^n$ 꼴이어야 사용 가능  
@@ -123,14 +123,14 @@ yf = np.fft.fft(y, time.size)     # numpy.fft.fft(input 배열, output 길이)
 amp = np.abs(yf)     # output 배열의 각각의 원소의 크기 배열 생성
 freq = np.linspace(0.0, (0.5)*(500/6), (time.size//2))     # fft 그래프의 x축 배열 생성
 ```
-1. fft는 complex 배열을 반환하지만, 그래프 y축은 amplitude이므로 실숫값.
+1. fft는 complex 배열을 반환하지만, 그래프 y축은 amplitude이므로 실숫값.  
     - complex의 크기를 구하는 abs 함수를 써 크기를 원소로 갖는 배열 생성 후 y축 배열로 설정. 
-2. fft 함수 적용 후 반환된 배열의 domain은 frequency
-    - 0부터 sampling frequency인 500/6 까지 x축에 해당
-    - 그런데, DFT 식의 특성상 sampling 표본의 처음부터 절반까지만 유효
-    - 절반부터 끝까지는 앞 절반의 대칭인 쓰레기 값
-    - 그러므로, frequency 배열을 반으로 잘라야 한다.
-    - 즉, fft 적용 후 frequency domain의 범위는 (0, fs/2)가 된다.
+2. fft 함수 적용 후 반환된 배열의 domain은 frequency.  
+    - 0부터 sampling frequency인 500/6 까지 x축에 해당. 
+    - 그런데, DFT 식의 특성상 sampling 표본의 처음부터 절반까지만 유효. 
+    - 절반부터 끝까지는 앞 절반의 대칭인 쓰레기 값. 
+    - 그러므로, frequency 배열을 반으로 잘라야 한다.  
+    - 즉, fft 적용 후 frequency domain의 범위는 (0, fs/2)가 된다.  
     - fft 결과 주파수 A까지의 결과를 보고 싶다면 sampling frequency는 2A 이상이어야 함.
 
 
@@ -142,21 +142,33 @@ plt.plot(freq, (2/amp.size)*amp[0:amp.size//2])    # matplotlib.plot(x축 배열
 ```
 
 * (2/amp.size)*amp[0:amp.size//2]에 대해 :  
-   1. ((진폭값)*2)/(배열의 크기) 를 amp 배열의 앞 절반 각각의 원소에 적용.  
+   1. ((진폭값)*2)/(배열의 크기) 를 amp 배열의 앞 절반 각각의 원소에 적용.    
    2. frequency 배열을 절반 잘랐으므로 amp 배열도 앞 절반만 이용하게 된다.
-   3. 표본의 크기가 커지면 복수 주기의 값이 여러 번 쌓이므로 진폭의 상대적 비율은 유지되지만 진폭의 절대적 크기가 커짐.
-   4. 따라서 진폭의 크기를 표준화 해주어야 하므로 배열 크기로 나눔.
-   5. amp 배열을 절반만 이용하는데 배열 크기로 나누어줬으므로 2를 곱해준다.
+   3. 표본의 크기가 커지면 복수 주기의 값이 여러 번 쌓이므로 진폭의 상대적 비율은 유지되지만 진폭의 절대적 크기가 커짐.  
+   4. 따라서 진폭의 크기를 표준화 해주어야 하므로 배열 크기로 나눔.  
+   5. amp 배열을 절반만 이용하는데 배열 크기로 나누어줬으므로 2를 곱해준다.  
 
 ```
 plt.show()       # matplotlib.show() : 그래프 표시
 ```  
 ![fft-graph](https://user-images.githubusercontent.com/58065100/77515530-05e4a900-6ebc-11ea-9035-54495493c96c.png)  
 
-fft 결과 그래프  
+fft 결과 그래프.   
 
-주파수 10, 진폭 5      
-주파수 20, 진폭 4      
-주파수 30, 진폭 2      
+주파수 10, 진폭 5.       
+주파수 20, 진폭 4.       
+주파수 30, 진폭 2.       
 
-인 신호가 섞여 있음을 나타낸다.    
+인 신호가 섞여 있음을 나타낸다.  
+
+**5. 표본 숫자에 따른 fft 적용 결과 비교**. 
+![fft-graph](https://user-images.githubusercontent.com/58065100/77515530-05e4a900-6ebc-11ea-9035-54495493c96c.png). 
+N = 500   
+
+![fft-graph](https://user-images.githubusercontent.com/58065100/77515551-1006a780-6ebc-11ea-85a1-7d7df62e3968.png). 
+N = 5000   
+
+Sampling frequency가 높을수록 결과가 정확해진다.
+
+
+
