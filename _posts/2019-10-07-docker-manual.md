@@ -194,6 +194,9 @@ services:
       - ./data/1:/data 
     restart: always
 ```
+## Docker-based Redis Cluster
+https://github.com/sglee-net/docker-redis-cluster
+
 ## Reference
 http://raccoonyy.github.io/docker-usages-for-dev-environment-setup/
 https://success.docker.com/article/use-a-script-to-initialize-stateful-container-data

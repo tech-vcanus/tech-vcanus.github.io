@@ -115,7 +115,7 @@ reference : [Document](https://docs.influxdata.com/influxdb/v1.7/query_language/
 
 ### Select
 
-- SELECT FieldKey(\| *) [Mathematical Operators] [,FieldKey, TagKey] From Mesurement[,Mesurement] Where Key (operation) Value[(AND\|OR) Key (operation) Value] [GROUP BY * \| <tag_key>[,<tag_key]] [ORDER BY time DESC] [LIMIT \<n>]
+- SELECT FieldKey(\| *) [Mathematical Operators] [,FieldKey, TagKey] From Mesurement[,Mesurement] Where Key (operation) Value[(AND\|OR) Key (operation) Value] [GROUP BY * \| \<tag_key>[,\<tag_key>] [ORDER BY time DESC] [LIMIT \<n>]
   
 > - Syntax Tag in where : tag value - Single quote
 > - Where TagKey (operation; =, <>, !=) 'TagValue'
