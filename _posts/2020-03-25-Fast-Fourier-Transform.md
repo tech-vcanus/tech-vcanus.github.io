@@ -1,9 +1,11 @@
-
 ---
-geometry: margin=2cm
-header-includes:
-    - \usepackage{setspace}
-    - \doublespacing
+title: "Jekyll Github 블로그에 MathJax로 수학식 표시하기"
+tags:
+  - Blog
+  - MathJax
+  - Jekyll
+  - LaTeX
+use_math: true
 ---
 
 # Fast Fourier Transform
