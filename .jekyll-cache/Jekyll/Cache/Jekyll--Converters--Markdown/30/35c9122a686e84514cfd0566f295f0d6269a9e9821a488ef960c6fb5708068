@@ -1,0 +1,123 @@
+I"a$<p>Written By <a href="https://github.com/nurring">Nuri Na</a>, VCANUS</p>
+
+<h2 id="makefile">Makefile</h2>
+
+<p>리눅스 환경에서 소스 코드를 빌드하는데 다음 명령어를 사용한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make
+</code></pre></div></div>
+
+<p>이 때 <code class="highlighter-rouge">make</code>는 소스 코드 디렉토리에 포함된 <code class="highlighter-rouge">Makefile</code>이라는 이름의 스크립트를 읽어 순서대로 수행한다.</p>
+
+<p><code class="highlighter-rouge">Makefile</code>의 기본 구조는 다음과 같다.</p>
+
+<div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#환경 변수
+</span><span class="nv">CC</span><span class="o">=</span>gcc
+<span class="nv">CFLAGS</span><span class="o">=</span><span class="nt">-g</span> <span class="nt">-Wall</span>
+<span class="nv">OBJS</span><span class="o">=</span>main.o foo.o bar.o
+<span class="nv">TARGET</span><span class="o">=</span>app.out
+
+<span class="c">#규칙 블록 구조
+</span><span class="nl">$(TARGET)</span><span class="o">:</span> <span class="nf">$(OBJS)</span>
+    <span class="err">$(CC)</span> <span class="err">-o</span> <span class="err">$@</span> <span class="err">$(OBJS)</span>
+
+<span class="c">#파일 의존성
+</span><span class="nl">main.o</span><span class="o">:</span> <span class="nf">foo.h bar.h main.c</span>
+	foo.o: foo.h foo.c
+	bar.o: bar.h bar.c
+	
+<span class="c">#클린 빌드 : 기존 중간 산출물(*.o)들 삭제 - make clean
+</span><span class="nl">clean</span><span class="o">:</span>
+    <span class="err">rm</span> <span class="err">-f</span> <span class="err">*.o</span>
+    <span class="err">rm</span> <span class="err">-f</span> <span class="err">$(TARGET)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>CC: 컴파일러</li>
+  <li>CFLAGS: 컴파일 옵션</li>
+  <li>OBJS: 중간 산출물인 Object파일 목록</li>
+  <li>TARGET: 빌드 대상(실행 파일) 이름</li>
+  <li>$@: 현재 Target 이름(자동변수 <a href="http://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html"><em>자세한 설명 링크</em></a> )</li>
+</ul>
+
+<p><code class="highlighter-rouge">Makefile</code>은 의존성 등 다양한 문제로 프로젝트가 복잡해질수록 직접 작성하기 어렵고 생산성이 떨어진다. 이를 위해 의존성 정보를 일일이 기술하지 않아도 <code class="highlighter-rouge">Makefile</code>을 자동으로 생성하는 <strong>cmake</strong>를 사용한다.</p>
+
+<h2 id="cmakeliststxt">CMakeLists.txt</h2>
+
+<p>cmake는 Makefile을 빌드하기 위해 CMakeLists.txt를 작성한다. 위 Makefile을 빌드하는 CMakeLists.txt는 다음과 같이 작성한다.</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">ADD_EXECUTABLE</span> <span class="p">(</span> app.out main.c foo.c bar.c<span class="p">)</span>
+</code></pre></div></div>
+
+<p>그리고 다음 명령어로 빌드한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cmake CMakeLists.txt
+</code></pre></div></div>
+
+<p>결과물로 Makefile 및 cache파일 등이 생긴다. cmake -&gt; make 두 번의 명령어로 빌드해야 하지만, 환경 설정에 변경이 없는 경우  처음 한 번만 cmake하고 그 뒤로는 make로만 빌드하면 된다.</p>
+
+<h2 id="cmakeliststxt-기본-패턴">CMakeLists.txt 기본 패턴</h2>
+
+<p><code class="highlighter-rouge">pkg-config</code> 는 소스 코드를 컴파일하기 위하여 시스템에 설치된 라이브러리를 조회할 수 있는 소프트웨어이다. CMakeLists.txt에 포함하기 위해 콘솔에서 다음과 같이 사용한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pkg-config <span class="nt">--list-all</span> | <span class="nb">grep</span> &lt;패키지명&gt;
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#결과 예시</span>
+~ pkg-config <span class="nt">--list-all</span> | <span class="nb">grep </span>py
+pygobject-3.0                       PyGObject - Python bindings <span class="k">for </span>GObject
+python-3.7m                         Python - Python library
+py3cairo                            Pycairo - Python 3 bindings <span class="k">for </span>cairo
+python3                             Python - Python library
+python-3.7                          Python - Python library
+</code></pre></div></div>
+
+<p>조회되는 패키지명을 CMakeLists.txt의 pkg_check_modules에 기입한다.</p>
+
+<p>CMakesListx.txt의 기본 패턴은 다음과 같다.</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 요구 CMake 최소 버전</span>
+<span class="nb">cmake_minimum_required</span><span class="p">(</span>VERSION &lt;버전&gt;<span class="p">)</span>
+<span class="c1"># 프로젝트 이름 및 버전</span>
+<span class="nb">project</span><span class="p">(</span>&lt;프로젝트_이름&gt;<span class="p">)</span>
+
+<span class="c1">#pkg-config를 이용함</span>
+<span class="nb">find_package</span><span class="p">(</span>PkgConfig REQUIRED<span class="p">)</span>
+<span class="c1">#pkg-config에서 조회된 패키지를 포함</span>
+<span class="nf">pkg_check_modules</span><span class="p">(</span>&lt;변수명&gt; REQUIRED &lt;패키지명&gt;<span class="p">)</span>
+    <span class="c1"># cf. pkg-config로 조회되지 않는 경우 직접 *.cmake 파일 경로를 명시한다.</span>
+    <span class="c1"># -&gt; pkg_check_modules(&lt;변수명&gt; REQUIRED PATHS "&lt;파일_경로&gt;")</span>
+<span class="c1">#공통 헤더 파일 디렉토리</span>
+<span class="nb">include_directories</span><span class="p">(</span><span class="si">${</span><span class="nv">&lt;변수명&gt;_INCLUDE_DIRS</span><span class="si">}</span><span class="p">)</span>
+<span class="c1">#공통 링크 라이브러리 디렉토리</span>
+<span class="nb">link_directories</span><span class="p">(</span><span class="si">${</span><span class="nv">&lt;변수명&gt;_LIBRARY_DIRS</span><span class="si">}</span><span class="p">)</span>
+<span class="c1">#빌드 대상 바이너리</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span> &lt;파일명&gt;<span class="p">)</span>
+<span class="c1">#빌드 대상에 링크할 라이브러리 - add_executable 아래에 위치</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span> <span class="si">${</span><span class="nv">&lt;변수명&gt;_LIBRARIES</span><span class="si">}</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>pkg_check_modules()로 패키지를 불러오면, <변수명>_INCLUDE_DIRS 와 같은 형태의 환경 변수로 해당 파일 경로가 자동 매핑된다.</변수명></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CMakeLists.txt 예시</span>
+cmake_minimum_required<span class="o">(</span>VERSION 3.15<span class="o">)</span>
+project<span class="o">(</span>example<span class="o">)</span>
+
+<span class="c"># pkg-config 이용</span>
+find_package<span class="o">(</span>PkgConfig REQUIRED<span class="o">)</span>
+pkg_check_modules<span class="o">(</span>GST REQUIRED gstreamer-1.0<span class="o">)</span>
+include_directories<span class="o">(</span><span class="k">${</span><span class="nv">GST_INCLUDE_DIRS</span><span class="k">}</span><span class="o">)</span> <span class="c">#header dir</span>
+link_directories<span class="o">(</span><span class="k">${</span><span class="nv">GST_LIBRARY_DIRS</span><span class="k">}</span><span class="o">)</span> <span class="c">#library dir</span>
+
+<span class="c"># *.cmake 경로 직접 지정</span>
+find_package<span class="o">(</span>OpenCV REQUIRED  PATHS <span class="s2">"/usr/local/Cellar/opencv/4.2.0_3/lib/cmake/opencv4"</span><span class="o">)</span>
+include_directories<span class="o">(</span><span class="k">${</span><span class="nv">OpenCV_INCLUDE_DIR</span><span class="k">}</span><span class="o">)</span>
+link_directories<span class="o">(</span><span class="k">${</span><span class="nv">OpenCV_LIBRARY_DIRS</span><span class="k">}</span><span class="o">)</span>
+
+add_executable<span class="o">(</span><span class="k">${</span><span class="nv">PROJECT_NAME</span><span class="k">}</span> main.cpp<span class="o">)</span>
+
+target_link_libraries<span class="o">(</span><span class="k">${</span><span class="nv">PROJECT_NAME</span><span class="k">}</span> <span class="k">${</span><span class="nv">GST_LIBRARIES</span><span class="k">}</span><span class="o">)</span>
+target_link_libraries<span class="o">(</span><span class="k">${</span><span class="nv">PROJECT_NAME</span><span class="k">}</span> <span class="k">${</span><span class="nv">OpenCV_LIBRARIES</span><span class="k">}</span><span class="o">)</span>
+</code></pre></div></div>
+
+:ET

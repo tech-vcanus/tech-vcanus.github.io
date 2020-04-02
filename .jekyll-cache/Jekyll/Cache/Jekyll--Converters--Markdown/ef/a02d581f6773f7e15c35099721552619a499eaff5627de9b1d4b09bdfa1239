@@ -1,4 +1,4 @@
-I"\?<p>Written By <a href="https://github.com/nurring">Nuri Na</a>, VCANUS</p>
+I"N@<p>Written By <a href="https://github.com/nurring">Nuri Na</a>, VCANUS</p>
 
 <h2 id="overview">Overview</h2>
 
@@ -12,11 +12,11 @@
 
 <p><img src="/assets/images/kafkaconcept.png" alt="kafkaconcept1" /></p>
 
-<p><em>이미지 출처 : [https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05]</em></p>
+<p><em>이미지 출처 : <a href="https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05">https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05</a></em></p>
 
 <p><img src="/assets/images/kafkacluster.png" alt="kafkaconcept1" /></p>
 
-<p><em>이미지 출처 : [https://kafka.apache.org/intro]</em></p>
+<p><em>이미지 출처 : <a href="https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05">https://kafka.apache.org/intro</a></em></p>
 
 <ul>
   <li>Producers : 메세지 생산(발행: publish)을 담당. 토픽을 선택하여 데이터를 발행한다.</li>
@@ -37,7 +37,7 @@
 
 <h2 id="zookeeper">Zookeeper</h2>
 
-<p>Kafka의 상태와 클러스터를 관리한다.</p>
+<p>분산코디네이터. 브로커를 모니터링하고, 토픽, 파티션을 관리한다.</p>
 
 <h2 id="basic-tutorials">Basic Tutorials</h2>
 

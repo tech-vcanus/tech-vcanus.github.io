@@ -1,0 +1,688 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>CMake Guide - VCANUS’s Technical Blog</title>
+<meta name="description" content="Written By Nuri Na, VCANUS">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="VCANUS's Technical Blog">
+<meta property="og:title" content="CMake Guide">
+<meta property="og:url" content="http://localhost:4000/development/cmake-guide/">
+
+
+  <meta property="og:description" content="Written By Nuri Na, VCANUS">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-03-12T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/cmake-guide/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="VCANUS's Technical Blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          VCANUS's Technical Blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="CMake Guide">
+    <meta itemprop="description" content="Written By Nuri Na, VCANUS">
+    <meta itemprop="datePublished" content="March 12, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">CMake Guide
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#makefile">Makefile</a></li>
+  <li><a href="#cmakeliststxt">CMakeLists.txt</a></li>
+  <li><a href="#cmakeliststxt-기본-패턴">CMakeLists.txt 기본 패턴</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>Written By <a href="https://github.com/nurring">Nuri Na</a>, VCANUS</p>
+
+<h2 id="makefile">Makefile</h2>
+
+<p>리눅스 환경에서 소스 코드를 빌드하는데 다음 명령어를 사용한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make
+</code></pre></div></div>
+
+<p>이 때 <code class="highlighter-rouge">make</code>는 소스 코드 디렉토리에 포함된 <code class="highlighter-rouge">Makefile</code>이라는 이름의 스크립트를 읽어 순서대로 수행한다.</p>
+
+<p><code class="highlighter-rouge">Makefile</code>의 기본 구조는 다음과 같다.</p>
+
+<div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#환경 변수
+</span><span class="nv">CC</span><span class="o">=</span>gcc
+<span class="nv">CFLAGS</span><span class="o">=</span><span class="nt">-g</span> <span class="nt">-Wall</span>
+<span class="nv">OBJS</span><span class="o">=</span>main.o foo.o bar.o
+<span class="nv">TARGET</span><span class="o">=</span>app.out
+
+<span class="c">#규칙 블록 구조
+</span><span class="nl">$(TARGET)</span><span class="o">:</span> <span class="nf">$(OBJS)</span>
+    <span class="err">$(CC)</span> <span class="err">-o</span> <span class="err">$@</span> <span class="err">$(OBJS)</span>
+
+<span class="c">#파일 의존성
+</span><span class="nl">main.o</span><span class="o">:</span> <span class="nf">foo.h bar.h main.c</span>
+	foo.o: foo.h foo.c
+	bar.o: bar.h bar.c
+	
+<span class="c">#클린 빌드 : 기존 중간 산출물(*.o)들 삭제 - make clean
+</span><span class="nl">clean</span><span class="o">:</span>
+    <span class="err">rm</span> <span class="err">-f</span> <span class="err">*.o</span>
+    <span class="err">rm</span> <span class="err">-f</span> <span class="err">$(TARGET)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>CC: 컴파일러</li>
+  <li>CFLAGS: 컴파일 옵션</li>
+  <li>OBJS: 중간 산출물인 Object파일 목록</li>
+  <li>TARGET: 빌드 대상(실행 파일) 이름</li>
+  <li>$@: 현재 Target 이름(자동변수 <a href="http://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html"><em>자세한 설명 링크</em></a> )</li>
+</ul>
+
+<p><code class="highlighter-rouge">Makefile</code>은 의존성 등 다양한 문제로 프로젝트가 복잡해질수록 직접 작성하기 어렵고 생산성이 떨어진다. 이를 위해 의존성 정보를 일일이 기술하지 않아도 <code class="highlighter-rouge">Makefile</code>을 자동으로 생성하는 <strong>cmake</strong>를 사용한다.</p>
+
+<h2 id="cmakeliststxt">CMakeLists.txt</h2>
+
+<p>cmake는 Makefile을 빌드하기 위해 CMakeLists.txt를 작성한다. 위 Makefile을 빌드하는 CMakeLists.txt는 다음과 같이 작성한다.</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">ADD_EXECUTABLE</span> <span class="p">(</span> app.out main.c foo.c bar.c<span class="p">)</span>
+</code></pre></div></div>
+
+<p>그리고 다음 명령어로 빌드한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cmake CMakeLists.txt
+</code></pre></div></div>
+
+<p>결과물로 Makefile 및 cache파일 등이 생긴다. cmake -&gt; make 두 번의 명령어로 빌드해야 하지만, 환경 설정에 변경이 없는 경우  처음 한 번만 cmake하고 그 뒤로는 make로만 빌드하면 된다.</p>
+
+<h2 id="cmakeliststxt-기본-패턴">CMakeLists.txt 기본 패턴</h2>
+
+<p><code class="highlighter-rouge">pkg-config</code> 는 소스 코드를 컴파일하기 위하여 시스템에 설치된 라이브러리를 조회할 수 있는 소프트웨어이다. CMakeLists.txt에 포함하기 위해 콘솔에서 다음과 같이 사용한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pkg-config <span class="nt">--list-all</span> | <span class="nb">grep</span> &lt;패키지명&gt;
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#결과 예시</span>
+~ pkg-config <span class="nt">--list-all</span> | <span class="nb">grep </span>py
+pygobject-3.0                       PyGObject - Python bindings <span class="k">for </span>GObject
+python-3.7m                         Python - Python library
+py3cairo                            Pycairo - Python 3 bindings <span class="k">for </span>cairo
+python3                             Python - Python library
+python-3.7                          Python - Python library
+</code></pre></div></div>
+
+<p>조회되는 패키지명을 CMakeLists.txt의 pkg_check_modules에 기입한다.</p>
+
+<p>CMakesListx.txt의 기본 패턴은 다음과 같다.</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 요구 CMake 최소 버전</span>
+<span class="nb">cmake_minimum_required</span><span class="p">(</span>VERSION &lt;버전&gt;<span class="p">)</span>
+<span class="c1"># 프로젝트 이름 및 버전</span>
+<span class="nb">project</span><span class="p">(</span>&lt;프로젝트_이름&gt;<span class="p">)</span>
+
+<span class="c1">#pkg-config를 이용함</span>
+<span class="nb">find_package</span><span class="p">(</span>PkgConfig REQUIRED<span class="p">)</span>
+<span class="c1">#pkg-config에서 조회된 패키지를 포함</span>
+<span class="nf">pkg_check_modules</span><span class="p">(</span>&lt;변수명&gt; REQUIRED &lt;패키지명&gt;<span class="p">)</span>
+    <span class="c1"># cf. pkg-config로 조회되지 않는 경우 직접 *.cmake 파일 경로를 명시한다.</span>
+    <span class="c1"># -&gt; pkg_check_modules(&lt;변수명&gt; REQUIRED PATHS "&lt;파일_경로&gt;")</span>
+<span class="c1">#공통 헤더 파일 디렉토리</span>
+<span class="nb">include_directories</span><span class="p">(</span><span class="si">${</span><span class="nv">&lt;변수명&gt;_INCLUDE_DIRS</span><span class="si">}</span><span class="p">)</span>
+<span class="c1">#공통 링크 라이브러리 디렉토리</span>
+<span class="nb">link_directories</span><span class="p">(</span><span class="si">${</span><span class="nv">&lt;변수명&gt;_LIBRARY_DIRS</span><span class="si">}</span><span class="p">)</span>
+<span class="c1">#빌드 대상 바이너리</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span> &lt;파일명&gt;<span class="p">)</span>
+<span class="c1">#빌드 대상에 링크할 라이브러리 - add_executable 아래에 위치</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span> <span class="si">${</span><span class="nv">&lt;변수명&gt;_LIBRARIES</span><span class="si">}</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>pkg_check_modules()로 패키지를 불러오면, <변수명>_INCLUDE_DIRS 와 같은 형태의 환경 변수로 해당 파일 경로가 자동 매핑된다.</변수명></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CMakeLists.txt 예시</span>
+cmake_minimum_required<span class="o">(</span>VERSION 3.15<span class="o">)</span>
+project<span class="o">(</span>example<span class="o">)</span>
+
+<span class="c"># pkg-config 이용</span>
+find_package<span class="o">(</span>PkgConfig REQUIRED<span class="o">)</span>
+pkg_check_modules<span class="o">(</span>GST REQUIRED gstreamer-1.0<span class="o">)</span>
+include_directories<span class="o">(</span><span class="k">${</span><span class="nv">GST_INCLUDE_DIRS</span><span class="k">}</span><span class="o">)</span> <span class="c">#header dir</span>
+link_directories<span class="o">(</span><span class="k">${</span><span class="nv">GST_LIBRARY_DIRS</span><span class="k">}</span><span class="o">)</span> <span class="c">#library dir</span>
+
+<span class="c"># *.cmake 경로 직접 지정</span>
+find_package<span class="o">(</span>OpenCV REQUIRED  PATHS <span class="s2">"/usr/local/Cellar/opencv/4.2.0_3/lib/cmake/opencv4"</span><span class="o">)</span>
+include_directories<span class="o">(</span><span class="k">${</span><span class="nv">OpenCV_INCLUDE_DIR</span><span class="k">}</span><span class="o">)</span>
+link_directories<span class="o">(</span><span class="k">${</span><span class="nv">OpenCV_LIBRARY_DIRS</span><span class="k">}</span><span class="o">)</span>
+
+add_executable<span class="o">(</span><span class="k">${</span><span class="nv">PROJECT_NAME</span><span class="k">}</span> main.cpp<span class="o">)</span>
+
+target_link_libraries<span class="o">(</span><span class="k">${</span><span class="nv">PROJECT_NAME</span><span class="k">}</span> <span class="k">${</span><span class="nv">GST_LIBRARIES</span><span class="k">}</span><span class="o">)</span>
+target_link_libraries<span class="o">(</span><span class="k">${</span><span class="nv">PROJECT_NAME</span><span class="k">}</span> <span class="k">${</span><span class="nv">OpenCV_LIBRARIES</span><span class="k">}</span><span class="o">)</span>
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#hls" class="page__taxonomy-item" rel="tag">HLS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#server" class="page__taxonomy-item" rel="tag">Server</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#streaming" class="page__taxonomy-item" rel="tag">Streaming</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-03-12T00:00:00+09:00">March 12, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=CMake+Guide%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fcmake-guide%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fcmake-guide%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fcmake-guide%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/http-live-streaming/" class="pagination--pager" title="HTTP Live Streaming (HLS)
+">Previous</a>
+    
+    
+      <a href="/development/gstreamer-in-c-code/" class="pagination--pager" title="Basic GStreamer Guide in C
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-in-c-code/" rel="permalink">Basic GStreamer Guide in C
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/http-live-streaming/" rel="permalink">HTTP Live Streaming (HLS)
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/apache-kafka-basic/" rel="permalink">Apache Kafka Basic
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 05 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/querydsl-for-elasticsearch/" rel="permalink">Elasticsearch &amp; Query DSL
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 24 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 VCANUS's Technical Blog. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

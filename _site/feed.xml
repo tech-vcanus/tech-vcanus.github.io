@@ -1,4 +1,398 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-09T13:54:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">VCANUS’s Technical Blog</title><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><entry><title type="html">Apache Kafka Basic</title><link href="http://localhost:4000/development/apache-kafka-basic/" rel="alternate" type="text/html" title="Apache Kafka Basic" /><published>2020-03-05T00:00:00+09:00</published><updated>2020-03-05T00:00:00+09:00</updated><id>http://localhost:4000/development/apache-kafka-basic</id><content type="html" xml:base="http://localhost:4000/development/apache-kafka-basic/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt;, VCANUS&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-26T01:04:32+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">VCANUS’s Technical Blog</title><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><entry><title type="html">CMake Guide</title><link href="http://localhost:4000/development/cmake-guide/" rel="alternate" type="text/html" title="CMake Guide" /><published>2020-03-12T00:00:00+09:00</published><updated>2020-03-12T00:00:00+09:00</updated><id>http://localhost:4000/development/cmake-guide</id><content type="html" xml:base="http://localhost:4000/development/cmake-guide/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt;, VCANUS&lt;/p&gt;
+
+&lt;h2 id=&quot;makefile&quot;&gt;Makefile&lt;/h2&gt;
+
+&lt;p&gt;리눅스 환경에서 소스 코드를 빌드하는데 다음 명령어를 사용한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이 때 &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt;는 소스 코드 디렉토리에 포함된 &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt;이라는 이름의 스크립트를 읽어 순서대로 수행한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt;의 기본 구조는 다음과 같다.&lt;/p&gt;
+
+&lt;div class=&quot;language-makefile highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#환경 변수
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;CC&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;gcc
+&lt;span class=&quot;nv&quot;&gt;CFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Wall&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;OBJS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;main.o foo.o bar.o
+&lt;span class=&quot;nv&quot;&gt;TARGET&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;app.out
+
+&lt;span class=&quot;c&quot;&gt;#규칙 블록 구조
+&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;$(TARGET)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;$(OBJS)&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;$(CC)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$@&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(OBJS)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#파일 의존성
+&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;main.o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo.h bar.h main.c&lt;/span&gt;
+	foo.o: foo.h foo.c
+	bar.o: bar.h bar.c
+	
+&lt;span class=&quot;c&quot;&gt;#클린 빌드 : 기존 중간 산출물(*.o)들 삭제 - make clean
+&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;clean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;*.o&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(TARGET)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CC: 컴파일러&lt;/li&gt;
+  &lt;li&gt;CFLAGS: 컴파일 옵션&lt;/li&gt;
+  &lt;li&gt;OBJS: 중간 산출물인 Object파일 목록&lt;/li&gt;
+  &lt;li&gt;TARGET: 빌드 대상(실행 파일) 이름&lt;/li&gt;
+  &lt;li&gt;$@: 현재 Target 이름(자동변수 &lt;a href=&quot;http://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html&quot;&gt;&lt;em&gt;자세한 설명 링크&lt;/em&gt;&lt;/a&gt; )&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt;은 의존성 등 다양한 문제로 프로젝트가 복잡해질수록 직접 작성하기 어렵고 생산성이 떨어진다. 이를 위해 의존성 정보를 일일이 기술하지 않아도 &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt;을 자동으로 생성하는 &lt;strong&gt;cmake&lt;/strong&gt;를 사용한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;cmakeliststxt&quot;&gt;CMakeLists.txt&lt;/h2&gt;
+
+&lt;p&gt;cmake는 Makefile을 빌드하기 위해 CMakeLists.txt를 작성한다. 위 Makefile을 빌드하는 CMakeLists.txt는 다음과 같이 작성한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-cmake highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;ADD_EXECUTABLE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; app.out main.c foo.c bar.c&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그리고 다음 명령어로 빌드한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cmake CMakeLists.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;결과물로 Makefile 및 cache파일 등이 생긴다. cmake -&amp;gt; make 두 번의 명령어로 빌드해야 하지만, 환경 설정에 변경이 없는 경우  처음 한 번만 cmake하고 그 뒤로는 make로만 빌드하면 된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;cmakeliststxt-기본-패턴&quot;&gt;CMakeLists.txt 기본 패턴&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pkg-config&lt;/code&gt; 는 소스 코드를 컴파일하기 위하여 시스템에 설치된 라이브러리를 조회할 수 있는 소프트웨어이다. CMakeLists.txt에 포함하기 위해 콘솔에서 다음과 같이 사용한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pkg-config &lt;span class=&quot;nt&quot;&gt;--list-all&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &amp;lt;패키지명&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#결과 예시&lt;/span&gt;
+~ pkg-config &lt;span class=&quot;nt&quot;&gt;--list-all&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;py
+pygobject-3.0                       PyGObject - Python bindings &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;GObject
+python-3.7m                         Python - Python library
+py3cairo                            Pycairo - Python 3 bindings &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;cairo
+python3                             Python - Python library
+python-3.7                          Python - Python library
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;조회되는 패키지명을 CMakeLists.txt의 pkg_check_modules에 기입한다.&lt;/p&gt;
+
+&lt;p&gt;CMakesListx.txt의 기본 패턴은 다음과 같다.&lt;/p&gt;
+
+&lt;div class=&quot;language-cmake highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 요구 CMake 최소 버전&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cmake_minimum_required&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VERSION &amp;lt;버전&amp;gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# 프로젝트 이름 및 버전&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&amp;lt;프로젝트_이름&amp;gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#pkg-config를 이용함&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;find_package&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;PkgConfig REQUIRED&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#pkg-config에서 조회된 패키지를 포함&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;pkg_check_modules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&amp;lt;변수명&amp;gt; REQUIRED &amp;lt;패키지명&amp;gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# cf. pkg-config로 조회되지 않는 경우 직접 *.cmake 파일 경로를 명시한다.&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# -&amp;gt; pkg_check_modules(&amp;lt;변수명&amp;gt; REQUIRED PATHS &quot;&amp;lt;파일_경로&amp;gt;&quot;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#공통 헤더 파일 디렉토리&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;include_directories&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&amp;lt;변수명&amp;gt;_INCLUDE_DIRS&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#공통 링크 라이브러리 디렉토리&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;link_directories&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&amp;lt;변수명&amp;gt;_LIBRARY_DIRS&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#빌드 대상 바이너리&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;add_executable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROJECT_NAME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &amp;lt;파일명&amp;gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#빌드 대상에 링크할 라이브러리 - add_executable 아래에 위치&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;target_link_libraries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROJECT_NAME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&amp;lt;변수명&amp;gt;_LIBRARIES&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;pkg_check_modules()로 패키지를 불러오면, &lt;변수명&gt;_INCLUDE_DIRS 와 같은 형태의 환경 변수로 해당 파일 경로가 자동 매핑된다.&lt;/변수명&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# CMakeLists.txt 예시&lt;/span&gt;
+cmake_minimum_required&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;VERSION 3.15&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+project&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;example&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# pkg-config 이용&lt;/span&gt;
+find_package&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;PkgConfig REQUIRED&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+pkg_check_modules&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;GST REQUIRED gstreamer-1.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+include_directories&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GST_INCLUDE_DIRS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#header dir&lt;/span&gt;
+link_directories&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GST_LIBRARY_DIRS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#library dir&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# *.cmake 경로 직접 지정&lt;/span&gt;
+find_package&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;OpenCV REQUIRED  PATHS &lt;span class=&quot;s2&quot;&gt;&quot;/usr/local/Cellar/opencv/4.2.0_3/lib/cmake/opencv4&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+include_directories&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OpenCV_INCLUDE_DIR&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+link_directories&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OpenCV_LIBRARY_DIRS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+add_executable&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROJECT_NAME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; main.cpp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+target_link_libraries&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROJECT_NAME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GST_LIBRARIES&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+target_link_libraries&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROJECT_NAME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OpenCV_LIBRARIES&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="HLS" /><category term="Server" /><category term="Streaming" /><summary type="html">Written By Nuri Na, VCANUS</summary></entry><entry><title type="html">HTTP Live Streaming (HLS)</title><link href="http://localhost:4000/development/http-live-streaming/" rel="alternate" type="text/html" title="HTTP Live Streaming (HLS)" /><published>2020-03-12T00:00:00+09:00</published><updated>2020-03-12T00:00:00+09:00</updated><id>http://localhost:4000/development/http-live-streaming</id><content type="html" xml:base="http://localhost:4000/development/http-live-streaming/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt;, VCANUS&lt;/p&gt;
+
+&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;h2 id=&quot;concepts&quot;&gt;Concepts&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/Users/divna/git/techvcanusblog/assets/images/hlsarchitecture.png&quot; alt=&quot;hlsarchitecture&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;이미지 출처 : &lt;a href=&quot;https://developer.apple.com/documentation/http_live_streaming&quot;&gt;https://developer.apple.com/documentation/http_live_streaming&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="HLS" /><category term="Server" /><category term="Streaming" /><summary type="html">Written By Nuri Na, VCANUS</summary></entry><entry><title type="html">Basic GStreamer Guide in C</title><link href="http://localhost:4000/development/gstreamer-in-c-code/" rel="alternate" type="text/html" title="Basic GStreamer Guide in C" /><published>2020-03-12T00:00:00+09:00</published><updated>2020-03-12T00:00:00+09:00</updated><id>http://localhost:4000/development/gstreamer-in-c-code</id><content type="html" xml:base="http://localhost:4000/development/gstreamer-in-c-code/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt;, VCANUS&lt;/p&gt;
+
+&lt;h2 id=&quot;basic-concepts&quot;&gt;Basic Concepts&lt;/h2&gt;
+
+&lt;p&gt;Media Source, demuxer, decoder, encoder, converter, sink등 각각 하나의 기능을 가진 element들로 pipeline을 조합하고 Pipline의 상태를 play하는 것이 기본 컨셉이다.&lt;/p&gt;
+
+&lt;p&gt;주요 용어는 다음과 같다.&lt;/p&gt;
+
+&lt;h3 id=&quot;element&quot;&gt;Element&lt;/h3&gt;
+
+&lt;p&gt;파이프라인 내에서 수행할 기능은 각각 하나의 element로 준비되어있다. element들을 엮어 pipeline을 구성한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;pad&quot;&gt;Pad&lt;/h3&gt;
+
+&lt;p&gt;element를 연결해주는 고리(혹은 플러그나 포트)로, 한 element에서 나가는 쪽을 Sink Pad, 다음 element로 들어가는 쪽을 Source Pad라고 한다.   element의 성격에 따라 하나의 pad만을 가지기도 한다.(예를 들면, src 혹은 sink elements)&lt;/p&gt;
+
+&lt;h3 id=&quot;cap&quot;&gt;Cap&lt;/h3&gt;
+
+&lt;p&gt;pad에서 지원하는 데이터 type을 필터링한다. (사이즈, 프레임수 등) 주로 converter뒤에 위치한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;bin&quot;&gt;Bin&lt;/h3&gt;
+
+&lt;p&gt;여러 element를 묶어서 하나의 bin으로 만들어 관리할 수 있다. bin 전체를 하나의 element처럼 연결하고, 상태를 관리한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;pipeline&quot;&gt;Pipeline&lt;/h3&gt;
+
+&lt;p&gt;가장 높은 레벨의 bin이다. PAUSE나 PLAYING 상태를 설정하여 데이터의 흐름을 제어한다. pipeline은 하나의 쓰레드로 재생된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;bus&quot;&gt;Bus&lt;/h3&gt;
+
+&lt;p&gt;pipeline loop가 돌 때 상태를 체크한다. bus에 메세지 핸들러를 붙여 사용한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;RTSPfmf 소스로 받아 HLS 프로토콜 형식으로 파일을 만드는 파이프라인을 구현해 보자.&lt;/p&gt;
+
+&lt;p&gt;쉘에서 gst-launch-1.0을 이용해 실행하는 명령어는 다음과 같다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gst-launch-1.0 /
+rtspsrc &lt;span class=&quot;nv&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;rtsp://192.168.0.70:8554/start&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; /
+rtph264depay &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; /
+video/x-h264,stream-format&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;avc &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; /
+h264parse &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; /
+avdec_h264 &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; /
+x264enc &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; /
+mpegtsmux &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; /
+hlssink max-files&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;15 target-duration&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;5 &lt;span class=&quot;nv&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/nginx/hls/segment%05d.ts
+playlist-location&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/nginx/hls/playlist.m3u8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이를 c (혹은 c++)로 구현하기 위해 파이프라인 구성 요소들을 분석하였다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rtspsrc &lt;span class=&quot;c&quot;&gt;#element&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;rtsp://192.168.0.70:8554/start&quot;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# configure rtspsrc&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; rtph264depay &lt;span class=&quot;c&quot;&gt;#element&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; video/x-h264,stream-format&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;avc &lt;span class=&quot;c&quot;&gt;#caps&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; h264parse &lt;span class=&quot;c&quot;&gt;#element&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; avdec_h264 &lt;span class=&quot;c&quot;&gt;#element&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; x264enc &lt;span class=&quot;c&quot;&gt;#element&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; mpegtsmux &lt;span class=&quot;c&quot;&gt;#element&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; hlssink &lt;span class=&quot;c&quot;&gt;#element&lt;/span&gt;
+max-files&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;15 target-duration&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;5 &lt;span class=&quot;nv&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/nginx/hls/segment%05d.ts playlist-location&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/nginx/hls/playlist.m3u8 &lt;span class=&quot;c&quot;&gt;#configure hlssink&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;전체-코드&quot;&gt;전체 코드&lt;/h3&gt;
+
+&lt;p&gt;위 파이프라인을 c(c++) 코드로 구현하면 아래와 같다.&lt;/p&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;gst/gst.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;on_pad_added&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GstElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GstPad&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gpointer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gchar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstCaps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_caps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gchar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p_rtph264depay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_pad_get_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;g_print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;A new pad %s was created &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;p_caps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_pad_get_pad_template_caps&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_caps_to_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p_caps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;g_free&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;p_rtph264depay&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GST_ELEMENT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gst_element_link_pads&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_rtph264depay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sink&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;g_print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Failed to link elements 3 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;g_free&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_CustomData&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//rtspsrc&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//rtph264depay&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstCaps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filtercaps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//video/x-h264,stream-format=avc&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//h264parse&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//avdec_h264&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//x264enc&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//mpegtsmux&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//hlssink&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CustomData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;CustomData&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstBus&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstMessage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstMessage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_eos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstStateChangeReturn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;gst_init&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rtspsrc&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;source&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depay&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rtph264depay&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;depay&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;capsfilter&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;filter&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filtercaps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_caps_new_simple&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;video/x-h264&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;stream-format&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;G_TYPE_STRING&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;avc&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;h264parse&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;parse&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;avdec_h264&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;decode&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;x264enc&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;encode&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mux&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mpegtsmux&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;mux&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sink&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hlssink&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sink&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_pipeline_new&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rtsp-to-hls-pl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;g_object_set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;location&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;rtsp://192.168.0.70:8554/test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;g_object_set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;max-files&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;target-duration&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;location&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/nginx/hls/segment%05d.ts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;playlist-location&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/nginx/hls/playlist.m3u8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;g_object_set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;caps&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filtercaps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gst_caps_unref&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filtercaps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depay&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mux&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;g_printerr&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Not all elements could be created. &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g_signal_connect&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;pad-added&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;G_CALLBACK&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;on_pad_added&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;g_warning&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;no.......&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;gst_bin_add_many&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GST_BIN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                      &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gst_element_link_many&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;g_printerr&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Elements could not be linked. &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;gst_object_unref&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_set_state&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GST_STATE_PLAYING&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GST_STATE_CHANGE_FAILURE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;g_printerr&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Unable to set the pipeline to the playing state. &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;gst_object_unref&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;bus&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_get_bus&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;msg_err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_bus_timed_pop_filtered&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GST_CLOCK_TIME_NONE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GST_MESSAGE_ERROR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;msg_eos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_bus_timed_pop_filtered&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GST_CLOCK_TIME_NONE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GST_MESSAGE_EOS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg_eos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;GError&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;gchar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;debug_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;gst_message_parse_error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;debug_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;g_printerr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Error received from element %s: %s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                       &lt;span class=&quot;n&quot;&gt;GST_OBJECT_NAME&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_err&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;g_printerr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Debugging information: %s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                       &lt;span class=&quot;n&quot;&gt;debug_info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;debug_info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;none&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;g_clear_error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;g_free&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;debug_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//break;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_eos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;g_print&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;End-Of-Stream reached.&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//break;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;g_printerr&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Unexpected message received.&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//break;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;gst_message_unref&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;gst_message_unref&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg_eos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;gst_object_unref&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gst_element_set_state&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GST_STATE_NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gst_object_unref&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;코드-분석&quot;&gt;코드 분석&lt;/h3&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;gst_init&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;GStreamer를 Initialize한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rtspsrc&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;source&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depay&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rtph264depay&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;depay&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;capsfilter&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;filter&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filtercaps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_caps_new_simple&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;video/x-h264&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;stream-format&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;G_TYPE_STRING&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;avc&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;h264parse&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;parse&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;avdec_h264&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;decode&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;x264enc&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;encode&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mux&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mpegtsmux&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;mux&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sink&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_element_factory_make&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hlssink&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sink&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_pipeline_new&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rtsp-to-hls-pl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;element들은 &lt;code class=&quot;highlighter-rouge&quot;&gt;gst_element_factory_make(&amp;lt;element_이름&amp;gt;, &amp;lt;변수명&amp;gt;)&lt;/code&gt;로 element factory를 만든다.&lt;/p&gt;
+
+&lt;p&gt;caps는 &lt;code class=&quot;highlighter-rouge&quot;&gt;gst_caps_new_simple()&lt;/code&gt;을 이용하였고, caps를 감싸서 하나의 element로 만들기 위해 data.filter도 선언하였다. (꼭 element로 감쌀 필요 없이, &lt;code class=&quot;highlighter-rouge&quot;&gt;gst_elemnt_filtered(&amp;lt;앞 element&amp;gt;,&amp;lt;해당 caps&amp;gt;, &amp;lt;뒤 element&amp;gt;)&lt;/code&gt;를 이용해 연결하는 방식도 가능하다. 모든 요소를 element화 시켜야 나중에 파이프라인을 연결하기 편리하여 이 방법을 선택하였다. )&lt;/p&gt;
+
+&lt;p&gt;pipeline도 &lt;code class=&quot;highlighter-rouge&quot;&gt;gst_pipeline_new()&lt;/code&gt;로 선언하였다.&lt;/p&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;g_object_set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;location&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;rtsp://192.168.0.70:8554/test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;g_object_set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;max-files&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;target-duration&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;location&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/nginx/hls/segment%05d.ts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;playlist-location&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/nginx/hls/playlist.m3u8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;g_object_set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;caps&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filtercaps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gst_caps_unref&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filtercaps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;각 element에 필요한 세부 사항을 &lt;code class=&quot;highlighter-rouge&quot;&gt;g_object_set()&lt;/code&gt;으로 정의한다. 여기서 caps(filtercaps)를 element 안에 담는다(filter).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;중요!!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;g_signal_connect&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;pad-added&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;G_CALLBACK&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;on_pad_added&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;rtspsrc는 sinkpad를 만들어 연결해주는 작업이 추가적으로 필요하다. element 각각 성질에 따라 pad가 항상 준비 된 경우, 재생 시에 생성되는 경우, 인위적으로 만들어야 하는 경우&lt;/p&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;on_pad_added&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GstElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GstPad&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gpointer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gchar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstCaps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_caps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gchar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;GstElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p_rtph264depay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_pad_get_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;g_print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;A new pad %s was created &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;p_caps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_pad_get_pad_template_caps&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gst_caps_to_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p_caps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;g_free&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;p_rtph264depay&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GST_ELEMENT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gst_element_link_pads&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_rtph264depay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sink&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;g_print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Failed to link elements 3 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;g_free&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="HLS" /><category term="Server" /><category term="Streaming" /><summary type="html">Written By Nuri Na, VCANUS</summary></entry><entry><title type="html">Apache Kafka Basic</title><link href="http://localhost:4000/development/apache-kafka-basic/" rel="alternate" type="text/html" title="Apache Kafka Basic" /><published>2020-03-05T00:00:00+09:00</published><updated>2020-03-05T00:00:00+09:00</updated><id>http://localhost:4000/development/apache-kafka-basic</id><content type="html" xml:base="http://localhost:4000/development/apache-kafka-basic/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt;, VCANUS&lt;/p&gt;
 
 &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -12,11 +406,11 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/kafkaconcept.png&quot; alt=&quot;kafkaconcept1&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;이미지 출처 : [https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05]&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;이미지 출처 : &lt;a href=&quot;https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05&quot;&gt;https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/kafkacluster.png&quot; alt=&quot;kafkaconcept1&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;이미지 출처 : [https://kafka.apache.org/intro]&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;이미지 출처 : &lt;a href=&quot;https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05&quot;&gt;https://kafka.apache.org/intro&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Producers : 메세지 생산(발행: publish)을 담당. 토픽을 선택하여 데이터를 발행한다.&lt;/li&gt;
@@ -1361,372 +1755,4 @@ $ docker run -d \
     &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71047954-d0277a00-2180-11ea-8e4d-59ea5acd3612.png&quot; alt=&quot;Run jar command&quot; /&gt;
  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71047977-f0573900-2180-11ea-80b9-6348577f30e7.png&quot; alt=&quot;Run&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="JAVA" /><category term="Build" /><category term="Maven" /><category term="IntelliJ" /><summary type="html">Written By Young-rae Shin(https://github.com/lived1024)</summary></entry><entry><title type="html">Log Rolling</title><link href="http://localhost:4000/development/Log-Rolling/" rel="alternate" type="text/html" title="Log Rolling" /><published>2019-10-31T00:00:00+09:00</published><updated>2019-10-31T00:00:00+09:00</updated><id>http://localhost:4000/development/Log-Rolling</id><content type="html" xml:base="http://localhost:4000/development/Log-Rolling/">&lt;p&gt;Written by BGKim, VCANUS&lt;/p&gt;
-
-&lt;h1 id=&quot;log4j2&quot;&gt;Log4j2&lt;/h1&gt;
-
-&lt;h2 id=&quot;add-maven-dependency&quot;&gt;Add maven dependency&lt;/h2&gt;
-&lt;p&gt;pom.xml&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;spring-boot-starter&amp;lt;/artifactId&amp;gt;
-    &amp;lt;exclusions&amp;gt;
-        &amp;lt;exclusion&amp;gt;
-            &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-            &amp;lt;artifactId&amp;gt;spring-boot-starter-logging&amp;lt;/artifactId&amp;gt;
-        &amp;lt;/exclusion&amp;gt;
-    &amp;lt;/exclusions&amp;gt;
-&amp;lt;/dependency&amp;gt;
-
-&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;spring-boot-starter-log4j2&amp;lt;/artifactId&amp;gt;
-&amp;lt;/dependency&amp;gt;
-
-&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.projectlombok&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;lombok&amp;lt;/artifactId&amp;gt;
-    &amp;lt;optional&amp;gt;true&amp;lt;/optional&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;spring-boot-starter&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;‘spring-boot-starter’의 기본 로깅을 제외 시킨다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;lombok&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;클래스 상단에 @log4j2을 사용, log작성시 로거객체 생성이 필요없다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;add-log4j2xml-in-folder-resources&quot;&gt;Add log4j2.xml in folder resources&lt;/h2&gt;
-&lt;p&gt;log4j2.xml&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;Configuration&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;status=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;warn&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;moniterInterval=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;30&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Properties&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;LOG_PATTERN&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;%d{yyyy-MM-dd HH:mm:ss.SSS} %p %M %m%n&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Property&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;LOG_ROOT&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;log&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Property&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Properties&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Appenders&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Console&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Console&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SYSTEM_OUT&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;follow=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;PatternLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;pattern=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${LOG_PATTERN}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Console&amp;gt;&lt;/span&gt;
-
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;RollingFile&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;RollingFile&quot;&lt;/span&gt;
-                     &lt;span class=&quot;na&quot;&gt;fileName=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${LOG_ROOT}/application.log&quot;&lt;/span&gt;
-                     &lt;span class=&quot;na&quot;&gt;filePattern=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${LOG_ROOT}/application-%d{yyyy-MM-dd}-%i.log&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;PatternLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;pattern=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${LOG_PATTERN}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Policies&amp;gt;&lt;/span&gt;
-                &lt;span class=&quot;nt&quot;&gt;&amp;lt;SizeBasedTriggeringPolicy&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;size=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;300KB&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-                &lt;span class=&quot;nt&quot;&gt;&amp;lt;TimeBasedTriggeringPolicy&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;interval=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Policies&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;DefaultRolloverStrategy&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;max=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/RollingFile&amp;gt;&lt;/span&gt;
-
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Appenders&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Loggers&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Logger&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;level=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;info&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;com.vcanus&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;additivity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;AppenderRef&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;RollingFile&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Logger&amp;gt;&lt;/span&gt;
-
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Root&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;level=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;info&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;AppenderRef&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Console&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Root&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Loggers&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Configuration&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&amp;lt;Configuration status=”warn” moniterInterval=”30”&amp;gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;‘status’는 로그 로딩시에 하는 로깅 기준 레벨이다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;‘moniterInterval’은 설정 변경을 체크하는 주기, 변경시 재설정.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&amp;lt;Property name=””&amp;gt;value&amp;lt;&amp;gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;미리 사용할 자원을 설정할 수 있다. 여기서는 로그패턴과 루트경로를 설정하였다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&amp;lt;Appenders&amp;gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;실제 로그를 작성해주는 객체. Console, RollingFile, File, JDBC, Kafka 등 많은 appender를 지원한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&amp;lt;Policies&amp;gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;RollingFile의 설정을 할 수 있다. 크기, 시간을 트리거로 새로운 로그를 생성 (패턴에서 %i 부분이 변한다)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&amp;lt;DefaultRolloverStrategy max=”2” \/&amp;gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;rolling되어 쌓이는 개수의 최대를 설정, ex)1-1.log 1-2.log 1-3.log(x) 2-1.log 2-2.log&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&amp;lt;Logger level=”info” name=”com.vcanus” additivity=”false”&amp;gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;로그 객체이다. level설정, name설정, additivity설정이 가능하다&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;위에서 정의한 appender를 설정하여 원하는 로그방식으로 출력&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;name을 패키지 경로 사용시 해당 경로의 로그만 출력&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;additivity는 상위로거(패키지 상위 로거 혹은 루트로거)의 전달을 받을지 설정&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;use&quot;&gt;Use&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Log4j2
-public class TempClass{
-    
-    public tempMethod(){
-        log.debug(&quot;debug level&quot;);
-        log.info(&quot;info level&quot;);
-        log.warn(&quot;warn level&quot;);
-        log.error(&quot;error level&quot;);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="Log" /><category term="rolling" /><category term="configuration" /><summary type="html">Written by BGKim, VCANUS</summary></entry><entry><title type="html">CentOS 8 Install</title><link href="http://localhost:4000/development/CentOS-8-Install/" rel="alternate" type="text/html" title="CentOS 8 Install" /><published>2019-10-31T00:00:00+09:00</published><updated>2019-10-31T00:00:00+09:00</updated><id>http://localhost:4000/development/CentOS-8-Install</id><content type="html" xml:base="http://localhost:4000/development/CentOS-8-Install/">&lt;p&gt;Written by BGKim, VCANUS&lt;/p&gt;
-
-&lt;h1 id=&quot;install-centos-8&quot;&gt;Install CentOS 8&lt;/h1&gt;
-
-&lt;h2 id=&quot;make-install-usb&quot;&gt;Make install USB&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;centos 홈페이지에서 파일을 다운을 받는다.(https://www.centos.org/)&lt;/li&gt;
-  &lt;li&gt;8GB이상의 USB를 준비한다.&lt;/li&gt;
-  &lt;li&gt;USB를 연결하고, Rufus 홈페이지에서 Rufus를 다운받은 뒤 실행(https://rufus.ie/)&lt;/li&gt;
-  &lt;li&gt;실행 화면에서 기본사항들을 적절히 세팅 후 파티션 방식을 GPT로 설정 후 시작&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;install-os&quot;&gt;Install OS&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;USB를 연결 후 부팅. (cent os 화면이 안나올 시, 바이오스 부팅 설정)&lt;/li&gt;
-  &lt;li&gt;화면이 나오면 Install 클릭. 키보드, 언어, 시간 설정&lt;/li&gt;
-  &lt;li&gt;install destination(설치 목적지)에서 OS설치 디스크를 선택하고, 저장소 구성이 필요시 Custom을 통하여 진행, 그렇지 않을시 automatic을 통한 진행&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&quot;install-nvidia-graphic-driver&quot;&gt;Install Nvidia Graphic driver&lt;/h1&gt;
-&lt;ol&gt;
-  &lt;li&gt;nvidia 홈페이지에서 Long Lived Branch Version 다운, 권한 변경(https://www.nvidia.com/en-us/drivers/unix/)
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ chmod +x NVIDIA-Linux-x86_64-4xx.run
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;nvidia 홈페이지에서 CUDA Toolkit 버전 확인 후 설치 명령어 확인 후 terminal에 입력(https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;amp;target_arch=x86_64&amp;amp;target_distro=CentOS&amp;amp;target_version=8&amp;amp;target_type=runfilelocal)
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
-$ sudo sh cuda_10.1.243_418.87.00_linux.run
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;루트로 변경 후 기본 dev tools 다운
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo su
-# dnf groupinstall &quot;Development Tools&quot;
-# dnf install libglvnd-devel elfutils-libelf-devel &quot;kernel-devel-uname-r == $(uname -r)&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Nouveau driver를 Grub부트메뉴에서 사용안하도록 변경
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# grub2-editenv - set &quot;$(grub2-editenv - list | grep kernelopts) nouveau.modeset=0&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;cli화면에서만 설치가 가능하기에 설정 후 reboot
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# systemctl set-default multi-user.target
-# reboot
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;설치를 진행
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# bash NVIDIA-Linux-x86_64-4xx.run
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Gui로 변경 후 reboot
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# systemctl set-default graphical.target
-# reboot
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="install" /><category term="CentOS" /><category term="8" /><category term="and" /><category term="graphic" /><category term="driver" /><summary type="html">Written by BGKim, VCANUS</summary></entry><entry><title type="html">How to use Jenkins - Basic</title><link href="http://localhost:4000/development/Jenkins-Basics/" rel="alternate" type="text/html" title="How to use Jenkins - Basic" /><published>2019-10-30T00:00:00+09:00</published><updated>2019-10-30T00:00:00+09:00</updated><id>http://localhost:4000/development/Jenkins%20Basics</id><content type="html" xml:base="http://localhost:4000/development/Jenkins-Basics/">&lt;p&gt;Written By Young-rae Shin(&lt;a href=&quot;https://github.com/lived1024&quot;&gt;https://github.com/lived1024&lt;/a&gt;)&lt;/p&gt;
-
-&lt;h1 id=&quot;jenkins&quot;&gt;Jenkins&lt;/h1&gt;
-&lt;h2 id=&quot;정의&quot;&gt;정의&lt;/h2&gt;
-&lt;p&gt;소프트웨어 개발 시 지속적으로 통합 서비스를 제공하는 툴.&lt;br /&gt;
-일명 Continuous Intergration (CI)라고 표현한다.&lt;br /&gt;
-예를 들어 Git을 사용할 때, Git의 Repository에 Push가 감지되면, Jenkins에서 자동으로 Build, Deploy한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;설치&quot;&gt;설치&lt;/h2&gt;
-&lt;h3 id=&quot;requirements&quot;&gt;Requirements&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;JAVA(openJDK도 가능)&lt;/li&gt;
-  &lt;li&gt;MAVEN&lt;/li&gt;
-  &lt;li&gt;Git
-    &lt;h3 id=&quot;설치-순서&quot;&gt;설치 순서&lt;/h3&gt;
-  &lt;/li&gt;
-  &lt;li&gt;설치 파일 다운로드 : &lt;a href=&quot;https://jenkins.io/&quot;&gt;공식 홈페이지&lt;/a&gt; 다운로드&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67818875-3e8f7a80-faf6-11e9-9d6c-ac4d33fbd1d8.png&quot; alt=&quot;install1&quot; /&gt;  &lt;br /&gt;
-  아래 화면에서 LTS버전으로 OS에 맞게 다운받는다!&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67818877-418a6b00-faf6-11e9-9997-1c225155714f.png&quot; alt=&quot;install2&quot; /&gt;
-    &lt;ol&gt;
-      &lt;li&gt;Window : 파일 압축해제 이후 설치파일 실행&lt;/li&gt;
-      &lt;li&gt;Ubuntu : 설치 방법은 해당 &lt;a href=&quot;https://fun25.co.kr/blog/jenkins-ubuntu-16-04-install/&quot;&gt;링크&lt;/a&gt; 참조&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;초기 설정 포트&lt;br /&gt;
-  Jenkins default port : 8080 -&amp;gt; ex) 8000  (본 문서에서는 port를 8000번으로 변경했다고 가정 후 진행)&lt;br /&gt;
-  Windows : 설치폴더 내 jenkins.xml&lt;br /&gt;
-  Ubuntu
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $vi /etc/default/jenkins
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;Mac&lt;/p&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $vi /usr/local/Cellar/jenkins/2.x.x/homebrew.mxcl.jenkins.plist
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Port변경 후 Jenkins 재시작 필요&lt;br /&gt;
-  Window : Ctrl + Shift + Esc =&amp;gt; Service =&amp;gt; jenkins 우클릭 후 재시작&lt;br /&gt;
-  Ubuntu
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $sudo service jenkins restart
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;Mac&lt;/p&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  $brew services stop jenkins
-  $brew services start jenkins
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;실행&quot;&gt;실행&lt;/h3&gt;
-&lt;h4 id=&quot;첫-실행&quot;&gt;첫 실행&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;주소창에 http://본인IP:8000 입력 (Window는 브라우저 자동 실행)&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833073-ee7cdc00-fb26-11e9-98ef-59d469dec6cb.png&quot; alt=&quot;run1&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;위 화면 이후 아래와 같은 화면이 나온다.&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833072-ee7cdc00-fb26-11e9-9ee7-b9ee97fbd8b6.png&quot; alt=&quot;run2&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;빨간색으로 강조된 경로에 있는 파일을 열어 해당 내용을 빈 칸에 넣는다.(스크린샷의 경로는 윈도우)&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833447-f9843c00-fb27-11e9-96d9-1078c30fa5a4.png&quot; alt=&quot;run3&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;플러그인은 추천받은 그대로 이용&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833444-f9843c00-fb27-11e9-848f-fd9688f54aef.png&quot; alt=&quot;run4&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;플러그인 설치화면을 넘어가면 admin 계정을 설정할 수 있다.&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833442-f9843c00-fb27-11e9-87b7-92b7edb302af.png&quot; alt=&quot;run5&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;admin 계정을 추가하지 않는다면 Save and Continue&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833440-f8eba580-fb27-11e9-8b5d-dfe4d4b7810b.png&quot; alt=&quot;run6&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;Jenkins에서 사용할 URL을 설정할 수 있다. 여기에서 Port를 다르게 적더라도 Jenkins 내부 설정파일에서 별도로 Port를 바꿔줘야 적용된다.&lt;br /&gt;
-  Jenkins 설치 폴더의 jenkins.xml에서 변경할 수 있다.&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833438-f8eba580-fb27-11e9-935c-3c643704ace1.png&quot; alt=&quot;run7&quot; /&gt;&lt;br /&gt;
--위와 같은 화면이 나온다면 첫 실행은 성공적으로 진행된 것이다.
-    &lt;h4 id=&quot;jenkins-settings--jenkins-관리&quot;&gt;Jenkins Settings : Jenkins 관리&lt;/h4&gt;
-    &lt;ol&gt;
-      &lt;li&gt;시스템 설정 : Github Server 연동 설정&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833946-66e49c80-fb29-11e9-8a2d-56d0e634e8d7.png&quot; alt=&quot;Setting1&quot; /&gt;&lt;br /&gt;
-  Github Server의 Name은 알아서 넣고, URL은 그대로 놔둔다.&lt;br /&gt;
-  그리고 Credentioal를 추가해야하는데 Github에서 토큰을 발급받아야한다.&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67833945-66e49c80-fb29-11e9-9238-d55ab421ff53.png&quot; alt=&quot;Setting2&quot; /&gt;&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834191-1c175480-fb2a-11e9-9715-b88049a8dec4.png&quot; alt=&quot;Setting3&quot; /&gt;&lt;br /&gt;
-  해당 페이지에서 발급!&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834190-1c175480-fb2a-11e9-886a-7cf265ce36ef.png&quot; alt=&quot;Setting4&quot; /&gt;&lt;br /&gt;
-  발급받은 Token을 아래 화면처럼 등록!&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834187-1c175480-fb2a-11e9-8070-cd7d01813cea.png&quot; alt=&quot;Setting5&quot; /&gt;&lt;br /&gt;
-  Test 버튼을 누르면 정상적인 접속을 확인할 수 있다.&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834185-1b7ebe00-fb2a-11e9-9de9-20dc49fece66.png&quot; alt=&quot;Setting6&quot; /&gt;&lt;/li&gt;
-      &lt;li&gt;Global Tool Configuration&lt;br /&gt;
-  Maven, Java, Git에 대한 설정을 한다.&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834403-a9f33f80-fb2a-11e9-9e0a-e46511250cc7.png&quot; alt=&quot;Setting7&quot; /&gt;&lt;br /&gt;
-  Maven, Java는 설치폴더를, Git은 실행파일까지 Path를 잡아준다. (bin 폴더 내부의 git.exe)&lt;br /&gt;
-  &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834405-ac559980-fb2a-11e9-8881-452ee90c8d04.png&quot; alt=&quot;Setting8&quot; /&gt;&lt;/li&gt;
-      &lt;li&gt;플러그인 관리&lt;br /&gt;
-  Build까지만 이용하려면 Git, Github 두 가지가 필요하지만 추천 플러그인에 포함되어있다.&lt;br /&gt;
-  단순히 Build까지 활용한다면 추가로 설정할 내용은 없다.&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;job-생성-및-설정&quot;&gt;Job 생성 및 설정&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;생성&lt;br /&gt;
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834758-9399b380-fb2b-11e9-9363-0c1ba0f37ca7.png&quot; alt=&quot;run1&quot; /&gt;&lt;br /&gt;
- Freestyle project로 생성!&lt;br /&gt;
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834757-93011d00-fb2b-11e9-9b69-1454ac9aaa48.png&quot; alt=&quot;run2&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;설정&lt;br /&gt;
- Github의 레파지토리를 아래 두 곳에 붙여넣는다.&lt;br /&gt;
- 일반적인 http 프로토콜을 이용할 경우 에러가 발생하는 경우도 있다고 하니 git 프로토콜을 추천!&lt;br /&gt;
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835041-4f5ae300-fb2c-11e9-9587-fe5b9f783101.png&quot; alt=&quot;run3&quot; /&gt;&lt;br /&gt;
- 깃 프로토콜은 아래에서 볼 수 있다.&lt;br /&gt;
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835040-4f5ae300-fb2c-11e9-9ae1-ff48bf3c779d.png&quot; alt=&quot;run4&quot; /&gt;&lt;br /&gt;
- SSH를 이용하여 연동을 완료해야 정상적으로 연결된다.&lt;br /&gt;
- SSH 인증을 통과하지 못한다면 이전 스크린샷처럼 Repositories에 빨간 글씨로 표시된다.&lt;br /&gt;
- SSH키 생성은 아래 코드를 이용하면 된다
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $ssh-keygen -t rsa
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;SSH키 발급은 아래의 절차대로 따르자&lt;br /&gt;
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834756-93011d00-fb2b-11e9-835f-6fb3ced7b27b.png&quot; alt=&quot;run5-ssh1&quot; /&gt;&lt;br /&gt;
- 엔터만 눌러 발급할 경우 경로, 파일명은 default로 생성된다.&lt;br /&gt;
- 스크린샷처럼 경로와 이름을 입력하면 그대로 생성.&lt;br /&gt;
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67834755-93011d00-fb2b-11e9-92f8-99679922a623.png&quot; alt=&quot;run5-ssh2&quot; /&gt;&lt;br /&gt;
- pub확장자를 가진 파일은 아래처럼 등록!&lt;br /&gt;
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835384-2c7cfe80-fb2d-11e9-8705-31fdfebb5253.png&quot; alt=&quot;run6&quot; /&gt;&lt;br /&gt;
- 대상이 되는 Github Repository의 Settings - Deploy Keys&lt;br /&gt;
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835393-3141b280-fb2d-11e9-8e9e-ec6958e4c0dd.png&quot; alt=&quot;run7&quot; /&gt;&lt;br /&gt;
- pub확장자로 생성된 파일을 메모장 또는 vi로 열어 해당 내용을 Key에 입력하고, 다른 파일은 Jenkins에 사용&lt;br /&gt;
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835041-4f5ae300-fb2c-11e9-9587-fe5b9f783101.png&quot; alt=&quot;run3&quot; /&gt;&lt;br /&gt;
- 위 스크린샷에서 빨간 글씨 밑의 Credentials에 추가!&lt;br /&gt;
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835588-b5943580-fb2d-11e9-8f00-a7a9b1cd3aa0.png&quot; alt=&quot;run8&quot; /&gt;&lt;br /&gt;
- 남은 파일 또한 메모장 또는 vi로 열어 해당 내용을 Credentials에 등록한다.&lt;br /&gt;
- 문제없이 등록되면 아래 화면처럼 빨간 글씨가 사라진다.&lt;br /&gt;
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835586-b5943580-fb2d-11e9-948e-075863eec31c.png&quot; alt=&quot;run9&quot; /&gt;&lt;br /&gt;
- Branch 입력 부분은 입력하지 않으면 모든 브랜치에 해당되고, 특정 브랜치만 할 경우에 입력하면 된다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Build&lt;br /&gt;
- Build 탭에서는 아래처럼 Invoke top-level Maven targets를 추가하고 등록된 Maven을 이용한다.&lt;br /&gt;
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67835828-584cb400-fb2e-11e9-832a-9fab1d8ad06f.png&quot; alt=&quot;build1&quot; /&gt;&lt;br /&gt;
- 스크린샷과는 다르게 Goals에는 package -D maven.test.skip=true를 입력한다.&lt;br /&gt;
- -D maven.test.skip=true는 test코드를 실행해보지 않고 Build하는 옵션.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;build-test&quot;&gt;Build test&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67836296-95657600-fb2f-11e9-9e90-a1d5db9b262e.png&quot; alt=&quot;run-build&quot; /&gt;&lt;br /&gt;
-우측의 Console Output을 클릭하면 Build 상황에 대한 로그화면이 뜬다.&lt;br /&gt;
-성공한 경우 아래처럼 뜬다.&lt;br /&gt;
-&lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67836311-9e564780-fb2f-11e9-80a8-492b42c65a46.png&quot; alt=&quot;run-success&quot; /&gt;&lt;br /&gt;
-스크린샷에는 war파일로 packaging이 설정되어있너 war로 build가 된 상황이고, 이것은 pom.xml에서 &lt;packaging&gt;태그를 이용하면 간단하다.&lt;/packaging&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;github-webhook-setting-push---auto-build&quot;&gt;Github Webhook setting (push -&amp;gt; auto build)&lt;/h3&gt;
-&lt;p&gt;해당 Job의 구성에서 아래처럼 체크&lt;br /&gt;
-&lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67837053-8384d280-fb31-11e9-9ff1-ba8395aee451.png&quot; alt=&quot;webhook setting1&quot; /&gt;&lt;br /&gt;
-이후 대상이 되는 Github Repository - settings - Webhooks로 이동하고 추가!&lt;br /&gt;
-&lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67837371-3bb27b00-fb32-11e9-87ae-5e83ca2165c2.png&quot; alt=&quot;webhook setting2&quot; /&gt;&lt;br /&gt;
-Payload URL에는 포트포워딩된 IP와 Port를 입력하고 /github-webhook/를 꼭 붙여준다!&lt;br /&gt;
-Ex) http://127.0.0.1:9999/github-webhook/&lt;br /&gt;
-Content type은 application/json 선택!&lt;br /&gt;
-연결에 성공한 경우 아래 화면처럼 초록색 체크 표시가 생긴다.&lt;br /&gt;
-&lt;img src=&quot;https://user-images.githubusercontent.com/41990925/67837721-0a867a80-fb33-11e9-8c80-6adeb950f086.png&quot; alt=&quot;hook status&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이후 github에 push를 한다면 자동으로 build!&lt;/p&gt;
-
-&lt;h3 id=&quot;os에-따른-settings&quot;&gt;OS에 따른 settings&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Mac에서 jenkins 설치시 localhost, 127.0.0.1만 허용되고 192.168.0.xx는 접속이 안되는 경우가 있었다.&lt;br /&gt;
- 이 경우 아래 화면처럼 httpListenAddress를 삭제(or 주석)하면 정상적인 이용이 가능하다.&lt;br /&gt;
- Port도 해당 이 파일에서 수정가능
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71219577-ebbd8c80-2308-11ea-8338-12a2b9727fcc.png&quot; alt=&quot;Mac default setting&quot; /&gt;  &lt;br /&gt;
- 해당 파일 실행은 아래 command를 입력하면 된다.
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $vi /usr/local/Cellar/jenkins/2.x.x/homebrew.mxcl.jenkins.plist
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Mac에서 jenkins 설정 시 default path (git의 경로는 “which git”으로 경로를 찾을 수 있다.)
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71220206-1f99b180-230b-11ea-8fb7-a4d57c57d4e5.png&quot; alt=&quot;Mac default path&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;Ubuntu 기본 설정 파일 열기
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $vi /etc/default/jenkins  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;nexus를-이용한-배포deploy&quot;&gt;Nexus를 이용한 배포(Deploy)&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev2:dep:nexus&quot;&gt;Nexus 서버에 배포&lt;/a&gt; 참조&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;build-path-변경&quot;&gt;Build Path 변경&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;[고급] 클릭&lt;br /&gt;
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71467097-1924a180-2805-11ea-970e-e547da75b641.png&quot; alt=&quot;Change workspace1&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;Set custom workspace path&lt;br /&gt;
- &lt;img src=&quot;https://user-images.githubusercontent.com/41990925/71467098-1924a180-2805-11ea-86f5-7eefd32c4408.png&quot; alt=&quot;Change workspace2&quot; /&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="Jenkins" /><category term="Build" /><summary type="html">Written By Young-rae Shin(https://github.com/lived1024)</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="JAVA" /><category term="Build" /><category term="Maven" /><category term="IntelliJ" /><summary type="html">Written By Young-rae Shin(https://github.com/lived1024)</summary></entry></feed>
