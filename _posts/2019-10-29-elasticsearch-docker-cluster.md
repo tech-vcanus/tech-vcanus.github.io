@@ -19,8 +19,22 @@ $touch docker-compose.yml
 ```
 version: '3.7'
 services:
+  create_certs:
+    container_name: create_certs
+    image: docker.elastic.co/elasticsearch/elasticsearch:$STACK_VERSION
+    command: >
+      bash -c '
+        if [[ ! -f ./config/certificates/elastic-certificates.p12 ]]; then
+          bin/elasticsearch-certutil cert -out config/certificates/elastic-certificates.p12 -pass ""
+        fi;
+        chown -R 1000:0 /usr/share/elasticsearch/config/certificates
+      '
+    user: "0"
+    working_dir: /usr/share/elasticsearch
+    volumes:
+      - ./elasticsearch/cert:/usr/share/elasticsearch/config/certificates
   esmaster: # Master (NO data)
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:$STACK_VERSION
     container_name: esmaster
     restart: always
     environment:
@@ -36,6 +50,12 @@ services:
       - cluster.initial_master_nodes=esmaster
       - xpack.monitoring.enabled=true
       - xpack.monitoring.collection.enabled=true
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.keystore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
+      - xpack.security.transport.ssl.truststore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
+      - ELASTIC_PASSWORD=$ES_PASS
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     ulimits:
       memlock:
@@ -44,14 +64,13 @@ services:
     volumes:
       - ./elasticsearch/es-master:/usr/share/elasticsearch/data
     ports:
-      - 9200:9200
-      - 9300:9300
+      - $ES_PORT:9200
     networks:
       - esnet
     stdin_open: true
     tty: true
   esdata1: # Data 1
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:$STACK_VERSION
     container_name: esdata1
     restart: always
     environment:
@@ -66,6 +85,13 @@ services:
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
       - discovery.seed_hosts=esmaster
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.collection.enabled=true
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.keystore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
+      - xpack.security.transport.ssl.truststore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
       - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
     ulimits:
       memlock:
@@ -73,13 +99,10 @@ services:
         hard: -1
     volumes:
       - ./elasticsearch/es-data-1:/usr/share/elasticsearch/data
-    ports:
-      - 9201:9200
-      - 9301:9300
     networks:
       - esnet
   esdata2: # Data 2
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:$STACK_VERSION
     container_name: esdata2
     restart: always
     environment:
@@ -94,6 +117,13 @@ services:
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
       - discovery.seed_hosts=esmaster
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.collection.enabled=true
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.keystore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
+      - xpack.security.transport.ssl.truststore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
       - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
     ulimits:
       memlock:
@@ -101,13 +131,10 @@ services:
         hard: -1
     volumes:
       - ./elasticsearch/es-data-2:/usr/share/elasticsearch/data
-    ports:
-      - 9202:9200
-      - 9302:9300
     networks:
       - esnet
   escoordinator: # Router #coordinating node
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:$STACK_VERSION
     container_name: escoordinator
     restart: always
     environment:
@@ -122,6 +149,13 @@ services:
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
       - discovery.seed_hosts=esmaster
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.collection.enabled=true
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.keystore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
+      - xpack.security.transport.ssl.truststore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
       - "ES_JAVA_OPTS=-Xms4g -Xmx4g"
     ulimits:
       memlock:
@@ -129,24 +163,32 @@ services:
         hard: -1
     volumes:
       - ./elasticsearch/es-coordinator:/usr/share/elasticsearch/data
-    ports:
-      - 9203:9200
-      - 9303:9300
     networks:
       - esnet
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.6.0
+    image: docker.elastic.co/kibana/kibana:$STACK_VERSION
     container_name: kibana
     restart: always
     environment:
       ELASTICSEARCH_HOSTS: http://esmaster:9200
+      ELASTICSEARCH_USERNAME: $ES_USER
+      ELASTICSEARCH_PASSWORD: $ES_PASS
     networks:
       - esnet
     ports:
-      - 5601:5601
+      - $KIBANA_PORT:5601
 networks:
   esnet:
 #   driver: bridge
+```
+
+## Fill the .env with environment info
+```
+STACK_VERSION=value
+ES_USER=elastic
+ES_PASS=######
+ES_PORT=value
+KIBANA_PORT=value
 ```
 
 ## make folder for docker volume(for permission)
