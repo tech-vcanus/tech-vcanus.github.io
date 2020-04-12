@@ -64,7 +64,7 @@ $$
 
 ## **2. 파이썬으로 FFT 수행하기**
 ### **2-1. 사용할 패키지 소개**
-```
+```python
 $ import matplotlib.pyplot as plt
 $ import numpy as np
 ```
@@ -73,7 +73,7 @@ $ import numpy as np
 
 ### **2-2. numpy.fft.fft 함수**  
 
-```
+```python
 numpy.fft.fft(a, n=None, axis=-1, norm=None)
 ```
 1. Parameters  
@@ -89,7 +89,7 @@ numpy.fft.fft(a, n=None, axis=-1, norm=None)
 이 예제에서는 세 종류의 sinusoid 파를 임의로 설정해 이 세 파동을 합치고, fft 함수를 이용해 주파수별 진폭을 추출한 후 그래프로 그려 볼 것이다.   
 
 **1. 필요한 라이브러리들을 import하고, FFT 분석을 위한 합성 신호를 생성**   
-```
+```python
 import matplotlib.pyplot as plt  	# plot을 그려주는 라이브러리 import 
 import numpy as np  	# 수학 및 과학 연산을 위한 라이브러리 import
 
@@ -108,7 +108,7 @@ amplitude3*np.sin(2*np.pi*freq_sampling3*time)     # 위에서 만든 세 개의
 
 **2. 생성한 합성 신호를 그래프로 그려보기**  
 
-```
+```python
 plt.figure(figsize=(10, 4))      # 그래프 크기 설정
 plt.plot(time, y, 'g', lw=0.5)      # matplotlib.plot(x축 배열, y축 배열, 선 색깔, 선 굵기)
 plt.xlim(0,6)      # matplotlib. xlim(x축 시작점, x축 끝점)
@@ -120,7 +120,7 @@ plt.show()      # matplotlib.show() : 그래프 표시
 
 **3. fft 함수 적용하고 후처리하기** 
 
-```
+```python
 yf = np.fft.fft(y, time.size)     # numpy.fft.fft(input 배열, output 길이) 
 amp = np.abs(yf)     # output 배열의 각각의 원소의 크기 배열 생성
 freq = np.linspace(0.0, (0.5)*(500/6), (time.size//2))     # fft 그래프의 x축 배열 생성
@@ -138,7 +138,7 @@ freq = np.linspace(0.0, (0.5)*(500/6), (time.size//2))     # fft 그래프의 x�
 
 **4. fft 적용 결과를 그래프로 그려보기** 
 
-```
+```python
 plt.figure(figsize=(10,6))    # 그래프 크기 설정
 plt.plot(freq, (2/amp.size)*amp[0:amp.size//2])    # matplotlib.plot(x축 배열, y축 배열)
 ```
@@ -150,7 +150,7 @@ plt.plot(freq, (2/amp.size)*amp[0:amp.size//2])    # matplotlib.plot(x축 배열
    4. 따라서 진폭의 크기를 표준화 해주어야 하므로 배열 크기로 나눔.  
    5. amp 배열을 절반만 이용하는데 배열 크기로 나누어줬으므로 2를 곱해준다.  
 
-```
+```python
 plt.show()       # matplotlib.show() : 그래프 표시
 ```  
 ![fft-graph](https://user-images.githubusercontent.com/58065100/77515530-05e4a900-6ebc-11ea-9035-54495493c96c.png)  
