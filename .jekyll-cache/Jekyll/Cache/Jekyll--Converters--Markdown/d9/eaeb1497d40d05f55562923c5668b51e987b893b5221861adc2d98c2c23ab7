@@ -1,0 +1,241 @@
+I"0}<p>Written By <a href="https://github.com/nurring">Nuri Na</a>, VCANUS</p>
+
+<h2 id="basic-concepts">Basic Concepts</h2>
+
+<p>Media Source, demuxer, decoder, encoder, converter, sink등 각각 하나의 기능을 가진 element들로 pipeline을 조합하고 Pipline의 상태를 play하는 것이 기본 컨셉이다.</p>
+
+<p>주요 용어는 다음과 같다.</p>
+
+<h3 id="element">Element</h3>
+
+<p>파이프라인 내에서 수행할 기능은 각각 하나의 element로 준비되어있다. element들을 엮어 pipeline을 구성한다.</p>
+
+<h3 id="pad">Pad</h3>
+
+<p>element를 연결해주는 고리(혹은 플러그나 포트)로, 한 element에서 나가는 쪽을 Sink Pad, 다음 element로 들어가는 쪽을 Source Pad라고 한다.   element의 성격에 따라 하나의 pad만을 가지기도 한다.(예를 들면, src 혹은 sink elements)</p>
+
+<h3 id="cap">Cap</h3>
+
+<p>pad에서 지원하는 데이터 type을 필터링한다. (사이즈, 프레임수 등) 주로 converter뒤에 위치한다.</p>
+
+<h3 id="bin">Bin</h3>
+
+<p>여러 element를 묶어서 하나의 bin으로 만들어 관리할 수 있다. bin 전체를 하나의 element처럼 연결하고, 상태를 관리한다.</p>
+
+<h3 id="pipeline">Pipeline</h3>
+
+<p>가장 높은 레벨의 bin이다. PAUSE나 PLAYING 상태를 설정하여 데이터의 흐름을 제어한다. pipeline은 하나의 쓰레드로 재생된다.</p>
+
+<h3 id="bus">Bus</h3>
+
+<p>pipeline loop가 돌 때 상태를 체크한다. bus에 메세지 핸들러를 붙여 사용한다.</p>
+
+<h2 id="example">Example</h2>
+
+<p>RTSPfmf 소스로 받아 HLS 프로토콜 형식으로 파일을 만드는 파이프라인을 구현해 보자.</p>
+
+<p>쉘에서 gst-launch-1.0을 이용해 실행하는 명령어는 다음과 같다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gst-launch-1.0 /
+rtspsrc <span class="nv">location</span><span class="o">=</span><span class="s2">"rtsp://192.168.0.70:8554/start"</span> <span class="o">!</span> /
+rtph264depay <span class="o">!</span> /
+video/x-h264,stream-format<span class="o">=</span>avc <span class="o">!</span> /
+h264parse <span class="o">!</span> /
+avdec_h264 <span class="o">!</span> /
+x264enc <span class="o">!</span> /
+mpegtsmux <span class="o">!</span> /
+hlssink max-files<span class="o">=</span>15 target-duration<span class="o">=</span>5 <span class="nv">location</span><span class="o">=</span>/nginx/hls/segment%05d.ts
+playlist-location<span class="o">=</span>/nginx/hls/playlist.m3u8
+</code></pre></div></div>
+
+<p>이를 c (혹은 c++)로 구현하기 위해 파이프라인 구성 요소들을 분석하였다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rtspsrc <span class="c">#element</span>
+<span class="nv">location</span><span class="o">=</span><span class="s2">"rtsp://192.168.0.70:8554/start"</span> <span class="c"># configure rtspsrc</span>
+<span class="o">!</span> rtph264depay <span class="c">#element</span>
+<span class="o">!</span> video/x-h264,stream-format<span class="o">=</span>avc <span class="c">#caps</span>
+<span class="o">!</span> h264parse <span class="c">#element</span>
+<span class="o">!</span> avdec_h264 <span class="c">#element</span>
+<span class="o">!</span> x264enc <span class="c">#element</span>
+<span class="o">!</span> mpegtsmux <span class="c">#element</span>
+<span class="o">!</span> hlssink <span class="c">#element</span>
+max-files<span class="o">=</span>15 target-duration<span class="o">=</span>5 <span class="nv">location</span><span class="o">=</span>/nginx/hls/segment%05d.ts playlist-location<span class="o">=</span>/nginx/hls/playlist.m3u8 <span class="c">#configure hlssink</span>
+</code></pre></div></div>
+
+<h3 id="전체-코드">전체 코드</h3>
+
+<p>위 파이프라인을 c(c++) 코드로 구현하면 아래와 같다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;gst/gst.h&gt;
+</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">on_pad_added</span> <span class="p">(</span><span class="n">GstElement</span> <span class="o">*</span><span class="n">element</span><span class="p">,</span> <span class="n">GstPad</span> <span class="o">*</span><span class="n">pad</span><span class="p">,</span> <span class="n">gpointer</span> <span class="o">*</span><span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">gchar</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+    <span class="n">GstCaps</span> <span class="o">*</span> <span class="n">p_caps</span><span class="p">;</span>
+    <span class="n">gchar</span> <span class="o">*</span> <span class="n">description</span><span class="p">;</span>
+    <span class="n">GstElement</span> <span class="o">*</span><span class="n">p_rtph264depay</span><span class="p">;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">gst_pad_get_name</span><span class="p">(</span><span class="n">pad</span><span class="p">);</span>
+    <span class="n">g_print</span><span class="p">(</span><span class="s">"A new pad %s was created </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+
+    <span class="n">p_caps</span> <span class="o">=</span> <span class="n">gst_pad_get_pad_template_caps</span> <span class="p">(</span><span class="n">pad</span><span class="p">);</span>
+
+    <span class="n">description</span> <span class="o">=</span> <span class="n">gst_caps_to_string</span><span class="p">(</span><span class="n">p_caps</span><span class="p">);</span>
+    <span class="n">g_free</span><span class="p">(</span><span class="n">description</span><span class="p">);</span>
+
+    <span class="n">p_rtph264depay</span> <span class="o">=</span> <span class="n">GST_ELEMENT</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">gst_element_link_pads</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">p_rtph264depay</span><span class="p">,</span> <span class="s">"sink"</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">g_print</span><span class="p">(</span><span class="s">"Failed to link elements 3 </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">g_free</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">_CustomData</span>
+<span class="p">{</span>
+    <span class="n">GstElement</span> <span class="o">*</span><span class="n">pipeline</span><span class="p">;</span>
+    <span class="n">GstElement</span> <span class="o">*</span><span class="n">source</span><span class="p">;</span> <span class="c1">//rtspsrc</span>
+    <span class="n">GstElement</span> <span class="o">*</span><span class="n">depay</span><span class="p">;</span> <span class="c1">//rtph264depay</span>
+    <span class="n">GstCaps</span> <span class="o">*</span><span class="n">filtercaps</span><span class="p">;</span> <span class="c1">//video/x-h264,stream-format=avc</span>
+    <span class="n">GstElement</span> <span class="o">*</span><span class="n">filter</span><span class="p">;</span>
+    <span class="n">GstElement</span> <span class="o">*</span><span class="n">parse</span><span class="p">;</span> <span class="c1">//h264parse</span>
+    <span class="n">GstElement</span> <span class="o">*</span><span class="n">decode</span><span class="p">;</span> <span class="c1">//avdec_h264</span>
+    <span class="n">GstElement</span> <span class="o">*</span><span class="n">encode</span><span class="p">;</span> <span class="c1">//x264enc</span>
+    <span class="n">GstElement</span> <span class="o">*</span><span class="n">mux</span><span class="p">;</span> <span class="c1">//mpegtsmux</span>
+    <span class="n">GstElement</span> <span class="o">*</span><span class="n">sink</span><span class="p">;</span> <span class="c1">//hlssink</span>
+<span class="p">}</span> <span class="n">CustomData</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">CustomData</span> <span class="n">data</span><span class="p">;</span>
+    <span class="n">GstBus</span> <span class="o">*</span><span class="n">bus</span><span class="p">;</span>
+    <span class="n">GstMessage</span> <span class="o">*</span><span class="n">msg_err</span><span class="p">;</span>
+    <span class="n">GstMessage</span> <span class="o">*</span><span class="n">msg_eos</span><span class="p">;</span>
+    <span class="n">GstStateChangeReturn</span> <span class="n">ret</span><span class="p">;</span>
+
+    <span class="n">gst_init</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+
+    <span class="n">data</span><span class="p">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span> <span class="p">(</span><span class="s">"rtspsrc"</span><span class="p">,</span> <span class="s">"source"</span><span class="p">);</span>
+    <span class="n">data</span><span class="p">.</span><span class="n">depay</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span> <span class="p">(</span><span class="s">"rtph264depay"</span><span class="p">,</span> <span class="s">"depay"</span><span class="p">);</span>
+    <span class="n">data</span><span class="p">.</span><span class="n">filter</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span> <span class="p">(</span><span class="s">"capsfilter"</span><span class="p">,</span> <span class="s">"filter"</span><span class="p">);</span>
+    <span class="n">data</span><span class="p">.</span><span class="n">filtercaps</span> <span class="o">=</span> <span class="n">gst_caps_new_simple</span><span class="p">(</span><span class="s">"video/x-h264"</span><span class="p">,</span> <span class="s">"stream-format"</span><span class="p">,</span> <span class="n">G_TYPE_STRING</span><span class="p">,</span> <span class="s">"avc"</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">data</span><span class="p">.</span><span class="n">parse</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span><span class="p">(</span><span class="s">"h264parse"</span><span class="p">,</span> <span class="s">"parse"</span><span class="p">);</span>
+    <span class="n">data</span><span class="p">.</span><span class="n">decode</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span><span class="p">(</span><span class="s">"avdec_h264"</span><span class="p">,</span> <span class="s">"decode"</span><span class="p">);</span>
+    <span class="n">data</span><span class="p">.</span><span class="n">encode</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span><span class="p">(</span><span class="s">"x264enc"</span><span class="p">,</span> <span class="s">"encode"</span><span class="p">);</span>
+    <span class="n">data</span><span class="p">.</span><span class="n">mux</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span><span class="p">(</span><span class="s">"mpegtsmux"</span><span class="p">,</span> <span class="s">"mux"</span><span class="p">);</span>
+    <span class="n">data</span><span class="p">.</span><span class="n">sink</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span><span class="p">(</span><span class="s">"hlssink"</span><span class="p">,</span> <span class="s">"sink"</span><span class="p">);</span>
+    <span class="n">data</span><span class="p">.</span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">gst_pipeline_new</span> <span class="p">(</span><span class="s">"rtsp-to-hls-pl"</span><span class="p">);</span>
+
+    <span class="n">g_object_set</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">source</span><span class="p">,</span> <span class="s">"location"</span><span class="p">,</span> <span class="s">"rtsp://192.168.0.70:8554/test"</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">g_object_set</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">sink</span><span class="p">,</span> <span class="s">"max-files"</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"target-duration"</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s">"location"</span><span class="p">,</span> <span class="s">"/nginx/hls/segment%05d.ts"</span><span class="p">,</span> <span class="s">"playlist-location"</span><span class="p">,</span> <span class="s">"/nginx/hls/playlist.m3u8"</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">g_object_set</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">filter</span><span class="p">,</span> <span class="s">"caps"</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">filtercaps</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">gst_caps_unref</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">filtercaps</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">data</span><span class="p">.</span><span class="n">pipeline</span> <span class="o">||</span> <span class="o">!</span><span class="n">data</span><span class="p">.</span><span class="n">source</span> <span class="o">||</span> <span class="o">!</span><span class="n">data</span><span class="p">.</span><span class="n">depay</span> <span class="o">||</span> <span class="o">!</span><span class="n">data</span><span class="p">.</span><span class="n">filter</span>
+        <span class="o">||</span> <span class="o">!</span><span class="n">data</span><span class="p">.</span><span class="n">parse</span> <span class="o">||</span> <span class="o">!</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span> <span class="o">||</span> <span class="o">!</span><span class="n">data</span><span class="p">.</span><span class="n">encode</span> <span class="o">||</span> <span class="o">!</span><span class="n">data</span><span class="p">.</span><span class="n">mux</span> <span class="o">||</span> <span class="o">!</span><span class="n">data</span><span class="p">.</span><span class="n">sink</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">g_printerr</span> <span class="p">(</span><span class="s">"Not all elements could be created. </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="n">g_signal_connect</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">source</span> <span class="p">,</span> <span class="s">"pad-added"</span><span class="p">,</span> <span class="n">G_CALLBACK</span> <span class="p">(</span><span class="n">on_pad_added</span><span class="p">),</span> <span class="n">data</span><span class="p">.</span><span class="n">depay</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">g_warning</span> <span class="p">(</span> <span class="s">"no......."</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="n">gst_bin_add_many</span> <span class="p">(</span><span class="n">GST_BIN</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pipeline</span><span class="p">),</span> <span class="n">data</span><span class="p">.</span><span class="n">source</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">depay</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">filter</span><span class="p">,</span>
+                      <span class="n">data</span><span class="p">.</span><span class="n">parse</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">encode</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">mux</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">sink</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">gst_element_link_many</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">depay</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">filter</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">parse</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">encode</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">mux</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">sink</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">g_printerr</span> <span class="p">(</span><span class="s">"Elements could not be linked. </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">gst_object_unref</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pipeline</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">gst_element_set_state</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">GST_STATE_PLAYING</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="n">GST_STATE_CHANGE_FAILURE</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">g_printerr</span> <span class="p">(</span><span class="s">"Unable to set the pipeline to the playing state. </span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">gst_object_unref</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pipeline</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">bus</span> <span class="o">=</span> <span class="n">gst_element_get_bus</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pipeline</span><span class="p">);</span>
+    <span class="n">msg_err</span> <span class="o">=</span> <span class="n">gst_bus_timed_pop_filtered</span> <span class="p">(</span><span class="n">bus</span><span class="p">,</span> <span class="n">GST_CLOCK_TIME_NONE</span><span class="p">,</span><span class="n">GST_MESSAGE_ERROR</span><span class="p">);</span>
+    <span class="n">msg_eos</span> <span class="o">=</span> <span class="n">gst_bus_timed_pop_filtered</span> <span class="p">(</span><span class="n">bus</span><span class="p">,</span> <span class="n">GST_CLOCK_TIME_NONE</span><span class="p">,</span><span class="n">GST_MESSAGE_EOS</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">msg_err</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="n">msg_eos</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">GError</span> <span class="o">*</span><span class="n">err</span><span class="p">;</span>
+        <span class="n">gchar</span> <span class="o">*</span><span class="n">debug_info</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">msg_err</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">gst_message_parse_error</span><span class="p">(</span><span class="n">msg_err</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">debug_info</span><span class="p">);</span>
+            <span class="n">g_printerr</span><span class="p">(</span><span class="s">"Error received from element %s: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                       <span class="n">GST_OBJECT_NAME</span> <span class="p">(</span><span class="n">msg_err</span><span class="o">-&gt;</span><span class="n">src</span><span class="p">),</span> <span class="n">err</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
+            <span class="n">g_printerr</span><span class="p">(</span><span class="s">"Debugging information: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                       <span class="n">debug_info</span> <span class="o">?</span> <span class="n">debug_info</span> <span class="o">:</span> <span class="s">"none"</span><span class="p">);</span>
+            <span class="n">g_clear_error</span><span class="p">(</span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+            <span class="n">g_free</span><span class="p">(</span><span class="n">debug_info</span><span class="p">);</span>
+            <span class="c1">//break;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">msg_eos</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">){</span>
+            <span class="n">g_print</span> <span class="p">(</span><span class="s">"End-Of-Stream reached.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="c1">//break;</span>
+        <span class="p">}</span>
+        <span class="k">else</span><span class="p">{</span>
+            <span class="n">g_printerr</span> <span class="p">(</span><span class="s">"Unexpected message received.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="c1">//break;</span>
+        <span class="p">}</span>
+        <span class="n">gst_message_unref</span> <span class="p">(</span><span class="n">msg_err</span><span class="p">);</span>
+        <span class="n">gst_message_unref</span> <span class="p">(</span><span class="n">msg_eos</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">gst_object_unref</span> <span class="p">(</span><span class="n">bus</span><span class="p">);</span>
+    <span class="n">gst_element_set_state</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">GST_STATE_NULL</span><span class="p">);</span>
+    <span class="n">gst_object_unref</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pipeline</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="코드-분석">코드 분석</h3>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gst_init</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>GStreamer를 Initialize한다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span><span class="p">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span> <span class="p">(</span><span class="s">"rtspsrc"</span><span class="p">,</span> <span class="s">"source"</span><span class="p">);</span>
+<span class="n">data</span><span class="p">.</span><span class="n">depay</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span> <span class="p">(</span><span class="s">"rtph264depay"</span><span class="p">,</span> <span class="s">"depay"</span><span class="p">);</span>
+<span class="n">data</span><span class="p">.</span><span class="n">filter</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span> <span class="p">(</span><span class="s">"capsfilter"</span><span class="p">,</span> <span class="s">"filter"</span><span class="p">);</span>
+<span class="n">data</span><span class="p">.</span><span class="n">filtercaps</span> <span class="o">=</span> <span class="n">gst_caps_new_simple</span><span class="p">(</span><span class="s">"video/x-h264"</span><span class="p">,</span> <span class="s">"stream-format"</span><span class="p">,</span> <span class="n">G_TYPE_STRING</span><span class="p">,</span> <span class="s">"avc"</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="n">data</span><span class="p">.</span><span class="n">parse</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span><span class="p">(</span><span class="s">"h264parse"</span><span class="p">,</span> <span class="s">"parse"</span><span class="p">);</span>
+<span class="n">data</span><span class="p">.</span><span class="n">decode</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span><span class="p">(</span><span class="s">"avdec_h264"</span><span class="p">,</span> <span class="s">"decode"</span><span class="p">);</span>
+<span class="n">data</span><span class="p">.</span><span class="n">encode</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span><span class="p">(</span><span class="s">"x264enc"</span><span class="p">,</span> <span class="s">"encode"</span><span class="p">);</span>
+<span class="n">data</span><span class="p">.</span><span class="n">mux</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span><span class="p">(</span><span class="s">"mpegtsmux"</span><span class="p">,</span> <span class="s">"mux"</span><span class="p">);</span>
+<span class="n">data</span><span class="p">.</span><span class="n">sink</span> <span class="o">=</span> <span class="n">gst_element_factory_make</span><span class="p">(</span><span class="s">"hlssink"</span><span class="p">,</span> <span class="s">"sink"</span><span class="p">);</span>
+<span class="n">data</span><span class="p">.</span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">gst_pipeline_new</span> <span class="p">(</span><span class="s">"rtsp-to-hls-pl"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>element들은 <code class="highlighter-rouge">gst_element_factory_make(&lt;element_이름&gt;, &lt;변수명&gt;)</code>로 element factory를 만든다.</p>
+
+<p>caps는 <code class="highlighter-rouge">gst_caps_new_simple()</code>을 이용하였고, caps를 감싸서 하나의 element로 만들기 위해 data.filter도 선언하였다. (꼭 element로 감쌀 필요 없이, <code class="highlighter-rouge">gst_elemnt_filtered(&lt;앞 element&gt;,&lt;해당 caps&gt;, &lt;뒤 element&gt;)</code>를 이용해 연결하는 방식도 가능하다. 모든 요소를 element화 시켜야 나중에 파이프라인을 연결하기 편리하여 이 방법을 선택하였다. )</p>
+
+<p>pipeline도 <code class="highlighter-rouge">gst_pipeline_new()</code>로 선언하였다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">g_object_set</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">source</span><span class="p">,</span> <span class="s">"location"</span><span class="p">,</span> <span class="s">"rtsp://192.168.0.70:8554/test"</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="n">g_object_set</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">sink</span><span class="p">,</span> <span class="s">"max-files"</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"target-duration"</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s">"location"</span><span class="p">,</span> <span class="s">"/nginx/hls/segment%05d.ts"</span><span class="p">,</span> <span class="s">"playlist-location"</span><span class="p">,</span> <span class="s">"/nginx/hls/playlist.m3u8"</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="n">g_object_set</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">filter</span><span class="p">,</span> <span class="s">"caps"</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">filtercaps</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="n">gst_caps_unref</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">filtercaps</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>각 element에 필요한 세부 사항을 <code class="highlighter-rouge">g_object_set()</code>으로 정의한다. 여기서 caps(filtercaps)를 element 안에 담는다(filter).</p>
+
+<p><strong>중요!!</strong></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">g_signal_connect</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">source</span> <span class="p">,</span> <span class="s">"pad-added"</span><span class="p">,</span> <span class="n">G_CALLBACK</span> <span class="p">(</span><span class="n">on_pad_added</span><span class="p">),</span> <span class="n">data</span><span class="p">.</span><span class="n">depay</span><span class="p">)</span>
+</code></pre></div></div>
+
+:ET

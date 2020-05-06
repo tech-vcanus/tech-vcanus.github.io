@@ -170,9 +170,11 @@ https://docs.docker.com/engine/reference/builder/
     Add loop.sh /usr/local/bin/loop.sh 
     ENTRYPOINT ["/usr/local/bin/loop.sh"] # exec form CMD ["1"]
     ```
+ - VOLUME
 ## Reference
-http://pyrasis.com/book/DockerForTheReallyImpatient/Chapter07/06
-https://bluese05.tistory.com/77
+ - http://pyrasis.com/book/DockerForTheReallyImpatient/Chapter07/06
+ - https://bluese05.tistory.com/77
+ - https://joont92.github.io/docker/volume-container-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0/
 
 # Docker compose
 ## Example
@@ -194,10 +196,14 @@ services:
       - ./data/1:/data 
     restart: always
 ```
+## Docker-based Redis Cluster
+https://github.com/sglee-net/docker-redis-cluster
+
 ## Reference
-http://raccoonyy.github.io/docker-usages-for-dev-environment-setup/
-https://success.docker.com/article/use-a-script-to-initialize-stateful-container-data
+ - http://raccoonyy.github.io/docker-usages-for-dev-environment-setup/
+ - https://success.docker.com/article/use-a-script-to-initialize-stateful-container-data
 
 # Docker Swarm
 ## Reference
-https://tech.osci.kr/2019/02/13/59736201/
+ - https://tech.osci.kr/2019/02/13/59736201/
+

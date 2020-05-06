@@ -1,4 +1,4 @@
-I"ÊÑ<!--
+I"Òì<!--
 # Jekyll Group-By-Array 0.1.0
 # https://github.com/mushishi78/jekyll-group-by-array
 # Â© 2015 Max White <mushishi78@gmail.com>
@@ -83,6 +83,54 @@
 
 <!-- If not equal to previous then it must be unique as sorted -->
 
+<!-- If not equal to previous then it must be unique as sorted -->
+
+<!-- If not equal to previous then it must be unique as sorted -->
+
+<!-- Push to group_names -->
+
+<!-- If not equal to previous then it must be unique as sorted -->
+
+<!-- Push to group_names -->
+
+<!-- If not equal to previous then it must be unique as sorted -->
+
+<!-- Push to group_names -->
+
+<!-- If not equal to previous then it must be unique as sorted -->
+
+<!-- Push to group_names -->
+
+<!-- If not equal to previous then it must be unique as sorted -->
+
+<!-- Push to group_names -->
+
+<!-- If not equal to previous then it must be unique as sorted -->
+
+<!-- Push to group_names -->
+
+<!-- If not equal to previous then it must be unique as sorted -->
+
+<!-- Push to group_names -->
+
+<!-- If not equal to previous then it must be unique as sorted -->
+
+<!-- Push to group_names -->
+
+<!-- If not equal to previous then it must be unique as sorted -->
+
+<!-- If not equal to previous then it must be unique as sorted -->
+
+<!-- Push to group_names -->
+
+<!-- If not equal to previous then it must be unique as sorted -->
+
+<!-- Push to group_names -->
+
+<!-- If not equal to previous then it must be unique as sorted -->
+
+<!-- If not equal to previous then it must be unique as sorted -->
+
 <!-- Push to group_names -->
 
 <!-- If not equal to previous then it must be unique as sorted -->
@@ -113,12 +161,6 @@
 
 <!-- If not equal to previous then it must be unique as sorted -->
 
-<!-- Push to group_names -->
-
-<!-- If not equal to previous then it must be unique as sorted -->
-
-<!-- Push to group_names -->
-
 <!-- If not equal to previous then it must be unique as sorted -->
 
 <!-- If not equal to previous then it must be unique as sorted -->
@@ -127,27 +169,7 @@
 
 <!-- If not equal to previous then it must be unique as sorted -->
 
-<!-- Push to group_names -->
-
 <!-- If not equal to previous then it must be unique as sorted -->
-
-<!-- Push to group_names -->
-
-<!-- If not equal to previous then it must be unique as sorted -->
-
-<!-- Push to group_names -->
-
-<!-- If not equal to previous then it must be unique as sorted -->
-
-<!-- Push to group_names -->
-
-<!-- If not equal to previous then it must be unique as sorted -->
-
-<!-- Push to group_names -->
-
-<!-- If not equal to previous then it must be unique as sorted -->
-
-<!-- Push to group_names -->
 
 <!-- If not equal to previous then it must be unique as sorted -->
 
@@ -238,6 +260,14 @@
 <!-- Push to group_names -->
 
 <!-- group_items -->
+
+<!-- Collect if contains -->
+
+<!-- Push to group_items -->
+
+<!-- Collect if contains -->
+
+<!-- Push to group_items -->
 
 <!-- Collect if contains -->
 
@@ -715,6 +745,18 @@
       </a> &nbsp;&nbsp;&nbsp;
     </span>
   
+    <span>
+      <a href="#hls">
+        HLS
+      </a> &nbsp;&nbsp;&nbsp;
+    </span>
+  
+    <span>
+      <a href="#streaming">
+        Streaming
+      </a> &nbsp;&nbsp;&nbsp;
+    </span>
+  
 </ul>
 <p><br />
 <br /></p>
@@ -1161,6 +1203,86 @@
   </article>
 </div>
 
+<h2 id="hls" class="archive__subtitle">HLS</h2>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-in-c-code/" rel="permalink">Basic GStreamer Guide in C
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/cmake-guide/" rel="permalink">CMake Guide
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/http-live-streaming/" rel="permalink">HTTP Live Streaming (HLS)
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
 <h2 id="homogeneous" class="archive__subtitle">Homogeneous</h2>
 
 <div class="list__item">
@@ -1590,6 +1712,84 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
+        <a href="/development/gstreamer-in-c-code/" rel="permalink">Basic GStreamer Guide in C
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/cmake-guide/" rel="permalink">CMake Guide
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/http-live-streaming/" rel="permalink">HTTP Live Streaming (HLS)
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
         <a href="/development/gstreamer-and-rtsp/" rel="permalink">GStreamer and RTSP
 </a>
       
@@ -1607,6 +1807,86 @@
       <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 21 2020</p>
     
     <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+<h2 id="streaming" class="archive__subtitle">Streaming</h2>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-in-c-code/" rel="permalink">Basic GStreamer Guide in C
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/cmake-guide/" rel="permalink">CMake Guide
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/http-live-streaming/" rel="permalink">HTTP Live Streaming (HLS)
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
 </p>
   </article>
 </div>

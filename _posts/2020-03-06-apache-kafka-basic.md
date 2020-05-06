@@ -23,11 +23,11 @@ consumer가 broker로부터 직접 메시지를 가지고 가는 pull 방식으�
 
 ![kafkaconcept1](/assets/images/kafkaconcept.png)
 
-_이미지 출처 : [https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05]_
+_이미지 출처 : [https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05](https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05)_
 
 ![kafkaconcept1](/assets/images/kafkacluster.png)
 
-_이미지 출처 : [https://kafka.apache.org/intro]_
+_이미지 출처 : [https://kafka.apache.org/intro](https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05)_
 
 - Producers : 메세지 생산(발행: publish)을 담당. 토픽을 선택하여 데이터를 발행한다.
 - Consumers : 토픽을 선택 구독하여 데이터를 소비한다.
