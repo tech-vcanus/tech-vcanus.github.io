@@ -97,7 +97,7 @@ $ git branch -D feature/topic
 ## etc
 ```
 // cancel git add
-$ git reset 
+$ git reset --hard <version>
 // git history
 $ git log --graph --all --decorate --oneline 
 ```
