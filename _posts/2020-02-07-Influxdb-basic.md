@@ -25,7 +25,6 @@ $ docker run -d \
     --name influxdb \
     -v $PWD:/var/lib/influxdb \
     -e INFLUXDB_HTTP_AUTH_ENABLED=true \
-    -e INFLUXDB_ADMIN_ENABLED=true \
     -e INFLUXDB_ADMIN_USER=admin \
     -e INFLUXDB_ADMIN_PASSWORD=1234 \
     influxdb
@@ -57,13 +56,13 @@ $docker exec -it <ContainerName> influxdb [-username <USERNAME> -password <PASSW
 
 ## Auth Command
 
-### Administrator
+### Create Administrator
 
 - CREATE USER \<USERNAME> WITH PASSWORD '\<PASSWORD>' WITH ALL PRIVILEGES
 - GRANT ALL PRIVILEGES TO \<USERNAME>
 - REVOKE ALL PRIVILEGES FROM \<USERNAME>
   
-### Non-Admin(Normal User)
+### Create Non-Admin(Normal User)
 
 - CREATE USER \<USERNAME> WITH PASSWORD '\<PASSWORD>'
 - GRANT [ALL,READ,WRITE] ON \<DATABASENAME> TO \<USERNAME>
