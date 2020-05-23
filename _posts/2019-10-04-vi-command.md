@@ -9,75 +9,116 @@ Written by SGLee, VCANUS
 
 # VI command
 
-[replacement]
+### replacement
+```
 :%s/src/target/c (confirm)
 :%s/src/target/g (global)
 :#,#s/src/target (line to line)
+```
 
-[undo]
+### undo
+```
 u
+```
 
-[redo]
+### redo
+```
 ctrl + R
+```
 
-[comment]
+### comment
+```
 Visual Block (Shift + V)
 :
 :'<, '> (auto)
 :'<, '> norm i // (or #)
+```
 
-[uncomment]
+### uncomment
+```
 Visual Block (Shift + V)
 :
 :'<, '> (auto)
 :'<, '> norm #x (#: 2 for //, 1 for #, # means the the number of character to be removed)
+```
 
-[copy multi-line(#,#) to buffer]
+### copy multi-line(#,#) to buffer
+```
 :#,#y
+```
 
-[paste buffer to the next of the specific line(#)]
+### paste buffer to the next of the specific line(#)
+```
 :#pu
+```
 
-[move to the next word]
+### move to the next word
+```
 w
+```
 
-[move to the previous word]
+### move to the previous word
+```
 b
+```
 
-[move to the next word (space)]
+### move to the next word (space)
+```
 W
+```
 
-[move to the previous word (space)]
+### move to the previous word (space)
+```
 B
+```
 
-[delete the word]
+### delete the word
+```
 v => w => d or x
+```
 
 [copy lines from the other file and paste it to the current file]
+```
 :e theotherfilename
 yy (or :#,#y)
 ctrl ^ (*: back to the current file)
 p
+```
 
 [indent/outdent]
+```
 Visual Block (Shift + V)
 < 
 >
+```
 
 [auto alignment]
+```
 Visual Block (Shift + V)
 =
+```
 
 [backward page]
+```
 ctrl b
+```
+
 [forward page]
+```
 ctrl f
+```
 
 [begin page]
+```
 gg
+```
 
 [end page]
+```
 G
+```
 
 [write with su]
+```
 :w !sudo tee %
+```
