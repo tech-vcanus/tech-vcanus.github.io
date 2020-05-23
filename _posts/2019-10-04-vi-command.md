@@ -7,7 +7,7 @@ tags: development environment vi command
 
 Written by SGLee, VCANUS
 
-# VI command
+## VI command
 
 ### replacement
 ```
@@ -77,7 +77,7 @@ B
 v => w => d or x
 ```
 
-[copy lines from the other file and paste it to the current file]
+### copy lines from the other file and paste it to the current file
 ```
 :e theotherfilename
 yy (or :#,#y)
@@ -85,40 +85,40 @@ ctrl ^ (*: back to the current file)
 p
 ```
 
-[indent/outdent]
+### indent/outdent
 ```
 Visual Block (Shift + V)
 < 
 >
 ```
 
-[auto alignment]
+### auto alignment
 ```
 Visual Block (Shift + V)
 =
 ```
 
-[backward page]
+### backward page
 ```
 ctrl b
 ```
 
-[forward page]
+### forward page
 ```
 ctrl f
 ```
 
-[begin page]
+### begin page
 ```
 gg
 ```
 
-[end page]
+### end page
 ```
 G
 ```
 
-[write with su]
+### write with su
 ```
 :w !sudo tee %
 ```
