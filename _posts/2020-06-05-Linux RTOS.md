@@ -1,5 +1,5 @@
 ---
-title: "Linux RTOSß"
+title: "Linux RTOS"
 date: 2020-06-05
 categories: development
 tags: RTOS
