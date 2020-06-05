@@ -144,7 +144,52 @@ all:
 clean:
         make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
 ```
+#### Linux Kenel module example Code
+```
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/hrtimer.h>
+#include <linux/ktime.h>
 
-#### Makefile 설명
-1. obj-m : 생성할 모듈 이름이다. 예를 들어 test.ko 를 생성하고 싶다면 test.o 인자로 주면된다.
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("kjh");
+MODULE_DESCRIPTION("A simple hello world module");
 
+#define MS_TO_NS(x) (x * 1E6L)
+
+static struct hrtimer hr_timer;
+ktime_t ktime;
+
+enum hrtimer_restart my_hrtimer_callback(struct hrtimer *timer)
+{
+	printk(KERN_INFO "my_hrtimer_callback called (%ld).\n", jiffies);
+	hrtimer_forward(&hr_timer, hr_timer._softexpires, ktime);
+	return HRTIMER_RESTART;
+}
+
+int init_module(void)
+{
+	unsigned long delay_in_ms = 100L;
+
+	printk(KERN_INFO "HR Timer module installing...\n");
+	ktime = ktime_set(0, MS_TO_NS(delay_in_ms));
+
+	hrtimer_init(&hr_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
+
+	hr_timer.function = &my_hrtimer_callback;
+
+	printk(KERN_INFO "Starting timer (%ld)\n", jiffies);
+	hrtimer_start(&hr_timer, ktime, HRTIMER_MODE_REL);
+
+	return 0;
+}
+
+void cleanup_module(void)
+{
+	int rt;
+
+	printk(KERN_INFO "Cleaning up module.\n");
+	rt = hrtimer_cancel(&hr_timer);
+	if(rt) printk(KERN_INFO "The timer is still in use..\n");
+}
+```
