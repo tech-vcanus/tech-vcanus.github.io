@@ -1,5 +1,5 @@
 ---
-title: "Linux_kernel"
+title: "Linux RTOSß"
 date: 2020-06-05
 categories: development
 tags: RTOS
@@ -260,7 +260,7 @@ int main() {
     return 0;
 }
 ```
-
+ß
 #### 2. cmake 
 ```
 cmake_minimum_required(VERSION 3.16)
