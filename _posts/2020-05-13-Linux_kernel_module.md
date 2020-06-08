@@ -101,43 +101,50 @@ $ sudo apt-mark hold linux-image-generic linux-headers-generic
 
 ubuntu 18.04 버전이 아니면 ADLINK 홈페이지에서 드라이버 설치 목록에 필요한 ubuntu 버전 및 kernel 버전이 명시 되어 있음.
 
-1. [adlink](https://www.adlinktech.com/en/index) 홈페이지 에서 mcm-100 드라이버 설치
-* 다운 받은 디렉토리에 README 참조
-2. ud-dask_xxx/util/usbdask_conf64 실행
-    ```
-    $ cd <InstallDir>/ud-dask_xxx/util
-    $ ./usbdask_conf64
-    ```
-3. usbdask_conf64 설정
-4. ud-dask_xxx/drivers/usbdask_inst_x86_64.pl 실행
-    ```
-    $ sudo cp <InstallDir>/ud-dask_xxx/drivers/4.15.0-20-generic/u2405.ko 다운받은경로/ud-dask_xxx/drivers
-    $ sudo perl <InstallDir>/ud-dask_xxx/drivers/usbdask_inst_x86_64.pl
-    $ cp <InstallDir>/ud-dask_xxx/lib/libusb_dask64.so /usr/lib64 or 
-   cp <InstallDir>/ud-dask_xxx/lib/libpci_dask64.so /usr/lib/x86_64-linux-gnu
-    ## module 확인
-    $ lsmod u2405
-    ```
-5. 부팅시 자동적으로 insmod 설정
- * teams Linux 채널 에 ADLINK mcm-100 autoload.zip(비번 1234) 다운 후 참조
-    ```
-    $ sudo cp <InstallDir>/autoload/u2405.conf /etc/modprode.d
-    $ sudo vi /etc/modules
-    ## add string "u2405"
-    $ sudo cp <InstallDir(ud-dask_xxx)>/ud-dask_xxx/drivers/u2405.bin /etc/udask/fw
-    $ sudo cp <InstallDir(ud-dask_xxx)>/ud-dask_xxx/drivers/u2405.ko /lib/modules/4.15.0-20-gnerric/kernel/drivers/usb
-    $ sudo depmod -a
-    $ reboot
-    ## 4.15.0-20-generic로 load 후 module 적재 되어 있는지 확인
-    $ lsmod u2405
-    ```
+__1. [adlink](https://www.adlinktech.com/en/index) 홈페이지 에서 mcm-100 드라이버 설치__
+
+다운 받은 디렉토리에 README 참조
+
+__2. ud-dask_xxx/util/usbdask_conf64 실행__
+
+```
+$ cd <InstallDir>/ud-dask_xxx/util
+$ ./usbdask_conf64
+```
+__3. usbdask_conf64 설정__
+
+__4. ud-dask_xxx/drivers/usbdask_inst_x86_64.pl 실행__
+    
+```
+$ sudo cp <InstallDir>/ud-dask_xxx/drivers/4.15.0-20-generic/u2405.ko 다운받은경로/ud-dask_xxx/drivers
+$ sudo perl <InstallDir>/ud-dask_xxx/drivers/usbdask_inst_x86_64.pl
+$ cp <InstallDir>/ud-dask_xxx/lib/libusb_dask64.so /usr/lib64 or cp <InstallDir>/ud-dask_xxx/lib/libpci_dask64.so /usr/lib/x86_64-linux-gnu
+## module 확인
+$ lsmod u2405
+```
+
+__5. 부팅시 자동적으로 insmod 설정__
+
+teams Linux 채널 에 ADLINK mcm-100 autoload.zip(비번 1234) 다운 후 참조
+   
+```
+$ sudo cp <InstallDir>/autoload/u2405.conf /etc/modprode.d
+$ sudo vi /etc/modules
+## add string "u2405"
+$ sudo cp <InstallDir(ud-dask_xxx)>/ud-dask_xxx/drivers/u2405.bin /etc/udask/fw
+$ sudo cp <InstallDir(ud-dask_xxx)>/ud-dask_xxx/drivers/u2405.ko /lib/modules/4.15.0-20-gnerric/kernel/drivers/usb
+$ sudo depmod -a
+$ reboot
+## 4.15.0-20-generic로 load 후 module 적재 되어 있는지 확인
+$ lsmod u2405
+```
 
 ## RTLinux (centOS7)
 
 * HZ : 1 초당 발생되는 타이머 인터럽트 횟수
 * jiffies : 초당 HZ 값 만큼 증가하는 전역 변수
 
-### 1. Linux Kenel module Makefile 
+__1. Linux Kenel module Makefile__
 
 ```
 obj-m += <c file>.o
@@ -148,7 +155,7 @@ clean:
         make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
 ```
 
-### 2. Linux Kenel module example Code
+__2. Linux Kenel module example Code__
 
 ```
 #include <linux/module.h>

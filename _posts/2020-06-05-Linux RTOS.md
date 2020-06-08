@@ -10,7 +10,7 @@ Written By [KJ Jang](https://github.com/jjangchan), VCANUS
 ## 1. 리눅스 기반의 Real-time OS
 모든 OS는 preemptive한 작업을 수행을 보장한다. preemptive 란 프로세스 간 우선 순위를 정하고, 현재 수행 중인 프로세스가 다른 프로세스로부터 interrupt를 받으면 수행 하던 프로세스를 내려 놓은 뒤 우선순위가 높은 프로세스를 먼저 처리하는 것을 말하는데, 사실 이는 OS의 정말 기본 중의 기본 컨셉이기 때문에 리눅스는 이 기능을 자체적으로 내장하고 있다. 따라서 하드웨어만 어느 정도 받쳐준다면 어느 정도의 RT 기능은 일반 리눅스도 충분히 커버 할 수 있다.
 
-#### 1.1 일반 리눅스 랑 차이점
+### 1.1 일반 리눅스 랑 차이점
 차이점은 __"시스템 콜에 대한  Preemptive"__ 이다.
 일반 리눅스는 interrupt가 들어왔을 때 현재 수행 중인 시스템을 콜을 끝낸 뒤 Context Swiching이 일어나지만, __RT 커널 기반의 리눅스는 현재 작업 중인 프로세스의 시스템 콜 수행마저도 interrupt를 걸어 작업 Swiching에 대한 Latency를 최소화 한다.__
 
