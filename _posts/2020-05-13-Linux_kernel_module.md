@@ -16,7 +16,7 @@ Written By [KJ Jang](https://github.com/jjangchan), VCANUS
 
 - Monolithic 커널 : 시스템에 관련된 모든 기능을 커널에 때려 박은 형태이다. 모든 기능이 커널에서 동작하기 때문에 기능도 많고 Ring 레벨을 변경할 필요가 없기 때문에 빠르지만 기능을 추가하려면 커널을 수정해서 재컴파일해야 한다는 단점 존재(Linux는 Monolithic 커널이며, 단점을 해결하기 위해 실시간으로 모듈을 추가할 수 있는 기능을 제공[insmod 명령어])
 
-### 모듈 관련 명령어
+## 모듈 관련 명령어
 
 __1. uname__
 ```
@@ -52,9 +52,9 @@ insmod와 달리 해당 모듈 디렉터리로 이동 할 필요 없이 아무 �
 또한 의존성이 필요한 모듈이나 먼저 실행되어야 하는 모듈이 있다면 그 모듈부터 적재하고 해당 모듈을 적재한다.
 ```
 
-### kernel install , remove , hold(ubuntu 18.04.4)
+## kernel install , remove , hold(ubuntu 18.04.4)
 
-#### 1. install
+__1. install__
 ```
 $ sudo apt install aptitude
 $ sudo aptitude search linux-image
@@ -82,7 +82,7 @@ $ sudo aptitude install linux-modules-[version]-generic
 $ sudo aptitude install linux-modules-extra-[version]-generic
 ```
 
-#### 2. remove
+__2. remove__
 ```
 $ sudo apt purge linux-headers-[version] linux-headers-[version]-generic
 $ sudo apt purge linux-image-[version] 
@@ -92,12 +92,12 @@ $ reboot
 ## Removeing linux-image-[version] 알림창 뜨면 No 버튼 클릭.
 ```
 
-#### 3. hold
+__3. hold__
 ```
 $ sudo apt-mark hold linux-image-generic linux-headers-generic
 ```
 
-### insert ADLINK mcm-100 module(ubuntu 18.04 must kernuel 4.15.0-20-gnerric)
+## insert ADLINK mcm-100 module(ubuntu 18.04 must kernuel 4.15.0-20-gnerric)
 
 ubuntu 18.04 버전이 아니면 ADLINK 홈페이지에서 드라이버 설치 목록에 필요한 ubuntu 버전 및 kernel 버전이 명시 되어 있음.
 
