@@ -1,5 +1,5 @@
 ---
-title: "Linux RTOSß"
+title: "Linux RTOS"
 date: 2020-06-05
 categories: development
 tags: RTOS
@@ -16,7 +16,7 @@ Written By [KJ Jang](https://github.com/jjangchan), VCANUS
 
 ## 2. 리눅스에서 RT 기능 사용법
 
-#### 2.1 리눅스 Scheduling의 종류
+### 2.1 리눅스 Scheduling의 종류
 __1. SCHED_OTHER(또는 SCHED_NORMAL)__
 
 일반 프로세스가 사용하는 타입의 Policy
@@ -25,7 +25,7 @@ __2. SCHED_FIFO, SCHED_RR__
 
 RT를 위한 Scheduling Policy
 
-#### 2.2 Priority 제어하기
+### 2.2 Priority 제어하기
 __1. nice 또는 renice__
 
 * +19 ~ -20 값을 가지며, __-20이 가장 높은 Priority 값__
@@ -108,7 +108,7 @@ int main() {
 ```
 
 ## 3. Linux RTOS+Timer code 및 실험 결과
-#### 1. c++ code
+### 1. c++ code
 
 ```
 /
@@ -261,7 +261,7 @@ int main() {
 }
 ```
 ß
-#### 2. cmake 
+### 2. cmake 
 ```
 cmake_minimum_required(VERSION 3.16)
 project(vcx_linux_timer_example)
@@ -277,7 +277,7 @@ target_link_libraries(${PROJECT_NAME} rt)
 
 ## 3. Timer 정확성 실험 조건 및 결과
 
-#### 실험1 : CentOS7 Linux PR 값에 따른 Timer 정확성 테스트
+### 실험1 : CentOS7 Linux PR 값에 따른 Timer 정확성 테스트
 PR | max | min | average | 상황 | Timer 호출 시간 | 오차범위 | 오차 발생 수 | 오차확률 | 측정시간
 :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:
 __39(min)__ | 17,528 | 3,172 | 9997.72 | 동영상 | 10ms | 1ms ↕  | 248 | 4.13% | 1분
@@ -289,7 +289,7 @@ __-100(max)__ | __10,174__ | __9,839__ | 9998.1 | 동영상 | 10ms | 1ms ↕ | 0
 
 <br>
 
-#### 실험2 : VMware(ubuntu) Linux PR값에 따른 Timer 정확성  테스트 
+### 실험2 : VMware(ubuntu) Linux PR값에 따른 Timer 정확성  테스트 
 PR | max | min | average | 상황 | Timer 호출 시간 | 오차범위 | 오차 발생 수 | 오차확률 | 측정시간
 :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:
 __20__ | 15,932 | 4,284 | 9999.25 | 동영상 | 10ms | 1ms ↕  | 353 | 5.90% | 1분
@@ -300,7 +300,7 @@ __-100(max)__ | __10,612__ | __9,381__ | 9999.35 | 동영상 | 10ms | 1ms ↕ | 
 
 <br>
 
-#### 실험3 : 실험7 : VMware(ubuntu) Linux  timer,PR 값에 따른 Timer 정확성  테스트  
+### 실험3 : 실험7 : VMware(ubuntu) Linux  timer,PR 값에 따른 Timer 정확성  테스트  
 Timer 호출 시간 | PR | max | min | average | 상황 | 오차범위 | 오차 발생 수 | 오차확률 | 측정시간
 :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:
 __10ms__ | __-2__ | 11,528 | 8,467 | 9999.24 | 동영상 | 1ms ↕ | 4 | 0.06% | 1분 

@@ -15,35 +15,36 @@ Written By [KJ Jang](https://github.com/jjangchan), VCANUS
 커널에서 작업해야 하는 기능이 있는데 이를 추가하기 위해서는 커널을 수정해서 재 컴파일 해야 한다. 하지만 이는 너무 번거우므로 리눅스와 같은 운영체제에는 모듈이라는 기능을 제공하여 특정 커널의 기능을 사용하고자 할 때 실시간(동적)으로 추가 할 수 있게 하고 있다.
 
 - Monolithic 커널 : 시스템에 관련된 모든 기능을 커널에 때려 박은 형태이다. 모든 기능이 커널에서 동작하기 때문에 기능도 많고 Ring 레벨을 변경할 필요가 없기 때문에 빠르지만 기능을 추가하려면 커널을 수정해서 재컴파일해야 한다는 단점 존재(Linux는 Monolithic 커널이며, 단점을 해결하기 위해 실시간으로 모듈을 추가할 수 있는 기능을 제공[insmod 명령어])
+
 ### 모듈 관련 명령어
 
-uname
+__1. uname__
 ```
 uname [옵션]
 UNIX name의 줄임말, 시스템의 기본 정보를 보는 명령어
 ```
-insmod
+__2. insmod__
 ```
 insmod [옵션] [모듈명] 
 해당 모듈을 적재 , 의존성이 존재하는 모듈인 경우에는 적재하지 못함
 ```
-remod
+__3. remod__
 ```
 rmmod [옵션] [모듈명] 
 적재된 모듈 제거한다. 의존성이 존재하는 모듈은 제거하지 못함
 ```
-lsmod
+__4. lsmod__
 ```
 lsmod 
 현재 적재된 모듈을 출력한다.
 ```
-demod
+__5. demod__
 ```
 demod [옵션] 
 의존성을 검사한 뒤 modules.dep 파일을 갱신한다. 
 kernel 이나 modprobe를 실행하기 전 사용하는 버릇을 들인다.
 ```
-modprode
+__6. modprode__
 ```
 modprode [옵션] [모듈명] 
 depmod의 의해 갱신된 modules.dep에서 찾아 적재한다. 
@@ -130,12 +131,14 @@ ubuntu 18.04 버전이 아니면 ADLINK 홈페이지에서 드라이버 설치 �
     ## 4.15.0-20-generic로 load 후 module 적재 되어 있는지 확인
     $ lsmod u2405
     ```
-### RTLinux (centOS7)
+
+## RTLinux (centOS7)
 
 * HZ : 1 초당 발생되는 타이머 인터럽트 횟수
 * jiffies : 초당 HZ 값 만큼 증가하는 전역 변수
 
-#### Linux Kenel module Makefile 
+### 1. Linux Kenel module Makefile 
+
 ```
 obj-m += <c file>.o
 
@@ -144,7 +147,9 @@ all:
 clean:
         make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
 ```
-#### Linux Kenel module example Code
+
+### 2. Linux Kenel module example Code
+
 ```
 #include <linux/module.h>
 #include <linux/kernel.h>
