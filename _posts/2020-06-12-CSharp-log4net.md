@@ -1,4 +1,11 @@
+---
 
+title: "CSharp log4net"
+data: 2020-06-12 00:00:00 -0000
+categories: development
+tags: CSharp log4net configuration
+
+---
 
 Written by BGKim, VCANUS
 
@@ -11,6 +18,7 @@ Written by BGKim, VCANUS
 log4net.config
 
 ```
+
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
   <log4net>
@@ -53,6 +61,7 @@ log4net.config
     </appender>
   </log4net>
 </configuration>
+
 ```
 
 
@@ -70,7 +79,9 @@ log4net.config
 AssemblyInfo.cs 내용 추가
 
 ```
+
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
+
 ```
 
 
@@ -78,6 +89,7 @@ AssemblyInfo.cs 내용 추가
 ## 사용법
 
 ```
+
 public class logTest
 {
     private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -91,6 +103,7 @@ public class logTest
         log.Fatal("My Fatal Error");
     }
 }
+
 ```
 
 
