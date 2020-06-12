@@ -1,6 +1,6 @@
 ---
 title: "CSharp log4net"
-data: 2020-06-12 00:00:00 -0000
+data: 2020-06-12 00:00:00 +0000
 categories: development
 tags: CSharp log4net configuration
 ---
@@ -8,6 +8,10 @@ tags: CSharp log4net configuration
 Written by BGKim, VCANUS
 
 # Log4net
+
+## NuGet 설치
+
+log4net 검색 및 설치
 
 ## config 파일 추가
 
