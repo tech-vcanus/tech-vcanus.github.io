@@ -9,9 +9,7 @@ Written by BGKim, VCANUS
 
 # Log4net
 
-## NuGet 설치
-
-log4net 검색 및 설치
+## log4net NuGet 설치
 
 ## config 파일 추가
 
