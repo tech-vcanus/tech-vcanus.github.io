@@ -24,9 +24,9 @@ Written By [KJ Jang](https://github.com/jjangchan), VCANUS
 
 ## Host PC에 L4T 및 JatPack 설치
 
-[NVIDIA](https://developer.nvidia.com/embedded/linux-tegra) 홈페이지에서 __L4T Driver Package[BSP] , Sample Root Filesystem__ 다운로드
+1. [NVIDIA](https://developer.nvidia.com/embedded/linux-tegra) 홈페이지에서 __L4T Driver Package[BSP] , Sample Root Filesystem__ 다운로드
 
-[NVIDIA](https://developer.nvidia.com/embedded/jetpack) 홈페이지에서 __SDK Manager__ 다운로드(회원가입 필요)
+2. [NVIDIA](https://developer.nvidia.com/embedded/jetpack) 홈페이지에서 __SDK Manager__ 다운로드(회원가입 필요)
 
 
 
@@ -79,7 +79,7 @@ Bus 001 Device 001 : ID 0955:7020 NVidia Corp.
 
 ### Step 5 : TX2에 우분투 설치 과정
 
-TX2에 우분투 설치 과정이 뜬다. 차례 대로 언어,지역,시간 을 설정 해주고 설치 해주면 된다.
+TX2에 우분투 설치 과정이 뜬다. 순서 대로 언어,지역,시간 을 설정 해주고 설치 해주면 된다.
 
 ### Step 6 : TX2 gdisk 설정
 
@@ -128,11 +128,11 @@ Number Start (sector) End (sector) Size Code Name
 n 명령어 입력
 ```
 Command (? for help): n
-Partition number (1-128, default 1):
-First sector (34-5860533134, default = 2048) or {+-}size{KMGTP}:
-Last sector (2048-5860533134, default = 5860533134) or {+-}size{KMGTP}:
+Partition number (1-128, default 1): (enter)
+First sector (34-5860533134, default = 2048) or {+-}size{KMGTP}: (enter)
+Last sector (2048-5860533134, default = 5860533134) or {+-}size{KMGTP}: (enter)
 Current type is 'Linux filesystem'
-Hex code or GUID (L to show codes, Enter = 8300):
+Hex code or GUID (L to show codes, Enter = 8300): (enter)
 Changed type of partition to 'Linux filesystem
 ```
 마지막으로 확인
@@ -159,7 +159,7 @@ sda에 root 파일 복사
 $ sudo cp -ax / <sda1경로> && sync
 ```
 
-### ! IP, ID, PW 를 물어보는 알림창 이 뜨면 진행 하지말고, TX2를 sda로 부팅하는 설정 부터 하자 !
+### Warn : IP, ID, PW 를 물어보는 알림창 이 뜨면 진행 하지말고, TX2를 sda로 부팅하는 설정 부터 하자 !
 
 
 
