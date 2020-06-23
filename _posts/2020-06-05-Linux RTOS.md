@@ -14,6 +14,8 @@ Written By [KJ Jang](https://github.com/jjangchan), VCANUS
 차이점은 __"시스템 콜에 대한  Preemptive"__ 이다.
 일반 리눅스는 interrupt가 들어왔을 때 현재 수행 중인 시스템을 콜을 끝낸 뒤 Context Swiching이 일어나지만, __RT 커널 기반의 리눅스는 현재 작업 중인 프로세스의 시스템 콜 수행마저도 interrupt를 걸어 작업 Swiching에 대한 Latency를 최소화 한다.__
 
+
+
 ## 2. 리눅스에서 RT 기능 사용법
 
 ### 2.1 리눅스 Scheduling의 종류
