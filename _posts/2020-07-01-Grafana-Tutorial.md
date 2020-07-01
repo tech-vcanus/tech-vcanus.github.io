@@ -1,15 +1,13 @@
 ---
-title: "Fast Fourier Transform"
+title: "Grafana Customed Plugin Install Tutorial"
 data: 2020-03-25 00:00:00 -0000
 categories: development 
-tags: FFT
+tags: Grafana, react
 toc: true
 toc_sticky: true
 ---
 
 Written By Park SunHong, VCANUS
-
-# Grafana Customed Plugin Install Tutorial
 
 ※ 해당 튜토리얼은 grafana v6.7.1을 기준으로 작성되었음
 ## 순서 요약
