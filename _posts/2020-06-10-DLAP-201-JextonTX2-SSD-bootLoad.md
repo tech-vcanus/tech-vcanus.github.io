@@ -168,11 +168,11 @@ $ sudo cp -ax / <sda1경로> && sync
 ### Step 1: 다운로드 파일 압축 해제 
 Host PC 에 다운 받은 tar 압축 해제
 ```
-sudo tar xpf ${L4T_RELEASE_PACKAGE 경로}
-cd Linux_for_Tegra/rootfs/
-sudo tar xpf ../../${SAMPLE_FS_PACKAGE 경로}
-cd ..
-sudo ./apply_binaries.sh
+$ sudo tar xpf ${L4T_RELEASE_PACKAGE 경로}
+$ cd Linux_for_Tegra/rootfs/
+$ sudo tar xpf ../../${SAMPLE_FS_PACKAGE 경로}
+$ cd ..
+$ sudo ./apply_binaries.sh
 ```
 TX2 터미널 열고 sda1 PARTUUID 확인
 ```
