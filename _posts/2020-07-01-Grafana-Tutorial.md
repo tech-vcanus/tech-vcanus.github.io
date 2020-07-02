@@ -20,7 +20,7 @@ Written By Park SunHong, VCANUS
    
 ### 1. docker에서 grafana image 생성
 ```
-$ docker pull grafana/grafana   // 그라파나 image 생성
+$ docker pull grafana/grafana:6.7.1  // 그라파나 image 생성(버전을 적어주지 않으면 latest 버전이 다운됨)
 $ sudo docker run -d --name=(컨테이너 이름) -p 3000:3000 -v (컨테이너와 연결할 폴더 경로):(외부와 연결할 컨테이너 내부 폴더 경로) grafana/grafana 
 ```
 * 볼륨 지정(-v 옵션)은 컨테이너 생성시 수행해주어야 한다. (볼륨 지정은 필수는 아니나 편의상 권장함)  
