@@ -33,7 +33,8 @@ plugin 코드를 컨테이너의 /var/lib/grafana/plugins 에 저장하거나, �
 연결된 외부 디렉토리에서 수행하는 것이 여러모로 편리하다.  
 컨테이너 내부 경로에 직접 들어갈 경우는 터미널에 다음을 입력 :  
 ```
-$ docker exec -it -u 0 (컨테이너 이름) bash
+$ docker exec -it -u 0 (컨테이너 이름) bash  // 컨테이너 내부에 관리자 권한을 갖고 들어감
+$ cd /var/lib/grafana/plugins   // 플러그인 폴더가 위치하는 경로
 ```
 
 
