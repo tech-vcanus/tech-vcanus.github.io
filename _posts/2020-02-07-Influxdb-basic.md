@@ -106,7 +106,7 @@ reference : [Document](https://docs.influxdata.com/influxdb/v1.7/query_language/
 
 ### Insert
 
-- INSERT Mesurement,TagKey=TagValue[,TagKey=TagValue] FieldKey=FieldValue[,TagKey=TagValue] [TimeStmap]
+- INSERT Mesurement,TagKey=TagValue[,TagKey=TagValue] FieldKey=FieldValue[,FieldKey=FieldValue] [TimeStmap]
   
 ### Delete
 
