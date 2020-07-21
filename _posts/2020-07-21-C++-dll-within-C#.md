@@ -32,7 +32,7 @@ C++ 프로젝트의 함수를 C#에 가져와 사용하도록 환경 설정 하�
 
 1. **DLL 동적 라이브러리 프로젝트 생성**
 
-   ![image-20200721094218975](../assets/images/2020-07-21.png)
+   ![dllproject](/assets/images/2020-07-21.png)
 
 2. **.h (헤더) 파일 디렉터리 추가하기**
 
@@ -162,8 +162,6 @@ void test_array(int16_t(&array)[10]){
 	std::copy(std::begin(newarray), std::end(newarray), std::begin(array));//deep copy
 }
 ```
-
-
 
 ``` C#
 // C#
