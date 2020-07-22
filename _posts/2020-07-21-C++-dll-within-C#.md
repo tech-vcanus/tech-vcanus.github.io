@@ -163,7 +163,7 @@ void test_array(int16_t(&array)[10]){
 }
 ```
 
-``` C#
+``` csharp
 // C#
 // dynamic_example.cs
 using System.Runtime.InteropServices;
