@@ -166,6 +166,8 @@ void test_array(int16_t(&array)[10]){
 ``` csharp
 // C#
 // dynamic_example.cs
+using System.Runtime.InteropServices;
+...
 [StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
 public struct exampleStruct
 {
