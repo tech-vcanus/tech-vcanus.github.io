@@ -9,8 +9,6 @@ toc_sticky: true
 
 Written By [Nuri Na](https://github.com/nurring), VCANUS
 
-# C++ DLL within C#
-
 C++ 프로젝트의 함수를 C#에 가져와 사용하도록 환경 설정 하는 법.
 
 1. 외부 C++ API 를 포함시켜
