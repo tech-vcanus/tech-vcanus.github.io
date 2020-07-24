@@ -1,4 +1,4 @@
-I"{<h1 id="influxdb-basic">InfluxDB Basic</h1>
+I"3<h1 id="influxdb-basic">InfluxDB Basic</h1>
 
 <p>Written By <a href="https://github.com/tsedek">David Roh</a>, VCANUS</p>
 
@@ -197,10 +197,10 @@ $ docker run -d \
 
 <ul>
   <li>
-    <p>CREATE RETENTION POLICY <retention_name> ON <database_name> DURATION <duration_time> REPLICATION \<n> [SHARD DURATION \<duration>] [DEFAULT]</duration></n></duration_time></database_name></retention_name></p>
+    <p>CREATE RETENTION POLICY &lt;retention_name&gt; ON &lt;database_name&gt; DURATION &lt;duration_time&gt; REPLICATION &lt;n&gt; [SHARD DURATION &lt;duration&gt;] [DEFAULT]</p>
   </li>
   <li>
-    <p>ALTER RETENTION POLICY <retention_name> ON <database_name> DURATION <duration_time> REPLICATION \<n> [SHARD DURATION \<duration>] [DEFAULT]</duration></n></duration_time></database_name></retention_name></p>
+    <p>ALTER RETENTION POLICY &lt;retention_name&gt; ON &lt;database_name&gt; DURATION &lt;duration_time&gt; REPLICATION &lt;n&gt; [SHARD DURATION &lt;duration&gt;] [DEFAULT]</p>
   </li>
 </ul>
 
