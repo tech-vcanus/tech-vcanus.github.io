@@ -1,0 +1,219 @@
+I"�!<p>Written by SGLee, VCANUS</p>
+
+<h1 id="setup">Setup</h1>
+
+<h2 id="installation">Installation</h2>
+<p>CentOS</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum update
+$ sudo yum install docker
+</code></pre></div></div>
+
+<h2 id="start-docker-on-boot">Start docker on boot</h2>
+<p>A file of docker.service is already installed on /usr/lib/systemd/system.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl enable docker.service
+$ sudo systemctl start docker.service
+$ sudo systemctl status docker.service
+</code></pre></div></div>
+
+<h3 id="start-docker-container-on-boot">Start docker container on boot</h3>
+<p>Refer some documents about service registration. 
+The below make a docker container to be run automatically on boot.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ vi /etc/systemd/system/docker_container_name.service
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Unit]
+Description=Docker Container Service
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=alyways
+ExecStart=/usr/bin/docker start docker_container_name # &lt;- modify here
+ExecStop=/usr/bin/docker stop docker_container_name # &lt;- modify here
+
+[Install]
+WantedBy=default.target
+</code></pre></div></div>
+
+<h3 id="run-services-inside-docker-container-on-boot">Run services inside docker container on boot</h3>
+<p>make entry-point script (docker-entrypoint.sh).</p>
+<ul>
+  <li>sleep prevents docker service from stopping after exit of script.</li>
+  <li>You have to use ‘exec’ instead of ‘attach’ because of sleep.
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+service service-name start
+<span class="k">while </span><span class="nb">true</span><span class="p">;</span>
+<span class="k">do </span><span class="nb">sleep </span>1d<span class="p">;</span>
+<span class="k">done</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>run entry-point script</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker run -itd --name docker-container-name -p ##:## -v /opt/service/data: /data/ /bin/bash/ -c 'docker-entrypoint.sh'
+</code></pre></div></div>
+
+<p>execute bash with root</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker exec -it -u root docker-container-name /bin/bash 
+</code></pre></div></div>
+
+<p>good example of docker-entrypoint.sh</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># first arg is `-f` or `--some-option`
+# or first arg is `something.conf`
+if [ "${1#-}" != "$1" ] || [ "${1%.conf}" != "$1" ]; then
+	set -- redis-server "$@"
+fi
+
+# allow the container to be started with `--user`
+if [ "$1" = 'redis-server' -a "$(id -u)" = '0' ]; then
+	find . \! -user redis -exec chown redis '{}' +
+	exec gosu redis "$0" "$@"
+fi
+
+exec "$@"
+</code></pre></div></div>
+
+<h1 id="docker-command">Docker Command</h1>
+<p>https://docs.docker.com/reference/</p>
+<h2 id="basic-command">Basic command</h2>
+<ul>
+  <li>pull</li>
+  <li>images</li>
+  <li>rmi</li>
+  <li>rm</li>
+  <li>ps</li>
+  <li>build (important)
+    <ul>
+      <li>https://docs.docker.com/engine/reference/commandline/build/</li>
+      <li>refer how to make Dockerfile on the web</li>
+    </ul>
+  </li>
+  <li>run
+    <ul>
+      <li>https://docs.docker.com/engine/reference/commandline/run/</li>
+      <li>options
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  --interactive, -i
+  --detach, -d
+  --tty, -t
+  --user, -u
+  --volumn, -v
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>attach
+    <ul>
+      <li>https://docs.docker.com/engine/reference/commandline/attach/</li>
+      <li>Description: Attach local standard input, output, and error streams to a running container<br />
+ To stop a container, use CTRL-c. This key sequence sends SIGKILL to the container. If –sig-proxy is true (the default),CTRL-c sends a SIGINT to the container. If the container was run with -i and -t, you can detach from a container and leave it running using the CTRL-p CTRL-q key sequence.</li>
+    </ul>
+  </li>
+  <li>exec
+    <ul>
+      <li>https://docs.docker.com/engine/reference/commandline/exec/</li>
+      <li>options
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  --detach , -d
+  --env , -e 
+  --interactive , -i 
+  --tty , -t
+  --user , -u
+  --workdir , -w
+</code></pre></div>        </div>
+        <h2 id="reference">Reference</h2>
+      </li>
+    </ul>
+  </li>
+  <li>http://pyrasis.com/Docker/Docker-HOWTO</li>
+  <li>http://raccoonyy.github.io/docker-usages-for-dev-environment-setup/</li>
+</ul>
+
+<h1 id="dockerfile-command">Dockerfile command</h1>
+<p>https://docs.docker.com/engine/reference/builder/</p>
+<h2 id="basic-command-1">Basic command</h2>
+<ul>
+  <li>FROM
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> FROM &lt;image&gt;[:&lt;tag&gt;] [AS &lt;name&gt;]
+</code></pre></div>    </div>
+  </li>
+  <li>MAINTAINER</li>
+  <li>COPY</li>
+  <li>RUN
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> RUN ["executable", "param1", "param2"]
+</code></pre></div>    </div>
+  </li>
+  <li>CMD
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> CMD ["executable","param1","param2"]
+</code></pre></div>    </div>
+  </li>
+  <li>ENV</li>
+  <li>ADD
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ADD [--chown=&lt;user&gt;:&lt;group&gt;] ["&lt;src&gt;",... "&lt;dest&gt;"]
+</code></pre></div>    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ADD test relativeDir/          # adds "test" to `WORKDIR`/relativeDir/
+ ADD test /absoluteDir/         # adds "test" to /absoluteDir/ 
+</code></pre></div>    </div>
+  </li>
+  <li>ENTRYPOINT
+    <ul>
+      <li>An ENTRYPOINT allows you to configure a container that will run as an executable.
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ENTRYPOINT ["executable", "param1", "param2"]
+</code></pre></div>        </div>
+      </li>
+      <li>‘List’ type is much more preferred than ‘Shell’ type</li>
+      <li>CMD is used to set argument of ENTRYPOINT
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c">#!/bin/bash </span>
+ <span class="nv">INTERVAL</span><span class="o">=</span><span class="nv">$1</span> 
+ <span class="k">while </span><span class="nb">true</span><span class="p">;</span> 
+  <span class="k">do </span>ps x<span class="p">;</span> 
+  <span class="nb">sleep</span> <span class="nv">$INTERVAL</span><span class="p">;</span> 
+ <span class="k">done</span>
+</code></pre></div>        </div>
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> FROM ubuntu 
+ Add loop.sh /usr/local/bin/loop.sh 
+ ENTRYPOINT ["/usr/local/bin/loop.sh"] # exec form CMD ["1"]
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>VOLUME
+    <h2 id="reference-1">Reference</h2>
+  </li>
+  <li>http://pyrasis.com/book/DockerForTheReallyImpatient/Chapter07/06</li>
+  <li>https://bluese05.tistory.com/77</li>
+  <li>https://joont92.github.io/docker/volume-container-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0/</li>
+</ul>
+
+<h1 id="docker-compose">Docker compose</h1>
+<h2 id="example">Example</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>version: '3'
+services: 
+  redis1: 
+    image: redis:5.0.6 
+    build: 
+      context: .  
+      dockerfile: Dockerfile 
+      args: 
+        - EXPOSEPORT=7001 # this will be used in Dockerfile
+    network_mode: "host" 
+    environment: 
+      - CLIENTHOST=192.168.XX.XX 
+      - CLIENTPORT=XXXX 
+    volumes: 
+      - ./data/1:/data 
+    restart: always
+</code></pre></div></div>
+<h2 id="docker-based-redis-cluster">Docker-based Redis Cluster</h2>
+<p>https://github.com/sglee-net/docker-redis-cluster</p>
+
+<h2 id="reference-2">Reference</h2>
+<ul>
+  <li>http://raccoonyy.github.io/docker-usages-for-dev-environment-setup/</li>
+  <li>https://success.docker.com/article/use-a-script-to-initialize-stateful-container-data</li>
+</ul>
+
+<h1 id="docker-swarm">Docker Swarm</h1>
+<h2 id="reference-3">Reference</h2>
+<ul>
+  <li>https://tech.osci.kr/2019/02/13/59736201/</li>
+</ul>
+
+:ET

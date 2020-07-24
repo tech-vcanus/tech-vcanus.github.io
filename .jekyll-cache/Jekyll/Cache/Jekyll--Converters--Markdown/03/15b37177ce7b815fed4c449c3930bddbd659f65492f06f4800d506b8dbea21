@@ -1,0 +1,36 @@
+I"Ì<ul class="toc__menu">
+  <li><a href="#server-installation">Server Installation</a>
+    <ul>
+      <li><a href="#shell-server">Shell server</a>
+        <ul>
+          <li><a href="#nats-server">Nats Server</a></li>
+          <li><a href="#nats-streaming-server">Nats Streaming Server</a></li>
+        </ul>
+      </li>
+      <li><a href="#docker">docker</a>
+        <ul>
+          <li><a href="#docker-install-and-run">docker Install and run</a></li>
+          <li><a href="#docker-nats-swarm-install">docker Nats swarm install</a></li>
+          <li><a href="#docker-nats-network-host-cluster">docker Nats Network host Cluster</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#client-installation">Client Installation</a>
+    <ul>
+      <li><a href="#linux">Linux</a>
+        <ul>
+          <li><a href="#1-install-protobuf-and-protobuf-c">1. install protobuf and protobuf-c</a></li>
+          <li><a href="#2-install-protobuf">2. install protobuf</a></li>
+          <li><a href="#3-install-protobuf-c">3. install protobuf-c</a></li>
+          <li><a href="#option-install-protobuf-c">(option) install protobuf-c</a></li>
+          <li><a href="#4-install-openssl-and-openssl-devel">4. install openssl and openssl-devel</a></li>
+          <li><a href="#5-install-nats-client-c-version">5. install nats client (C version)</a></li>
+        </ul>
+      </li>
+      <li><a href="#mac">Mac</a></li>
+      <li><a href="#windows">Windows</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

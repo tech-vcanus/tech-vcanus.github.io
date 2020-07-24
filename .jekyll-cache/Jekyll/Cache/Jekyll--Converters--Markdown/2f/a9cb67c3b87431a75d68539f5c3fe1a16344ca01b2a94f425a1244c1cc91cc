@@ -1,0 +1,20 @@
+I"(<p>Written by SGLee, VCANUS</p>
+
+<p>Sever</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo vi /etc/ssh/sshd_config
+$ sudo systemctl restart sshd.service
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PubKeyAuthentification yes
+# PasswordAuthentification no
+</code></pre></div></div>
+
+<p>Client</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh-keygen -t ecdsa -f ~/.ssh/id_ecdsa -b 521
+$ ssh-copy-id -i ~/.ssh/id_ecdsa id@address
+</code></pre></div></div>
+
+<p>Client</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh -i ~/.ssh/id_ecdsa id@address
+$ ssh id@address (server: PubKeyAuth yes)
+</code></pre></div></div>
+:ET

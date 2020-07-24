@@ -1,0 +1,772 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>C++ DLL within C# - VCANUS’s Technical Blog</title>
+<meta name="description" content="Written By Nuri Na, VCANUS">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="VCANUS's Technical Blog">
+<meta property="og:title" content="C++ DLL within C#">
+<meta property="og:url" content="http://localhost:4000/development/C++-dll-within-C/">
+
+
+  <meta property="og:description" content="Written By Nuri Na, VCANUS">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-07-21T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/C++-dll-within-C/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="VCANUS's Technical Blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          VCANUS's Technical Blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="C++ DLL within C#">
+    <meta itemprop="description" content="Written By Nuri Na, VCANUS">
+    <meta itemprop="datePublished" content="July 21, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">C++ DLL within C#
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#1-c-api-import">1. C++ API Import</a></li>
+  <li><a href="#2-make-my-dll-file">2. Make my .DLL file</a></li>
+  <li><a href="#3-import-to-c-project">3. Import to C# project</a></li>
+  <li><a href="#4-marshalling">4. Marshalling</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>Written By <a href="https://github.com/nurring">Nuri Na</a>, VCANUS</p>
+
+<p>C++ 프로젝트의 함수를 C#에 가져와 사용하도록 환경 설정 하는 법.</p>
+
+<ol>
+  <li>외부 C++ API 를 포함시켜</li>
+  <li>C++ 동적 라이브러리(dll)를 생성하고</li>
+  <li>C# 프로젝트에 Import 한 후</li>
+  <li>C++과 C#간 데이터 타입을 맞춰줌.</li>
+</ol>
+
+<p>예제에서 사용할 파일명은 다음과 같다.</p>
+
+<p>​	외부 API: Somedll.h, Somedll.lib,</p>
+
+<p>​	C++ 프로젝트: dynamic_example.h, dynamic_example.cpp</p>
+
+<p>​	C# 프로젝트: dynamic_example.cp</p>
+
+<h2 id="1-c-api-import">1. C++ API Import</h2>
+
+<ol>
+  <li>
+    <p><strong>DLL 동적 라이브러리 프로젝트 생성</strong></p>
+
+    <p><img src="/assets/images/2020-07-21.png" alt="dllproject" /></p>
+  </li>
+  <li>
+    <p><strong>.h (헤더) 파일 디렉터리 추가하기</strong></p>
+
+    <p><u>솔루션 탐색기 - 프로젝트명 우클릭 - 속성 - C/C++ - 일반 - 추가 포함 디렉터리</u></p>
+
+    <p>상대 경로(현재 프로젝트 위치 기준) 혹은 절대 경로를 적어준다.</p>
+
+    <p><em>ex) ../include</em></p>
+  </li>
+  <li>
+    <p><strong>.lib (정적 라이브러리) 파일 디렉터리 추가하기</strong></p>
+
+    <p><u>솔루션 탐색기 - 프로젝트명 우클릭 - 속성 - 링커 - 입력 - 추가 종속성</u></p>
+
+    <p>상대 혹은 절대 경로를 포함한 .lib 파일명 전체를 적어준다.</p>
+
+    <p><em>ex) ../lib/x86/Somedll.lib</em></p>
+  </li>
+  <li>
+    <p><strong>.dll (동적 라이브러리) 파일 디렉터리 추가하기</strong></p>
+
+    <p><u>솔루션 탐색기 - 프로젝트명 우클릭 - 속성 - 구성 속성 - 디버깅 - 환경</u></p>
+
+    <p>.dll 파일이 포함 된 디렉토리 경로를 다음 형식으로 적어 준다.</p>
+
+    <p><code class="highlighter-rouge">PATH=파일 경로1;파일 경로2;%PATH%</code></p>
+
+    <p><em>ex) PATH=../lib/x86;%PATH%</em></p>
+  </li>
+  <li>
+    <p><strong>컴파일 경로 설정</strong></p>
+
+    <p><u>솔루션 탐색기 - 프로젝트명 우클릭 - 속성 - 구성 속성 - 일반 - 출력 디렉토리</u></p>
+
+    <p>매크로를 참고하여 경로를 설정한다.</p>
+
+    <p><em>ex) $(SolutionDir)bin$(Configuration)\</em></p>
+  </li>
+</ol>
+
+<h2 id="2-make-my-dll-file">2. Make my .DLL file</h2>
+
+<p>1에서 포함시킨 dll을 include하여  .h, .cpp파일을 작성한다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// C++</span>
+<span class="c1">// dynamic_example.h</span>
+<span class="cp">#pragma once
+#include "external_api_name.h"
+#ifdef DYNAMICEXAMPLELIBRARIES_EXPORTS
+#define DYNAMICEXAMPLELIBRARIES_API __declspec(dllexport)
+#else
+#define DYNAMICEXAMPLELIBRARIES_API __declspec(dllimport)
+#endif
+</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="n">DYNAMICEXAMPLELIBRARIES_API</span> <span class="kt">int</span> <span class="nf">test</span><span class="p">();</span>
+</code></pre></div></div>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// C++</span>
+<span class="c1">//dynamic_example.cpp</span>
+<span class="cp">#include "pch.h"
+#include "dynamic_example.h"
+</span><span class="kt">int</span> <span class="nf">test</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="mi">123</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>참고 링크: <a href="https://docs.microsoft.com/ko-kr/cpp/build/walkthrough-creating-and-using-a-dynamic-link-library-cpp?view=vs-2019">자체 동적 연결 라이브러리 만들기 및 사용(C++)</a></p>
+
+<h2 id="3-import-to-c-project">3. Import to C# project</h2>
+
+<p>C# 프로젝트를 생성하고,</p>
+
+<p>C#에서 C++ 프로젝트를 직접 참조할 수도 있으나, 여러 외부 라이브러리를 사용할 경우 런타임 옵션의 충돌로 컴파일 에러 혹은 실행 중 중단 현상이 발생할 확률이 높다.</p>
+
+<p>같은 솔루션에 포함시키되 <strong>빌드 후 이벤트</strong>를 설정하여 DLL을 필요한 위치(해당 C++ DLL을 포함해야 하는 프로젝트의 빌드 경로)에 복사하도록 한다.</p>
+
+<p>매크로를 참고하여 경로를 설정한다.</p>
+
+<p><u>솔루션 탐색기 - 프로젝트(C++)명 우클릭 - 속성 - 빌드 이벤트 - 빌드 후 이벤트 - 명령줄</u></p>
+
+<p><em>ex) copy “$(TargetDir)\dynamic_example.dll”  “$(SolutionDir)dynamic_example_prj\bin\Debug\”</em>
+<em>copy “$(TargetDir)\dynamic_example.lib”  “$(SolutionDir)dynamic_example_prj\bin\Debug\”</em></p>
+
+<h2 id="4-marshalling">4. Marshalling</h2>
+
+<p>C++의 함수를  C#에서 사용 가능한 데이터 타입으로 처리하는 것을 Marshalling(마샬링)이라고 한다.</p>
+
+<p>int 등 변환이 필요하지 않은 경우 그대로 사용한다.</p>
+
+<p>아래는 <strong>구조체</strong>와 <strong>배열</strong>의 사용 예제.  데이터 타입과 포인터, 참조자의 문법적 변화에 주목할 것.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// C++</span>
+<span class="c1">// dynamic_example.h (헤더 파일)</span>
+<span class="cp">#include &lt;Somedll.h&gt; //외부 API
+</span><span class="p">...</span>
+<span class="c1">// 구조체 선언</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">DYNAMICEXAMPLELIBRARIES_API</span> <span class="n">_exampleStruct</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+	<span class="kt">float</span> <span class="n">b</span><span class="p">;</span>	
+<span class="p">}</span> <span class="n">exampleStruct</span><span class="p">;</span>
+<span class="p">...</span>
+
+<span class="k">extern</span> <span class="s">"C"</span> <span class="n">DYNAMICEXAMPLELIBRARIES_API</span> <span class="kt">void</span> <span class="nf">test_external</span><span class="p">(</span><span class="n">exampleStruct</span><span class="o">*</span> <span class="n">exam</span><span class="p">);</span><span class="c1">//구조체, 포인터</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="n">DYNAMICEXAMPLELIBRARIES_API</span> <span class="kt">void</span> <span class="nf">test_array</span><span class="p">(</span><span class="kt">int16_t</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array</span><span class="p">)[</span><span class="mi">10</span><span class="p">]);</span><span class="c1">//배열, 참조자</span>
+</code></pre></div></div>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// C++</span>
+<span class="c1">// dynamic_example.cpp (소스 파일)</span>
+<span class="p">...</span>
+<span class="n">someStruct</span> <span class="n">someStr</span><span class="p">;</span> <span class="c1">//외부 API 구조체</span>
+<span class="kt">int16_t</span> <span class="n">newarray</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+
+<span class="cm">/*외부 함수가 만들어내는 someStr 구조체를 shallow copy하는 예제*/</span>
+<span class="kt">void</span> <span class="nf">test_external</span><span class="p">(</span><span class="n">exampleStruct</span><span class="o">*</span> <span class="n">exam</span><span class="p">){</span>
+    <span class="n">external_func1</span><span class="p">(</span><span class="o">&amp;</span><span class="n">someStr</span><span class="p">);</span><span class="c1">//외부 API 함수 external_func1</span>
+    <span class="n">exam</span><span class="o">-&gt;</span><span class="n">a</span> <span class="o">=</span> <span class="n">external</span><span class="p">.</span><span class="n">a</span><span class="p">;</span>
+    <span class="n">exam</span><span class="o">-&gt;</span><span class="n">b</span> <span class="o">=</span> <span class="n">external</span><span class="p">.</span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*외부 함수가 만들어내는 newarray를 deep copy하는 예제*/</span>
+<span class="kt">void</span> <span class="nf">test_array</span><span class="p">(</span><span class="kt">int16_t</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array</span><span class="p">)[</span><span class="mi">10</span><span class="p">]){</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">external_func2</span><span class="p">(</span><span class="n">newarray</span><span class="p">);</span><span class="c1">//외부 API 함수 external_func2</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">copy</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">newarray</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">end</span><span class="p">(</span><span class="n">newarray</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">array</span><span class="p">));</span><span class="c1">//deep copy</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// C#</span>
+<span class="c1">// dynamic_example.cs</span>
+<span class="k">using</span> <span class="nn">System.Runtime.InteropServices</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="p">[</span><span class="nf">StructLayout</span><span class="p">(</span><span class="n">LayoutKind</span><span class="p">.</span><span class="n">Sequential</span><span class="p">,</span> <span class="n">CharSet</span><span class="p">=</span><span class="n">CharSet</span><span class="p">.</span><span class="n">Unicode</span><span class="p">)]</span>
+<span class="k">public</span> <span class="k">struct</span> <span class="nc">exampleStruct</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="p">...</span>
+    
+<span class="c1">//Dll Import</span>
+<span class="p">[</span><span class="nf">DllImport</span><span class="p">(</span><span class="s">"dynamic_example.dll"</span><span class="p">,</span> <span class="n">CallingConvention</span> <span class="p">=</span> <span class="n">CallingConvention</span><span class="p">.</span><span class="n">Cdecl</span><span class="p">)]</span>
+<span class="k">extern</span> <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">test_external</span><span class="p">(</span><span class="k">ref</span> <span class="n">exampleStruct</span> <span class="n">es</span><span class="p">);</span>
+<span class="p">[</span><span class="nf">DllImport</span><span class="p">(</span><span class="s">"dynamic_example.dll"</span><span class="p">,</span> <span class="n">CallingConvention</span> <span class="p">=</span> <span class="n">CallingConvention</span><span class="p">.</span><span class="n">Cdecl</span><span class="p">)]</span>
+<span class="k">extern</span> <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">test_array</span><span class="p">(</span>
+    <span class="p">[</span><span class="nf">MarshalAs</span><span class="p">(</span><span class="n">UnmanagedType</span><span class="p">.</span><span class="n">LPArray</span><span class="p">,</span> <span class="n">SizeConst</span> <span class="p">=</span> <span class="m">10</span><span class="p">)]</span> <span class="kt">short</span><span class="p">[]</span> <span class="n">array</span><span class="p">);</span>
+
+<span class="c1">//함수 사용</span>
+<span class="n">exampleStruct</span> <span class="n">example</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">exampleStruct</span><span class="p">();</span>
+<span class="kt">short</span><span class="p">[]</span> <span class="n">array</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">short</span><span class="p">[</span><span class="m">10</span><span class="p">];</span>
+<span class="nf">test_external</span><span class="p">(</span><span class="k">ref</span> <span class="n">example</span><span class="p">);</span>
+<span class="nf">test_array</span><span class="p">(</span><span class="n">array</span><span class="p">);</span>
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#c" class="page__taxonomy-item" rel="tag">C#</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#c" class="page__taxonomy-item" rel="tag">C++</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#dll" class="page__taxonomy-item" rel="tag">DLL</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#marshalling" class="page__taxonomy-item" rel="tag">Marshalling</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-07-21T00:00:00+09:00">July 21, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=C%2B%2B+DLL+within+C%23%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FC%2B%2B-dll-within-C%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FC%2B%2B-dll-within-C%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FC%2B%2B-dll-within-C%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/Grafana-Tutorial/" class="pagination--pager" title="Grafana Customed React Plugin Install Tutorial
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" rel="permalink">JetsonTX2 SSD , Jetpack install
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Linux-RTOS/" rel="permalink">Linux RTOS
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 05 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 VCANUS's Technical Blog. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/development/C++-dll-within-C/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/development/C++-dll-within-C#"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tech-vcanus.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

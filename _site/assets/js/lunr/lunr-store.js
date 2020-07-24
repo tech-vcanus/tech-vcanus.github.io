@@ -20,14 +20,19 @@ var store = [{
         "url": "http://localhost:4000/development/devenv/",
         "teaser":null},{
         "title": "Git command",
-        "excerpt":"Written by SGLee, VCANUS git command general process $ git init $ git config --global user.name \"user name\" $ git config --global user.email &lt;user email&gt; $ git remote add origin &lt;repository url&gt; $ git fetch origin $ git pull origin master (develop, feature/topic) $ git add &lt;file name&gt; // to...","categories": ["tool"],
+        "excerpt":"Written by SGLee, VCANUS git command general process $ git init $ git config --global user.name \"user name\" $ git config --global user.email &lt;user email&gt; $ git remote add origin &lt;repository url&gt; $ git fetch origin $ git fetch (default is origin) $ git fetch vcanus (target remote(upstream) is vcanus)...","categories": ["tool"],
         "tags": ["development","environment","git","command"],
         "url": "http://localhost:4000/tool/gitcommand/",
         "teaser":null},{
-        "title": "VI Manual",
-        "excerpt":"Written by SGLee, VCANUS Command replacement :%s/src/target/c (confirm) :%s/src/target/g (global) :#,#s/src/target (line to line) undo u redo ctrl + R comment Visual Block (Shift + V) : :'&lt;, '&gt; (auto) :'&lt;, '&gt; norm i // (or #) uncomment Visual Block (Shift + V) : :'&lt;, '&gt; (auto) :'&lt;, '&gt; norm...","categories": ["development"],
-        "tags": ["development","environment","vi","manual"],
-        "url": "http://localhost:4000/development/vimanual/",
+        "title": "ssd configuration",
+        "excerpt":"Written by SGLee, VCANUS   Sever  $ sudo vi /etc/ssh/sshd_config $ sudo systemctl restart sshd.service  PubKeyAuthentification yes # PasswordAuthentification no   Client  $ ssh-keygen -t ecdsa -f ~/.ssh/id_ecdsa -b 521 $ ssh-copy-id -i ~/.ssh/id_ecdsa id@address   Client  $ ssh -i ~/.ssh/id_ecdsa id@address $ ssh id@address (server: PubKeyAuth yes)  ","categories": ["tool"],
+        "tags": ["development","environment","ssd","install","config"],
+        "url": "http://localhost:4000/tool/ssd-config/",
+        "teaser":null},{
+        "title": "vi command",
+        "excerpt":"Written by SGLee, VCANUS VI command replacement :%s/src/target/c (confirm) :%s/src/target/g (global) :#,#s/src/target (line to line) undo u redo ctrl + R comment Visual Block (Shift + V) : :'&lt;, '&gt; (auto) :'&lt;, '&gt; norm i // (or #) uncomment Visual Block (Shift + V) : :'&lt;, '&gt; (auto) :'&lt;, '&gt;...","categories": ["tool"],
+        "tags": ["development","environment","vi","command"],
+        "url": "http://localhost:4000/tool/vi-command/",
         "teaser":null},{
         "title": "Docker Manual",
         "excerpt":"Written by SGLee, VCANUS Setup Installation CentOS $ sudo yum update $ sudo yum install docker Start docker on boot A file of docker.service is already installed on /usr/lib/systemd/system. $ sudo systemctl enable docker.service $ sudo systemctl start docker.service $ sudo systemctl status docker.service Start docker container on boot Refer...","categories": ["development"],
@@ -46,7 +51,7 @@ var store = [{
         "teaser":null},{
         "title": "CentOS 8 Install",
         "excerpt":"Written by BGKim, VCANUS Install CentOS 8 Make install USB centos 홈페이지에서 파일을 다운을 받는다.(https://www.centos.org/) 8GB이상의 USB를 준비한다. USB를 연결하고, Rufus 홈페이지에서 Rufus를 다운받은 뒤 실행(https://rufus.ie/) 실행 화면에서 기본사항들을 적절히 세팅 후 파티션 방식을 GPT로 설정 후 시작 Install OS USB를 연결 후 부팅. (cent os 화면이 안나올 시, 바이오스...","categories": ["development"],
-        "tags": ["install","CentOS","8","and","graphic","driver"],
+        "tags": ["CentOS8","nvidia"],
         "url": "http://localhost:4000/development/CentOS-8-Install/",
         "teaser":null},{
         "title": "Log Rolling",
@@ -65,13 +70,13 @@ var store = [{
         "url": "http://localhost:4000/Influxdb-basic/",
         "teaser":null},{
         "title": "Telegraf Basic",
-        "excerpt":"Written By Nuri Na, VCANUS Telegraf is an agent for collecting metrics and writing them into InfluxDB or other possible outputs. Installation Linux(Ubuntu): curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add - source /etc/lsb-release echo \"deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable\" | sudo tee /etc/apt/sources.list.d/influxdb.list macOS brew update brew install telegraf Docker docker...","categories": ["Development"],
+        "excerpt":"Written By Nuri Na, VCANUS Telegraf is an agent for collecting metrics and writing them into InfluxDB or other possible outputs. Installation Linux(Ubuntu): curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add - source /etc/lsb-release echo \"deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable\" | sudo tee /etc/apt/sources.list.d/influxdb.list macOS brew update brew install telegraf Docker docker...","categories": ["development"],
         "tags": ["Telegraf","InfluxDB","Grafana"],
-        "url": "http://localhost:4000/development/telegraf.md/",
+        "url": "http://localhost:4000/development/telegraf-basic/",
         "teaser":null},{
         "title": "Kinematics",
-        "excerpt":"Written by BGKim, VCANUS Homogeneous Matrix(동차 행렬) 방향성을 가진 점을 좌표와 축을 이용해 표현한 행렬 |r11, r12, r13, x| |r21, r22, r23, y| |r31, r32, r33, z| | 0, 0, 0, 1| r11 r21 r31 : x축 벡터 r12 r22 r32 : y축 벡터 r13 r23 r33 : z축 벡터...","categories": ["Research"],
-        "tags": ["Forward","Kinematics,","Inverse","Kinematics,","DH","Parameter,","Homogeneous","Matrix"],
+        "excerpt":"Written by BGKim, VCANUS Homogeneous Matrix(동차 행렬) 방향성을 가진 점을 좌표와 축을 이용해 표현한 행렬 |r11, r12, r13, x| |r21, r22, r23, y| |r31, r32, r33, z| | 0, 0, 0, 1| r11 r21 r31 : x축 벡터 r12 r22 r32 : y축 벡터 r13 r23 r33 : z축 벡터...","categories": ["research"],
+        "tags": ["ForwardKinematics,","InverseKinematics,","DHParameter,","HomogeneousMatrix"],
         "url": "http://localhost:4000/research/Kinematics/",
         "teaser":null},{
         "title": "GStreamer and RTSP",
@@ -94,13 +99,63 @@ var store = [{
         "tags": ["HLS","Server","Streaming"],
         "url": "http://localhost:4000/development/http-live-streaming/",
         "teaser":null},{
+        "title": "nats server and client",
+        "excerpt":"Written By KJ Jang, VCANUS Nats 서버는 심플하고 안전한 고성능 오픈소스 메세징 시스템이다. 기본적으로 높은 성능과 확장성, 간단한 사용성을 고려하여 설계되었다. Server Installation Ubuntu18.04 기준 download reference Shell server Nats Server $ sudo apt-get update $ sudo apt-get -y upgrade $ sudo wget https://github.com/nats-io/nats-server/releases/download/v2.1.4/nats-server-v2.1.4-linux-amd64.zip $ unzip nats-server-v2.1.4-linux-amd64.zip $ sudo cp...","categories": ["development"],
+        "tags": ["Nats"],
+        "url": "http://localhost:4000/development/nats/",
+        "teaser":null},{
+        "title": "Springboot Project Configuration",
+        "excerpt":"Written by SGLee, VCANUS Springboot Project Configuration Project generation Steps new project -&gt; maven project check name, location, groupId Maven setup install download binary file from apache maven (https://maven.apache.org/download.cgi) decompress file to installation folder (ex: /opt/) check privilege of the folder. use “chown -R userId:groupId folder name” if your id...","categories": ["development"],
+        "tags": ["development","environment","setup","installation"],
+        "url": "http://localhost:4000/development/springboot-project-configuration/",
+        "teaser":null},{
         "title": "CMake Guide",
         "excerpt":"Written By Nuri Na, VCANUS Makefile 리눅스 환경에서 소스 코드를 빌드하는데 다음 명령어를 사용한다. make 이 때 make는 소스 코드 디렉토리에 포함된 Makefile이라는 이름의 스크립트를 읽어 순서대로 수행한다. Makefile의 기본 구조는 다음과 같다. #환경 변수 CC=gcc CFLAGS=-g -Wall OBJS=main.o foo.o bar.o TARGET=app.out #규칙 블록 구조 $(TARGET): $(OBJS) $(CC) -o $@...","categories": ["development"],
-        "tags": ["HLS","Server","Streaming"],
+        "tags": ["CMake","C","C++"],
         "url": "http://localhost:4000/development/cmake-guide/",
         "teaser":null},{
-        "title": "Basic GStreamer Guide in C",
+        "title": "Fast Fourier Transform",
+        "excerpt":"Written By Park SunHong, VCANUS 차례 이론적 배경 1-1. Fourier Transform의 개념 1-2. DFT란? 1-3. FFT란? 파이썬으로 FFT 수행하기 2-1. 사용할 패키지 소개 2-2. numpy.fft.fft 함수 2-3. 예제 코드 및 설명 1. 이론적 배경 1-1. Fourier Transform의 개념 Time domain의 신호를 frequency domain으로 변환 신호의 주파수 성분을 분석할 때 이용...","categories": ["development"],
+        "tags": ["FFT"],
+        "url": "http://localhost:4000/development/Fast-Fourier-Transform/",
+        "teaser":null},{
+        "title": "GStreamer in C code",
         "excerpt":"Written By Nuri Na, VCANUS Basic Concepts Media Source, demuxer, decoder, encoder, converter, sink등 각각 하나의 기능을 가진 element들로 pipeline을 조합하고 Pipline의 상태를 play하는 것이 기본 컨셉이다. 주요 용어는 다음과 같다. Element 파이프라인 내에서 수행할 기능은 각각 하나의 element로 준비되어있다. element들을 엮어 pipeline을 구성한다. Pad element를 연결해주는 고리(혹은 플러그나 포트)로,...","categories": ["development"],
-        "tags": ["HLS","Server","Streaming"],
+        "tags": ["GStreamer","C","C++"],
         "url": "http://localhost:4000/development/gstreamer-in-c-code/",
+        "teaser":null},{
+        "title": "Installation of Redis Client",
+        "excerpt":"Written by SGLee, VCANUS   https://github.com/sglee-net/docker-redis-cluster   ","categories": ["development"],
+        "tags": ["development","environment","redis","client"],
+        "url": "http://localhost:4000/development/rediscluster/",
+        "teaser":null},{
+        "title": "Linux_kernel",
+        "excerpt":"Written By KJ Jang, VCANUS Kernel 커널은 운영 체제의 핵심 부분이므로, 커널의 역할 역시 운영체제의 핵심 역할이라 할 수 있다. 모듈 이란? 커널에서 작업해야 하는 기능이 있는데 이를 추가하기 위해서는 커널을 수정해서 재 컴파일 해야 한다. 하지만 이는 너무 번거우므로 리눅스와 같은 운영체제에는 모듈이라는 기능을 제공하여 특정 커널의 기능을 사용하고자...","categories": ["development"],
+        "tags": ["Linux","kernel","RTLinux"],
+        "url": "http://localhost:4000/development/Linux_kernel_module/",
+        "teaser":null},{
+        "title": "Linux RTOS",
+        "excerpt":"Written By KJ Jang, VCANUS 1. 리눅스 기반의 Real-time OS 모든 OS는 preemptive한 작업을 수행을 보장한다. preemptive 란 프로세스 간 우선 순위를 정하고, 현재 수행 중인 프로세스가 다른 프로세스로부터 interrupt를 받으면 수행 하던 프로세스를 내려 놓은 뒤 우선순위가 높은 프로세스를 먼저 처리하는 것을 말하는데, 사실 이는 OS의 정말 기본 중의...","categories": ["development"],
+        "tags": ["RTOS"],
+        "url": "http://localhost:4000/development/Linux-RTOS/",
+        "teaser":null},{
+        "title": "JetsonTX2 SSD , Jetpack install",
+        "excerpt":"Written By KJ Jang, VCANUS jatPack install 및 SSD 부팅 경로 설정 필요사항 Host PC (ubuntu 18.04 or 16.04) Target PC (JetsonTX2) usb 케이블(5핀) 라우터 환경(TX2 와 Host PC가 같은 네트워크에 있어야 함) 모니터 및 HDMI 케이블 커피 한잔 및 인내심 예상 작업 시간 : 5시간 Host PC에 L4T 및...","categories": ["development"],
+        "tags": ["RTOS"],
+        "url": "http://localhost:4000/development/DLAP-201-JextonTX2-SSD-bootLoad/",
+        "teaser":null},{
+        "title": "CSharp log4net",
+        "excerpt":"Written by BGKim, VCANUS log4net log4net NuGet 설치 config 파일 추가 log4net.config &lt;?xml version=\"1.0\" encoding=\"utf-8\" ?&gt; &lt;configuration&gt; &lt;log4net&gt; &lt;root&gt; &lt;level value=\"ALL\"/&gt; &lt;appender-ref ref=\"console\"/&gt; &lt;appender-ref ref=\"file\"/&gt; &lt;appender-ref ref=\"fatal_file\"/&gt; &lt;/root&gt; &lt;appender name=\"console\" type=\"log4net.Appender.ConsoleAppender\"&gt; &lt;layout type=\"log4net.Layout.PatternLayout\"&gt; &lt;conversionPattern value=\"%date %level %logger - %message%newline\" /&gt; &lt;/layout&gt; &lt;/appender&gt; &lt;appender name=\"file\" type=\"log4net.Appender.RollingFileAppender\"&gt; &lt;file value=\".\\log\\app.log\" /&gt; &lt;appendToFile value=\"true\"...","categories": ["development"],
+        "tags": ["CSharp","log4net","configuration"],
+        "url": "http://localhost:4000/development/CSharp-log4net/",
+        "teaser":null},{
+        "title": "Grafana Customed React Plugin Install Tutorial",
+        "excerpt":"Written By Park SunHong, VCANUS ※ 해당 튜토리얼은 grafana v6.7.1을 기준으로 작성되었음 순서 요약 docker에서 grafana image 생성 docker container 내부에 customed plugin 설치 plugin의 node_modules에 git package 설치 기타 유의사항 1. docker에서 grafana image 생성 $ docker pull grafana/grafana:6.7.1 // 그라파나 image 생성(버전을 적어주지 않으면 latest 버전이 다운됨) $...","categories": ["development"],
+        "tags": ["Grafana,","react"],
+        "url": "http://localhost:4000/development/Grafana-Tutorial/",
+        "teaser":null},{
+        "title": "C++ DLL within C#",
+        "excerpt":"Written By Nuri Na, VCANUS C++ 프로젝트의 함수를 C#에 가져와 사용하도록 환경 설정 하는 법. 외부 C++ API 를 포함시켜 C++ 동적 라이브러리(dll)를 생성하고 C# 프로젝트에 Import 한 후 C++과 C#간 데이터 타입을 맞춰줌. 예제에서 사용할 파일명은 다음과 같다. ​ 외부 API: Somedll.h, Somedll.lib, ​ C++ 프로젝트: dynamic_example.h, dynamic_example.cpp ​...","categories": ["development"],
+        "tags": ["C++","C#","Marshalling","DLL"],
+        "url": "http://localhost:4000/development/C++-dll-within-C/",
         "teaser":null}]

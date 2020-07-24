@@ -1,0 +1,907 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Linux RTOS - VCANUS’s Technical Blog</title>
+<meta name="description" content="Written By KJ Jang, VCANUS">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="VCANUS's Technical Blog">
+<meta property="og:title" content="Linux RTOS">
+<meta property="og:url" content="http://localhost:4000/development/Linux-RTOS/">
+
+
+  <meta property="og:description" content="Written By KJ Jang, VCANUS">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-06-05T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/Linux-RTOS/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="VCANUS's Technical Blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          VCANUS's Technical Blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Linux RTOS">
+    <meta itemprop="description" content="Written By KJ Jang, VCANUS">
+    <meta itemprop="datePublished" content="June 05, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Linux RTOS
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#1-리눅스-기반의-real-time-os">1. 리눅스 기반의 Real-time OS</a>
+    <ul>
+      <li><a href="#11-일반-리눅스과-와-차이점">1.1 일반 리눅스과 와 차이점</a></li>
+    </ul>
+  </li>
+  <li><a href="#2-리눅스에서-rt-기능-사용법">2. 리눅스에서 RT 기능 사용법</a>
+    <ul>
+      <li><a href="#21-리눅스-scheduling의-종류">2.1 리눅스 Scheduling의 종류</a></li>
+      <li><a href="#22-priority-제어하기">2.2 Priority 제어하기</a></li>
+    </ul>
+  </li>
+  <li><a href="#3-linux-rtos-와-timer-code-및-실험-결과">3. Linux RTOS 와 Timer code 및 실험 결과</a>
+    <ul>
+      <li><a href="#1-c-code">1. c++ code</a></li>
+      <li><a href="#2-cmake">2. cmake</a></li>
+    </ul>
+  </li>
+  <li><a href="#3-timer-정확성-실험-조건-및-결과">3. Timer 정확성 실험 조건 및 결과</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>Written By <a href="https://github.com/jjangchan">KJ Jang</a>, VCANUS</p>
+
+<h2 id="1-리눅스-기반의-real-time-os">1. 리눅스 기반의 Real-time OS</h2>
+<p>모든 OS는 preemptive한 작업을 수행을 보장한다. preemptive 란 프로세스 간 우선 순위를 정하고, 현재 수행 중인 프로세스가 다른 프로세스로부터 interrupt를 받으면 수행 하던 프로세스를 내려 놓은 뒤 우선순위가 높은 프로세스를 먼저 처리하는 것을 말하는데, 사실 이는 OS의 정말 기본 중의 기본 컨셉이기 때문에 리눅스는 이 기능을 자체적으로 내장하고 있다. 따라서 하드웨어만 어느 정도 받쳐준다면 어느 정도의 RT 기능은 일반 리눅스도 충분히 커버 할 수 있다.</p>
+
+<h3 id="11-일반-리눅스과-와-차이점">1.1 일반 리눅스과 와 차이점</h3>
+<p>차이점은 <strong>“시스템 콜에 대한  Preemptive”</strong> 이다.
+일반 리눅스는 interrupt가 들어왔을 때 현재 수행 중인 시스템을 콜을 끝낸 뒤 Context Swiching이 일어나지만, <strong>RT 커널 기반의 리눅스는 현재 작업 중인 프로세스의 시스템 콜 수행마저도 interrupt를 걸어 작업 Swiching에 대한 Latency를 최소화 한다.</strong></p>
+
+<h2 id="2-리눅스에서-rt-기능-사용법">2. 리눅스에서 RT 기능 사용법</h2>
+
+<h3 id="21-리눅스-scheduling의-종류">2.1 리눅스 Scheduling의 종류</h3>
+
+<p><strong>1. SCHED_OTHER(또는 SCHED_NORMAL)</strong></p>
+
+<p>일반 프로세스가 사용하는 타입의 Policy</p>
+
+<p><strong>2. SCHED_FIFO, SCHED_RR</strong></p>
+
+<p>RT를 위한 Scheduling Policy</p>
+
+<h3 id="22-priority-제어하기">2.2 Priority 제어하기</h3>
+<p><strong>1. nice 또는 renice</strong></p>
+
+<ul>
+  <li>+19 ~ -20 값을 가지며, <strong>-20이 가장 높은 Priority 값</strong></li>
+  <li>일반 프로세스 레벨인 <strong>SCHED_OTHER</strong> 에서 동작 가능</li>
+  <li>PR(priority) 계산 공식은 <strong>PR = 20 + NI</strong></li>
+</ul>
+
+<p><strong>2. renice 명령어</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ renice [priority 값] -p [프로세스 번호]
+</code></pre></div></div>
+
+<p><strong>3. chrt</strong></p>
+<ul>
+  <li>+1 ~ +99 값을 가지며, 높은 값일수록 높은 Priority를 의미</li>
+  <li>RT 프로세스 레벨, Scheduling Policy를 변경 가능</li>
+  <li>PR(priority) 계산 공식은 <strong>PR = -1 -rt_priority</strong></li>
+</ul>
+
+<p><strong>4. chrt 명령어</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ chrt [policy] -p [priority 값] [프로세스 번호]
+</code></pre></div></div>
+
+<p><strong>5. C,C++ 로 프로세스 우선순위 및 스케줄링 정책 변경하기</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;sched.h&gt;
+#include &lt;stdint.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;sys/syscall.h&gt;
+#include &lt;unistd.h&gt;
+ 
+struct sched_attr {
+   uint32_t size;              /* Size of this structure */
+   uint32_t sched_policy;      /* Policy (SCHED_*) */
+   uint64_t sched_flags;       /* Flags */
+   int32_t  sched_nice;        /* Nice value (SCHED_OTHER,
+                                  SCHED_BATCH) */
+   uint32_t sched_priority;    /* Static priority (SCHED_FIFO,
+                                  SCHED_RR) */
+   /* Remaining fields are for SCHED_DEADLINE */
+   uint64_t sched_runtime;
+   uint64_t sched_deadline;
+   uint64_t sched_period;
+};
+ 
+// 실제로 스케줄링 속성을 변경하는 sched_setattr 함수
+static int sched_setattr(pid_t pid, const struct sched_attr *attr, unsigned int flags)
+{
+    return syscall(SYS_sched_setattr, pid, attr, flags);
+}
+ 
+int main() {
+    int result;
+ 
+    struct sched_attr attr;
+    // 초기화
+    memset(&amp;attr, 0, sizeof(attr));
+    attr.size = sizeof(struct sched_attr);
+    
+    // RT 프로세스 사용 
+    attr.sched_priority = 95; // 우선순위 값 : 95 -&gt; 135였나.. 를 의미
+    attr.sched_policy = SCHED_FIFO; // SCHED_FIFO는 상수로서 정의되어 있다.
+    
+    /* 
+    
+    //일반 프로세스 사용
+    attr.sched_nice = 19 // ni(-20 ~ 19)
+    attr.sched_policy = SCHED_OTHER
+    
+    */
+ 
+    // 스케줄링 속성 
+    result = sched_setattr(getpid(), &amp;attr, 0);
+    if (result == -1) {
+        perror("Error calling sched_setattr.");
+    }
+}
+</code></pre></div></div>
+
+<h2 id="3-linux-rtos-와-timer-code-및-실험-결과">3. Linux RTOS 와 Timer code 및 실험 결과</h2>
+<h3 id="1-c-code">1. c++ code</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/
+// Created by vcanus on 20. 5. 28..
+//
+#include &lt;iostream&gt;
+#include &lt;string.h&gt;
+#include &lt;sys/time.h&gt;
+#include &lt;time.h&gt;
+#include &lt;chrono&gt;
+#include &lt;algorithm&gt;
+
+#include &lt;signal.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;mutex&gt;
+#include &lt;thread&gt;
+
+#include &lt;sched.h&gt;
+#include &lt;sys/syscall.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdint.h&gt;
+
+using namespace  std;
+
+chrono::steady_clock::time_point start_clock;
+chrono::steady_clock::time_point end_clock;
+long min_time = 2000000;
+long max_time = 0;
+double average = 0;
+int cnt = 0;
+int error_time = 0;
+
+struct sched_attr {
+    uint32_t size;              /* Size of this structure */
+    uint32_t sched_policy;      /* Policy (SCHED_*) */
+    uint64_t sched_flags;       /* Flags */
+    int32_t  sched_nice;        /* Nice value (SCHED_OTHER,
+                                  SCHED_BATCH) */
+    uint32_t sched_priority;    /* Static priority (SCHED_FIFO,
+                                  SCHED_RR) */
+    /* Remaining fields are for SCHED_DEADLINE */
+    uint64_t sched_runtime;
+    uint64_t sched_deadline;
+    uint64_t sched_period;
+};
+
+// 실제로 스케줄링 속성을 변경하는 sched_setattr 함수
+static int sched_setattr(pid_t pid, const struct sched_attr *attr, unsigned int flags)
+{
+    return syscall(SYS_sched_setattr, pid, attr, flags);
+}
+
+
+void timer_handler(int sig,siginfo_t *si,void *uc)
+{
+    cnt +=1;
+    end_clock = chrono::steady_clock::now();
+    long elapsed_time = chrono::duration_cast&lt;chrono::microseconds&gt;(end_clock-start_clock).count();
+    min_time = min(min_time,elapsed_time);
+    max_time = max(max_time ,elapsed_time);
+    average += elapsed_time;
+    //cout &lt;&lt; elapsed_time &lt;&lt; endl;
+
+    if(elapsed_time &lt;= 9000 || elapsed_time &gt;= 11000){
+        error_time++;
+        //cout &lt;&lt; "error_time : "  &lt;&lt; elapsed_time &lt;&lt; endl;
+        //cout &lt;&lt;  "error_cnt : "&lt;&lt; error_time &lt;&lt; endl;
+    }
+
+    for(int i=0; i&lt;=100; i++)
+    {
+
+    }
+
+    start_clock = chrono::steady_clock::now();
+}
+
+int createTimer(timer_t *timerID, int sec , int msec)
+{
+    struct sigevent te;
+    struct itimerspec its;
+    struct sigaction sa;
+    int sigNo = SIGRTMIN;
+
+    /* Set up signal handler */
+    sa.sa_flags = SA_SIGINFO;
+    sa.sa_sigaction = timer_handler; // 타이머 호출 함수
+    sigemptyset(&amp;sa.sa_mask);
+
+    if(sigaction(sigNo, &amp;sa , NULL) == -1)
+    {
+        cout &lt;&lt; "sigaction error" &lt;&lt; endl;
+        return -1;
+    }
+
+    /* Set and enable alarm */
+    te.sigev_notify = SIGEV_SIGNAL;
+    te.sigev_signo = sigNo;
+    te.sigev_value.sival_ptr = timerID;
+    timer_create(CLOCK_REALTIME, &amp;te , timerID);
+
+    its.it_interval.tv_sec = sec;
+    its.it_interval.tv_nsec = msec * 1000000;
+
+    its.it_value.tv_sec = sec;
+    its.it_value.tv_nsec = msec * 1000000;
+
+    timer_settime(*timerID,0 ,&amp;its,NULL);
+}
+
+int main() {
+
+    int result;
+
+    struct sched_attr attr;
+    // 초기화
+    memset(&amp;attr, 0, sizeof(attr));
+    attr.size = sizeof(struct sched_attr);
+
+    attr.sched_nice = 19;
+    attr.sched_policy = SCHED_OTHER; // SCHED_FIFO는 상수로서 정의되어 있다.
+
+    // 스케줄링 속성
+    result = sched_setattr(getpid(), &amp;attr, 0);
+    if (result == -1) {
+        perror("Error calling sched_setattr.");
+    }
+
+
+    timer_t timerID;
+    /*
+     * parame
+     * */
+    createTimer(&amp;timerID,0,10);
+    start_clock = chrono::steady_clock::now();
+    int lv = 0;
+
+    /* Do busy work . */
+    thread t1([&amp;](){
+        sleep(60);
+    });
+    t1.join();
+
+    cout &lt;&lt; "total cnt : " &lt;&lt; cnt &lt;&lt; endl;
+    cout &lt;&lt; "error cnt : " &lt;&lt; error_time &lt;&lt; endl;
+    cout &lt;&lt; "min_time : " &lt;&lt; min_time &lt;&lt; endl;
+    cout &lt;&lt; "max_time : " &lt;&lt; max_time &lt;&lt; endl;
+    cout &lt;&lt; "average : " &lt;&lt; average/cnt &lt;&lt; endl;
+    return 0;
+}
+</code></pre></div></div>
+
+<h3 id="2-cmake">2. cmake</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cmake_minimum_required(VERSION 3.16)
+project(vcx_linux_timer_example)
+
+set(CMAKE_CXX_STANDARD 17)
+
+link_directories(/usr/lib64) ## librt.so 파일 경로
+add_executable(vcx_linux_timer_example main.cpp)
+
+
+target_link_libraries(${PROJECT_NAME} rt)
+</code></pre></div></div>
+
+<h2 id="3-timer-정확성-실험-조건-및-결과">3. Timer 정확성 실험 조건 및 결과</h2>
+
+<p><strong>실험1 : CentOS7 Linux PR 값에 따른 Timer 정확성 테스트</strong>
+| PR | max | min | average | 상황 | Timer 호출 시간 | 1ms 이상 오차 발생 수 | 오차확률 | 측정시간 |
+|:—:|:—:|:—:|:—:|:—-:|:—-:|:—-:|:—-:|:—-:|
+| <strong>39(min)</strong> | 17,528 | 3,172 | 9997.72 | 동영상 | 10ms |  248 | 4.13% | 1분 |
+| <strong>20</strong> | 14,378 | 5,624 | 9997.71 | 동영상 | 10ms | 171 | 2.85% | 1분 |
+| <strong>0</strong> | 11,210 | 8,795 | 9997.93 | 동영상 | 10ms | 4 | 0.07% | 1분 | 
+| <strong>-2</strong> | 10,174 | 9,812 | 9997.96 | 동영상 | 10ms | 0 | 0.00% | 1분 |
+| <strong>-51</strong> | 10,483 | 9,510 | 9998.07 | 동영상 | 10ms | 0 | 0.00% | 1분 |
+| <strong>-100(max)</strong> | <strong>10,174</strong> | <strong>9,839</strong> | 9998.1 | 동영상 | 10ms | 0 | 0.00% | 1분 |</p>
+
+<p><br /></p>
+
+<p><strong>실험2 : VMware(ubuntu) Linux PR값에 따른 Timer 정확성  테스트</strong>
+| PR | max | min | average | 상황 | Timer 호출 시간 | 1ms 이상 오차 발생 수 | 오차확률 | 측정시간 |
+|:—:|:—:|:—:|:—:|:—-:|:—-:|:—-:|:—-:|:—:|
+| <strong>20</strong> | 15,932 | 4,284 | 9999.25 | 동영상 | 10ms | 353 | 5.90% | 1분 |
+| <strong>0</strong> | 17,926 | 2,549 | 9999.3 | 동영상 | 10ms | 52 | 0.86% | 1분  |
+| <strong>-2</strong> | 11,528 | 8,467 | 9999.24 | 동영상 | 10ms | 4 | 0.06% | 1분 |
+| <strong>-51</strong> | 10,545 | 9,537 | 9999.26 | 동영상 | 10ms | 0 | 0.00% | 1분 |
+| <strong>-100(max)</strong> | <strong>10,612</strong> | <strong>9,381</strong> | 9999.35 | 동영상 | 10ms | 0 | 0.00% | 1분 |</p>
+
+<p><br /></p>
+
+<p><strong>실험3 : VMware(ubuntu) Linux  timer,PR 값에 따른 Timer 정확성  테스트</strong>
+| Timer 호출 시간 | PR | max | min | average | 상황 | 1ms 이상 오차 발생 수 | 오차확률 | 측정시간 |
+|:—:|:—:|:—:|:—:|:—:|:—:|:—:|:—:|:—:|
+| <strong>10ms</strong> | <strong>-2</strong> | 11,528 | 8,467 | 9999.24 | 동영상 | 4 | 0.06% | 1분 |
+| 10ms | <strong>-51</strong> | 10,545 | 9,537 | 9999.26 | 동영상 | 0 | 0.00% | 1분 |
+| 10ms | <strong>-100</strong> | 10,612 | 9,381 | 9999.35 | 동영상 | 0 | 0.00% | 1분 |
+| <strong>20ms</strong> | <strong>-2</strong> | 27,138 | 19,218 | 20001.7 | 동영상 | 1 | 0.03% | 1분 |
+| 20ms | <strong>-51</strong> | 20,485 | 19,516 | 19999.3 | 동영상 | 0 | 0.00% | 1분 |
+| 20ms | <strong>-100</strong> | 20,545 | 19,392 | 19999.3 | 동영상 | 0 | 0.00% | 1분 | 
+| <strong>30ms</strong> | <strong>-2</strong> | 31,028 | 29,041 | 29999.3 | 동영상 | 2 | 0.10% | 1분 |
+| 30ms | <strong>-51</strong> | 30,543 | 29,515 | 29999.3 | 동영상 | 0 | 0.00% | 1분 |
+| 30ms | <strong>-100</strong> | 30,397 | 29,544 | 29999.3 | 동영상 | 0 | 0.00% | 1분 |
+| <strong>40ms</strong> | <strong>-2</strong> | 41,007 | 39,067 | 39999.3 | 동영상 | 0 | 0.00% | 1분 |
+| 40ms | <strong>-51</strong> | 40,333 | 39,591 | 39999.4 | 동영상 | 0 | 0.00% | 1분 | 
+| 40ms |<strong>-100</strong> | 40,547 | 39,314 | 39999.5 | 동영상 | 0 | 0.00% | 1분 |
+| <strong>50ms</strong> | <strong>-2</strong> | 50,660 | 49,399 | 49999.3 | 동영상 | 0 | 0.00% | 1분 |
+| 50ms | <strong>-51</strong> | 50,476 | 49,577 | 49999.4 | 동영상 | 0 | 0.00% | 1분 |
+| 50ms | <strong>-100</strong> | 50,516 | 49,338 | 49999.3 | 동영상 | 0 | 0.00% | 1분 |</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#rtos" class="page__taxonomy-item" rel="tag">RTOS</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-06-05T00:00:00+09:00">June 05, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Linux+RTOS%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FLinux-RTOS%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FLinux-RTOS%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FLinux-RTOS%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/Linux_kernel_module/" class="pagination--pager" title="Linux_kernel
+">Previous</a>
+    
+    
+      <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" class="pagination--pager" title="JetsonTX2 SSD , Jetpack install
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" rel="permalink">JetsonTX2 SSD , Jetpack install
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 VCANUS's Technical Blog. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/development/Linux-RTOS/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/development/Linux RTOS"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tech-vcanus.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

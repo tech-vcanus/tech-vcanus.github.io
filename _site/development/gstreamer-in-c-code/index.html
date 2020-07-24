@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Basic GStreamer Guide in C - VCANUS’s Technical Blog</title>
+<!-- begin _includes/seo.html --><title>GStreamer in C code - VCANUS’s Technical Blog</title>
 <meta name="description" content="Written By Nuri Na, VCANUS">
 
 
@@ -17,7 +17,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="VCANUS's Technical Blog">
-<meta property="og:title" content="Basic GStreamer Guide in C">
+<meta property="og:title" content="GStreamer in C code">
 <meta property="og:url" content="http://localhost:4000/development/gstreamer-in-c-code/">
 
 
@@ -29,7 +29,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-03-12T00:00:00+09:00">
+  <meta property="article:published_time" content="2020-03-25T00:00:00+09:00">
 
 
 
@@ -99,6 +99,7 @@
 
 <!-- end custom head snippets -->
 
+    
   </head>
 
   <body class="layout--single">
@@ -128,6 +129,8 @@
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/tags/" >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -248,15 +251,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Basic GStreamer Guide in C">
+    <meta itemprop="headline" content="GStreamer in C code">
     <meta itemprop="description" content="Written By Nuri Na, VCANUS">
-    <meta itemprop="datePublished" content="March 12, 2020">
+    <meta itemprop="datePublished" content="March 25, 2020">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Basic GStreamer Guide in C
+          <h1 id="page-title" class="page__title" itemprop="headline">GStreamer in C code
 </h1>
           
             <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
@@ -264,7 +267,7 @@
 
 
 
-  4 minute read
+  5 minute read
 </p>
           
         </header>
@@ -366,7 +369,7 @@ max-files<span class="o">=</span>15 target-duration<span class="o">=</span>5 <sp
 
 <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;gst/gst.h&gt;
 </span>
-<span class="k">static</span> <span class="kt">void</span> <span class="nf">on_pad_added</span> <span class="p">(</span><span class="n">GstElement</span> <span class="o">*</span><span class="n">element</span><span class="p">,</span> <span class="n">GstPad</span> <span class="o">*</span><span class="n">pad</span><span class="p">,</span> <span class="n">gpointer</span> <span class="o">*</span><span class="n">data</span><span class="p">)</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">on_pad_added</span> <span class="p">(</span><span class="n">GstElement</span> <span class="o">*</span><span class="n">element</span><span class="p">,</span> <span class="n">GstPad</span> <span class="o">*</span><span class="n">pad</span><span class="p">,</span> <span class="n">gpointer</span> <span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">gchar</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
     <span class="n">GstCaps</span> <span class="o">*</span> <span class="n">p_caps</span><span class="p">;</span>
@@ -536,9 +539,25 @@ max-files<span class="o">=</span>15 target-duration<span class="o">=</span>5 <sp
 <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">g_signal_connect</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">source</span> <span class="p">,</span> <span class="s">"pad-added"</span><span class="p">,</span> <span class="n">G_CALLBACK</span> <span class="p">(</span><span class="n">on_pad_added</span><span class="p">),</span> <span class="n">data</span><span class="p">.</span><span class="n">depay</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>rtspsrc는 sinkpad를 만들어 연결해주는 작업이 추가적으로 필요하다. element 각각 성질에 따라 pad가 항상 준비 된 경우, 재생 시에 생성되는 경우, 인위적으로 만들어야 하는 경우</p>
+<p><code class="highlighter-rouge">g_signal_connect() </code> 는 data.source의 변화를 감지하여 Callback 함수를 호출한다.</p>
 
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="kt">void</span> <span class="nf">on_pad_added</span> <span class="p">(</span><span class="n">GstElement</span> <span class="o">*</span><span class="n">element</span><span class="p">,</span> <span class="n">GstPad</span> <span class="o">*</span><span class="n">pad</span><span class="p">,</span> <span class="n">gpointer</span> <span class="o">*</span><span class="n">data</span><span class="p">)</span>
+<p>rtspsrc는 sinkpad를 만들어 연결해주는 작업이 추가적으로 필요하다. element들은 언제나 연결될 수 있는 pad를 가지고 있는 것이 아니다. 각각 성질에 따라 pad가 항상 준비 된 경우(Always), 재생 시에 생성되는 경우(Sometimes), 필요에 따라 만들어야 하는 경우(On request)로 나뉜다. gst-inspect-1.0 명령어를 이용해 rtspsrc의 정보를 확인해보자.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gst-inspect-1.0 rtspsrc
+</code></pre></div></div>
+
+<p>결과는 다음과 같다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Pad Templates:
+  SRC template: <span class="s1">'src_%u'</span>
+    Availability: On request <span class="c">### Pad Templates 항목의 Availability를 확인한다.</span>
+    Capabilities:
+      ANY
+</code></pre></div></div>
+
+<p>On request이므로 따라서 재생 시 pad를 생성해주는 작업이 필요하다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="kt">void</span> <span class="nf">on_pad_added</span> <span class="p">(</span><span class="n">GstElement</span> <span class="o">*</span><span class="n">element</span><span class="p">,</span> <span class="n">GstPad</span> <span class="o">*</span><span class="n">pad</span><span class="p">,</span> <span class="n">gpointer</span> <span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">gchar</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
     <span class="n">GstCaps</span> <span class="o">*</span> <span class="n">p_caps</span><span class="p">;</span>
@@ -564,6 +583,62 @@ max-files<span class="o">=</span>15 target-duration<span class="o">=</span>5 <sp
 <span class="p">}</span>
 </code></pre></div></div>
 
+<p>새 pad를 만들고 <code class="highlighter-rouge">gst_element_link_pads()</code> 를 이용해 element들을 pad로 연결한다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gst_bin_add_many</span> <span class="p">(</span><span class="n">GST_BIN</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pipeline</span><span class="p">),</span> <span class="n">data</span><span class="p">.</span><span class="n">source</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">depay</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">filter</span><span class="p">,</span>
+                  <span class="n">data</span><span class="p">.</span><span class="n">parse</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">encode</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">mux</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">sink</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">gst_element_link_many</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">depay</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">filter</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">parse</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">encode</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">mux</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">sink</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">gst_bin_add_many()</code> 에 pipeline과, 파이프라인을 구성할 element들을 넣는다.</p>
+
+<p><code class="highlighter-rouge">gst_element_link_many()</code> 는 element들을 순서대로 넣어서 링크될 수 있도록 한다.</p>
+
+<p>이제 재생을 위한 준비가 모두 끝났다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gst_element_set_state</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">GST_STATE_PLAYING</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>pipeline의 state를 GST_STATE_PLAYING으로 설정해주면 데이터가 흘러가며 재생된다. 이제 bus로 오류와 스트림 끝을 감지하여 pipeline을 종료하는 일만 남았다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    <span class="n">bus</span> <span class="o">=</span> <span class="n">gst_element_get_bus</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pipeline</span><span class="p">);</span>
+    <span class="n">msg_err</span> <span class="o">=</span> <span class="n">gst_bus_timed_pop_filtered</span> <span class="p">(</span><span class="n">bus</span><span class="p">,</span> <span class="n">GST_CLOCK_TIME_NONE</span><span class="p">,</span><span class="n">GST_MESSAGE_ERROR</span><span class="p">);</span>
+    <span class="n">msg_eos</span> <span class="o">=</span> <span class="n">gst_bus_timed_pop_filtered</span> <span class="p">(</span><span class="n">bus</span><span class="p">,</span> <span class="n">GST_CLOCK_TIME_NONE</span><span class="p">,</span><span class="n">GST_MESSAGE_EOS</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">msg_err</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">||</span> <span class="n">msg_eos</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">GError</span> <span class="o">*</span><span class="n">err</span><span class="p">;</span>
+        <span class="n">gchar</span> <span class="o">*</span><span class="n">debug_info</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">msg_err</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">gst_message_parse_error</span><span class="p">(</span><span class="n">msg_err</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">debug_info</span><span class="p">);</span>
+            <span class="n">g_printerr</span><span class="p">(</span><span class="s">"Error received from element %s: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                       <span class="n">GST_OBJECT_NAME</span> <span class="p">(</span><span class="n">msg_err</span><span class="o">-&gt;</span><span class="n">src</span><span class="p">),</span> <span class="n">err</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
+            <span class="n">g_printerr</span><span class="p">(</span><span class="s">"Debugging information: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                       <span class="n">debug_info</span> <span class="o">?</span> <span class="n">debug_info</span> <span class="o">:</span> <span class="s">"none"</span><span class="p">);</span>
+            <span class="n">g_clear_error</span><span class="p">(</span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+            <span class="n">g_free</span><span class="p">(</span><span class="n">debug_info</span><span class="p">);</span>
+            <span class="c1">//break;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">msg_eos</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">){</span>
+            <span class="n">g_print</span> <span class="p">(</span><span class="s">"End-Of-Stream reached.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="c1">//break;</span>
+        <span class="p">}</span>
+        <span class="k">else</span><span class="p">{</span>
+            <span class="n">g_printerr</span> <span class="p">(</span><span class="s">"Unexpected message received.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="c1">//break;</span>
+        <span class="p">}</span>
+        <span class="n">gst_message_unref</span> <span class="p">(</span><span class="n">msg_err</span><span class="p">);</span>
+        <span class="n">gst_message_unref</span> <span class="p">(</span><span class="n">msg_eos</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">gst_object_unref</span> <span class="p">(</span><span class="n">bus</span><span class="p">);</span>
+    <span class="n">gst_element_set_state</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">GST_STATE_NULL</span><span class="p">);</span>
+    <span class="n">gst_object_unref</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pipeline</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>bus는 pipeline을 감시하여 메세지를 전달한다. 종료나 EOS(End of Stream) 메세지가 발생하는지 지켜보고 콘솔에 상태를 보고, pipeline 상태를 NULL로 만들어 스트림을 종료한다.</p>
 
         
       </section>
@@ -584,15 +659,15 @@ max-files<span class="o">=</span>15 target-duration<span class="o">=</span>5 <sp
     
       
       
-      <a href="/tags/#hls" class="page__taxonomy-item" rel="tag">HLS</a><span class="sep">, </span>
+      <a href="/tags/#c" class="page__taxonomy-item" rel="tag">C++</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#server" class="page__taxonomy-item" rel="tag">Server</a><span class="sep">, </span>
+      <a href="/tags/#c" class="page__taxonomy-item" rel="tag">C</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#streaming" class="page__taxonomy-item" rel="tag">Streaming</a>
+      <a href="/tags/#gstreamer" class="page__taxonomy-item" rel="tag">GStreamer</a>
     
     </span>
   </p>
@@ -620,7 +695,7 @@ max-files<span class="o">=</span>15 target-duration<span class="o">=</span>5 <sp
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-03-12T00:00:00+09:00">March 12, 2020</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-03-25T00:00:00+09:00">March 25, 2020</time></p>
         
       </footer>
 
@@ -629,7 +704,7 @@ max-files<span class="o">=</span>15 target-duration<span class="o">=</span>5 <sp
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Basic+GStreamer+Guide+in+C%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fgstreamer-in-c-code%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=GStreamer+in+C+code%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fgstreamer-in-c-code%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2Fgstreamer-in-c-code%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -640,11 +715,12 @@ max-files<span class="o">=</span>15 target-duration<span class="o">=</span>5 <sp
       
   <nav class="pagination">
     
-      <a href="/development/cmake-guide/" class="pagination--pager" title="CMake Guide
+      <a href="/development/Fast-Fourier-Transform/" class="pagination--pager" title="Fast Fourier Transform
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/development/rediscluster/" class="pagination--pager" title="Installation of Redis Client
+">Next</a>
     
   </nav>
 
@@ -668,69 +744,7 @@ max-files<span class="o">=</span>15 target-duration<span class="o">=</span>5 <sp
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/cmake-guide/" rel="permalink">CMake Guide
-</a>
-      
-    </h2>
-    <!-- 
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  1 minute read
-</p>
-     -->
-    
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/development/http-live-streaming/" rel="permalink">HTTP Live Streaming (HLS)
-</a>
-      
-    </h2>
-    <!-- 
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
-     -->
-    
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/development/apache-kafka-basic/" rel="permalink">Apache Kafka Basic
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
 </a>
       
     </h2>
@@ -744,7 +758,7 @@ max-files<span class="o">=</span>15 target-duration<span class="o">=</span>5 <sp
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 05 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
     
     <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
 </p>
@@ -761,7 +775,7 @@ max-files<span class="o">=</span>15 target-duration<span class="o">=</span>5 <sp
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/querydsl-for-elasticsearch/" rel="permalink">Elasticsearch &amp; Query DSL
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
 </a>
       
     </h2>
@@ -771,13 +785,75 @@ max-files<span class="o">=</span>15 target-duration<span class="o">=</span>5 <sp
 
 
 
-  3 minute read
+  1 minute read
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 24 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" rel="permalink">JetsonTX2 SSD , Jetpack install
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
 </p>
   </article>
 </div>
@@ -837,6 +913,25 @@ max-files<span class="o">=</span>15 target-duration<span class="o">=</span>5 <sp
 
 
 
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/development/gstreamer-in-c-code/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/development/gstreamer-in-c-code"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tech-vcanus.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
 
 
 

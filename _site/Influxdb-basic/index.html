@@ -99,6 +99,7 @@
 
 <!-- end custom head snippets -->
 
+    
   </head>
 
   <body class="layout--single">
@@ -128,6 +129,8 @@
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/tags/" >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -272,6 +275,38 @@
 
       <section class="page__content" itemprop="text">
         
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#influxdb-basic">InfluxDB Basic</a>
+    <ul>
+      <li><a href="#rdb-vs-influxdb">RDB vs InfluxDB</a></li>
+      <li><a href="#install-on-docker">Install on Docker</a></li>
+      <li><a href="#influxdb-cli-on-docker-container">InfluxDB CLI on Docker Container</a></li>
+      <li><a href="#auth-command">Auth Command</a>
+        <ul>
+          <li><a href="#create-administrator">Create Administrator</a></li>
+          <li><a href="#create-non-adminnormal-user">Create Non-Admin(Normal User)</a></li>
+        </ul>
+      </li>
+      <li><a href="#data-types">Data types</a></li>
+      <li><a href="#baisc-ddl">Baisc DDL</a></li>
+      <li><a href="#basic-client-command">Basic Client Command</a></li>
+      <li><a href="#basic-query">Basic Query</a>
+        <ul>
+          <li><a href="#insert">Insert</a></li>
+          <li><a href="#delete">Delete</a></li>
+          <li><a href="#select">Select</a></li>
+        </ul>
+      </li>
+      <li><a href="#retention">Retention</a></li>
+    </ul>
+  </li>
+</ul>
+            </nav>
+          </aside>
+        
         <h1 id="influxdb-basic">InfluxDB Basic</h1>
 
 <p>Written By <a href="https://github.com/tsedek">David Roh</a>, VCANUS</p>
@@ -324,7 +359,6 @@
     --name influxdb \
     -v $PWD:/var/lib/influxdb \
     -e INFLUXDB_HTTP_AUTH_ENABLED=true \
-    -e INFLUXDB_ADMIN_ENABLED=true \
     -e INFLUXDB_ADMIN_USER=admin \
     -e INFLUXDB_ADMIN_PASSWORD=1234 \
     influxdb
@@ -353,7 +387,7 @@ $ docker run -d \
 
 <h2 id="auth-command">Auth Command</h2>
 
-<h3 id="administrator">Administrator</h3>
+<h3 id="create-administrator">Create Administrator</h3>
 
 <ul>
   <li>CREATE USER &lt;USERNAME&gt; WITH PASSWORD ‘&lt;PASSWORD&gt;’ WITH ALL PRIVILEGES</li>
@@ -361,7 +395,7 @@ $ docker run -d \
   <li>REVOKE ALL PRIVILEGES FROM &lt;USERNAME&gt;</li>
 </ul>
 
-<h3 id="non-adminnormal-user">Non-Admin(Normal User)</h3>
+<h3 id="create-non-adminnormal-user">Create Non-Admin(Normal User)</h3>
 
 <ul>
   <li>CREATE USER &lt;USERNAME&gt; WITH PASSWORD ‘&lt;PASSWORD&gt;’</li>
@@ -441,7 +475,7 @@ $ docker run -d \
 <h3 id="insert">Insert</h3>
 
 <ul>
-  <li>INSERT Mesurement,TagKey=TagValue[,TagKey=TagValue] FieldKey=FieldValue[,TagKey=TagValue] [TimeStmap]</li>
+  <li>INSERT Mesurement,TagKey=TagValue[,TagKey=TagValue] FieldKey=FieldValue[,FieldKey=FieldValue] [TimeStmap]</li>
 </ul>
 
 <h3 id="delete">Delete</h3>
@@ -453,7 +487,7 @@ $ docker run -d \
 <h3 id="select">Select</h3>
 
 <ul>
-  <li>SELECT FieldKey(| *) [Mathematical Operators] [,FieldKey, TagKey] From Mesurement[,Mesurement] Where Key (operation) Value[(AND|OR) Key (operation) Value] [GROUP BY * | <tag_key>[,&lt;tag_key]] [ORDER BY time DESC] [LIMIT \<n>]</n></tag_key></li>
+  <li>SELECT FieldKey(| *) [Mathematical Operators] [,FieldKey, TagKey] From Mesurement[,Mesurement] Where Key (operation) Value[(AND|OR) Key (operation) Value] [GROUP BY * | &lt;tag_key&gt;[,&lt;tag_key&gt;] [ORDER BY time DESC] [LIMIT &lt;n&gt;]</li>
 </ul>
 
 <blockquote>
@@ -514,7 +548,7 @@ $ docker run -d \
 ">Previous</a>
     
     
-      <a href="/development/telegraf.md/" class="pagination--pager" title="Telegraf Basic
+      <a href="/development/telegraf-basic/" class="pagination--pager" title="Telegraf Basic
 ">Next</a>
     
   </nav>
@@ -539,7 +573,7 @@ $ docker run -d \
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/gstreamer-in-c-code/" rel="permalink">Basic GStreamer Guide in C
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
 </a>
       
     </h2>
@@ -549,11 +583,11 @@ $ docker run -d \
 
 
 
-  4 minute read
+  2 minute read
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
     
     <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
 </p>
@@ -570,7 +604,7 @@ $ docker run -d \
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/cmake-guide/" rel="permalink">CMake Guide
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
 </a>
       
     </h2>
@@ -584,9 +618,9 @@ $ docker run -d \
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
 </p>
   </article>
 </div>
@@ -601,7 +635,7 @@ $ docker run -d \
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/http-live-streaming/" rel="permalink">HTTP Live Streaming (HLS)
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
 </a>
       
     </h2>
@@ -615,9 +649,9 @@ $ docker run -d \
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
 </p>
   </article>
 </div>
@@ -632,7 +666,7 @@ $ docker run -d \
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/apache-kafka-basic/" rel="permalink">Apache Kafka Basic
+        <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" rel="permalink">JetsonTX2 SSD , Jetpack install
 </a>
       
     </h2>
@@ -642,13 +676,13 @@ $ docker run -d \
 
 
 
-  3 minute read
+  4 minute read
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 05 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
 </p>
   </article>
 </div>
@@ -708,6 +742,25 @@ $ docker run -d \
 
 
 
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/Influxdb-basic/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/Influxdb-basic"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tech-vcanus.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
 
 
 

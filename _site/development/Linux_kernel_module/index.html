@@ -1,0 +1,781 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Linux_kernel - VCANUS’s Technical Blog</title>
+<meta name="description" content="Written By KJ Jang, VCANUS">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="VCANUS's Technical Blog">
+<meta property="og:title" content="Linux_kernel">
+<meta property="og:url" content="http://localhost:4000/development/Linux_kernel_module/">
+
+
+  <meta property="og:description" content="Written By KJ Jang, VCANUS">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-05-13T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/Linux_kernel_module/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="VCANUS's Technical Blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          VCANUS's Technical Blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Linux_kernel">
+    <meta itemprop="description" content="Written By KJ Jang, VCANUS">
+    <meta itemprop="datePublished" content="May 13, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Linux_kernel
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#kernel">Kernel</a></li>
+  <li><a href="#모듈-이란">모듈 이란?</a></li>
+  <li><a href="#모듈-관련-명령어">모듈 관련 명령어</a></li>
+  <li><a href="#kernel-install--remove--holdubuntu-18044">kernel install , remove , hold(ubuntu 18.04.4)</a></li>
+  <li><a href="#insert-adlink-mcm-100-moduleubuntu-1804-must-kernuel-4150-20-gnerric">insert ADLINK mcm-100 module(ubuntu 18.04 must kernuel 4.15.0-20-gnerric)</a></li>
+  <li><a href="#rtlinux-centos7">RTLinux (centOS7)</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>Written By <a href="https://github.com/jjangchan">KJ Jang</a>, VCANUS</p>
+
+<h2 id="kernel">Kernel</h2>
+
+<p>커널은 운영 체제의 핵심 부분이므로, 커널의 역할 역시 운영체제의 핵심 역할이라 할 수 있다.</p>
+
+<h2 id="모듈-이란">모듈 이란?</h2>
+<p>커널에서 작업해야 하는 기능이 있는데 이를 추가하기 위해서는 커널을 수정해서 재 컴파일 해야 한다. 하지만 이는 너무 번거우므로 리눅스와 같은 운영체제에는 모듈이라는 기능을 제공하여 특정 커널의 기능을 사용하고자 할 때 실시간(동적)으로 추가 할 수 있게 하고 있다.</p>
+
+<ul>
+  <li>Monolithic 커널 : 시스템에 관련된 모든 기능을 커널에 때려 박은 형태이다. 모든 기능이 커널에서 동작하기 때문에 기능도 많고 Ring 레벨을 변경할 필요가 없기 때문에 빠르지만 기능을 추가하려면 커널을 수정해서 재컴파일해야 한다는 단점 존재(Linux는 Monolithic 커널이며, 단점을 해결하기 위해 실시간으로 모듈을 추가할 수 있는 기능을 제공[insmod 명령어])</li>
+</ul>
+
+<h2 id="모듈-관련-명령어">모듈 관련 명령어</h2>
+
+<p><strong>1. uname</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uname [옵션]
+UNIX name의 줄임말, 시스템의 기본 정보를 보는 명령어
+</code></pre></div></div>
+<p><strong>2. insmod</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>insmod [옵션] [모듈명] 
+해당 모듈을 적재 , 의존성이 존재하는 모듈인 경우에는 적재하지 못함
+</code></pre></div></div>
+<p><strong>3. remod</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rmmod [옵션] [모듈명] 
+적재된 모듈 제거한다. 의존성이 존재하는 모듈은 제거하지 못함
+</code></pre></div></div>
+<p><strong>4. lsmod</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lsmod 
+현재 적재된 모듈을 출력한다.
+</code></pre></div></div>
+<p><strong>5. demod</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>demod [옵션] 
+의존성을 검사한 뒤 modules.dep 파일을 갱신한다. 
+kernel 이나 modprobe를 실행하기 전 사용하는 버릇을 들인다.
+</code></pre></div></div>
+<p><strong>6. modprode</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>modprode [옵션] [모듈명] 
+depmod의 의해 갱신된 modules.dep에서 찾아 적재한다. 
+insmod와 달리 해당 모듈 디렉터리로 이동 할 필요 없이 아무 위치에서나 적재 가능. 
+또한 의존성이 필요한 모듈이나 먼저 실행되어야 하는 모듈이 있다면 그 모듈부터 적재하고 해당 모듈을 적재한다.
+</code></pre></div></div>
+
+<h2 id="kernel-install--remove--holdubuntu-18044">kernel install , remove , hold(ubuntu 18.04.4)</h2>
+
+<p><strong>1. install</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt install aptitude
+$ sudo aptitude search linux-image
+
+# linux kernel version을 search 할 수 있다. 만일 원하는 version이 존재한다면 다운로드 가능
+
+$ sudo apt-cache policy linux-image-[version]
+
+# installed에 (uninstalled)와 같이 설치가 안되어 있다면 아래 명령어를 실행
+
+$ sudo aptitude install linux-image-[version]
+
+$ sudo dpkg -l | greo linux-
+
+## linux-header-[version] 없으면 설치
+$ sudo aptitude install linux-header-[version]
+
+## linux-header-[version]-generic 없으면 설치
+$ sudo aptitude install linux-header-[version]-generic
+
+## linux-modules-[version]-generic 없으면 설치
+$ sudo aptitude install linux-modules-[version]-generic
+
+## linux-modules-extra-[version]-generic 없으면 설치
+$ sudo aptitude install linux-modules-extra-[version]-generic
+</code></pre></div></div>
+
+<p><strong>2. remove</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt purge linux-headers-[version] linux-headers-[version]-generic
+$ sudo apt purge linux-image-[version] 
+$ sudo apt purge linux-modules-[version]-generic linux-modules-extra-[version]-generic
+$ reboot
+
+## Removeing linux-image-[version] 알림창 뜨면 No 버튼 클릭.
+</code></pre></div></div>
+
+<p><strong>3. hold</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-mark hold linux-image-generic linux-headers-generic
+</code></pre></div></div>
+
+<h2 id="insert-adlink-mcm-100-moduleubuntu-1804-must-kernuel-4150-20-gnerric">insert ADLINK mcm-100 module(ubuntu 18.04 must kernuel 4.15.0-20-gnerric)</h2>
+
+<p>ubuntu 18.04 버전이 아니면 ADLINK 홈페이지에서 드라이버 설치 목록에 필요한 ubuntu 버전 및 kernel 버전이 명시 되어 있음.</p>
+
+<p><strong>1. <a href="https://www.adlinktech.com/en/index">adlink</a> 홈페이지 에서 mcm-100 드라이버 설치</strong></p>
+
+<p>다운 받은 디렉토리에 README 참조</p>
+
+<p><strong>2. ud-dask_xxx/util/usbdask_conf64 실행</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd &lt;InstallDir&gt;/ud-dask_xxx/util
+$ ./usbdask_conf64
+</code></pre></div></div>
+<p><strong>3. usbdask_conf64 설정</strong></p>
+
+<p><strong>4. ud-dask_xxx/drivers/usbdask_inst_x86_64.pl 실행</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo cp &lt;InstallDir&gt;/ud-dask_xxx/drivers/4.15.0-20-generic/u2405.ko 다운받은경로/ud-dask_xxx/drivers
+$ sudo perl &lt;InstallDir&gt;/ud-dask_xxx/drivers/usbdask_inst_x86_64.pl
+$ cp &lt;InstallDir&gt;/ud-dask_xxx/lib/libusb_dask64.so /usr/lib64 or cp &lt;InstallDir&gt;/ud-dask_xxx/lib/libpci_dask64.so /usr/lib/x86_64-linux-gnu
+## module 확인
+$ lsmod u2405
+</code></pre></div></div>
+
+<p><strong>5. 부팅시 자동적으로 insmod 설정</strong></p>
+
+<p>teams Linux 채널 에 ADLINK mcm-100 autoload.zip(비번 1234) 다운 후 참조</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo cp &lt;InstallDir&gt;/autoload/u2405.conf /etc/modprode.d
+$ sudo vi /etc/modules
+## add string "u2405"
+$ sudo cp &lt;InstallDir(ud-dask_xxx)&gt;/ud-dask_xxx/drivers/u2405.bin /etc/udask/fw
+$ sudo cp &lt;InstallDir(ud-dask_xxx)&gt;/ud-dask_xxx/drivers/u2405.ko /lib/modules/4.15.0-20-gnerric/kernel/drivers/usb
+$ sudo depmod -a
+$ reboot
+## 4.15.0-20-generic로 load 후 module 적재 되어 있는지 확인
+$ lsmod u2405
+</code></pre></div></div>
+
+<h2 id="rtlinux-centos7">RTLinux (centOS7)</h2>
+
+<ul>
+  <li>HZ : 1 초당 발생되는 타이머 인터럽트 횟수</li>
+  <li>jiffies : 초당 HZ 값 만큼 증가하는 전역 변수</li>
+</ul>
+
+<p><strong>1. Linux Kenel module Makefile</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>obj-m += &lt;c file&gt;.o
+
+all:
+        make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+clean:
+        make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+</code></pre></div></div>
+
+<p><strong>2. Linux Kenel module example Code</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;linux/module.h&gt;
+#include &lt;linux/kernel.h&gt;
+#include &lt;linux/hrtimer.h&gt;
+#include &lt;linux/ktime.h&gt;
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("kjh");
+MODULE_DESCRIPTION("A simple hello world module");
+
+#define MS_TO_NS(x) (x * 1E6L)
+
+static struct hrtimer hr_timer;
+ktime_t ktime;
+
+enum hrtimer_restart my_hrtimer_callback(struct hrtimer *timer)
+{
+	printk(KERN_INFO "my_hrtimer_callback called (%ld).\n", jiffies);
+	hrtimer_forward(&amp;hr_timer, hr_timer._softexpires, ktime);
+	return HRTIMER_RESTART;
+}
+
+int init_module(void)
+{
+	unsigned long delay_in_ms = 100L;
+
+	printk(KERN_INFO "HR Timer module installing...\n");
+	ktime = ktime_set(0, MS_TO_NS(delay_in_ms));
+
+	hrtimer_init(&amp;hr_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
+
+	hr_timer.function = &amp;my_hrtimer_callback;
+
+	printk(KERN_INFO "Starting timer (%ld)\n", jiffies);
+	hrtimer_start(&amp;hr_timer, ktime, HRTIMER_MODE_REL);
+
+	return 0;
+}
+
+void cleanup_module(void)
+{
+	int rt;
+
+	printk(KERN_INFO "Cleaning up module.\n");
+	rt = hrtimer_cancel(&amp;hr_timer);
+	if(rt) printk(KERN_INFO "The timer is still in use..\n");
+}
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#kernel" class="page__taxonomy-item" rel="tag">kernel</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#linux" class="page__taxonomy-item" rel="tag">Linux</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#rtlinux" class="page__taxonomy-item" rel="tag">RTLinux</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-13T00:00:00+09:00">May 13, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Linux_kernel%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FLinux_kernel_module%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FLinux_kernel_module%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FLinux_kernel_module%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/rediscluster/" class="pagination--pager" title="Installation of Redis Client
+">Previous</a>
+    
+    
+      <a href="/development/Linux-RTOS/" class="pagination--pager" title="Linux RTOS
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" rel="permalink">JetsonTX2 SSD , Jetpack install
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 VCANUS's Technical Blog. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/development/Linux_kernel_module/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/development/Linux_kernel_module"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tech-vcanus.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,5371 @@
+I"*˜
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope="" itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title"></h1>
+    
+    
+
+<h3 class="archive__subtitle">Recent posts</h3>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" rel="permalink">JetsonTX2 SSD , Jetpack install
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Linux-RTOS/" rel="permalink">Linux RTOS
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 05 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+
+
+
+<nav class="pagination">
+  
+  <ul>
+    
+    
+    <li><a href="#" class="disabled"><span aria-hidden="true">Previous</span></a></li>
+    
+
+    
+    
+      <li><a href="#" class="disabled current">1</a></li>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+        
+        
+        
+        <li><a href="/page2/">2</a></li>
+      
+    
+      
+        
+        
+        
+        <li><a href="/page3/">3</a></li>
+      
+    
+
+    
+    
+      <li><a href="#" class="disabled">&hellip;</a></li>
+    
+
+    
+      <li><a href="/page7/">7</a></li>
+    
+
+    
+    
+      <li><a href="/page2/">Next</a></li>
+    
+  </ul>
+</nav>
+
+
+
+  </div>
+</div>
+
+<ul class="taxonomy__index">
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="#development">
+            <strong>development</strong> <span class="taxonomy__count">7</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#environment">
+            <strong>environment</strong> <span class="taxonomy__count">7</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+        <li>
+          <a href="#c">
+            <strong>C#</strong> <span class="taxonomy__count">4</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="#c">
+            <strong>C++</strong> <span class="taxonomy__count">3</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+        <li>
+          <a href="#basics">
+            <strong>Basics</strong> <span class="taxonomy__count">2</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#wpf">
+            <strong>WPF</strong> <span class="taxonomy__count">2</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="#mvvm">
+            <strong>MVVM</strong> <span class="taxonomy__count">2</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="#setup">
+            <strong>setup</strong> <span class="taxonomy__count">2</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#installation">
+            <strong>installation</strong> <span class="taxonomy__count">2</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          <a href="#command">
+            <strong>command</strong> <span class="taxonomy__count">2</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="#build">
+            <strong>Build</strong> <span class="taxonomy__count">2</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="#configuration">
+            <strong>configuration</strong> <span class="taxonomy__count">2</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="#server">
+            <strong>Server</strong> <span class="taxonomy__count">2</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#gstreamer">
+            <strong>GStreamer</strong> <span class="taxonomy__count">2</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="#c">
+            <strong>C</strong> <span class="taxonomy__count">2</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="#rtos">
+            <strong>RTOS</strong> <span class="taxonomy__count">2</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="#scichart">
+            <strong>Scichart</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#basic">
+            <strong>Basic</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#chart">
+            <strong>Chart</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#xaml">
+            <strong>XAML</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="#git">
+            <strong>git</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          <a href="#ssd">
+            <strong>ssd</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#install">
+            <strong>install</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#config">
+            <strong>config</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#vi">
+            <strong>vi</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#docker">
+            <strong>docker</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#manual">
+            <strong>manual</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#jenkins">
+            <strong>Jenkins</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          <a href="#centos8">
+            <strong>CentOS8</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#nvidia">
+            <strong>nvidia</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#log">
+            <strong>Log</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#rolling">
+            <strong>rolling</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          <a href="#java">
+            <strong>JAVA</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#maven">
+            <strong>Maven</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#intellij">
+            <strong>IntelliJ</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#telegraf">
+            <strong>Telegraf</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#influxdb">
+            <strong>InfluxDB</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#grafana">
+            <strong>Grafana</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#forwardkinematics">
+            <strong>ForwardKinematics,</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#inversekinematics">
+            <strong>InverseKinematics,</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#dhparameter">
+            <strong>DHParameter,</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#homogeneousmatrix">
+            <strong>HomogeneousMatrix</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="#rtsp">
+            <strong>RTSP</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#elasticsearch">
+            <strong>Elasticsearch</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#querydsl">
+            <strong>QueryDSL</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#kafka">
+            <strong>Kafka</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#hls">
+            <strong>HLS</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#streaming">
+            <strong>Streaming</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#nats">
+            <strong>Nats</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#cmake">
+            <strong>CMake</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="#fft">
+            <strong>FFT</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#redis">
+            <strong>redis</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#client">
+            <strong>client</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#linux">
+            <strong>Linux</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#kernel">
+            <strong>kernel</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#rtlinux">
+            <strong>RTLinux</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+    
+      
+        <li>
+          <a href="#csharp">
+            <strong>CSharp</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#log4net">
+            <strong>log4net</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#grafana">
+            <strong>Grafana,</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#react">
+            <strong>react</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#marshalling">
+            <strong>Marshalling</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a href="#dll">
+            <strong>DLL</strong> <span class="taxonomy__count">1</span>
+          </a>
+        </li>
+      
+    
+  
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &lt;section id="development" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;development&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/rediscluster/" rel="permalink">Installation of Redis Client
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 06 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/springboot-project-configuration/" rel="permalink">Springboot Project Configuration
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/docker-manual/" rel="permalink">Docker Manual
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 07 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tool/vi-command/" rel="permalink">vi command
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tool/ssd-config/" rel="permalink">ssd configuration
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tool/gitcommand/" rel="permalink">Git command
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/devenv/" rel="permalink">Setting for Development Environment
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="environment" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;environment&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/rediscluster/" rel="permalink">Installation of Redis Client
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 06 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/springboot-project-configuration/" rel="permalink">Springboot Project Configuration
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/docker-manual/" rel="permalink">Docker Manual
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 07 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tool/vi-command/" rel="permalink">vi command
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tool/ssd-config/" rel="permalink">ssd configuration
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tool/gitcommand/" rel="permalink">Git command
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/devenv/" rel="permalink">Setting for Development Environment
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  &lt;section id="c" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;C#&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/WPF-Basics/" rel="permalink">WPF Basics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Scichart-Basics/" rel="permalink">Scichart Basics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/CSharp-Basics/" rel="permalink">C# Basics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  8 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  &lt;section id="c" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;C++&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-in-c-code/" rel="permalink">GStreamer in C code
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 25 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/cmake-guide/" rel="permalink">CMake Guide
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 24 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  &lt;section id="basics" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Basics&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/WPF-Basics/" rel="permalink">WPF Basics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/CSharp-Basics/" rel="permalink">C# Basics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  8 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="wpf" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;WPF&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/WPF-Basics/" rel="permalink">WPF Basics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Scichart-Basics/" rel="permalink">Scichart Basics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  &lt;section id="mvvm" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;MVVM&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/WPF-Basics/" rel="permalink">WPF Basics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Scichart-Basics/" rel="permalink">Scichart Basics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  
+
+  &lt;section id="setup" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;setup&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/springboot-project-configuration/" rel="permalink">Springboot Project Configuration
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/devenv/" rel="permalink">Setting for Development Environment
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="installation" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;installation&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/springboot-project-configuration/" rel="permalink">Springboot Project Configuration
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/devenv/" rel="permalink">Setting for Development Environment
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  &lt;section id="command" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;command&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tool/vi-command/" rel="permalink">vi command
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tool/gitcommand/" rel="permalink">Git command
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  &lt;section id="build" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Build&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Java-Build/" rel="permalink">Java Build
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> December 16 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Jenkins-Basics/" rel="permalink">How to use Jenkins - Basic
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 30 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  &lt;section id="configuration" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;configuration&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Log-Rolling/" rel="permalink">Log Rolling
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 31 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  &lt;section id="server" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Server&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/http-live-streaming/" rel="permalink">HTTP Live Streaming (HLS)
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-and-rtsp/" rel="permalink">GStreamer and RTSP
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="gstreamer" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;GStreamer&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-in-c-code/" rel="permalink">GStreamer in C code
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 25 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-and-rtsp/" rel="permalink">GStreamer and RTSP
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  &lt;section id="c" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;C&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-in-c-code/" rel="permalink">GStreamer in C code
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 25 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/cmake-guide/" rel="permalink">CMake Guide
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 24 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  &lt;section id="rtos" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;RTOS&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" rel="permalink">JetsonTX2 SSD , Jetpack install
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Linux-RTOS/" rel="permalink">Linux RTOS
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 05 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  &lt;section id="scichart" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Scichart&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Scichart-Basics/" rel="permalink">Scichart Basics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="basic" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Basic&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Scichart-Basics/" rel="permalink">Scichart Basics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="chart" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Chart&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Scichart-Basics/" rel="permalink">Scichart Basics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="xaml" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;XAML&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Scichart-Basics/" rel="permalink">Scichart Basics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  5 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  &lt;section id="git" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;git&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tool/gitcommand/" rel="permalink">Git command
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  &lt;section id="ssd" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;ssd&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tool/ssd-config/" rel="permalink">ssd configuration
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="install" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;install&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tool/ssd-config/" rel="permalink">ssd configuration
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="config" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;config&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tool/ssd-config/" rel="permalink">ssd configuration
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="vi" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;vi&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/tool/vi-command/" rel="permalink">vi command
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 04 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="docker" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;docker&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/docker-manual/" rel="permalink">Docker Manual
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 07 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="manual" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;manual&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/docker-manual/" rel="permalink">Docker Manual
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 07 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="jenkins" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Jenkins&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Jenkins-Basics/" rel="permalink">How to use Jenkins - Basic
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 30 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  &lt;section id="centos8" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;CentOS8&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/CentOS-8-Install/" rel="permalink">CentOS 8 Install
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 31 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="nvidia" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;nvidia&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/CentOS-8-Install/" rel="permalink">CentOS 8 Install
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 31 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="log" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Log&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Log-Rolling/" rel="permalink">Log Rolling
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 31 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="rolling" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;rolling&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Log-Rolling/" rel="permalink">Log Rolling
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> October 31 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  &lt;section id="java" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;JAVA&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Java-Build/" rel="permalink">Java Build
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> December 16 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="maven" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Maven&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Java-Build/" rel="permalink">Java Build
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> December 16 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="intellij" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;IntelliJ&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Java-Build/" rel="permalink">Java Build
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> December 16 2019</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Young-rae Shin(https://github.com/lived1024)
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="telegraf" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Telegraf&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/telegraf-basic/" rel="permalink">Telegraf Basic
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 14 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="influxdb" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;InfluxDB&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/telegraf-basic/" rel="permalink">Telegraf Basic
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 14 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="grafana" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Grafana&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/telegraf-basic/" rel="permalink">Telegraf Basic
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 14 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="forwardkinematics" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;ForwardKinematics,&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/research/Kinematics/" rel="permalink">Kinematics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 20 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="inversekinematics" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;InverseKinematics,&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/research/Kinematics/" rel="permalink">Kinematics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 20 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="dhparameter" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;DHParameter,&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/research/Kinematics/" rel="permalink">Kinematics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 20 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="homogeneousmatrix" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;HomogeneousMatrix&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/research/Kinematics/" rel="permalink">Kinematics
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 20 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  
+
+  &lt;section id="rtsp" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;RTSP&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/gstreamer-and-rtsp/" rel="permalink">GStreamer and RTSP
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="elasticsearch" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Elasticsearch&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/querydsl-for-elasticsearch/" rel="permalink">Elasticsearch &amp; Query DSL
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 24 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="querydsl" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;QueryDSL&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/querydsl-for-elasticsearch/" rel="permalink">Elasticsearch &amp; Query DSL
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 24 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="kafka" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Kafka&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/apache-kafka-basic/" rel="permalink">Apache Kafka Basic
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 05 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="hls" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;HLS&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/http-live-streaming/" rel="permalink">HTTP Live Streaming (HLS)
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="streaming" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Streaming&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/http-live-streaming/" rel="permalink">HTTP Live Streaming (HLS)
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="nats" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Nats&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/nats/" rel="permalink">nats server and client
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 13 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="cmake" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;CMake&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/cmake-guide/" rel="permalink">CMake Guide
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 24 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  
+
+  &lt;section id="fft" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;FFT&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Fast-Fourier-Transform/" rel="permalink">Fast Fourier Transform
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 25 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="redis" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;redis&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/rediscluster/" rel="permalink">Installation of Redis Client
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 06 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="client" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;client&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/rediscluster/" rel="permalink">Installation of Redis Client
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 06 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by SGLee, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="linux" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Linux&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Linux_kernel_module/" rel="permalink">Linux_kernel
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 13 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="kernel" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;kernel&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Linux_kernel_module/" rel="permalink">Linux_kernel
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 13 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="rtlinux" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;RTLinux&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Linux_kernel_module/" rel="permalink">Linux_kernel
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 13 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  
+
+  &lt;section id="csharp" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;CSharp&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="log4net" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;log4net&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="grafana" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Grafana,&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="react" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;react&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="marshalling" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;Marshalling&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+
+  
+
+  &lt;section id="dll" class="taxonomy__section"&gt;
+    &lt;h2 class="archive__subtitle"&gt;DLL&lt;/h2&gt;
+    &lt;div class="entries-list"&gt;
+</code></pre></div></div>
+
+<div class="list__item">
+  <article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;/div&gt;
+    &lt;a href="#page-title" class="back-to-top"&gt;Back to top &amp;uarr;&lt;/a&gt;
+  &lt;/section&gt;
+</code></pre></div></div>
+
+:ET

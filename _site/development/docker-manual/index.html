@@ -99,6 +99,7 @@
 
 <!-- end custom head snippets -->
 
+    
   </head>
 
   <body class="layout--single">
@@ -128,6 +129,8 @@
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/tags/" >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -271,6 +274,49 @@
       
 
       <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#setup">Setup</a>
+    <ul>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#start-docker-on-boot">Start docker on boot</a>
+        <ul>
+          <li><a href="#start-docker-container-on-boot">Start docker container on boot</a></li>
+          <li><a href="#run-services-inside-docker-container-on-boot">Run services inside docker container on boot</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#docker-command">Docker Command</a>
+    <ul>
+      <li><a href="#basic-command">Basic command</a></li>
+      <li><a href="#reference">Reference</a></li>
+    </ul>
+  </li>
+  <li><a href="#dockerfile-command">Dockerfile command</a>
+    <ul>
+      <li><a href="#basic-command-1">Basic command</a></li>
+      <li><a href="#reference-1">Reference</a></li>
+    </ul>
+  </li>
+  <li><a href="#docker-compose">Docker compose</a>
+    <ul>
+      <li><a href="#example">Example</a></li>
+      <li><a href="#docker-based-redis-cluster">Docker-based Redis Cluster</a></li>
+      <li><a href="#reference-2">Reference</a></li>
+    </ul>
+  </li>
+  <li><a href="#docker-swarm">Docker Swarm</a>
+    <ul>
+      <li><a href="#reference-3">Reference</a></li>
+    </ul>
+  </li>
+</ul>
+            </nav>
+          </aside>
         
         <p>Written by SGLee, VCANUS</p>
 
@@ -445,12 +491,15 @@ exec "$@"
  Add loop.sh /usr/local/bin/loop.sh 
  ENTRYPOINT ["/usr/local/bin/loop.sh"] # exec form CMD ["1"]
 </code></pre></div>        </div>
-        <h2 id="reference-1">Reference</h2>
-        <p>http://pyrasis.com/book/DockerForTheReallyImpatient/Chapter07/06
-https://bluese05.tistory.com/77</p>
       </li>
     </ul>
   </li>
+  <li>VOLUME
+    <h2 id="reference-1">Reference</h2>
+  </li>
+  <li>http://pyrasis.com/book/DockerForTheReallyImpatient/Chapter07/06</li>
+  <li>https://bluese05.tistory.com/77</li>
+  <li>https://joont92.github.io/docker/volume-container-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0/</li>
 </ul>
 
 <h1 id="docker-compose">Docker compose</h1>
@@ -472,13 +521,21 @@ services:
       - ./data/1:/data 
     restart: always
 </code></pre></div></div>
+<h2 id="docker-based-redis-cluster">Docker-based Redis Cluster</h2>
+<p>https://github.com/sglee-net/docker-redis-cluster</p>
+
 <h2 id="reference-2">Reference</h2>
-<p>http://raccoonyy.github.io/docker-usages-for-dev-environment-setup/
-https://success.docker.com/article/use-a-script-to-initialize-stateful-container-data</p>
+<ul>
+  <li>http://raccoonyy.github.io/docker-usages-for-dev-environment-setup/</li>
+  <li>https://success.docker.com/article/use-a-script-to-initialize-stateful-container-data</li>
+</ul>
 
 <h1 id="docker-swarm">Docker Swarm</h1>
 <h2 id="reference-3">Reference</h2>
-<p>https://tech.osci.kr/2019/02/13/59736201/</p>
+<ul>
+  <li>https://tech.osci.kr/2019/02/13/59736201/</li>
+</ul>
+
 
         
       </section>
@@ -559,7 +616,7 @@ https://success.docker.com/article/use-a-script-to-initialize-stateful-container
       
   <nav class="pagination">
     
-      <a href="/development/vimanual/" class="pagination--pager" title="VI Manual
+      <a href="/tool/vi-command/" class="pagination--pager" title="vi command
 ">Previous</a>
     
     
@@ -588,7 +645,7 @@ https://success.docker.com/article/use-a-script-to-initialize-stateful-container
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/gstreamer-in-c-code/" rel="permalink">Basic GStreamer Guide in C
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
 </a>
       
     </h2>
@@ -598,11 +655,11 @@ https://success.docker.com/article/use-a-script-to-initialize-stateful-container
 
 
 
-  4 minute read
+  2 minute read
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
     
     <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
 </p>
@@ -619,7 +676,7 @@ https://success.docker.com/article/use-a-script-to-initialize-stateful-container
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/cmake-guide/" rel="permalink">CMake Guide
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
 </a>
       
     </h2>
@@ -633,9 +690,9 @@ https://success.docker.com/article/use-a-script-to-initialize-stateful-container
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
 </p>
   </article>
 </div>
@@ -650,7 +707,7 @@ https://success.docker.com/article/use-a-script-to-initialize-stateful-container
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/http-live-streaming/" rel="permalink">HTTP Live Streaming (HLS)
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
 </a>
       
     </h2>
@@ -664,9 +721,9 @@ https://success.docker.com/article/use-a-script-to-initialize-stateful-container
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
 </p>
   </article>
 </div>
@@ -681,7 +738,7 @@ https://success.docker.com/article/use-a-script-to-initialize-stateful-container
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/apache-kafka-basic/" rel="permalink">Apache Kafka Basic
+        <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" rel="permalink">JetsonTX2 SSD , Jetpack install
 </a>
       
     </h2>
@@ -691,13 +748,13 @@ https://success.docker.com/article/use-a-script-to-initialize-stateful-container
 
 
 
-  3 minute read
+  4 minute read
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 05 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
 </p>
   </article>
 </div>
@@ -757,6 +814,25 @@ https://success.docker.com/article/use-a-script-to-initialize-stateful-container
 
 
 
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/development/docker-manual/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/development/docker-manual"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tech-vcanus.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
 
 
 

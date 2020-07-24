@@ -1,0 +1,27 @@
+I"<ul class="toc__menu">
+  <li><a href="#influxdb-basic">InfluxDB Basic</a>
+    <ul>
+      <li><a href="#rdb-vs-influxdb">RDB vs InfluxDB</a></li>
+      <li><a href="#install-on-docker">Install on Docker</a></li>
+      <li><a href="#influxdb-cli-on-docker-container">InfluxDB CLI on Docker Container</a></li>
+      <li><a href="#auth-command">Auth Command</a>
+        <ul>
+          <li><a href="#create-administrator">Create Administrator</a></li>
+          <li><a href="#create-non-adminnormal-user">Create Non-Admin(Normal User)</a></li>
+        </ul>
+      </li>
+      <li><a href="#data-types">Data types</a></li>
+      <li><a href="#baisc-ddl">Baisc DDL</a></li>
+      <li><a href="#basic-client-command">Basic Client Command</a></li>
+      <li><a href="#basic-query">Basic Query</a>
+        <ul>
+          <li><a href="#insert">Insert</a></li>
+          <li><a href="#delete">Delete</a></li>
+          <li><a href="#select">Select</a></li>
+        </ul>
+      </li>
+      <li><a href="#retention">Retention</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

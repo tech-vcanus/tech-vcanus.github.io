@@ -1,0 +1,87 @@
+I"X<p>Written by BGKim, VCANUS</p>
+
+<h1 id="log4net">log4net</h1>
+
+<h2 id="log4net-nuget-설치">log4net NuGet 설치</h2>
+
+<h2 id="config-파일-추가">config 파일 추가</h2>
+
+<p>log4net.config</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+  <span class="nt">&lt;log4net&gt;</span>
+    <span class="nt">&lt;root&gt;</span>
+      <span class="nt">&lt;level</span> <span class="na">value=</span><span class="s">"ALL"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"console"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"file"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"fatal_file"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/root&gt;</span>
+    <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"console"</span> <span class="na">type=</span><span class="s">"log4net.Appender.ConsoleAppender"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;layout</span> <span class="na">type=</span><span class="s">"log4net.Layout.PatternLayout"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;conversionPattern</span> <span class="na">value=</span><span class="s">"%date %level %logger - %message%newline"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/layout&gt;</span>
+    <span class="nt">&lt;/appender&gt;</span>
+    <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"file"</span> <span class="na">type=</span><span class="s">"log4net.Appender.RollingFileAppender"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;file</span> <span class="na">value=</span><span class="s">".\log\app.log"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;appendToFile</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;rollingStyle</span> <span class="na">value=</span><span class="s">"Size"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;maxSizeRollBackups</span> <span class="na">value=</span><span class="s">"5"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;maximumFileSize</span> <span class="na">value=</span><span class="s">"100MB"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;staticLogFileName</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;layout</span> <span class="na">type=</span><span class="s">"log4net.Layout.PatternLayout"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;conversionPattern</span> <span class="na">value=</span><span class="s">"%date [%thread] %level %logger - %message%newline"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/layout&gt;</span>
+    <span class="nt">&lt;/appender&gt;</span>
+    <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"fatal_file"</span> <span class="na">type=</span><span class="s">"log4net.Appender.RollingFileAppender"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;file</span> <span class="na">value=</span><span class="s">".\log\fatal.log"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;appendToFile</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;rollingStyle</span> <span class="na">value=</span><span class="s">"Size"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;maxSizeRollBackups</span> <span class="na">value=</span><span class="s">"5"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;maximumFileSize</span> <span class="na">value=</span><span class="s">"100MB"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;staticLogFileName</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;filter</span> <span class="na">type=</span><span class="s">"log4net.Filter.LevelRangeFilter"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"LevelMin"</span> <span class="na">value=</span><span class="s">"FATAL"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"LevelMax"</span> <span class="na">value=</span><span class="s">"FATAL"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/filter&gt;</span>
+      <span class="nt">&lt;layout</span> <span class="na">type=</span><span class="s">"log4net.Layout.PatternLayout"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;conversionPattern</span> <span class="na">value=</span><span class="s">"%date [%thread] %level %logger - %message%newline"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/layout&gt;</span>
+    <span class="nt">&lt;/appender&gt;</span>
+  <span class="nt">&lt;/log4net&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div></div>
+
+<h2 id="config-파일-속성-변경">config 파일 속성 변경</h2>
+
+<ol>
+  <li>config 파일 우클릭, 속성 선택</li>
+  <li>빌드 작업 =&gt; ‘내용’ 으로 변경</li>
+  <li>출력 디렉터리에 복사 =&gt; ‘항상 복사’ 로 변경</li>
+</ol>
+
+<h2 id="프로젝트-assemblyinfocs-수정">프로젝트 AssemblyInfo.cs 수정</h2>
+
+<p>AssemblyInfo.cs 내용 추가</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
+</code></pre></div></div>
+
+<h2 id="사용법">사용법</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class logTest
+{
+    private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+	public void TestMethod1()
+    {
+        log.Debug("Main() started");
+        log.Info("My Info");
+        log.Warn("My Warning");
+        log.Error("My Error");
+        log.Fatal("My Fatal Error");
+    }
+}
+</code></pre></div></div>
+
+:ET

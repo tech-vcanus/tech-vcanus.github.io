@@ -99,6 +99,7 @@
 
 <!-- end custom head snippets -->
 
+    
   </head>
 
   <body class="layout--single">
@@ -128,6 +129,8 @@
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/tags/" >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -271,6 +274,31 @@
       
 
       <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#homogeneous-matrix동차-행렬">Homogeneous Matrix(동차 행렬)</a></li>
+  <li><a href="#dhdenavit-hartenberg-parameter">DH(Denavit-Hartenberg) Parameter</a>
+    <ul>
+      <li><a href="#table">table</a></li>
+    </ul>
+  </li>
+  <li><a href="#forward-kinematics정기구학">Forward Kinematics(정기구학)</a>
+    <ul>
+      <li><a href="#get-each-axis-homogeneous-matrix">Get each axis Homogeneous Matrix</a></li>
+    </ul>
+  </li>
+  <li><a href="#inverse-kinematics역기구학">Inverse Kinematics(역기구학)</a>
+    <ul>
+      <li><a href="#analytical-solution">Analytical Solution</a></li>
+      <li><a href="#approximating-solution-with-jacobian">Approximating Solution With Jacobian</a></li>
+    </ul>
+  </li>
+</ul>
+            </nav>
+          </aside>
         
         <p>Written by BGKim, VCANUS</p>
 
@@ -452,22 +480,6 @@ do{
     
       
       
-      <a href="/tags/#dh" class="page__taxonomy-item" rel="tag">DH</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#forward" class="page__taxonomy-item" rel="tag">Forward</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#homogeneous" class="page__taxonomy-item" rel="tag">Homogeneous</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#inverse" class="page__taxonomy-item" rel="tag">Inverse</a><span class="sep">, </span>
-    
-      
-      
       <a href="/tags/" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
     
       
@@ -476,7 +488,7 @@ do{
     
       
       
-      <a href="/tags/#matrix" class="page__taxonomy-item" rel="tag">Matrix</a><span class="sep">, </span>
+      <a href="/tags/#homogeneousmatrix" class="page__taxonomy-item" rel="tag">HomogeneousMatrix</a><span class="sep">, </span>
     
       
       
@@ -484,15 +496,15 @@ do{
     
       
       
-      <a href="/tags/#kinematics" class="page__taxonomy-item" rel="tag">Kinematics</a><span class="sep">, </span>
+      <a href="/tags/#dhparameter" class="page__taxonomy-item" rel="tag">DHParameter</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#kinematics" class="page__taxonomy-item" rel="tag">Kinematics</a><span class="sep">, </span>
+      <a href="/tags/#forwardkinematics" class="page__taxonomy-item" rel="tag">ForwardKinematics</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#parameter" class="page__taxonomy-item" rel="tag">Parameter</a>
+      <a href="/tags/#inversekinematics" class="page__taxonomy-item" rel="tag">InverseKinematics</a>
     
     </span>
   </p>
@@ -513,7 +525,7 @@ do{
     
       
       
-      <a href="/categories/#research" class="page__taxonomy-item" rel="tag">Research</a>
+      <a href="/categories/#research" class="page__taxonomy-item" rel="tag">research</a>
     
     </span>
   </p>
@@ -540,7 +552,7 @@ do{
       
   <nav class="pagination">
     
-      <a href="/development/telegraf.md/" class="pagination--pager" title="Telegraf Basic
+      <a href="/development/telegraf-basic/" class="pagination--pager" title="Telegraf Basic
 ">Previous</a>
     
     
@@ -569,7 +581,7 @@ do{
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/gstreamer-in-c-code/" rel="permalink">Basic GStreamer Guide in C
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
 </a>
       
     </h2>
@@ -579,11 +591,11 @@ do{
 
 
 
-  4 minute read
+  2 minute read
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
     
     <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
 </p>
@@ -600,7 +612,7 @@ do{
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/cmake-guide/" rel="permalink">CMake Guide
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
 </a>
       
     </h2>
@@ -614,9 +626,9 @@ do{
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
 </p>
   </article>
 </div>
@@ -631,7 +643,7 @@ do{
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/http-live-streaming/" rel="permalink">HTTP Live Streaming (HLS)
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
 </a>
       
     </h2>
@@ -645,9 +657,9 @@ do{
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
 </p>
   </article>
 </div>
@@ -662,7 +674,7 @@ do{
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/apache-kafka-basic/" rel="permalink">Apache Kafka Basic
+        <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" rel="permalink">JetsonTX2 SSD , Jetpack install
 </a>
       
     </h2>
@@ -672,13 +684,13 @@ do{
 
 
 
-  3 minute read
+  4 minute read
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 05 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
 </p>
   </article>
 </div>
@@ -738,6 +750,25 @@ do{
 
 
 
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/research/Kinematics/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/research/Kinematics"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tech-vcanus.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
 
 
 

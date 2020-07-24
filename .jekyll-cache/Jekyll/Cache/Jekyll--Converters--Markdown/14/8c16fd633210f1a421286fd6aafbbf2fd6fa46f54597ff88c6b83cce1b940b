@@ -1,0 +1,28 @@
+I"Z<ul class="toc__menu">
+  <li><a href="#jatpack-install-및-ssd-부팅-경로-설정">jatPack install 및 SSD 부팅 경로 설정</a>
+      - {:.} <a href="#필요사항">필요사항</a>
+    <ul>
+      <li><a href="#host-pc에-l4t-및-jatpack-설치">Host PC에 L4T 및 JatPack 설치</a></li>
+      <li><a href="#host-pc에-jatpack-진행-과정">Host PC에 JatPack 진행 과정</a>
+        <ul>
+          <li><a href="#step-1-환경-세팅">Step 1: 환경 세팅</a></li>
+          <li><a href="#step-2-os-및-sdk-설정">Step 2: OS 및 SDK 설정</a></li>
+          <li><a href="#step-3-flash-작업">Step 3: Flash 작업</a></li>
+          <li><a href="#step-4-tx2-recovery-mode-진입">Step 4: TX2 Recovery Mode 진입</a></li>
+          <li><a href="#step-5--tx2에-우분투-설치-과정">Step 5 : TX2에 우분투 설치 과정</a></li>
+          <li><a href="#step-6--tx2-gdisk-설정">Step 6 : TX2 gdisk 설정</a></li>
+          <li><a href="#warn--ip-id-pw-를-물어보는-알림창-이-뜨면-진행-하지말고-tx2를-sda로-부팅하는-설정-부터-하자-">Warn : IP, ID, PW 를 물어보는 알림창 이 뜨면 진행 하지말고, TX2를 sda로 부팅하는 설정 부터 하자 !</a></li>
+        </ul>
+      </li>
+      <li><a href="#host-pc에-l4t-진행-과정-및-tx2-sda로-부팅-설정">Host PC에 L4T 진행 과정 및 TX2 sda로 부팅 설정</a>
+        <ul>
+          <li><a href="#step-1-다운로드-파일-압축-해제">Step 1: 다운로드 파일 압축 해제</a></li>
+          <li><a href="#step-2-tx2-recovery-mode-진입">Step 2: TX2 Recovery Mode 진입</a></li>
+          <li><a href="#step-3-image-파일-sda1에-flash">Step 3: image 파일 sda1에 Flash</a></li>
+          <li><a href="#step-4-ssh로-파일-전송-host-to-tx2">Step 4: SSH로 파일 전송 (Host to TX2)</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+:ET

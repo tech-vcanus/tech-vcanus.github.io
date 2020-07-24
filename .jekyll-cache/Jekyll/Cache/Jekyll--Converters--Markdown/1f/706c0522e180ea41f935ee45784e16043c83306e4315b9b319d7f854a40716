@@ -1,0 +1,27 @@
+I"Ô<ul class="toc__menu">
+  <li><a href="#vi-command">VI command</a>
+    <ul>
+      <li><a href="#replacement">replacement</a></li>
+      <li><a href="#undo">undo</a></li>
+      <li><a href="#redo">redo</a></li>
+      <li><a href="#comment">comment</a></li>
+      <li><a href="#uncomment">uncomment</a></li>
+      <li><a href="#copy-multi-line-to-buffer">copy multi-line(#,#) to buffer</a></li>
+      <li><a href="#paste-buffer-to-the-next-of-the-specific-line">paste buffer to the next of the specific line(#)</a></li>
+      <li><a href="#move-to-the-next-word">move to the next word</a></li>
+      <li><a href="#move-to-the-previous-word">move to the previous word</a></li>
+      <li><a href="#move-to-the-next-word-space">move to the next word (space)</a></li>
+      <li><a href="#move-to-the-previous-word-space">move to the previous word (space)</a></li>
+      <li><a href="#delete-the-word">delete the word</a></li>
+      <li><a href="#copy-lines-from-the-other-file-and-paste-it-to-the-current-file">copy lines from the other file and paste it to the current file</a></li>
+      <li><a href="#indentoutdent">indent/outdent</a></li>
+      <li><a href="#auto-alignment">auto alignment</a></li>
+      <li><a href="#backward-page">backward page</a></li>
+      <li><a href="#forward-page">forward page</a></li>
+      <li><a href="#begin-page">begin page</a></li>
+      <li><a href="#end-page">end page</a></li>
+      <li><a href="#write-with-su">write with su</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

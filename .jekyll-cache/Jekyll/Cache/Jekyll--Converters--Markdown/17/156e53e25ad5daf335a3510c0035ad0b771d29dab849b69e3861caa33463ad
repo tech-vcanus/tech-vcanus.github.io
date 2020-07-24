@@ -1,0 +1,93 @@
+I"1<p>Written by SGLee, VCANUS</p>
+
+<h1 id="springboot-project-configuration">Springboot Project Configuration</h1>
+
+<h2 id="project-generation">Project generation</h2>
+<h3 id="steps">Steps</h3>
+<ol>
+  <li>new project -&gt; maven project
+ <img width="746" alt="image" src="https://user-images.githubusercontent.com/44759045/77221248-85583c80-6b8b-11ea-8bf6-4d29ffe627ad.png" /></li>
+  <li>check name, location, groupId
+ <img width="624" alt="image" src="https://user-images.githubusercontent.com/44759045/77221313-09122900-6b8c-11ea-9809-3f9aa24cdf89.png" /></li>
+</ol>
+
+<h2 id="maven-setup">Maven setup</h2>
+
+<h3 id="install">install</h3>
+<ol>
+  <li>download binary file from apache maven (https://maven.apache.org/download.cgi)</li>
+  <li>decompress file to installation folder (ex: /opt/)</li>
+  <li>check privilege of the folder. use “chown -R userId:groupId folder name” if your id don’t have the privilege.</li>
+  <li>make a symbolic link for easy access
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ ln -s apache-maven-x.x.x maven
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="configuration-and-use-maven-in-intellij">configuration and use Maven in IntelliJ</h3>
+<ol>
+  <li>update environment variable. modify .bash_profile(MAC) or .bashrc(Ubuntu)
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ vi ~/.bash_profile
+</code></pre></div>    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> MAVEN_HOME=/opt/maven
+ export PATH=$MAVEN_HOME/bin:$PATH
+</code></pre></div>    </div>
+  </li>
+  <li>use Maven command Terminal in Intellij
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ mvn clean
+ $ mvn compile // to make class file
+ $ mvn package // to make jar or war file
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="intellj-configuration-to-make-package">IntellJ configuration to make package</h2>
+
+<h3 id="configuration-pomxml">configuration pom.xml</h3>
+<p>add <build><plugins><plubin>... to pom.xml
+ You will see a message "no main manifest attribute, in xx.jar" when you run xx.jar file after "mvn package".
+ pom.xml</plubin></plugins></build></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+</code></pre></div></div>
+
+<h3 id="add-annotation-to-main-class">add annotation to main class</h3>
+<p>@SpringBootApplication
+ @ComponentScan(basePackages = {“com.vcanus”})</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+ import org.springframework.context.ApplicationContext;
+ import org.springframework.context.annotation.ComponentScan;
+
+ @SpringBootApplication
+ @ComponentScan(basePackages = {"com.vcanus"})
+ public class Application {
+     public static void main(String[] args) {
+         System.out.println("Hello World");
+         ApplicationContext context = SpringApplication
+                 .run(Application.class, args);
+     }
+ }
+</code></pre></div></div>
+
+<h2 id="intellij-configuration-to-deploy-package-to-github">IntelliJ Configuration to deploy package to Github</h2>
+
+<h3 id="make-github-token">make Github token</h3>
+<p>(https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)</p>
+
+<h3 id="setup-m2settingsxml">setup .m2/settings.xml</h3>
+<p>(https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages)</p>
+
+<h3 id="run-mvn">run mvn</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mvn clean 
+$ mvn compile
+$ mvn package
+$ mvn deploy
+</code></pre></div></div>
+:ET

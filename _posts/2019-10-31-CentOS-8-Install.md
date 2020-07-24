@@ -2,7 +2,7 @@
 title: "CentOS 8 Install"
 data: 2019-10-30 00:00:00 -0000
 categories: development
-tags: install CentOS 8 and graphic driver
+tags: CentOS8 nvidia
 ---
 
 Written by BGKim, VCANUS

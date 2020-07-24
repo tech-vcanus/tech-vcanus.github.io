@@ -1,0 +1,680 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>CSharp log4net - VCANUS’s Technical Blog</title>
+<meta name="description" content="Written by BGKim, VCANUS">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="VCANUS's Technical Blog">
+<meta property="og:title" content="CSharp log4net">
+<meta property="og:url" content="http://localhost:4000/development/CSharp-log4net/">
+
+
+  <meta property="og:description" content="Written by BGKim, VCANUS">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-06-12T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/CSharp-log4net/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="VCANUS's Technical Blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          VCANUS's Technical Blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="CSharp log4net">
+    <meta itemprop="description" content="Written by BGKim, VCANUS">
+    <meta itemprop="datePublished" content="June 12, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">CSharp log4net
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#log4net">log4net</a>
+    <ul>
+      <li><a href="#log4net-nuget-설치">log4net NuGet 설치</a></li>
+      <li><a href="#config-파일-추가">config 파일 추가</a></li>
+      <li><a href="#config-파일-속성-변경">config 파일 속성 변경</a></li>
+      <li><a href="#프로젝트-assemblyinfocs-수정">프로젝트 AssemblyInfo.cs 수정</a></li>
+      <li><a href="#사용법">사용법</a></li>
+    </ul>
+  </li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>Written by BGKim, VCANUS</p>
+
+<h1 id="log4net">log4net</h1>
+
+<h2 id="log4net-nuget-설치">log4net NuGet 설치</h2>
+
+<h2 id="config-파일-추가">config 파일 추가</h2>
+
+<p>log4net.config</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+  <span class="nt">&lt;log4net&gt;</span>
+    <span class="nt">&lt;root&gt;</span>
+      <span class="nt">&lt;level</span> <span class="na">value=</span><span class="s">"ALL"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"console"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"file"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"fatal_file"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/root&gt;</span>
+    <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"console"</span> <span class="na">type=</span><span class="s">"log4net.Appender.ConsoleAppender"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;layout</span> <span class="na">type=</span><span class="s">"log4net.Layout.PatternLayout"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;conversionPattern</span> <span class="na">value=</span><span class="s">"%date %level %logger - %message%newline"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/layout&gt;</span>
+    <span class="nt">&lt;/appender&gt;</span>
+    <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"file"</span> <span class="na">type=</span><span class="s">"log4net.Appender.RollingFileAppender"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;file</span> <span class="na">value=</span><span class="s">".\log\app.log"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;appendToFile</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;rollingStyle</span> <span class="na">value=</span><span class="s">"Size"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;maxSizeRollBackups</span> <span class="na">value=</span><span class="s">"5"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;maximumFileSize</span> <span class="na">value=</span><span class="s">"100MB"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;staticLogFileName</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;layout</span> <span class="na">type=</span><span class="s">"log4net.Layout.PatternLayout"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;conversionPattern</span> <span class="na">value=</span><span class="s">"%date [%thread] %level %logger - %message%newline"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/layout&gt;</span>
+    <span class="nt">&lt;/appender&gt;</span>
+    <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"fatal_file"</span> <span class="na">type=</span><span class="s">"log4net.Appender.RollingFileAppender"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;file</span> <span class="na">value=</span><span class="s">".\log\fatal.log"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;appendToFile</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;rollingStyle</span> <span class="na">value=</span><span class="s">"Size"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;maxSizeRollBackups</span> <span class="na">value=</span><span class="s">"5"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;maximumFileSize</span> <span class="na">value=</span><span class="s">"100MB"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;staticLogFileName</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;filter</span> <span class="na">type=</span><span class="s">"log4net.Filter.LevelRangeFilter"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"LevelMin"</span> <span class="na">value=</span><span class="s">"FATAL"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"LevelMax"</span> <span class="na">value=</span><span class="s">"FATAL"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/filter&gt;</span>
+      <span class="nt">&lt;layout</span> <span class="na">type=</span><span class="s">"log4net.Layout.PatternLayout"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;conversionPattern</span> <span class="na">value=</span><span class="s">"%date [%thread] %level %logger - %message%newline"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/layout&gt;</span>
+    <span class="nt">&lt;/appender&gt;</span>
+  <span class="nt">&lt;/log4net&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div></div>
+
+<h2 id="config-파일-속성-변경">config 파일 속성 변경</h2>
+
+<ol>
+  <li>config 파일 우클릭, 속성 선택</li>
+  <li>빌드 작업 =&gt; ‘내용’ 으로 변경</li>
+  <li>출력 디렉터리에 복사 =&gt; ‘항상 복사’ 로 변경</li>
+</ol>
+
+<h2 id="프로젝트-assemblyinfocs-수정">프로젝트 AssemblyInfo.cs 수정</h2>
+
+<p>AssemblyInfo.cs 내용 추가</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
+</code></pre></div></div>
+
+<h2 id="사용법">사용법</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class logTest
+{
+    private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+	public void TestMethod1()
+    {
+        log.Debug("Main() started");
+        log.Info("My Info");
+        log.Warn("My Warning");
+        log.Error("My Error");
+        log.Fatal("My Fatal Error");
+    }
+}
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#configuration" class="page__taxonomy-item" rel="tag">configuration</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#csharp" class="page__taxonomy-item" rel="tag">CSharp</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#log4net" class="page__taxonomy-item" rel="tag">log4net</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-06-12T00:00:00+09:00">June 12, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=CSharp+log4net%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FCSharp-log4net%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FCSharp-log4net%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FCSharp-log4net%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" class="pagination--pager" title="JetsonTX2 SSD , Jetpack install
+">Previous</a>
+    
+    
+      <a href="/development/Grafana-Tutorial/" class="pagination--pager" title="Grafana Customed React Plugin Install Tutorial
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" rel="permalink">JetsonTX2 SSD , Jetpack install
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Linux-RTOS/" rel="permalink">Linux RTOS
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 05 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 VCANUS's Technical Blog. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/development/CSharp-log4net/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/development/CSharp-log4net"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tech-vcanus.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,10 @@
+I",<ul class="toc__menu">
+  <li><a href="#log4j2">Log4j2</a>
+    <ul>
+      <li><a href="#add-maven-dependency">Add maven dependency</a></li>
+      <li><a href="#add-log4j2xml-in-folder-resources">Add log4j2.xml in folder resources</a></li>
+      <li><a href="#use">Use</a></li>
+    </ul>
+  </li>
+</ul>
+:ET

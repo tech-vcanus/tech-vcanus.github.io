@@ -1,8 +1,8 @@
 ---
 title: "Kinematics"
 data: 2020-02-20 00:00:00 -0000
-categories: Research
-tags: Forward Kinematics, Inverse Kinematics, DH Parameter, Homogeneous Matrix
+categories: research
+tags: ForwardKinematics, InverseKinematics, DHParameter, HomogeneousMatrix
 ---
 
 Written by BGKim, VCANUS
@@ -86,11 +86,11 @@ Trans(x, y, z){
 *각 arm axis를 점,축 그림으로 그려 축사이의 관계를 볼 줄 알아야 한다
 
 # Inverse Kinematics(역기구학)
- 
+
  정기구학과 반대되는 개념으로, 끝점의 좌표와 vector를 알 때 각 축의 회전각을 구하는 이론이다. 
- 
+
 ## Analytical Solution
- 
+
  정기구학 식(R = R_1 * .. *R_n)에서 R_1...R_n을 역행렬을 취하면서 theta_1..theta_n의 방정식을 구하는 방식이다
 ```
 ex)
@@ -98,7 +98,7 @@ R[2,2] = r33
 (R_1 * .. *R_n)[2,2] = -cos(theta2) 일 때
 
 theta2 = acos(-r33)
-``` 
+```
 
 ## Approximating Solution With Jacobian
 
@@ -127,6 +127,6 @@ do{
         + invJacobianMatrix(resutTheta_n) * (targetPosition - presentPosition)
 }while(resutTheta_n+1 - resultTheta_n < epsilon)
 
-``` 
+```
 
 

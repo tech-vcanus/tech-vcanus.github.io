@@ -1,0 +1,31 @@
+I"¿<ul class="toc__menu">
+  <li><a href="#springboot-project-configuration">Springboot Project Configuration</a>
+    <ul>
+      <li><a href="#project-generation">Project generation</a>
+        <ul>
+          <li><a href="#steps">Steps</a></li>
+        </ul>
+      </li>
+      <li><a href="#maven-setup">Maven setup</a>
+        <ul>
+          <li><a href="#install">install</a></li>
+          <li><a href="#configuration-and-use-maven-in-intellij">configuration and use Maven in IntelliJ</a></li>
+        </ul>
+      </li>
+      <li><a href="#intellj-configuration-to-make-package">IntellJ configuration to make package</a>
+        <ul>
+          <li><a href="#configuration-pomxml">configuration pom.xml</a></li>
+          <li><a href="#add-annotation-to-main-class">add annotation to main class</a></li>
+        </ul>
+      </li>
+      <li><a href="#intellij-configuration-to-deploy-package-to-github">IntelliJ Configuration to deploy package to Github</a>
+        <ul>
+          <li><a href="#make-github-token">make Github token</a></li>
+          <li><a href="#setup-m2settingsxml">setup .m2/settings.xml</a></li>
+          <li><a href="#run-mvn">run mvn</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+:ET

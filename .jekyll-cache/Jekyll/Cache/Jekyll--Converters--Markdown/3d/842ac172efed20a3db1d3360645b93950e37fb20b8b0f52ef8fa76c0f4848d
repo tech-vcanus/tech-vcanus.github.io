@@ -1,0 +1,213 @@
+I"�#<p>Written By <a href="https://github.com/jjangchan">KJ Jang</a>, VCANUS</p>
+
+<h1 id="jatpack-install-및-ssd-부팅-경로-설정">jatPack install 및 SSD 부팅 경로 설정</h1>
+
+<h3 id="필요사항">필요사항</h3>
+
+<ul>
+  <li>Host PC (ubuntu 18.04 or 16.04)</li>
+  <li>Target PC (JetsonTX2)</li>
+  <li>usb 케이블(5핀)</li>
+  <li>라우터 환경(TX2 와 Host PC가 같은 네트워크에 있어야 함)</li>
+  <li>모니터 및 HDMI 케이블</li>
+  <li>커피 한잔 및 인내심</li>
+  <li>예상 작업 시간 : 5시간</li>
+</ul>
+
+<h2 id="host-pc에-l4t-및-jatpack-설치">Host PC에 L4T 및 JatPack 설치</h2>
+
+<ol>
+  <li>
+    <p><a href="https://developer.nvidia.com/embedded/linux-tegra">NVIDIA</a> 홈페이지에서 <strong>L4T Driver Package[BSP] , Sample Root Filesystem</strong> 다운로드</p>
+  </li>
+  <li>
+    <p><a href="https://developer.nvidia.com/embedded/jetpack">NVIDIA</a> 홈페이지에서 <strong>SDK Manager</strong> 다운로드(회원가입 필요)</p>
+  </li>
+</ol>
+
+<h2 id="host-pc에-jatpack-진행-과정">Host PC에 JatPack 진행 과정</h2>
+
+<h3 id="step-1-환경-세팅">Step 1: 환경 세팅</h3>
+
+<ol>
+  <li>Host Machine 체크 해제</li>
+  <li>Target Hardware Jetson TX2 선택</li>
+  <li>JetPack 버전 선택</li>
+</ol>
+
+<h3 id="step-2-os-및-sdk-설정">Step 2: OS 및 SDK 설정</h3>
+
+<p>OS 및 라이브러리 선택 후 설치 , 다 선택 하면 아래 항목이 깔리게 된다.</p>
+
+<ul>
+  <li>Jetson OS</li>
+  <li>CUDA</li>
+  <li>cuDNN</li>
+  <li>TensorRT</li>
+  <li>OpenCV</li>
+  <li>VisionWorks</li>
+  <li>NVIDIA Container Runtime</li>
+  <li>Multimedia (GStreamer)</li>
+  <li>DeepStream</li>
+  <li>TensorFlow</li>
+</ul>
+
+<h3 id="step-3-flash-작업">Step 3: Flash 작업</h3>
+
+<p>중간에 설치 하다보면 Flash 작업을 실시 한다는 알람창이 뜬다.
+Manual SetUp으로 바꿔 주고 a~f처럼 진행 해야 한다. 이떄부터 TX2를 micro usb로 Host PC 랑 연결해준다.</p>
+
+<h3 id="step-4-tx2-recovery-mode-진입">Step 4: TX2 Recovery Mode 진입</h3>
+
+<p><strong>TX2 Recovery Mode 진입 과정</strong></p>
+
+<ol>
+  <li>Connect the OTG cable to the USB 2.0 port.</li>
+  <li>Press the reset and recovery buttons at the same time.</li>
+  <li>Press the power switch.</li>
+  <li>Release the reset button.</li>
+  <li>Release the recovery button.</li>
+</ol>
+
+<p><strong>연결 확인 방법</strong></p>
+
+<p>Host PC 에서 터미널을 열고 명령어로 확인한다.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp; lsusb
+Bus 001 Device 001 : ID 0955:7020 NVidia Corp.
+</code></pre></div></div>
+<p>이처럼 NVidia Corp 가 뜨면 연결이 됨</p>
+
+<h3 id="step-5--tx2에-우분투-설치-과정">Step 5 : TX2에 우분투 설치 과정</h3>
+
+<p>TX2에 우분투 설치 과정이 뜬다. 순서 대로 언어,지역,시간 을 설정 해주고 설치 해주면 된다.</p>
+
+<h3 id="step-6--tx2-gdisk-설정">Step 6 : TX2 gdisk 설정</h3>
+
+<p>sda 기준 gdisk 설정</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gdisk /dev/sda
+</code></pre></div></div>
+<p>명령어 확인 목록</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Command (? for help): ?
+b back up GPT data to a file
+c change a partition's name
+d delete a partition
+i show detailed information on a partition
+l list known partition types
+n add a new partition
+o create a new empty GUID partition table (GPT)
+p print the partition table
+q quit without saving changes
+r recovery and transformation options (experts only)
+s sort partitions
+t change a partition's type code
+v verify disk
+w write table to disk and exit
+x extra functionality (experts only)
+? print this menu
+</code></pre></div></div>
+<p>o 선택 해준다.(남아 있는 자료 복구 못합니다.)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This option deletes all partitions and creates a new protective MBR.
+Proceed? (Y/N)
+</code></pre></div></div>
+<p>p 명령어로 확인</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Command (? for help): p
+Disk /dev/sdc: 5860533168 sectors, 2.7 TiB
+Logical sector size: 512 bytes
+Disk identifier (GUID): 360EBE13-9CBA-4F0C-B863-B3872392EC87
+Partition table holds up to 128 entries
+First usable sector is 34, last usable sector is 5860533134
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 5860533101 sectors (2.7 TiB)
+
+Number Start (sector) End (sector) Size Code Name
+</code></pre></div></div>
+<p>n 명령어 입력</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Command (? for help): n
+Partition number (1-128, default 1): (enter)
+First sector (34-5860533134, default = 2048) or {+-}size{KMGTP}: (enter)
+Last sector (2048-5860533134, default = 5860533134) or {+-}size{KMGTP}: (enter)
+Current type is 'Linux filesystem'
+Hex code or GUID (L to show codes, Enter = 8300): (enter)
+Changed type of partition to 'Linux filesystem
+</code></pre></div></div>
+<p>마지막으로 확인</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Command (? for help): p
+Disk /dev/sdc: 5860533168 sectors, 2.7 TiB
+Logical sector size: 512 bytes
+Disk identifier (GUID): 360EBE13-9CBA-4F0C-B863-B3872392EC87
+Partition table holds up to 128 entries
+First usable sector is 34, last usable sector is 5860533134
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 2014 sectors (1007.0 KiB)
+
+Number Start (sector) End (sector) Size Code Nameß
+1 2048 5860533134 2.7 TiB 8300 Linux filesystem
+</code></pre></div></div>
+<p>최종적으로 포맷</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo mkfs.ex4 /dev/sda1
+</code></pre></div></div>
+
+<p>sda에 root 파일 복사</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo cp -ax / &lt;sda1경로&gt; &amp;&amp; sync
+</code></pre></div></div>
+
+<h3 id="warn--ip-id-pw-를-물어보는-알림창-이-뜨면-진행-하지말고-tx2를-sda로-부팅하는-설정-부터-하자-">Warn : IP, ID, PW 를 물어보는 알림창 이 뜨면 진행 하지말고, TX2를 sda로 부팅하는 설정 부터 하자 !</h3>
+
+<h2 id="host-pc에-l4t-진행-과정-및-tx2-sda로-부팅-설정">Host PC에 L4T 진행 과정 및 TX2 sda로 부팅 설정</h2>
+
+<h3 id="step-1-다운로드-파일-압축-해제">Step 1: 다운로드 파일 압축 해제</h3>
+<p>Host PC 에 다운 받은 tar 압축 해제</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo tar xpf ${L4T_RELEASE_PACKAGE 경로}
+$ cd Linux_for_Tegra/rootfs/
+$ sudo tar xpf ../../${SAMPLE_FS_PACKAGE 경로}
+$ cd ..
+$ sudo ./apply_binaries.sh
+</code></pre></div></div>
+<p>TX2 터미널 열고 sda1 PARTUUID 확인</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo blkid /dev/sda1
+/dev/sda1: UUID="93A6-26BA" TYPE="vfat" PARTLABEL="Linux filesystem" PARTUUID="018eff62-2d07-4ca5-8619-c30c18b0a181"
+</code></pre></div></div>
+<p><strong>TX2 Recovery Mode 진입 하면 모니터가 꺼지므로 PARTUUID 를 기록해 두자.</strong></p>
+
+<h3 id="step-2-tx2-recovery-mode-진입">Step 2: TX2 Recovery Mode 진입</h3>
+
+<p><strong>TX2 Recovery Mode 진입 과정</strong></p>
+
+<ol>
+  <li>Connect the OTG cable to the USB 2.0 port.</li>
+  <li>Press the reset and recovery buttons at the same time.</li>
+  <li>Press the power switch.</li>
+  <li>Release the reset button.</li>
+  <li>Release the recovery button.</li>
+</ol>
+
+<p><strong>연결 확인 방법</strong></p>
+
+<p>Host PC 에서 터미널을 열고 명령어로 확인한다.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp; lsusb
+Bus 001 Device 001 : ID 0955:7020 NVidia Corp.
+</code></pre></div></div>
+<p>이처럼 NVidia Corp 가 뜨면 연결이 됨</p>
+
+<h3 id="step-3-image-파일-sda1에-flash">Step 3: image 파일 sda1에 Flash</h3>
+<p>Host PC 터미널 열고</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># cd ${L4T_RELEASE_PACKAGE 경로}
+$ echo '${적어둔 PARTUUID}' &gt; bootloader/l4t-rootfs-uuid.txt
+$ cd ..
+$ sudo ./flash.sh jetson-tx2 sda1
+</code></pre></div></div>
+
+<h3 id="step-4-ssh로-파일-전송-host-to-tx2">Step 4: SSH로 파일 전송 (Host to TX2)</h3>
+
+<p>잠시 중단 했던 SDK Manager 알림창에 TX2의 IP,ID,PW 
+다 적고 install 버튼을 눌리면 전송 과정에 들어가니깐 SDK Manager 가 Finish 버튼이 나올 때 까지 기다린다.</p>
+
+<p>설치가 완료 되면 잘 설치 되었는지 보기 위해서 TX2 보드에 터미널창 열고 명령어를 친다</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nvcc --version
+</code></pre></div></div>
+<p>CUDA 버전 나오면 성공 ~~</p>
+
+<p>마지막으로 업데이트 진행</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt update &amp;&amp; sudo apt upgrade -y
+</code></pre></div></div>
+:ET

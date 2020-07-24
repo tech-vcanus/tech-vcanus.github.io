@@ -99,6 +99,7 @@
 
 <!-- end custom head snippets -->
 
+    
   </head>
 
   <body class="layout--single">
@@ -128,6 +129,8 @@
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/tags/" >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -272,6 +275,42 @@
 
       <section class="page__content" itemprop="text">
         
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#install-graphic-driver">Install Graphic driver</a>
+    <ul>
+      <li><a href="#install-nvidia-driver-on-centos">Install Nvidia driver on CentOS</a></li>
+      <li><a href="#install-nvidia-driver-ubuntu-1804v2">Install Nvidia driver (Ubuntu 18.04v2)</a></li>
+    </ul>
+  </li>
+  <li><a href="#install-machine-learning-environment">Install Machine Learning Environment</a>
+    <ul>
+      <li><a href="#install-cuda-driver">Install cuda driver</a></li>
+      <li><a href="#install-cudnn">Install cuDNN</a></li>
+    </ul>
+  </li>
+  <li><a href="#update-repository">Update Repository</a></li>
+  <li><a href="#install-cmake">Install Cmake</a></li>
+  <li><a href="#install-javaopenjdk-and-modify-environment">Install Java(openjdk), and modify environment</a></li>
+  <li><a href="#install-maven">Install Maven</a></li>
+  <li><a href="#install-ant">Install Ant</a></li>
+  <li><a href="#update-source">Update Source</a></li>
+  <li><a href="#install-environmentpython-other-libraries-to-install-opencv">Install Environment(Python, other libraries) to install opencv</a></li>
+  <li><a href="#install-virtual-envirionment">Install Virtual Envirionment</a>
+    <ul>
+      <li><a href="#install-virtualenv-and-set-environment">install virtualenv and set environment</a></li>
+      <li><a href="#run-virtualenv">run virtualenv</a></li>
+    </ul>
+  </li>
+  <li><a href="#install-opencv">Install OpenCV</a></li>
+  <li><a href="#how-to-fix-locale-error">How to fix locale error</a></li>
+  <li><a href="#install-boost-and-thrift">Install Boost and Thrift</a></li>
+</ul>
+            </nav>
+          </aside>
+        
         <p>Written by SGLee, VCANUS</p>
 
 <h1 id="install-graphic-driver">Install Graphic driver</h1>
@@ -341,8 +380,8 @@ $ sudo sh cuda_10.1.243_418.87.00_linux.run
  export PATH=$CUDA_HOME/bin:$PATH
 </code></pre></div>    </div>
   </li>
-  <li>update .bashrc
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $source ~/.bashrc
+  <li>update .bash_profile (Ubuntu, .profile)
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $source ~/.bash_profile
 </code></pre></div>    </div>
     <h2 id="install-cudnn">Install cuDNN</h2>
     <ul>
@@ -364,7 +403,7 @@ $ sudo sh cuda_10.1.243_418.87.00_linux.run
 </code></pre></div>    </div>
   </li>
   <li>install ius repository
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum -y install https://centos8.iuscommunity.org/ius-release.rpm
 </code></pre></div>    </div>
   </li>
   <li>update yum again
@@ -372,7 +411,7 @@ $ sudo sh cuda_10.1.243_418.87.00_linux.run
 </code></pre></div>    </div>
   </li>
   <li>install default environment
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum groupinstall "Development Tools" "Development Libraries"
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum groupinstall "Development Tools"
 </code></pre></div>    </div>
     <p>For Ubuntu,</p>
     <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo apt install build-essential
@@ -480,6 +519,7 @@ https://github.com/opencv/opencv_contrib/issues/1131 (check skvark’s comment a
   </li>
   <li>install python36 and tools
     <ul>
+      <li>CentOS8: python3 is default</li>
       <li>CentOS7: python36u, Ubutu18.04: python3
         <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo yum -y install python36
  $ sudo yum -y install python36-devel
@@ -596,9 +636,9 @@ LANGUAGE="en_US.UTF-8"
   </li>
   <li>install boost
     <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ cd boost_1_6xx
- $ sudo ./bootstrap.sh
+ $ sudo ./bootstrap.sh --prefix=/opt/boost install (building the unit test framework and install boost at $boost_installation_prefix)
+ $ sudo ./b2 
  $ sudo ./b2 install
- $ sudo ./b2 --with-test --prefix=/opt/boost install (building the unit test framework and install boost at $boost_installation_prefix)
 </code></pre></div>    </div>
   </li>
   <li>install thrift
@@ -729,7 +769,7 @@ LANGUAGE="en_US.UTF-8"
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/gstreamer-in-c-code/" rel="permalink">Basic GStreamer Guide in C
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
 </a>
       
     </h2>
@@ -739,11 +779,11 @@ LANGUAGE="en_US.UTF-8"
 
 
 
-  4 minute read
+  2 minute read
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
     
     <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
 </p>
@@ -760,7 +800,7 @@ LANGUAGE="en_US.UTF-8"
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/cmake-guide/" rel="permalink">CMake Guide
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
 </a>
       
     </h2>
@@ -774,9 +814,9 @@ LANGUAGE="en_US.UTF-8"
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
 </p>
   </article>
 </div>
@@ -791,7 +831,7 @@ LANGUAGE="en_US.UTF-8"
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/http-live-streaming/" rel="permalink">HTTP Live Streaming (HLS)
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
 </a>
       
     </h2>
@@ -805,9 +845,9 @@ LANGUAGE="en_US.UTF-8"
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
 </p>
   </article>
 </div>
@@ -822,7 +862,7 @@ LANGUAGE="en_US.UTF-8"
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/apache-kafka-basic/" rel="permalink">Apache Kafka Basic
+        <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" rel="permalink">JetsonTX2 SSD , Jetpack install
 </a>
       
     </h2>
@@ -832,13 +872,13 @@ LANGUAGE="en_US.UTF-8"
 
 
 
-  3 minute read
+  4 minute read
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 05 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
 </p>
   </article>
 </div>
@@ -898,6 +938,25 @@ LANGUAGE="en_US.UTF-8"
 
 
 
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/development/devenv/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/development/devenv"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tech-vcanus.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
 
 
 

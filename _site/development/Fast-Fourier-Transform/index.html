@@ -1,0 +1,797 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Fast Fourier Transform - VCANUS’s Technical Blog</title>
+<meta name="description" content="Written By Park SunHong, VCANUS">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="VCANUS's Technical Blog">
+<meta property="og:title" content="Fast Fourier Transform">
+<meta property="og:url" content="http://localhost:4000/development/Fast-Fourier-Transform/">
+
+
+  <meta property="og:description" content="Written By Park SunHong, VCANUS">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-03-25T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/development/Fast-Fourier-Transform/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="VCANUS's Technical Blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+    
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          VCANUS's Technical Blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Fast Fourier Transform">
+    <meta itemprop="description" content="Written By Park SunHong, VCANUS">
+    <meta itemprop="datePublished" content="March 25, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Fast Fourier Transform
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#차례">차례</a></li>
+  <li><a href="#1-이론적-배경">1. 이론적 배경</a>
+    <ul>
+      <li><a href="#1-1-fourier-transform의-개념">1-1. Fourier Transform의 개념</a></li>
+      <li><a href="#1-2-dft란">1-2. DFT란?</a></li>
+      <li><a href="#1-3-fft란">1-3. FFT란?</a></li>
+    </ul>
+  </li>
+  <li><a href="#2-파이썬으로-fft-수행하기">2. 파이썬으로 FFT 수행하기</a>
+    <ul>
+      <li><a href="#2-1-사용할-패키지-소개">2-1. 사용할 패키지 소개</a></li>
+      <li><a href="#2-2-numpyfftfft-함수">2-2. numpy.fft.fft 함수</a></li>
+      <li><a href="#2-3-예제-코드-및-설명">2-3. 예제 코드 및 설명</a></li>
+    </ul>
+  </li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>Written By Park SunHong, VCANUS</p>
+
+<h2 id="차례">차례</h2>
+<ol>
+  <li>
+    <p>이론적 배경 <br />
+ 1-1. Fourier Transform의 개념 <br />
+ 1-2. DFT란?<br />
+ 1-3. FFT란?</p>
+  </li>
+  <li>
+    <p>파이썬으로 FFT 수행하기 <br />
+ 2-1. 사용할 패키지 소개 <br />
+ 2-2. numpy.fft.fft 함수 <br />
+ 2-3. 예제 코드 및 설명</p>
+  </li>
+</ol>
+
+<h2 id="1-이론적-배경"><strong>1. 이론적 배경</strong></h2>
+<h3 id="1-1-fourier-transform의-개념"><strong>1-1. Fourier Transform의 개념</strong></h3>
+<p><img src="https://user-images.githubusercontent.com/58065100/77515440-e2b9f980-6ebb-11ea-9d51-de281b91c57e.png" alt="fftconcept" /></p>
+
+<script type="math/tex; mode=display">X(w)=\int_{-\infty}^{\infty}x(t)e^{-jwt}dt</script>
+
+<ol>
+  <li>Time domain의 신호를 frequency domain으로 변환</li>
+  <li>신호의 주파수 성분을 분석할 때 이용</li>
+  <li>Exponential 성분은 vector space의 basis vector로, 각각 특정 주파수를 대변</li>
+  <li>원신호와 주파수 basis의 inner product 결과물로서, 어떤 주파수가 얼마나 기여하고 있는지 의미</li>
+</ol>
+
+<h3 id="1-2-dft란"><strong>1-2. DFT란?</strong></h3>
+
+<script type="math/tex; mode=display">X(k)=\sum_{n=0}^{N-1}x[n]e^{-j2\pi k{n \over N}}
+  (N : 샘플 개수)</script>
+
+<ol>
+  <li>이산 신호의 푸리에 변환</li>
+  <li>디지털 시스템에서는 배열을 활용</li>
+  <li>Fourier Transform에서의 f가 n/N에, t가 n에 대응</li>
+  <li>$O(n^2)$ : 연산량이 많음 -&gt; 컴퓨터에서의 처리속도 느림</li>
+</ol>
+
+<h3 id="1-3-fft란"><strong>1-3. FFT란?</strong></h3>
+
+<ol>
+  <li>DFT의 연산 속도를 높이는 알고리즘</li>
+  <li>Cooley-Tukey 알고리즘을 가장 많이 이용</li>
+  <li>$O(n^2)$ 의 연산량을 O(nlogn)으로 줄여줌</li>
+  <li>DFT의 부분유사성 이용.
+    <ul>
+      <li>N-DFT를 a(=짝수 N/2-DFT)와 b(=홀수 N/2-DFT)로 나눔.</li>
+      <li>N-DFT의 앞 절반값은 a+b, 뒤 절반값은 a-b</li>
+    </ul>
+  </li>
+  <li>재귀적으로 연산 가능</li>
+  <li>샘플 수(N)가 $2^n$ 꼴이어야 사용 가능</li>
+</ol>
+
+<h2 id="2-파이썬으로-fft-수행하기"><strong>2. 파이썬으로 FFT 수행하기</strong></h2>
+<h3 id="2-1-사용할-패키지-소개"><strong>2-1. 사용할 패키지 소개</strong></h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="err">$</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+<ol>
+  <li>numpy : 수학 및 과학 연산을 위한 패키지.</li>
+  <li>matplotlib.pyplot : 그래프 그릴 때 이용.</li>
+</ol>
+
+<h3 id="2-2-numpyfftfft-함수"><strong>2-2. numpy.fft.fft 함수</strong></h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numpy</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="err"> </span><span class="n">n</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="err"> </span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="err"> </span><span class="n">norm</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div>
+<ol>
+  <li>Parameters
+    <ul>
+      <li>a (array_like) : input 배열. Complex 원소도 가능.</li>
+      <li>n (optional, int) : output의 길이. Input 길이보다 작으면 input이 crop되고, input 길이보다 크면 input이 zero padding 된다.</li>
+      <li>axis (optional, int) : FFT를 수행할 axis. 미입력시 마지막 axis가 이용됨.</li>
+      <li>norm (optional, {None, “ortho”}) : normalize 여부. 기본은 None.</li>
+    </ul>
+  </li>
+  <li>Returns : input array의 DFT 연산 결과물인 Complex 원소를 가진 배열이 반환됨.</li>
+</ol>
+
+<h3 id="2-3-예제-코드-및-설명"><strong>2-3. 예제 코드 및 설명</strong></h3>
+
+<p>이 예제에서는 세 종류의 sinusoid 파를 임의로 설정해 이 세 파동을 합치고, fft 함수를 이용해 주파수별 진폭을 추출한 후 그래프로 그려 볼 것이다.</p>
+
+<p><strong>1. 필요한 라이브러리들을 import하고, FFT 분석을 위한 합성 신호를 생성</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>  	<span class="c1"># plot을 그려주는 라이브러리 import 
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>  	<span class="c1"># 수학 및 과학 연산을 위한 라이브러리 import
+</span>
+<span class="n">freq_sampling1</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">amplitude1</span> <span class="o">=</span> <span class="mi">5</span> 	<span class="c1"># 첫 번째 신호 : 주파수 10, 진폭 5
+</span><span class="n">freq_sampling2</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">amplitude2</span> <span class="o">=</span> <span class="mi">4</span> 	<span class="c1"># 두 번째 신호 : 주파수 20, 진폭 4
+</span><span class="n">freq_sampling3</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">amplitude3</span> <span class="o">=</span> <span class="mi">2</span> 	<span class="c1"># 세 번째 신호 : 주파수 30, 진폭 2
+</span><span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>     <span class="c1"># time 축 배열 생성. 0~6초 사이에 500개의 sample을 딴다는 의미.
+</span><span class="n">y</span> <span class="o">=</span> <span class="n">amplitude1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">freq_sampling1</span><span class="o">*</span><span class="n">time</span><span class="p">)</span> <span class="o">+</span>
+<span class="n">amplitude2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">freq_sampling2</span><span class="o">*</span><span class="n">time</span><span class="p">)</span> <span class="o">+</span>
+<span class="n">amplitude3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">freq_sampling3</span><span class="o">*</span><span class="n">time</span><span class="p">)</span>     <span class="c1"># 위에서 만든 세 개의 신호를 합성해 y축 배열 생성.
+</span></code></pre></div></div>
+<ul>
+  <li>linspace(start, end, num) : 첫 번째 원소가 start, 마지막 원소가 end, length가 num인, 등차수열 배열을 만들어주는 함수</li>
+</ul>
+
+<p><strong>2. 생성한 합성 신호를 그래프로 그려보기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>      <span class="c1"># 그래프 크기 설정
+</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'g'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>      <span class="c1"># matplotlib.plot(x축 배열, y축 배열, 선 색깔, 선 굵기)
+</span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>      <span class="c1"># matplotlib. xlim(x축 시작점, x축 끝점)
+</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>      <span class="c1"># matplotlib.show() : 그래프 표시
+</span>
+</code></pre></div></div>
+<p><img src="https://user-images.githubusercontent.com/58065100/77515495-f49b9c80-6ebb-11ea-938f-c755661bed9b.png" alt="signal-graph" /></p>
+
+<p><strong>3. fft 함수 적용하고 후처리하기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">yf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>     <span class="c1"># numpy.fft.fft(input 배열, output 길이) 
+</span><span class="n">amp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">yf</span><span class="p">)</span>     <span class="c1"># output 배열의 각각의 원소의 크기 배열 생성
+</span><span class="n">freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">500</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">size</span><span class="o">//</span><span class="mi">2</span><span class="p">))</span>     <span class="c1"># fft 그래프의 x축 배열 생성
+</span></code></pre></div></div>
+<ol>
+  <li>fft는 complex 배열을 반환하지만, 그래프 y축은 amplitude이므로 실숫값.
+    <ul>
+      <li>complex의 크기를 구하는 abs 함수를 써 크기를 원소로 갖는 배열 생성 후 y축 배열로 설정.</li>
+    </ul>
+  </li>
+  <li>fft 함수 적용 후 반환된 배열의 domain은 frequency.
+    <ul>
+      <li>0부터 sampling frequency인 500/6 까지 x축에 해당.</li>
+      <li>그런데, DFT 식의 특성상 sampling 표본의 처음부터 절반까지만 유효.</li>
+      <li>절반부터 끝까지는 앞 절반의 대칭인 쓰레기 값.</li>
+      <li>그러므로, frequency 배열을 반으로 잘라야 한다.</li>
+      <li>즉, fft 적용 후 frequency domain의 범위는 (0, fs/2)가 된다.</li>
+      <li>fft 결과 주파수 A까지의 결과를 보고 싶다면 sampling frequency는 2A 이상이어야 함.</li>
+    </ul>
+  </li>
+</ol>
+
+<p><strong>4. fft 적용 결과를 그래프로 그려보기</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>    <span class="c1"># 그래프 크기 설정
+</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">amp</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">*</span><span class="n">amp</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">amp</span><span class="o">.</span><span class="n">size</span><span class="o">//</span><span class="mi">2</span><span class="p">])</span>    <span class="c1"># matplotlib.plot(x축 배열, y축 배열)
+</span></code></pre></div></div>
+
+<ul>
+  <li>(2/amp.size)*amp[0:amp.size//2]에 대해 :
+    <ol>
+      <li>((진폭값)*2)/(배열의 크기) 를 amp 배열의 앞 절반 각각의 원소에 적용.</li>
+      <li>frequency 배열을 절반 잘랐으므로 amp 배열도 앞 절반만 이용하게 된다.</li>
+      <li>표본의 크기가 커지면 복수 주기의 값이 여러 번 쌓이므로 진폭의 상대적 비율은 유지되지만 진폭의 절대적 크기가 커짐.</li>
+      <li>따라서 진폭의 크기를 표준화 해주어야 하므로 배열 크기로 나눔.</li>
+      <li>amp 배열을 절반만 이용하는데 배열 크기로 나누어줬으므로 2를 곱해준다.</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>       <span class="c1"># matplotlib.show() : 그래프 표시
+</span></code></pre></div></div>
+<p><img src="https://user-images.githubusercontent.com/58065100/77515530-05e4a900-6ebc-11ea-9035-54495493c96c.png" alt="fft-graph" /></p>
+
+<p>fft 결과 그래프.</p>
+
+<p>주파수 10, 진폭 5.     <br />
+주파수 20, 진폭 4.     <br />
+주파수 30, 진폭 2.</p>
+
+<p>인 신호가 섞여 있음을 나타낸다.</p>
+
+<p><strong>5. 표본 숫자에 따른 fft 적용 결과 비교</strong> <br />
+<img src="https://user-images.githubusercontent.com/58065100/77515530-05e4a900-6ebc-11ea-9035-54495493c96c.png" alt="fft-graph" /> <br />
+N = 500</p>
+
+<p><img src="https://user-images.githubusercontent.com/58065100/77515551-1006a780-6ebc-11ea-85a1-7d7df62e3968.png" alt="fft-graph" /> <br />
+N = 5000</p>
+
+<p>Sampling frequency가 높을수록 결과가 정확해진다.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#fft" class="page__taxonomy-item" rel="tag">FFT</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#development" class="page__taxonomy-item" rel="tag">development</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-03-25T00:00:00+09:00">March 25, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Fast+Fourier+Transform%20http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FFast-Fourier-Transform%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FFast-Fourier-Transform%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fdevelopment%2FFast-Fourier-Transform%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/development/cmake-guide/" class="pagination--pager" title="CMake Guide
+">Previous</a>
+    
+    
+      <a href="/development/gstreamer-in-c-code/" class="pagination--pager" title="GStreamer in C code
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" rel="permalink">JetsonTX2 SSD , Jetpack install
+</a>
+      
+    </h2>
+    <!-- 
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+     -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 VCANUS's Technical Blog. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/development/Fast-Fourier-Transform/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/development/Fast-Fourier-Transform"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tech-vcanus.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

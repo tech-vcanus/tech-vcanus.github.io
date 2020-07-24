@@ -1,0 +1,159 @@
+I"�<p>Written By <a href="https://github.com/jjangchan">KJ Jang</a>, VCANUS</p>
+
+<p><code class="highlighter-rouge">Nats</code> 서버는 심플하고 안전한 고성능 오픈소스 메세징 시스템이다. 기본적으로 높은 성능과 확장성, 간단한 사용성을 고려하여 설계되었다.</p>
+
+<h2 id="server-installation">Server Installation</h2>
+<p><em>Ubuntu18.04 기준</em></p>
+
+<p><a href="https://nats.io/download/">download reference</a></p>
+
+<h3 id="shell-server">Shell server</h3>
+
+<h4 id="nats-server">Nats Server</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get update
+$ sudo apt-get -y upgrade
+$ sudo wget https://github.com/nats-io/nats-server/releases/download/v2.1.4/nats-server-v2.1.4-linux-amd64.zip
+$ unzip nats-server-v2.1.4-linux-amd64.zip
+$ sudo cp nats-server-v2.1.4-linux-amd64/nats-server /usr/bin
+</code></pre></div></div>
+
+<h4 id="nats-streaming-server">Nats Streaming Server</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get update
+$ sudo apt-get -y upgrade
+$ sudo wget https://github.com/nats-io/nats-streaming-server/releases/download/v0.17.0/nats-streaming-server-v0.17.0-linux-amd64.zip
+$ unzip nats-streaming-server-v0.17.0-linux-amd64.zip
+$ sudo cp nats-streaming-server-v0.17.0-linux-amd64/nats-streaming-server /usr/bin
+</code></pre></div></div>
+
+<h3 id="docker">docker</h3>
+
+<p>Nats port :</p>
+<ul>
+  <li>4222 is for clients.</li>
+  <li>8222 is an HTTP management port for information reporting.</li>
+  <li>6222 is a routing port for clustering.</li>
+</ul>
+
+<h4 id="docker-install-and-run">docker Install and run</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo docker pull nats
+$ sudo docker run nats -p 4222:4222
+</code></pre></div></div>
+
+<h4 id="docker-nats-swarm-install">docker Nats swarm install</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node1 : sudo docker swarm init
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-3cn52uehfphwp2fe6wxijkd91st7ucgtrzzfanx4flwqurf2vy-1evrmzm310mxliwx02ykunmnp host(node1):2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+nood2 : sudo docker swarm join --token SWMTKN-1-3cn52uehfphwp2fe6wxijkd91st7ucgtrzzfanx4flwqurf2vy-1evrmzm310mxliwx02ykunmnp host(node1):2377
+node3 : sudo docker swarm join --token SWMTKN-1-3cn52uehfphwp2fe6wxijkd91st7ucgtrzzfanx4flwqurf2vy-1evrmzm310mxliwx02ykunmnp host(node1):2377
+node1 : sudo docker network create --driver overlay nats-cluster-example
+node1 : sudo docker service create --network nats-cluster-example --name nats-cluster-node-1 -p 4222:4222 -p 8222:8222 nats:1.0.0 -cluster nats://0.0.0.0:6222 -DV
+</code></pre></div></div>
+
+<h4 id="docker-nats-network-host-cluster">docker Nats Network host Cluster</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(node1) sudo docker run --name nats-node-1 --net host nats
+(node2) sudo docker run --name nats-node-2 --net host --cluster nats://0.0.0.0:6222  --routes=nats://ruser:T0pS3cr3t@(node1 ip):6222
+(node3) sudo docker run --name nats-node-2 --net host --cluster nats://0.0.0.0:6222  --routes=nats://ruser:T0pS3cr3t@(node1 ip):6222
+
+##cluster 확인
+(node1) crul http://127.0.0.1:8222/routez
+</code></pre></div></div>
+
+<h2 id="client-installation">Client Installation</h2>
+<h3 id="linux">Linux</h3>
+<h4 id="1-install-protobuf-and-protobuf-c">1. install protobuf and protobuf-c</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum install -y protobuf protobuf-c
+</code></pre></div></div>
+<h4 id="2-install-protobuf">2. install protobuf</h4>
+<p>reference: https://github.com/protocolbuffers/protobuf/tree/master/src</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/protocolbuffers/protobuf.git
+$ cd protobuf
+$ git submodule update --init --recursive
+$ ./autogen.sh
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./configure
+$ make
+$ make check
+$ sudo make install
+$ sudo ldconfig # refresh shared library cache.
+</code></pre></div></div>
+<h4 id="3-install-protobuf-c">3. install protobuf-c</h4>
+<p>update ~/.bash_profile for protobuf configuration</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+</code></pre></div></div>
+<p>reference: https://github.com/protobuf-c/protobuf-c</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/protobuf-c/protobuf-c.git
+$ cd protobuf-c
+$ ./autogen.sh &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make install
+</code></pre></div></div>
+<h4 id="option-install-protobuf-c">(option) install protobuf-c</h4>
+<p>reference: http://google.github.io/proto-lens/installing-protoc.html</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ PROTOC_ZIP=protoc-3.7.1-linux-x86_64.zip
+$ curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/$PROTOC_ZIP
+$ sudo unzip -o $PROTOC_ZIP -d /usr/local bin/protoc
+$ sudo unzip -o $PROTOC_ZIP -d /usr/local 'include/*'
+$ rm -f $PROTOC_ZIP
+</code></pre></div></div>
+<h4 id="4-install-openssl-and-openssl-devel">4. install openssl and openssl-devel</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum install -y openssl openssl-devel
+</code></pre></div></div>
+<h4 id="5-install-nats-client-c-version">5. install nats client (C version)</h4>
+<p>reference: https://nats.io/download/nats-io/nats.c/</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/nats-io/nats.c.git
+$ cd nats.c
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ sudo make install
+</code></pre></div></div>
+
+<h3 id="mac">Mac</h3>
+<ol>
+  <li>install protobuf protobuf-c
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo brew install protobuf protobuf-c
+</code></pre></div>    </div>
+  </li>
+  <li>install openssl and openssl-devel
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo brew install openssl openssl-devel
+</code></pre></div>    </div>
+  </li>
+  <li>add environment variable “OPENSSL_HOME” to .bash_profile
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OPENSSL_HOME=/usr/local/opt/openssl@1.1
+export PATH=$OPENSSL_HOME/bin:$PATH
+</code></pre></div>    </div>
+  </li>
+  <li>install nats clienht (C version)
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/nats-io/nats.c.git
+$ cd nats.c
+$ mkdir build
+$ cd build
+$ cmake 
+$ make
+$ sudo make install
+</code></pre></div>    </div>
+    <h3 id="windows">Windows</h3>
+  </li>
+  <li>protobuf (for streaming) install</li>
+  <li>openssl <a href="https://www.openssl.org/">install</a></li>
+  <li>cmake <a href="https://cmake.org/">install</a></li>
+  <li>nats c client <a href="https://github.com/nats-io/nats.c.git">install</a></li>
+  <li>build
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//해당 소스 디렉터리에 build 폴더 생성 ex) nats_build
+cd nats_build
+cmake .. -DNATS_BUILD_STREAMING=OFF (nats Streaming API 빌드 하지 않음)
+</code></pre></div>    </div>
+  </li>
+  <li>result</li>
+</ol>
+
+<ul>
+  <li>솔루션 파일 생성됨</li>
+  <li>visual studio 에서 솔루션 All build</li>
+  <li>example 디렉토리에 lib , dll 파일 생성됨</li>
+</ul>
+
+:ET

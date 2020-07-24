@@ -5,6 +5,7 @@ categories: development
 tags: C++ C# Marshalling DLL
 toc: true
 toc_sticky: true
+comments: true
 ---
 
 Written By [Nuri Na](https://github.com/nurring), VCANUS

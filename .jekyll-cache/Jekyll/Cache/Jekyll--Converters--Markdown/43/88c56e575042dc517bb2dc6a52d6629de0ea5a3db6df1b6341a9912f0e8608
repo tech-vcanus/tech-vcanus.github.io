@@ -1,0 +1,10 @@
+I"9<ul class="toc__menu">
+  <li><a href="#install-centos-8">Install CentOS 8</a>
+    <ul>
+      <li><a href="#make-install-usb">Make install USB</a></li>
+      <li><a href="#install-os">Install OS</a></li>
+    </ul>
+  </li>
+  <li><a href="#install-nvidia-graphic-driver">Install Nvidia Graphic driver</a></li>
+</ul>
+:ET

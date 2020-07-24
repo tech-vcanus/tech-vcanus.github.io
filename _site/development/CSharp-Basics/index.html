@@ -99,6 +99,7 @@
 
 <!-- end custom head snippets -->
 
+    
   </head>
 
   <body class="layout--single">
@@ -128,6 +129,8 @@
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/tags/" >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -271,6 +274,82 @@
       
 
       <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#기초">기초</a>
+    <ul>
+      <li><a href="#datatype">DataType</a></li>
+      <li><a href="#naming-규칙">Naming 규칙</a></li>
+      <li><a href="#getter와-setter">Getter와 Setter</a></li>
+      <li><a href="#java와의-차이">JAVA와의 차이</a>
+        <ul>
+          <li><a href="#var-변수">var 변수</a>
+            <ul>
+              <li><a href="#var-제약조건">var 제약조건</a></li>
+            </ul>
+          </li>
+          <li><a href="#ref-out-파라미터">ref, out 파라미터</a>
+            <ul>
+              <li><a href="#출력전용-out-파라미터">출력전용 out 파라미터</a></li>
+              <li><a href="#참조변수-ref">참조변수 ref</a></li>
+              <li><a href="#out과-ref의-차이점">out과 ref의 차이점</a></li>
+            </ul>
+          </li>
+          <li><a href="#대리자delegate">대리자(Delegate)</a></li>
+          <li><a href="#using을-이용한-메모리-관리">using을 이용한 메모리 관리</a></li>
+          <li><a href="#nullable">Nullable</a></li>
+        </ul>
+      </li>
+      <li><a href="#입출력">입출력</a>
+        <ul>
+          <li><a href="#콘솔창-windows-form-wpf-출력">콘솔창, Windows Form, WPF 출력</a>
+            <ul>
+              <li><a href="#콘솔창-출력">콘솔창 출력</a></li>
+              <li><a href="#windows-form-wpf-메세지-출력">Windows Form, WPF 메세지 출력</a></li>
+            </ul>
+          </li>
+          <li><a href="#파일-쓰기-및-읽기">파일 쓰기 및 읽기</a>
+            <ul>
+              <li><a href="#디렉토리의-유무에-따른-쓰기">디렉토리의 유무에 따른 쓰기</a></li>
+              <li><a href="#디렉토리의-유무에-따른-읽기">디렉토리의 유무에 따른 읽기</a></li>
+            </ul>
+          </li>
+          <li><a href="#textbox에-숫자만-입력">TextBox에 숫자만 입력</a>
+            <ul>
+              <li><a href="#keypress-이벤트를-이용한-방법">KeyPress 이벤트를 이용한 방법</a></li>
+              <li><a href="#keydown-이벤트를-이용한-방법">KeyDown 이벤트를 이용한 방법</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#json-파싱">JSON 파싱</a>
+        <ul>
+          <li><a href="#설치-방법">설치 방법</a></li>
+          <li><a href="#사용-방법">사용 방법</a>
+            <ul>
+              <li><a href="#to-json--jobject-jarray-동일">To JSON : JObject, JArray 동일</a></li>
+              <li><a href="#from-json">From Json</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#windows-form">Windows Form</a>
+        <ul>
+          <li><a href="#datagridview">DataGridView</a>
+            <ul>
+              <li><a href="#databinding">DataBinding</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+            </nav>
+          </aside>
         
         <p>Written By Young-rae Shin(<a href="https://github.com/lived1024">https://github.com/lived1024</a>)</p>
 
@@ -828,7 +907,7 @@ String device = 데이터그리드뷰.Rows[rownum].Cells[0].FormattedValue.ToStr
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/gstreamer-in-c-code/" rel="permalink">Basic GStreamer Guide in C
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
 </a>
       
     </h2>
@@ -838,11 +917,11 @@ String device = 데이터그리드뷰.Rows[rownum].Cells[0].FormattedValue.ToStr
 
 
 
-  4 minute read
+  2 minute read
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
     
     <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
 </p>
@@ -859,7 +938,7 @@ String device = 데이터그리드뷰.Rows[rownum].Cells[0].FormattedValue.ToStr
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/cmake-guide/" rel="permalink">CMake Guide
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
 </a>
       
     </h2>
@@ -873,9 +952,9 @@ String device = 데이터그리드뷰.Rows[rownum].Cells[0].FormattedValue.ToStr
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
 </p>
   </article>
 </div>
@@ -890,7 +969,7 @@ String device = 데이터그리드뷰.Rows[rownum].Cells[0].FormattedValue.ToStr
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/http-live-streaming/" rel="permalink">HTTP Live Streaming (HLS)
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
 </a>
       
     </h2>
@@ -904,9 +983,9 @@ String device = 데이터그리드뷰.Rows[rownum].Cells[0].FormattedValue.ToStr
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
 </p>
   </article>
 </div>
@@ -921,7 +1000,7 @@ String device = 데이터그리드뷰.Rows[rownum].Cells[0].FormattedValue.ToStr
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/apache-kafka-basic/" rel="permalink">Apache Kafka Basic
+        <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" rel="permalink">JetsonTX2 SSD , Jetpack install
 </a>
       
     </h2>
@@ -931,13 +1010,13 @@ String device = 데이터그리드뷰.Rows[rownum].Cells[0].FormattedValue.ToStr
 
 
 
-  3 minute read
+  4 minute read
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 05 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
 </p>
   </article>
 </div>
@@ -997,6 +1076,25 @@ String device = 데이터그리드뷰.Rows[rownum].Cells[0].FormattedValue.ToStr
 
 
 
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/development/CSharp-Basics/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/development/CSharp-Basics"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tech-vcanus.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
 
 
 

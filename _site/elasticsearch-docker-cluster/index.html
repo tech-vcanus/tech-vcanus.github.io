@@ -99,6 +99,7 @@
 
 <!-- end custom head snippets -->
 
+    
   </head>
 
   <body class="layout--single">
@@ -128,6 +129,8 @@
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/tags/" >Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -264,13 +267,37 @@
 
 
 
-  1 minute read
+  2 minute read
 </p>
           
         </header>
       
 
       <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#elasticsearch-cluster-on-docker-compose">Elasticsearch cluster on Docker Compose</a></li>
+  <li><a href="#docker-compose">docker-compose</a>
+    <ul>
+      <li><a href="#create-docker-composeyml">create docker-compose.yml</a></li>
+      <li><a href="#write-docker-compose">write docker-compose</a>
+        <ul>
+          <li><a href="#breaking-changes-in-70-that-makes-elaticsearch-cluster-in-docker">Breaking changes in 7.0 that makes elaticsearch cluster in docker</a></li>
+          <li><a href="#fill-the-docker-composeyml-with-under-contents">Fill the docker-compose.yml with under contents</a></li>
+        </ul>
+      </li>
+      <li><a href="#fill-the-env-with-environment-info">Fill the .env with environment info</a></li>
+      <li><a href="#make-folder-for-docker-volumefor-permission">make folder for docker volume(for permission)</a></li>
+      <li><a href="#run-docker-compose">run docker-compose</a></li>
+      <li><a href="#stop-docker-compose">stop docker-compose</a></li>
+    </ul>
+  </li>
+</ul>
+            </nav>
+          </aside>
         
         <h1 id="elasticsearch-cluster-on-docker-compose">Elasticsearch cluster on Docker Compose</h1>
 
@@ -293,8 +320,22 @@
 <h3 id="fill-the-docker-composeyml-with-under-contents">Fill the docker-compose.yml with under contents</h3>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>version: '3.7'
 services:
+  create_certs:
+    container_name: create_certs
+    image: docker.elastic.co/elasticsearch/elasticsearch:$STACK_VERSION
+    command: &gt;
+      bash -c '
+        if [[ ! -f ./config/certificates/elastic-certificates.p12 ]]; then
+          bin/elasticsearch-certutil cert -out config/certificates/elastic-certificates.p12 -pass ""
+        fi;
+        chown -R 1000:0 /usr/share/elasticsearch/config/certificates
+      '
+    user: "0"
+    working_dir: /usr/share/elasticsearch
+    volumes:
+      - ./elasticsearch/cert:/usr/share/elasticsearch/config/certificates
   esmaster: # Master (NO data)
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:$STACK_VERSION
     container_name: esmaster
     restart: always
     environment:
@@ -310,6 +351,12 @@ services:
       - cluster.initial_master_nodes=esmaster
       - xpack.monitoring.enabled=true
       - xpack.monitoring.collection.enabled=true
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.keystore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
+      - xpack.security.transport.ssl.truststore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
+      - ELASTIC_PASSWORD=$ES_PASS
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     ulimits:
       memlock:
@@ -318,14 +365,13 @@ services:
     volumes:
       - ./elasticsearch/es-master:/usr/share/elasticsearch/data
     ports:
-      - 9200:9200
-      - 9300:9300
+      - $ES_PORT:9200
     networks:
       - esnet
     stdin_open: true
     tty: true
   esdata1: # Data 1
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:$STACK_VERSION
     container_name: esdata1
     restart: always
     environment:
@@ -340,6 +386,13 @@ services:
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
       - discovery.seed_hosts=esmaster
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.collection.enabled=true
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.keystore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
+      - xpack.security.transport.ssl.truststore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
       - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
     ulimits:
       memlock:
@@ -347,13 +400,10 @@ services:
         hard: -1
     volumes:
       - ./elasticsearch/es-data-1:/usr/share/elasticsearch/data
-    ports:
-      - 9201:9200
-      - 9301:9300
     networks:
       - esnet
   esdata2: # Data 2
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:$STACK_VERSION
     container_name: esdata2
     restart: always
     environment:
@@ -368,6 +418,13 @@ services:
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
       - discovery.seed_hosts=esmaster
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.collection.enabled=true
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.keystore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
+      - xpack.security.transport.ssl.truststore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
       - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
     ulimits:
       memlock:
@@ -375,13 +432,10 @@ services:
         hard: -1
     volumes:
       - ./elasticsearch/es-data-2:/usr/share/elasticsearch/data
-    ports:
-      - 9202:9200
-      - 9302:9300
     networks:
       - esnet
   escoordinator: # Router #coordinating node
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:$STACK_VERSION
     container_name: escoordinator
     restart: always
     environment:
@@ -396,6 +450,13 @@ services:
       - bootstrap.memory_lock=true
       - cluster.initial_master_nodes=esmaster
       - discovery.seed_hosts=esmaster
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.collection.enabled=true
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.keystore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
+      - xpack.security.transport.ssl.truststore.path=/usr/share/elasticsearch/config/certificates/elastic-certificates.p12
       - "ES_JAVA_OPTS=-Xms4g -Xmx4g"
     ulimits:
       memlock:
@@ -403,24 +464,31 @@ services:
         hard: -1
     volumes:
       - ./elasticsearch/es-coordinator:/usr/share/elasticsearch/data
-    ports:
-      - 9203:9200
-      - 9303:9300
     networks:
       - esnet
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.6.0
+    image: docker.elastic.co/kibana/kibana:$STACK_VERSION
     container_name: kibana
     restart: always
     environment:
       ELASTICSEARCH_HOSTS: http://esmaster:9200
+      ELASTICSEARCH_USERNAME: $ES_USER
+      ELASTICSEARCH_PASSWORD: $ES_PASS
     networks:
       - esnet
     ports:
-      - 5601:5601
+      - $KIBANA_PORT:5601
 networks:
   esnet:
 #   driver: bridge
+</code></pre></div></div>
+
+<h2 id="fill-the-env-with-environment-info">Fill the .env with environment info</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>STACK_VERSION=value
+ES_USER=elastic
+ES_PASS=######
+ES_PORT=value
+KIBANA_PORT=value
 </code></pre></div></div>
 
 <h2 id="make-folder-for-docker-volumefor-permission">make folder for docker volume(for permission)</h2>
@@ -493,7 +561,7 @@ networks:
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/gstreamer-in-c-code/" rel="permalink">Basic GStreamer Guide in C
+        <a href="/development/C++-dll-within-C/" rel="permalink">C++ DLL within C#
 </a>
       
     </h2>
@@ -503,11 +571,11 @@ networks:
 
 
 
-  4 minute read
+  2 minute read
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 21 2020</p>
     
     <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
 </p>
@@ -524,7 +592,7 @@ networks:
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/cmake-guide/" rel="permalink">CMake Guide
+        <a href="/development/Grafana-Tutorial/" rel="permalink">Grafana Customed React Plugin Install Tutorial
 </a>
       
     </h2>
@@ -538,9 +606,9 @@ networks:
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> July 01 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written By Park SunHong, VCANUS
 </p>
   </article>
 </div>
@@ -555,7 +623,7 @@ networks:
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/http-live-streaming/" rel="permalink">HTTP Live Streaming (HLS)
+        <a href="/development/CSharp-log4net/" rel="permalink">CSharp log4net
 </a>
       
     </h2>
@@ -569,9 +637,9 @@ networks:
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 12 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 12 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written by BGKim, VCANUS
 </p>
   </article>
 </div>
@@ -586,7 +654,7 @@ networks:
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/development/apache-kafka-basic/" rel="permalink">Apache Kafka Basic
+        <a href="/development/DLAP-201-JextonTX2-SSD-bootLoad/" rel="permalink">JetsonTX2 SSD , Jetpack install
 </a>
       
     </h2>
@@ -596,13 +664,13 @@ networks:
 
 
 
-  3 minute read
+  4 minute read
 </p>
      -->
     
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> March 05 2020</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> June 10 2020</p>
     
-    <p class="archive__item-excerpt" itemprop="description">Written By Nuri Na, VCANUS
+    <p class="archive__item-excerpt" itemprop="description">Written By KJ Jang, VCANUS
 </p>
   </article>
 </div>
@@ -662,6 +730,25 @@ networks:
 
 
 
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/elasticsearch-docker-cluster/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/elasticsearch-docker-cluster"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tech-vcanus.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
 
 
 

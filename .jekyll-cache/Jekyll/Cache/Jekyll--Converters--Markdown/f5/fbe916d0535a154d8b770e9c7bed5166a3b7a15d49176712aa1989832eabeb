@@ -1,0 +1,181 @@
+I"�2<p>Written By <a href="https://github.com/nurring">Nuri Na</a>, VCANUS</p>
+
+<p>C++ 프로젝트의 함수를 C#에 가져와 사용하도록 환경 설정 하는 법.</p>
+
+<ol>
+  <li>외부 C++ API 를 포함시켜</li>
+  <li>C++ 동적 라이브러리(dll)를 생성하고</li>
+  <li>C# 프로젝트에 Import 한 후</li>
+  <li>C++과 C#간 데이터 타입을 맞춰줌.</li>
+</ol>
+
+<p>예제에서 사용할 파일명은 다음과 같다.</p>
+
+<p>​	외부 API: Somedll.h, Somedll.lib,</p>
+
+<p>​	C++ 프로젝트: dynamic_example.h, dynamic_example.cpp</p>
+
+<p>​	C# 프로젝트: dynamic_example.cp</p>
+
+<h2 id="1-c-api-import">1. C++ API Import</h2>
+
+<ol>
+  <li>
+    <p><strong>DLL 동적 라이브러리 프로젝트 생성</strong></p>
+
+    <p><img src="/assets/images/2020-07-21.png" alt="dllproject" /></p>
+  </li>
+  <li>
+    <p><strong>.h (헤더) 파일 디렉터리 추가하기</strong></p>
+
+    <p><u>솔루션 탐색기 - 프로젝트명 우클릭 - 속성 - C/C++ - 일반 - 추가 포함 디렉터리</u></p>
+
+    <p>상대 경로(현재 프로젝트 위치 기준) 혹은 절대 경로를 적어준다.</p>
+
+    <p><em>ex) ../include</em></p>
+  </li>
+  <li>
+    <p><strong>.lib (정적 라이브러리) 파일 디렉터리 추가하기</strong></p>
+
+    <p><u>솔루션 탐색기 - 프로젝트명 우클릭 - 속성 - 링커 - 입력 - 추가 종속성</u></p>
+
+    <p>상대 혹은 절대 경로를 포함한 .lib 파일명 전체를 적어준다.</p>
+
+    <p><em>ex) ../lib/x86/Somedll.lib</em></p>
+  </li>
+  <li>
+    <p><strong>.dll (동적 라이브러리) 파일 디렉터리 추가하기</strong></p>
+
+    <p><u>솔루션 탐색기 - 프로젝트명 우클릭 - 속성 - 구성 속성 - 디버깅 - 환경</u></p>
+
+    <p>.dll 파일이 포함 된 디렉토리 경로를 다음 형식으로 적어 준다.</p>
+
+    <p><code class="highlighter-rouge">PATH=파일 경로1;파일 경로2;%PATH%</code></p>
+
+    <p><em>ex) PATH=../lib/x86;%PATH%</em></p>
+  </li>
+  <li>
+    <p><strong>컴파일 경로 설정</strong></p>
+
+    <p><u>솔루션 탐색기 - 프로젝트명 우클릭 - 속성 - 구성 속성 - 일반 - 출력 디렉토리</u></p>
+
+    <p>매크로를 참고하여 경로를 설정한다.</p>
+
+    <p><em>ex) $(SolutionDir)bin$(Configuration)\</em></p>
+  </li>
+</ol>
+
+<h2 id="2-make-my-dll-file">2. Make my .DLL file</h2>
+
+<p>1에서 포함시킨 dll을 include하여  .h, .cpp파일을 작성한다.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// C++</span>
+<span class="c1">// dynamic_example.h</span>
+<span class="cp">#pragma once
+#include "external_api_name.h"
+#ifdef DYNAMICEXAMPLELIBRARIES_EXPORTS
+#define DYNAMICEXAMPLELIBRARIES_API __declspec(dllexport)
+#else
+#define DYNAMICEXAMPLELIBRARIES_API __declspec(dllimport)
+#endif
+</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="n">DYNAMICEXAMPLELIBRARIES_API</span> <span class="kt">int</span> <span class="nf">test</span><span class="p">();</span>
+</code></pre></div></div>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// C++</span>
+<span class="c1">//dynamic_example.cpp</span>
+<span class="cp">#include "pch.h"
+#include "dynamic_example.h"
+</span><span class="kt">int</span> <span class="nf">test</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="mi">123</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>참고 링크: <a href="https://docs.microsoft.com/ko-kr/cpp/build/walkthrough-creating-and-using-a-dynamic-link-library-cpp?view=vs-2019">자체 동적 연결 라이브러리 만들기 및 사용(C++)</a></p>
+
+<h2 id="3-import-to-c-project">3. Import to C# project</h2>
+
+<p>C# 프로젝트를 생성하고,</p>
+
+<p>C#에서 C++ 프로젝트를 직접 참조할 수도 있으나, 여러 외부 라이브러리를 사용할 경우 런타임 옵션의 충돌로 컴파일 에러 혹은 실행 중 중단 현상이 발생할 확률이 높다.</p>
+
+<p>같은 솔루션에 포함시키되 <strong>빌드 후 이벤트</strong>를 설정하여 DLL을 필요한 위치(해당 C++ DLL을 포함해야 하는 프로젝트의 빌드 경로)에 복사하도록 한다.</p>
+
+<p>매크로를 참고하여 경로를 설정한다.</p>
+
+<p><u>솔루션 탐색기 - 프로젝트(C++)명 우클릭 - 속성 - 빌드 이벤트 - 빌드 후 이벤트 - 명령줄</u></p>
+
+<p><em>ex) copy “$(TargetDir)\dynamic_example.dll”  “$(SolutionDir)dynamic_example_prj\bin\Debug\”</em>
+<em>copy “$(TargetDir)\dynamic_example.lib”  “$(SolutionDir)dynamic_example_prj\bin\Debug\”</em></p>
+
+<h2 id="4-marshalling">4. Marshalling</h2>
+
+<p>C++의 함수를  C#에서 사용 가능한 데이터 타입으로 처리하는 것을 Marshalling(마샬링)이라고 한다.</p>
+
+<p>int 등 변환이 필요하지 않은 경우 그대로 사용한다.</p>
+
+<p>아래는 <strong>구조체</strong>와 <strong>배열</strong>의 사용 예제.  데이터 타입과 포인터, 참조자의 문법적 변화에 주목할 것.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// C++</span>
+<span class="c1">// dynamic_example.h (헤더 파일)</span>
+<span class="cp">#include &lt;Somedll.h&gt; //외부 API
+</span><span class="p">...</span>
+<span class="c1">// 구조체 선언</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">DYNAMICEXAMPLELIBRARIES_API</span> <span class="n">_exampleStruct</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+	<span class="kt">float</span> <span class="n">b</span><span class="p">;</span>	
+<span class="p">}</span> <span class="n">exampleStruct</span><span class="p">;</span>
+<span class="p">...</span>
+
+<span class="k">extern</span> <span class="s">"C"</span> <span class="n">DYNAMICEXAMPLELIBRARIES_API</span> <span class="kt">void</span> <span class="nf">test_external</span><span class="p">(</span><span class="n">exampleStruct</span><span class="o">*</span> <span class="n">exam</span><span class="p">);</span><span class="c1">//구조체, 포인터</span>
+<span class="k">extern</span> <span class="s">"C"</span> <span class="n">DYNAMICEXAMPLELIBRARIES_API</span> <span class="kt">void</span> <span class="nf">test_array</span><span class="p">(</span><span class="kt">int16_t</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array</span><span class="p">)[</span><span class="mi">10</span><span class="p">]);</span><span class="c1">//배열, 참조자</span>
+</code></pre></div></div>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// C++</span>
+<span class="c1">// dynamic_example.cpp (소스 파일)</span>
+<span class="p">...</span>
+<span class="n">someStruct</span> <span class="n">someStr</span><span class="p">;</span> <span class="c1">//외부 API 구조체</span>
+<span class="kt">int16_t</span> <span class="n">newarray</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+
+<span class="cm">/*외부 함수가 만들어내는 someStr 구조체를 shallow copy하는 예제*/</span>
+<span class="kt">void</span> <span class="nf">test_external</span><span class="p">(</span><span class="n">exampleStruct</span><span class="o">*</span> <span class="n">exam</span><span class="p">){</span>
+    <span class="n">external_func1</span><span class="p">(</span><span class="o">&amp;</span><span class="n">someStr</span><span class="p">);</span><span class="c1">//외부 API 함수 external_func1</span>
+    <span class="n">exam</span><span class="o">-&gt;</span><span class="n">a</span> <span class="o">=</span> <span class="n">external</span><span class="p">.</span><span class="n">a</span><span class="p">;</span>
+    <span class="n">exam</span><span class="o">-&gt;</span><span class="n">b</span> <span class="o">=</span> <span class="n">external</span><span class="p">.</span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*외부 함수가 만들어내는 newarray를 deep copy하는 예제*/</span>
+<span class="kt">void</span> <span class="nf">test_array</span><span class="p">(</span><span class="kt">int16_t</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array</span><span class="p">)[</span><span class="mi">10</span><span class="p">]){</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">external_func2</span><span class="p">(</span><span class="n">newarray</span><span class="p">);</span><span class="c1">//외부 API 함수 external_func2</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">copy</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">newarray</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">end</span><span class="p">(</span><span class="n">newarray</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="n">array</span><span class="p">));</span><span class="c1">//deep copy</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// C#</span>
+<span class="c1">// dynamic_example.cs</span>
+<span class="k">using</span> <span class="nn">System.Runtime.InteropServices</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="p">[</span><span class="nf">StructLayout</span><span class="p">(</span><span class="n">LayoutKind</span><span class="p">.</span><span class="n">Sequential</span><span class="p">,</span> <span class="n">CharSet</span><span class="p">=</span><span class="n">CharSet</span><span class="p">.</span><span class="n">Unicode</span><span class="p">)]</span>
+<span class="k">public</span> <span class="k">struct</span> <span class="nc">exampleStruct</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="p">...</span>
+    
+<span class="c1">//Dll Import</span>
+<span class="p">[</span><span class="nf">DllImport</span><span class="p">(</span><span class="s">"dynamic_example.dll"</span><span class="p">,</span> <span class="n">CallingConvention</span> <span class="p">=</span> <span class="n">CallingConvention</span><span class="p">.</span><span class="n">Cdecl</span><span class="p">)]</span>
+<span class="k">extern</span> <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">test_external</span><span class="p">(</span><span class="k">ref</span> <span class="n">exampleStruct</span> <span class="n">es</span><span class="p">);</span>
+<span class="p">[</span><span class="nf">DllImport</span><span class="p">(</span><span class="s">"dynamic_example.dll"</span><span class="p">,</span> <span class="n">CallingConvention</span> <span class="p">=</span> <span class="n">CallingConvention</span><span class="p">.</span><span class="n">Cdecl</span><span class="p">)]</span>
+<span class="k">extern</span> <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">test_array</span><span class="p">(</span>
+    <span class="p">[</span><span class="nf">MarshalAs</span><span class="p">(</span><span class="n">UnmanagedType</span><span class="p">.</span><span class="n">LPArray</span><span class="p">,</span> <span class="n">SizeConst</span> <span class="p">=</span> <span class="m">10</span><span class="p">)]</span> <span class="kt">short</span><span class="p">[]</span> <span class="n">array</span><span class="p">);</span>
+
+<span class="c1">//함수 사용</span>
+<span class="n">exampleStruct</span> <span class="n">example</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">exampleStruct</span><span class="p">();</span>
+<span class="kt">short</span><span class="p">[]</span> <span class="n">array</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">short</span><span class="p">[</span><span class="m">10</span><span class="p">];</span>
+<span class="nf">test_external</span><span class="p">(</span><span class="k">ref</span> <span class="n">example</span><span class="p">);</span>
+<span class="nf">test_array</span><span class="p">(</span><span class="n">array</span><span class="p">);</span>
+</code></pre></div></div>
+
+:ET
