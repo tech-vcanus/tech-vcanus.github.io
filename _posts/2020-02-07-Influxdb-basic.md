@@ -126,8 +126,8 @@ reference(Document)<br>
 
 ## Retention
 
-- CREATE RETENTION POLICY \<retention_name> ON \<database_name> DURATION \<duration_time> REPLICATION <n> [SHARD DURATION \<duration>] [DEFAULT]
+- CREATE RETENTION POLICY \<retention_name> ON \<database_name> DURATION \<duration_time> REPLICATION \<n> [SHARD DURATION \<duration>] [DEFAULT]
 
-- ALTER RETENTION POLICY \<retention_name> ON \<database_name> DURATION \<duration_time> REPLICATION <n> [SHARD DURATION \<duration>] [DEFAULT]
+- ALTER RETENTION POLICY \<retention_name> ON \<database_name> DURATION \<duration_time> REPLICATION \<n> [SHARD DURATION \<duration>] [DEFAULT]
 
 reference : [Document](https://docs.influxdata.com/influxdb/v1.7/query_language/database_management/#create-retention-policies-with-create-retention-policy)
