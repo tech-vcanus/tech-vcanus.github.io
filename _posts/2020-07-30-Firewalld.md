@@ -69,9 +69,10 @@ default-zone : public
 # firewall-cmd --delete-zone
 ```
 Set to default zone if --zone does not exist in command <br>
-ex)
+ex) The two commands are the same
 ```
-# firewall-cmd --add-service=http // same command : firewall-cmd --zone=public --add-service=http
+# firewall-cmd --zone=public --add-service=http
+# firewall-cmd --add-service=http
 ```
 
 ## Service
