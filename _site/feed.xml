@@ -1,4 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-24T16:45:07+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">VCANUS’s Technical Blog</title><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><entry><title type="html">C++ DLL within C#</title><link href="http://localhost:4000/development/C++-dll-within-C/" rel="alternate" type="text/html" title="C++ DLL within C#" /><published>2020-07-21T00:00:00+09:00</published><updated>2020-07-21T00:00:00+09:00</updated><id>http://localhost:4000/development/C++-dll-within-C</id><content type="html" xml:base="http://localhost:4000/development/C++-dll-within-C/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt;, VCANUS&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-31T08:38:44+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">VCANUS’s Technical Blog</title><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><entry><title type="html">Firewalld</title><link href="http://localhost:4000/development/Firewalld/" rel="alternate" type="text/html" title="Firewalld" /><published>2020-07-30T00:00:00+09:00</published><updated>2020-07-30T00:00:00+09:00</updated><id>http://localhost:4000/development/Firewalld</id><content type="html" xml:base="http://localhost:4000/development/Firewalld/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/tsedek&quot;&gt;David Roh&lt;/a&gt;, VCANUS&lt;/p&gt;
+
+&lt;h1 id=&quot;firewalld&quot;&gt;Firewalld&lt;/h1&gt;
+
+&lt;h2 id=&quot;start&quot;&gt;Start&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# systemctl start firewalld
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;stop&quot;&gt;Stop&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# systemctl stop firewalld
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;restartreload&quot;&gt;Restart(reload)&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# systemctl restart firewalld
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# firewall-cmd --reload
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;running-state&quot;&gt;Running State&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# firewall-cmd --state
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;config&quot;&gt;Config&lt;/h2&gt;
+
+&lt;p&gt;path : /etc/firewalld/zones/public.xml&lt;br /&gt;
+–permanent : set config to xml / Reload required for application&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# firewall-cmd --new-zone=newzone --permament
+# firewall-cmd --reload
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;without –permanent / Temporary application before reload&lt;/p&gt;
+
+&lt;h2 id=&quot;print-all&quot;&gt;Print all&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# firewall-cmd --list-all-zone
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;zone&quot;&gt;Zone&lt;/h2&gt;
+&lt;p&gt;default-zone : public&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# firewall-cmd --zone=zoneName --list-all // print zone detail info
+# firewall-cmd --get-zones // zone list
+# firewall-cmd --get-default-zone
+# firewall-cmd --get-active-zone
+# firewall-cmd --set-default-zone=zoneName // change default zone
+# firewall-cmd --new-zone=zoneName // create new zone
+# firewall-cmd --delete-zone
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Set to default zone if –zone does not exist in command &lt;br /&gt;
+ex) The two commands are the same&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# firewall-cmd --zone=public --add-service=http
+# firewall-cmd --add-service=http
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;service&quot;&gt;Service&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# firewall-cmd --add-service=serviceName
+# firewall-cmd --remove-service=serviceName
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;port&quot;&gt;Port&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# firewall-cmd --add-port=portNo/protocol(tcp/udp)
+# firewall-cmd --add-port=startPortNo-endPortNo/protocol
+# firewall-cmd --remove-port=portNo/protocol
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;interface&quot;&gt;Interface&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# firwall-cmd --zone=zoneName --change-interface=interfaceName
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;masquerade&quot;&gt;Masquerade&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# firewall-cmd --zone=zoneName --query-masquerade
+# firewall-cmd --zone=zoneName --add-masquerade
+# firewall-cmd --zone=zoneName --remove-masquerade
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="centos" /><category term="firewalld" /><summary type="html">Written By David Roh, VCANUS</summary></entry><entry><title type="html">Stopwatch and Timer in C#</title><link href="http://localhost:4000/development/Stopwatch-and-Timer-in-C/" rel="alternate" type="text/html" title="Stopwatch and Timer in C#" /><published>2020-07-22T00:00:00+09:00</published><updated>2020-07-22T00:00:00+09:00</updated><id>http://localhost:4000/development/Stopwatch-and-Timer-in-C</id><content type="html" xml:base="http://localhost:4000/development/Stopwatch-and-Timer-in-C/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt; VCANUS&lt;/p&gt;
+
+&lt;p&gt;Stopwatch class를 이용해 실행 시간을 측정한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;선언&quot;&gt;선언&lt;/h2&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Diagnostics&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Threading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+    
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Timer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Stopwatch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SetTimeCheck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;timer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Timer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TimerCallback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Timers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Timers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;사용&quot;&gt;사용&lt;/h2&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;SetTimeCheck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//시간을 측정할 구간 앞에&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;sw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//측정 시작&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//작업..&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//측정 끝&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Debug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ElapsedMilliseconds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ms&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//출력&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Reset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//타이머 리셋&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="C#" /><category term="Timer" /><category term="Stopwatch" /><summary type="html">Written By Nuri Na VCANUS</summary></entry><entry><title type="html">C++ DLL within C#</title><link href="http://localhost:4000/development/C++-dll-within-C/" rel="alternate" type="text/html" title="C++ DLL within C#" /><published>2020-07-21T00:00:00+09:00</published><updated>2020-07-21T00:00:00+09:00</updated><id>http://localhost:4000/development/C++-dll-within-C</id><content type="html" xml:base="http://localhost:4000/development/C++-dll-within-C/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt;, VCANUS&lt;/p&gt;
 
 &lt;p&gt;C++ 프로젝트의 함수를 C#에 가져와 사용하도록 환경 설정 하는 법.&lt;/p&gt;
 
@@ -1376,303 +1490,4 @@ max-files&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;15 target-duration&lt;spa
     &lt;span class=&quot;n&quot;&gt;gst_object_unref&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;bus는 pipeline을 감시하여 메세지를 전달한다. 종료나 EOS(End of Stream) 메세지가 발생하는지 지켜보고 콘솔에 상태를 보고, pipeline 상태를 NULL로 만들어 스트림을 종료한다.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="GStreamer" /><category term="C" /><category term="C++" /><summary type="html">Written By Nuri Na, VCANUS</summary></entry><entry><title type="html">Fast Fourier Transform</title><link href="http://localhost:4000/development/Fast-Fourier-Transform/" rel="alternate" type="text/html" title="Fast Fourier Transform" /><published>2020-03-25T00:00:00+09:00</published><updated>2020-03-25T00:00:00+09:00</updated><id>http://localhost:4000/development/Fast-Fourier-Transform</id><content type="html" xml:base="http://localhost:4000/development/Fast-Fourier-Transform/">&lt;p&gt;Written By Park SunHong, VCANUS&lt;/p&gt;
-
-&lt;h2 id=&quot;차례&quot;&gt;차례&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;이론적 배경 &lt;br /&gt;
- 1-1. Fourier Transform의 개념 &lt;br /&gt;
- 1-2. DFT란?&lt;br /&gt;
- 1-3. FFT란?&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;파이썬으로 FFT 수행하기 &lt;br /&gt;
- 2-1. 사용할 패키지 소개 &lt;br /&gt;
- 2-2. numpy.fft.fft 함수 &lt;br /&gt;
- 2-3. 예제 코드 및 설명&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;1-이론적-배경&quot;&gt;&lt;strong&gt;1. 이론적 배경&lt;/strong&gt;&lt;/h2&gt;
-&lt;h3 id=&quot;1-1-fourier-transform의-개념&quot;&gt;&lt;strong&gt;1-1. Fourier Transform의 개념&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/58065100/77515440-e2b9f980-6ebb-11ea-9d51-de281b91c57e.png&quot; alt=&quot;fftconcept&quot; /&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;X(w)=\int_{-\infty}^{\infty}x(t)e^{-jwt}dt&lt;/script&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Time domain의 신호를 frequency domain으로 변환&lt;/li&gt;
-  &lt;li&gt;신호의 주파수 성분을 분석할 때 이용&lt;/li&gt;
-  &lt;li&gt;Exponential 성분은 vector space의 basis vector로, 각각 특정 주파수를 대변&lt;/li&gt;
-  &lt;li&gt;원신호와 주파수 basis의 inner product 결과물로서, 어떤 주파수가 얼마나 기여하고 있는지 의미&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;1-2-dft란&quot;&gt;&lt;strong&gt;1-2. DFT란?&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;X(k)=\sum_{n=0}^{N-1}x[n]e^{-j2\pi k{n \over N}}
-  (N : 샘플 개수)&lt;/script&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;이산 신호의 푸리에 변환&lt;/li&gt;
-  &lt;li&gt;디지털 시스템에서는 배열을 활용&lt;/li&gt;
-  &lt;li&gt;Fourier Transform에서의 f가 n/N에, t가 n에 대응&lt;/li&gt;
-  &lt;li&gt;$O(n^2)$ : 연산량이 많음 -&amp;gt; 컴퓨터에서의 처리속도 느림&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;1-3-fft란&quot;&gt;&lt;strong&gt;1-3. FFT란?&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;DFT의 연산 속도를 높이는 알고리즘&lt;/li&gt;
-  &lt;li&gt;Cooley-Tukey 알고리즘을 가장 많이 이용&lt;/li&gt;
-  &lt;li&gt;$O(n^2)$ 의 연산량을 O(nlogn)으로 줄여줌&lt;/li&gt;
-  &lt;li&gt;DFT의 부분유사성 이용.
-    &lt;ul&gt;
-      &lt;li&gt;N-DFT를 a(=짝수 N/2-DFT)와 b(=홀수 N/2-DFT)로 나눔.&lt;/li&gt;
-      &lt;li&gt;N-DFT의 앞 절반값은 a+b, 뒤 절반값은 a-b&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;재귀적으로 연산 가능&lt;/li&gt;
-  &lt;li&gt;샘플 수(N)가 $2^n$ 꼴이어야 사용 가능&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;2-파이썬으로-fft-수행하기&quot;&gt;&lt;strong&gt;2. 파이썬으로 FFT 수행하기&lt;/strong&gt;&lt;/h2&gt;
-&lt;h3 id=&quot;2-1-사용할-패키지-소개&quot;&gt;&lt;strong&gt;2-1. 사용할 패키지 소개&lt;/strong&gt;&lt;/h3&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ol&gt;
-  &lt;li&gt;numpy : 수학 및 과학 연산을 위한 패키지.&lt;/li&gt;
-  &lt;li&gt;matplotlib.pyplot : 그래프 그릴 때 이용.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;2-2-numpyfftfft-함수&quot;&gt;&lt;strong&gt;2-2. numpy.fft.fft 함수&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;numpy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fft&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ol&gt;
-  &lt;li&gt;Parameters
-    &lt;ul&gt;
-      &lt;li&gt;a (array_like) : input 배열. Complex 원소도 가능.&lt;/li&gt;
-      &lt;li&gt;n (optional, int) : output의 길이. Input 길이보다 작으면 input이 crop되고, input 길이보다 크면 input이 zero padding 된다.&lt;/li&gt;
-      &lt;li&gt;axis (optional, int) : FFT를 수행할 axis. 미입력시 마지막 axis가 이용됨.&lt;/li&gt;
-      &lt;li&gt;norm (optional, {None, “ortho”}) : normalize 여부. 기본은 None.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Returns : input array의 DFT 연산 결과물인 Complex 원소를 가진 배열이 반환됨.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;2-3-예제-코드-및-설명&quot;&gt;&lt;strong&gt;2-3. 예제 코드 및 설명&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;이 예제에서는 세 종류의 sinusoid 파를 임의로 설정해 이 세 파동을 합치고, fft 함수를 이용해 주파수별 진폭을 추출한 후 그래프로 그려 볼 것이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;1. 필요한 라이브러리들을 import하고, FFT 분석을 위한 합성 신호를 생성&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;  	&lt;span class=&quot;c1&quot;&gt;# plot을 그려주는 라이브러리 import 
-&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;  	&lt;span class=&quot;c1&quot;&gt;# 수학 및 과학 연산을 위한 라이브러리 import
-&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;freq_sampling1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;amplitude1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; 	&lt;span class=&quot;c1&quot;&gt;# 첫 번째 신호 : 주파수 10, 진폭 5
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;freq_sampling2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;amplitude2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; 	&lt;span class=&quot;c1&quot;&gt;# 두 번째 신호 : 주파수 20, 진폭 4
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;freq_sampling3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;amplitude3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; 	&lt;span class=&quot;c1&quot;&gt;# 세 번째 신호 : 주파수 30, 진폭 2
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# time 축 배열 생성. 0~6초 사이에 500개의 sample을 딴다는 의미.
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amplitude1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;freq_sampling1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;amplitude2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;freq_sampling2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;amplitude3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;freq_sampling3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# 위에서 만든 세 개의 신호를 합성해 y축 배열 생성.
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;linspace(start, end, num) : 첫 번째 원소가 start, 마지막 원소가 end, length가 num인, 등차수열 배열을 만들어주는 함수&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;2. 생성한 합성 신호를 그래프로 그려보기&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# 그래프 크기 설정
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'g'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lw&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# matplotlib.plot(x축 배열, y축 배열, 선 색깔, 선 굵기)
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xlim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# matplotlib. xlim(x축 시작점, x축 끝점)
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# matplotlib.show() : 그래프 표시
-&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/58065100/77515495-f49b9c80-6ebb-11ea-938f-c755661bed9b.png&quot; alt=&quot;signal-graph&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3. fft 함수 적용하고 후처리하기&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;yf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fft&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# numpy.fft.fft(input 배열, output 길이) 
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;yf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# output 배열의 각각의 원소의 크기 배열 생성
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;freq&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# fft 그래프의 x축 배열 생성
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ol&gt;
-  &lt;li&gt;fft는 complex 배열을 반환하지만, 그래프 y축은 amplitude이므로 실숫값.
-    &lt;ul&gt;
-      &lt;li&gt;complex의 크기를 구하는 abs 함수를 써 크기를 원소로 갖는 배열 생성 후 y축 배열로 설정.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;fft 함수 적용 후 반환된 배열의 domain은 frequency.
-    &lt;ul&gt;
-      &lt;li&gt;0부터 sampling frequency인 500/6 까지 x축에 해당.&lt;/li&gt;
-      &lt;li&gt;그런데, DFT 식의 특성상 sampling 표본의 처음부터 절반까지만 유효.&lt;/li&gt;
-      &lt;li&gt;절반부터 끝까지는 앞 절반의 대칭인 쓰레기 값.&lt;/li&gt;
-      &lt;li&gt;그러므로, frequency 배열을 반으로 잘라야 한다.&lt;/li&gt;
-      &lt;li&gt;즉, fft 적용 후 frequency domain의 범위는 (0, fs/2)가 된다.&lt;/li&gt;
-      &lt;li&gt;fft 결과 주파수 A까지의 결과를 보고 싶다면 sampling frequency는 2A 이상이어야 함.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;4. fft 적용 결과를 그래프로 그려보기&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# 그래프 크기 설정
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;freq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# matplotlib.plot(x축 배열, y축 배열)
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;(2/amp.size)*amp[0:amp.size//2]에 대해 :
-    &lt;ol&gt;
-      &lt;li&gt;((진폭값)*2)/(배열의 크기) 를 amp 배열의 앞 절반 각각의 원소에 적용.&lt;/li&gt;
-      &lt;li&gt;frequency 배열을 절반 잘랐으므로 amp 배열도 앞 절반만 이용하게 된다.&lt;/li&gt;
-      &lt;li&gt;표본의 크기가 커지면 복수 주기의 값이 여러 번 쌓이므로 진폭의 상대적 비율은 유지되지만 진폭의 절대적 크기가 커짐.&lt;/li&gt;
-      &lt;li&gt;따라서 진폭의 크기를 표준화 해주어야 하므로 배열 크기로 나눔.&lt;/li&gt;
-      &lt;li&gt;amp 배열을 절반만 이용하는데 배열 크기로 나누어줬으므로 2를 곱해준다.&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# matplotlib.show() : 그래프 표시
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/58065100/77515530-05e4a900-6ebc-11ea-9035-54495493c96c.png&quot; alt=&quot;fft-graph&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;fft 결과 그래프.&lt;/p&gt;
-
-&lt;p&gt;주파수 10, 진폭 5.     &lt;br /&gt;
-주파수 20, 진폭 4.     &lt;br /&gt;
-주파수 30, 진폭 2.&lt;/p&gt;
-
-&lt;p&gt;인 신호가 섞여 있음을 나타낸다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;5. 표본 숫자에 따른 fft 적용 결과 비교&lt;/strong&gt; &lt;br /&gt;
-&lt;img src=&quot;https://user-images.githubusercontent.com/58065100/77515530-05e4a900-6ebc-11ea-9035-54495493c96c.png&quot; alt=&quot;fft-graph&quot; /&gt; &lt;br /&gt;
-N = 500&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/58065100/77515551-1006a780-6ebc-11ea-85a1-7d7df62e3968.png&quot; alt=&quot;fft-graph&quot; /&gt; &lt;br /&gt;
-N = 5000&lt;/p&gt;
-
-&lt;p&gt;Sampling frequency가 높을수록 결과가 정확해진다.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="FFT" /><summary type="html">Written By Park SunHong, VCANUS</summary></entry><entry><title type="html">CMake Guide</title><link href="http://localhost:4000/development/cmake-guide/" rel="alternate" type="text/html" title="CMake Guide" /><published>2020-03-24T00:00:00+09:00</published><updated>2020-03-24T00:00:00+09:00</updated><id>http://localhost:4000/development/cmake-guide</id><content type="html" xml:base="http://localhost:4000/development/cmake-guide/">&lt;p&gt;Written By &lt;a href=&quot;https://github.com/nurring&quot;&gt;Nuri Na&lt;/a&gt;, VCANUS&lt;/p&gt;
-
-&lt;h2 id=&quot;makefile&quot;&gt;Makefile&lt;/h2&gt;
-
-&lt;p&gt;리눅스 환경에서 소스 코드를 빌드하는데 다음 명령어를 사용한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이 때 &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt;는 소스 코드 디렉토리에 포함된 &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt;이라는 이름의 스크립트를 읽어 순서대로 수행한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt;의 기본 구조는 다음과 같다.&lt;/p&gt;
-
-&lt;div class=&quot;language-makefile highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#환경 변수
-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;CC&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;gcc
-&lt;span class=&quot;nv&quot;&gt;CFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Wall&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;OBJS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;main.o foo.o bar.o
-&lt;span class=&quot;nv&quot;&gt;TARGET&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;app.out
-
-&lt;span class=&quot;c&quot;&gt;#규칙 블록 구조
-&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;$(TARGET)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;$(OBJS)&lt;/span&gt;
-    &lt;span class=&quot;err&quot;&gt;$(CC)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$@&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(OBJS)&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;#파일 의존성
-&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;main.o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo.h bar.h main.c&lt;/span&gt;
-	foo.o: foo.h foo.c
-	bar.o: bar.h bar.c
-	
-&lt;span class=&quot;c&quot;&gt;#클린 빌드 : 기존 중간 산출물(*.o)들 삭제 - make clean
-&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;clean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;err&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;*.o&lt;/span&gt;
-    &lt;span class=&quot;err&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$(TARGET)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;CC: 컴파일러&lt;/li&gt;
-  &lt;li&gt;CFLAGS: 컴파일 옵션&lt;/li&gt;
-  &lt;li&gt;OBJS: 중간 산출물인 Object파일 목록&lt;/li&gt;
-  &lt;li&gt;TARGET: 빌드 대상(실행 파일) 이름&lt;/li&gt;
-  &lt;li&gt;$@: 현재 Target 이름(자동변수 &lt;a href=&quot;http://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html&quot;&gt;&lt;em&gt;자세한 설명 링크&lt;/em&gt;&lt;/a&gt; )&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt;은 의존성 등 다양한 문제로 프로젝트가 복잡해질수록 직접 작성하기 어렵고 생산성이 떨어진다. 이를 위해 의존성 정보를 일일이 기술하지 않아도 &lt;code class=&quot;highlighter-rouge&quot;&gt;Makefile&lt;/code&gt;을 자동으로 생성하는 &lt;strong&gt;cmake&lt;/strong&gt;를 사용한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;cmakeliststxt&quot;&gt;CMakeLists.txt&lt;/h2&gt;
-
-&lt;p&gt;cmake는 Makefile을 빌드하기 위해 CMakeLists.txt를 작성한다. 위 Makefile을 빌드하는 CMakeLists.txt는 다음과 같이 작성한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-cmake highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;ADD_EXECUTABLE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; app.out main.c foo.c bar.c&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;그리고 다음 명령어로 빌드한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cmake CMakeLists.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;결과물로 Makefile 및 cache파일 등이 생긴다. cmake -&amp;gt; make 두 번의 명령어로 빌드해야 하지만, 환경 설정에 변경이 없는 경우  처음 한 번만 cmake하고 그 뒤로는 make로만 빌드하면 된다.&lt;/p&gt;
-
-&lt;h2 id=&quot;cmakeliststxt-기본-패턴&quot;&gt;CMakeLists.txt 기본 패턴&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pkg-config&lt;/code&gt; 는 소스 코드를 컴파일하기 위하여 시스템에 설치된 라이브러리를 조회할 수 있는 소프트웨어이다. CMakeLists.txt에 포함하기 위해 콘솔에서 다음과 같이 사용한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pkg-config &lt;span class=&quot;nt&quot;&gt;--list-all&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &amp;lt;패키지명&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#결과 예시&lt;/span&gt;
-~ pkg-config &lt;span class=&quot;nt&quot;&gt;--list-all&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;py
-pygobject-3.0                       PyGObject - Python bindings &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;GObject
-python-3.7m                         Python - Python library
-py3cairo                            Pycairo - Python 3 bindings &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;cairo
-python3                             Python - Python library
-python-3.7                          Python - Python library
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;조회되는 패키지명을 CMakeLists.txt의 pkg_check_modules에 기입한다.&lt;/p&gt;
-
-&lt;p&gt;CMakesListx.txt의 기본 패턴은 다음과 같다.&lt;/p&gt;
-
-&lt;div class=&quot;language-cmake highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 요구 CMake 최소 버전&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;cmake_minimum_required&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;VERSION &amp;lt;버전&amp;gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# 프로젝트 이름 및 버전&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&amp;lt;프로젝트_이름&amp;gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;#pkg-config를 이용함&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;find_package&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;PkgConfig REQUIRED&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#pkg-config에서 조회된 패키지를 포함&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;pkg_check_modules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&amp;lt;변수명&amp;gt; REQUIRED &amp;lt;패키지명&amp;gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# cf. pkg-config로 조회되지 않는 경우 직접 *.cmake 파일 경로를 명시한다.&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# -&amp;gt; pkg_check_modules(&amp;lt;변수명&amp;gt; REQUIRED PATHS &quot;&amp;lt;파일_경로&amp;gt;&quot;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#공통 헤더 파일 디렉토리&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;include_directories&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&amp;lt;변수명&amp;gt;_INCLUDE_DIRS&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#공통 링크 라이브러리 디렉토리&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;link_directories&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&amp;lt;변수명&amp;gt;_LIBRARY_DIRS&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#빌드 대상 바이너리&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;add_executable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROJECT_NAME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &amp;lt;파일명&amp;gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#빌드 대상에 링크할 라이브러리 - add_executable 아래에 위치&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;target_link_libraries&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROJECT_NAME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&amp;lt;변수명&amp;gt;_LIBRARIES&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;pkg_check_modules()로 패키지를 불러오면, &lt;변수명&gt;_INCLUDE_DIRS 와 같은 형태의 환경 변수로 해당 파일 경로가 자동 매핑된다.&lt;/변수명&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# CMakeLists.txt 예시&lt;/span&gt;
-cmake_minimum_required&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;VERSION 3.15&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-project&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;example&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# pkg-config 이용&lt;/span&gt;
-find_package&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;PkgConfig REQUIRED&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-pkg_check_modules&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;GST REQUIRED gstreamer-1.0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-include_directories&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GST_INCLUDE_DIRS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#header dir&lt;/span&gt;
-link_directories&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GST_LIBRARY_DIRS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#library dir&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# *.cmake 경로 직접 지정&lt;/span&gt;
-find_package&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;OpenCV REQUIRED  PATHS &lt;span class=&quot;s2&quot;&gt;&quot;/usr/local/Cellar/opencv/4.2.0_3/lib/cmake/opencv4&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-include_directories&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OpenCV_INCLUDE_DIR&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-link_directories&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OpenCV_LIBRARY_DIRS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-
-add_executable&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROJECT_NAME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; main.cpp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-
-target_link_libraries&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROJECT_NAME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GST_LIBRARIES&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-target_link_libraries&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROJECT_NAME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OpenCV_LIBRARIES&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="CMake" /><category term="C" /><category term="C++" /><summary type="html">Written By Nuri Na, VCANUS</summary></entry></feed>
+&lt;p&gt;bus는 pipeline을 감시하여 메세지를 전달한다. 종료나 EOS(End of Stream) 메세지가 발생하는지 지켜보고 콘솔에 상태를 보고, pipeline 상태를 NULL로 만들어 스트림을 종료한다.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;label&quot;=&gt;&quot;Email&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-envelope-square&quot;}, {&quot;label&quot;=&gt;&quot;Website&quot;, &quot;icon&quot;=&gt;&quot;fas fa-fw fa-link&quot;}, {&quot;label&quot;=&gt;&quot;Twitter&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-twitter-square&quot;}, {&quot;label&quot;=&gt;&quot;Facebook&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-facebook-square&quot;}, {&quot;label&quot;=&gt;&quot;GitHub&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-github&quot;}, {&quot;label&quot;=&gt;&quot;Instagram&quot;, &quot;icon&quot;=&gt;&quot;fab fa-fw fa-instagram&quot;}]}</name></author><category term="GStreamer" /><category term="C" /><category term="C++" /><summary type="html">Written By Nuri Na, VCANUS</summary></entry></feed>

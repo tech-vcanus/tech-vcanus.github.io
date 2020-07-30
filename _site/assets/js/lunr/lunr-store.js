@@ -158,4 +158,14 @@ var store = [{
         "excerpt":"Written By Nuri Na, VCANUS C++ 프로젝트의 함수를 C#에 가져와 사용하도록 환경 설정 하는 법. 외부 C++ API 를 포함시켜 C++ 동적 라이브러리(dll)를 생성하고 C# 프로젝트에 Import 한 후 C++과 C#간 데이터 타입을 맞춰줌. 예제에서 사용할 파일명은 다음과 같다. ​ 외부 API: Somedll.h, Somedll.lib, ​ C++ 프로젝트: dynamic_example.h, dynamic_example.cpp ​...","categories": ["development"],
         "tags": ["C++","C#","Marshalling","DLL"],
         "url": "http://localhost:4000/development/C++-dll-within-C/",
+        "teaser":null},{
+        "title": "Stopwatch and Timer in C#",
+        "excerpt":"Written By Nuri Na VCANUS Stopwatch class를 이용해 실행 시간을 측정한다. 선언 using System.Diagnostics; using System.Threading; ... public static Timer timer; public static Stopwatch sw; public static int counter = 0; public static void SetTimeCheck() { timer = new Timer(new TimerCallback(Timers), 1, 1000, 1000); } public static void Timers(object obj)...","categories": ["development"],
+        "tags": ["C#","Timer","Stopwatch"],
+        "url": "http://localhost:4000/development/Stopwatch-and-Timer-in-C/",
+        "teaser":null},{
+        "title": "Firewalld",
+        "excerpt":"Written By David Roh, VCANUS Firewalld Start # systemctl start firewalld Stop # systemctl stop firewalld Restart(reload) # systemctl restart firewalld or # firewall-cmd --reload Running State # firewall-cmd --state Config path : /etc/firewalld/zones/public.xml –permanent : set config to xml / Reload required for application # firewall-cmd --new-zone=newzone --permament #...","categories": ["development"],
+        "tags": ["centos","firewalld"],
+        "url": "http://localhost:4000/development/Firewalld/",
         "teaser":null}]

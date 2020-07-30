@@ -1,0 +1,83 @@
+I"�<p>Written By <a href="https://github.com/tsedek">David Roh</a>, VCANUS</p>
+
+<h1 id="firewalld">Firewalld</h1>
+
+<h2 id="start">Start</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># systemctl start firewalld
+</code></pre></div></div>
+
+<h2 id="stop">Stop</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># systemctl stop firewalld
+</code></pre></div></div>
+
+<h2 id="restartreload">Restart(reload)</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># systemctl restart firewalld
+</code></pre></div></div>
+<p>or</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># firewall-cmd --reload
+</code></pre></div></div>
+
+<h2 id="running-state">Running State</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># firewall-cmd --state
+</code></pre></div></div>
+
+<h2 id="config">Config</h2>
+
+<p>path : /etc/firewalld/zones/public.xml<br />
+–permanent : set config to xml / Reload required for application</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># firewall-cmd --new-zone=newzone --permament
+# firewall-cmd --reload
+</code></pre></div></div>
+
+<p>without –permanent / Temporary application before reload</p>
+
+<h2 id="print-all">Print all</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># firewall-cmd --list-all-zone
+</code></pre></div></div>
+
+<h2 id="zone">Zone</h2>
+<p>default-zone : public</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># firewall-cmd --zone=zoneName --list-all // print zone detail info
+# firewall-cmd --get-zones // zone list
+# firewall-cmd --get-default-zone
+# firewall-cmd --get-active-zone
+# firewall-cmd --set-default-zone=zoneName // change default zone
+# firewall-cmd --new-zone=zoneName // create new zone
+# firewall-cmd --delete-zone
+</code></pre></div></div>
+<p>Set to default zone if –zone does not exist in command <br />
+ex) The two commands are the same</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># firewall-cmd --zone=public --add-service=http
+# firewall-cmd --add-service=http
+</code></pre></div></div>
+
+<h2 id="service">Service</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># firewall-cmd --add-service=serviceName
+# firewall-cmd --remove-service=serviceName
+</code></pre></div></div>
+
+<h2 id="port">Port</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># firewall-cmd --add-port=portNo/protocol(tcp/udp)
+# firewall-cmd --add-port=startPortNo-endPortNo/protocol
+# firewall-cmd --remove-port=portNo/protocol
+</code></pre></div></div>
+
+<h2 id="interface">Interface</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># firwall-cmd --zone=zoneName --change-interface=interfaceName
+</code></pre></div></div>
+
+<h2 id="masquerade">Masquerade</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># firewall-cmd --zone=zoneName --query-masquerade
+# firewall-cmd --zone=zoneName --add-masquerade
+# firewall-cmd --zone=zoneName --remove-masquerade
+</code></pre></div></div>
+:ET

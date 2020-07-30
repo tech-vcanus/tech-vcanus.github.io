@@ -1,0 +1,36 @@
+I"K<p>Written By <a href="https://github.com/nurring">Nuri Na</a> VCANUS</p>
+
+<p>Stopwatch class를 이용해 실행 시간을 측정한다.</p>
+
+<h2 id="선언">선언</h2>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System.Diagnostics</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
+<span class="p">...</span>
+    
+<span class="k">public</span> <span class="k">static</span> <span class="n">Timer</span> <span class="n">timer</span><span class="p">;</span>
+<span class="k">public</span> <span class="k">static</span> <span class="n">Stopwatch</span> <span class="n">sw</span><span class="p">;</span>
+<span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">counter</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">SetTimeCheck</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">timer</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Timer</span><span class="p">(</span><span class="k">new</span> <span class="nf">TimerCallback</span><span class="p">(</span><span class="n">Timers</span><span class="p">),</span> <span class="m">1</span><span class="p">,</span> <span class="m">1000</span><span class="p">,</span> <span class="m">1000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Timers</span><span class="p">(</span><span class="kt">object</span> <span class="n">obj</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">counter</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="사용">사용</h2>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">SetTimeCheck</span><span class="p">();</span><span class="c1">//시간을 측정할 구간 앞에</span>
+
+<span class="n">sw</span><span class="p">.</span><span class="nf">Start</span><span class="p">();</span><span class="c1">//측정 시작</span>
+<span class="c1">//작업..</span>
+<span class="n">sw</span><span class="p">.</span><span class="nf">Stop</span><span class="p">();</span><span class="c1">//측정 끝</span>
+<span class="n">log</span><span class="p">.</span><span class="nf">Debug</span><span class="p">(</span><span class="n">sw</span><span class="p">.</span><span class="n">ElapsedMilliseconds</span><span class="p">.</span><span class="nf">ToString</span><span class="p">()</span> <span class="p">+</span> <span class="s">"ms"</span><span class="p">);</span><span class="c1">//출력</span>
+<span class="n">sw</span><span class="p">.</span><span class="nf">Reset</span><span class="p">();</span><span class="c1">//타이머 리셋</span>
+</code></pre></div></div>
+
+:ET

@@ -1,4 +1,4 @@
-I"�<p>Written By <a href="https://github.com/jjangchan">KJ Jang</a>, VCANUS</p>
+I"<p>Written By <a href="https://github.com/jjangchan">KJ Jang</a>, VCANUS</p>
 
 <p><code class="highlighter-rouge">Nats</code> 서버는 심플하고 안전한 고성능 오픈소스 메세징 시스템이다. 기본적으로 높은 성능과 확장성, 간단한 사용성을 고려하여 설계되었다.</p>
 
@@ -87,7 +87,8 @@ $ sudo ldconfig # refresh shared library cache.
 <p>reference: https://github.com/protobuf-c/protobuf-c</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/protobuf-c/protobuf-c.git
 $ cd protobuf-c
-$ ./autogen.sh &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make install
+$ ./autogen.sh &amp;&amp; ./configure &amp;&amp; make
+$ sudo make install
 </code></pre></div></div>
 <h4 id="option-install-protobuf-c">(option) install protobuf-c</h4>
 <p>reference: http://google.github.io/proto-lens/installing-protoc.html</p>
@@ -112,31 +113,27 @@ $ sudo make install
 </code></pre></div></div>
 
 <h3 id="mac">Mac</h3>
-<ol>
-  <li>install protobuf protobuf-c
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo brew install protobuf protobuf-c
-</code></pre></div>    </div>
-  </li>
-  <li>install openssl and openssl-devel
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ sudo brew install openssl openssl-devel
-</code></pre></div>    </div>
-  </li>
-  <li>add environment variable “OPENSSL_HOME” to .bash_profile
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OPENSSL_HOME=/usr/local/opt/openssl@1.1
+<h4 id="1-install-protobuf-protobuf-c">1. install protobuf protobuf-c</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo brew install protobuf protobuf-c
+</code></pre></div></div>
+<h4 id="2-install-openssl-and-openssl-devel">2. install openssl and openssl-devel</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo brew install openssl openssl-devel
+</code></pre></div></div>
+<h4 id="3-add-environment-variable-openssl_home-to-bash_profile">3. add environment variable “OPENSSL_HOME” to .bash_profile</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OPENSSL_HOME=/usr/local/opt/openssl@1.1
 export PATH=$OPENSSL_HOME/bin:$PATH
-</code></pre></div>    </div>
-  </li>
-  <li>install nats clienht (C version)
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/nats-io/nats.c.git
+</code></pre></div></div>
+<h4 id="4-install-nats-clienht-c-version">4. install nats clienht (C version)</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/nats-io/nats.c.git
 $ cd nats.c
 $ mkdir build
 $ cd build
 $ cmake 
 $ make
 $ sudo make install
-</code></pre></div>    </div>
-    <h3 id="windows">Windows</h3>
-  </li>
+</code></pre></div></div>
+<h3 id="windows">Windows</h3>
+<ol>
   <li>protobuf (for streaming) install</li>
   <li>openssl <a href="https://www.openssl.org/">install</a></li>
   <li>cmake <a href="https://cmake.org/">install</a></li>

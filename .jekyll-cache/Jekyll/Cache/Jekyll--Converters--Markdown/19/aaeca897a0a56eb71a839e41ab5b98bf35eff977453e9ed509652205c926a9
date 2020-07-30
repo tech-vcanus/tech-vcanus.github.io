@@ -1,4 +1,4 @@
-I"Ã<ul class="toc__menu">
+I"π<ul class="toc__menu">
   <li><a href="#server-installation">Server Installation</a>
     <ul>
       <li><a href="#shell-server">Shell server</a>
@@ -28,7 +28,14 @@
           <li><a href="#5-install-nats-client-c-version">5. install nats client (C version)</a></li>
         </ul>
       </li>
-      <li><a href="#mac">Mac</a></li>
+      <li><a href="#mac">Mac</a>
+        <ul>
+          <li><a href="#1-install-protobuf-protobuf-c">1. install protobuf protobuf-c</a></li>
+          <li><a href="#2-install-openssl-and-openssl-devel">2. install openssl and openssl-devel</a></li>
+          <li><a href="#3-add-environment-variable-openssl_home-to-bash_profile">3. add environment variable ‚ÄúOPENSSL_HOME‚Äù to .bash_profile</a></li>
+          <li><a href="#4-install-nats-clienht-c-version">4. install nats clienht (C version)</a></li>
+        </ul>
+      </li>
       <li><a href="#windows">Windows</a></li>
     </ul>
   </li>

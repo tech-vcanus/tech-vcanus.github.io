@@ -11,7 +11,7 @@ Written By [Nuri Na](https://github.com/nurring) VCANUS
 
 Stopwatch class를 이용해 실행 시간을 측정한다.
 
-
+## 선언
 
 ```csharp
 using System.Diagnostics;
