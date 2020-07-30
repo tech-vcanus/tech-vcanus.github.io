@@ -59,7 +59,6 @@ without --permanent / Temporary application before reload
 
 ## Zone
 default-zone : public
-Set to default zone if --zone does not exist in command
 ```
 # firewall-cmd --zone=zoneName --list-all // print zone detail info
 # firewall-cmd --get-zones // zone list
@@ -68,6 +67,11 @@ Set to default zone if --zone does not exist in command
 # firewall-cmd --set-default-zone=zoneName // change default zone
 # firewall-cmd --new-zone=zoneName // create new zone
 # firewall-cmd --delete-zone
+```
+Set to default zone if --zone does not exist in command
+ex)
+```
+# firewall-cmd --add-service=http // same commadn : firewall-cmd --zone=public --add-service=http
 ```
 
 ## Service
