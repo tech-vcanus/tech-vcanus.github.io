@@ -49,10 +49,17 @@ path : /etc/firewalld/zones/public.xml
 # firewall-cmd --reload
 ```
 
-without --permanent / Temporary application
+without --permanent / Temporary application before reload
+
+## Print all
+
+```
+# firewall-cmd --list-all-zone
+```
 
 ## Zone
-
+default-zone : public
+Set to default zone if --zone does not exist in command
 ```
 # firewall-cmd --zone=zoneName --list-all // print zone detail info
 # firewall-cmd --get-zones // zone list
@@ -76,4 +83,10 @@ without --permanent / Temporary application
 # firewall-cmd --add-port=portNo/protocol(tcp/udp)
 # firewall-cmd --add-port=startPortNo-endPortNo/protocol
 # firewall-cmd --remove-port=portNo/protocol
+```
+
+## Interface
+
+```
+# firwall-cmd --zone=zoneName --change-interface=interfaceName
 ```
