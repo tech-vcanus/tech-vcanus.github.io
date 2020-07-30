@@ -42,7 +42,7 @@ or
 
 ## Config
 
-path : /etc/firewalld/zones/public.xml
+path : /etc/firewalld/zones/public.xml<br>
 --permanent : set config to xml / Reload required for application
 ```
 # firewall-cmd --new-zone=newzone --permament
