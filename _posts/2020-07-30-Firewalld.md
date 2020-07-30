@@ -90,3 +90,11 @@ Set to default zone if --zone does not exist in command
 ```
 # firwall-cmd --zone=zoneName --change-interface=interfaceName
 ```
+
+## Masquerade
+
+```
+# firewall-cmd --zone=zoneName --query-masquerade
+# firewall-cmd --zone=zoneName --add-masquerade
+# firewall-cmd --zone=zoneName --remove-masquerade
+```
