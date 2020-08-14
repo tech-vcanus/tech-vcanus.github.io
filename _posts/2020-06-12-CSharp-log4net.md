@@ -24,37 +24,41 @@ log4net.config
       <level value="ALL"/>
       <appender-ref ref="console"/>
       <appender-ref ref="file"/>
-      <appender-ref ref="fatal_file"/>
+      <appender-ref ref="warn_file"/>
     </root>
     <appender name="console" type="log4net.Appender.ConsoleAppender">
       <layout type="log4net.Layout.PatternLayout">
-        <conversionPattern value="%date %level %logger - %message%newline" />
+        <conversionPattern value="%date [%thread] %level %logger %M - %message%newline" />
       </layout>
     </appender>
     <appender name="file" type="log4net.Appender.RollingFileAppender">
-      <file value=".\log\app.log" />
+      <lockingModel type="log4net.Appender.FileAppender+MinimalLock"/>
+      <file value=".\log\" />
+      <datePattern value="yyyyMMdd'_app.log'" />
+      <staticLogFileName value="false" />
       <appendToFile value="true" />
-      <rollingStyle value="Size" />
-      <maxSizeRollBackups value="5" />
-      <maximumFileSize value="100MB" />
-      <staticLogFileName value="true" />
+      <rollingStyle value="Composite" />
+      <maxSizeRollBackups value="10" />
+      <maximumFileSize value="30MB" />
       <layout type="log4net.Layout.PatternLayout">
-        <conversionPattern value="%date [%thread] %level %logger - %message%newline" />
+        <conversionPattern value="%date [%thread] %level %logger %M - %message%newline" />
       </layout>
     </appender>
-    <appender name="fatal_file" type="log4net.Appender.RollingFileAppender">
-      <file value=".\log\fatal.log" />
+    <appender name="warn_file" type="log4net.Appender.RollingFileAppender">
+      <lockingModel type="log4net.Appender.FileAppender+MinimalLock"/>
+      <file value=".\log\" />
+      <datePattern value="yyyyMMdd'_warn.log'" />
+      <staticLogFileName value="false" />
       <appendToFile value="true" />
-      <rollingStyle value="Size" />
-      <maxSizeRollBackups value="5" />
-      <maximumFileSize value="100MB" />
-      <staticLogFileName value="true" />
+      <rollingStyle value="Composite" />
+      <maxSizeRollBackups value="10" />
+      <maximumFileSize value="30MB" />
       <filter type="log4net.Filter.LevelRangeFilter">
-        <param name="LevelMin" value="FATAL" />
+        <param name="LevelMin" value="WARN" />
         <param name="LevelMax" value="FATAL" />
       </filter>
       <layout type="log4net.Layout.PatternLayout">
-        <conversionPattern value="%date [%thread] %level %logger - %message%newline" />
+        <conversionPattern value="%date [%thread] %level %logger %M - %message%newline" />
       </layout>
     </appender>
   </log4net>
