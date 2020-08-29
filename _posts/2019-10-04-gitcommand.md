@@ -38,7 +38,10 @@ $ git checkout -b feature/subject
 $ git fetch 
 // -t is for tracking
 // branch name exsists in a remote repository
-$ git checkout -t origin/develop 
+$ git checkout -t origin/develop
+// fetch upstream and checkout -t origin/develop of upstream
+$ git fetch upstream
+$ git checkout -t upstream/develop
 ```
 ## add remote repository
 ```
