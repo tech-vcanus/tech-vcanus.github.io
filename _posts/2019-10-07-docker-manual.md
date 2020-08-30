@@ -179,7 +179,7 @@ https://docs.docker.com/engine/reference/builder/
 # Docker compose
 ## Example
 ```
-version: '3'
+version: '5.0.6'
 services: 
   redis1: 
     image: redis:5.0.6 
