@@ -177,9 +177,18 @@ https://docs.docker.com/engine/reference/builder/
  - https://joont92.github.io/docker/volume-container-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0/
 
 # Docker compose
-## Example
+## Preparation
+- docker-compose.yml
+- Dockerfile
+- docker-entrypoint.sh
+- xxx.conf
+## Run
 ```
-version: '5.0.6'
+$ sudo docker-compose up --build -d
+```
+## example: docker-compose.yml 
+```
+version: '3'
 services: 
   redis1: 
     image: redis:5.0.6 
