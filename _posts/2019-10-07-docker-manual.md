@@ -180,10 +180,11 @@ https://docs.docker.com/engine/reference/builder/
 ## Preparation
 - docker-compose.yml
 - Dockerfile
-- docker-entrypoint.sh
+- docker-entrypoint.sh (shoulb be executable)
 - xxx.conf
 ## Run
 ```
+$ chmod 755 docker-entrypoint.sh
 $ sudo docker-compose up --build -d
 ```
 ## example: docker-compose.yml 
