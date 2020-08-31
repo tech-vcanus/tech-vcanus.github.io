@@ -218,31 +218,31 @@ __C++ code__
 class arrayTest
 {
 public:
-				static arrayTest* get_instance();
+	static arrayTest* get_instance();
 				
-				// double 배열 c++에서 set 해주는 예제
-				void double_set_array(double** datas, int* length);
+	// double 배열 c++에서 set 해주는 예제
+	void double_set_array(double** datas, int* length);
 				
-				// string 배열 get 예제
-				void string_get_array(char** datas, int length);
+	// string 배열 get 예제
+	void string_get_array(char** datas, int length);
 				
-				// double 배열 get 하고 std::copy 해주는 예제
-				void double_get_array(double* datas, int length);
+	// double 배열 get 하고 std::copy 해주는 예제
+	void double_get_array(double* datas, int length);
   
-  			// string return 해주는 예제
-  			char* string_return();
+  	// string return 해주는 예제
+  	char* string_return();
 private:
-  			double* double_array;
-  			int double_length;
-				std::vector<double> vector_data;
-  			string str_data;
+  	double* double_array;
+  	int double_length;
+	std::vector<double> vector_data;
+  	string str_data;
 };
 
 extern "C"{
-				__declspec(dllexport) void double_set_array(double** datas, int* length);
-				__declspec(dllexport) void string_get_array(char** datas, int length);
-				__declspec(dllexport) void double_get_array(double* datas, int length);
-  			__declspec(dllexport) char* string_return();
+	__declspec(dllexport) void double_set_array(double** datas, int* length);
+	__declspec(dllexport) void string_get_array(char** datas, int length);
+	__declspec(dllexport) void double_get_array(double* datas, int length);
+  	__declspec(dllexport) char* string_return();
 }
 
 #endlf
@@ -260,20 +260,20 @@ extern "C"{
 
 arrayTest* arrayTest::get_instance()
 {
-			static arrayTest instance;
-			return &instance;
+	static arrayTest instance;
+	return &instance;
 }
 
 void double_set_array(double** datas, int* length)
 {
-			// 역참조 사용, 주소로 참조해서 값을 넣어줘야 하기 떄문에
-			*length =(int)this->length;
+	// 역참조 사용, 주소로 참조해서 값을 넣어줘야 하기 떄문에
+	*length =(int)this->length;
 			
-			// CoTaskMemAlloc() : 마샬링하는데 사용하는 메모리 할당 함수, COM 기반 애플리케이션에서 메모리를 공유하는 유일한 방법
-			*datas = (double*)::CoTaskMemAlloc(sizeof(double) * this->length);
+	// CoTaskMemAlloc() : 마샬링하는데 사용하는 메모리 할당 함수, COM 기반 애플리케이션에서 메모리를 공유하는 유일한 방법
+	*datas = (double*)::CoTaskMemAlloc(sizeof(double) * this->length);
 			
-			// 필자는 vector를 복사 했음.
-			std::copy(vector_data.begin(), vector_data.end(), *datas);
+	// 필자는 vector를 복사 했음.
+	std::copy(vector_data.begin(), vector_data.end(), *datas);
 }
 
 void string_get_array(char** datas, int length)
@@ -283,19 +283,19 @@ void string_get_array(char** datas, int length)
 
 char* string_return()
 {
-			int size = this->str_data.size();
-  		char* data = new char[size];
-  		strcpy(data,this->str_data.c_str());
-  		return data;
+	int size = this->str_data.size();
+  	char* data = new char[size];
+  	strcpy(data,this->str_data.c_str());
+  	return data;
 }
 
 void double_get_array(double* datas, int length)
 {
-  		// 담아주는 c++ 배열 동적 메모리 할당
-			this->double_array = new double[length];
+  	// 담아주는 c++ 배열 동적 메모리 할당
+	this->double_array = new double[length];
   		
-  		// std::copy
-  		std::copy(datas, datas + length, this->double_array)
+  	// std::copy
+  	std::copy(datas, datas + length, this->double_array)
 }
 
 
@@ -303,22 +303,22 @@ void double_get_array(double* datas, int length)
 
 void double_set_array(double** datas, int* length)
 {
-			return arrayTest::get_instance()->double_set_array(datas, length);  	
+	return arrayTest::get_instance()->double_set_array(datas, length);  	
 }
 
 void string_get_array(char** datas, int length)
 {
-			return arrayTest::get_instance()->string_get_array(datas, length);  	
+	return arrayTest::get_instance()->string_get_array(datas, length);  	
 }
 
 char* string_return()
 {
-			return arrayTest::get_instance()->string_return();  	
+	return arrayTest::get_instance()->string_return();  	
 }
 
 void double_get_array(double** datas, int* length)
 {
-			return arrayTest::get_instance()->double_get_array(datas, length);  	
+	return arrayTest::get_instance()->double_get_array(datas, length);  	
 }
 ```
 
@@ -353,7 +353,7 @@ extern public static Intptr string_return();
 void double_set_array()
 {
   	// 포인터 초기화
-		Intptr IntPtrData = IntPtr.Zero;
+	Intptr IntPtrData = IntPtr.Zero;
   	
   	// c++에서 배열 길이 가져오는 int 변수 초기화
   	int length = 0;
@@ -380,7 +380,7 @@ void string_get_array()
   	string[] data = new string[length]{"info1", "info2", "info3"};
   	
   	// dll 함수 호출
-		string_get_array(data, length);
+	string_get_array(data, length);
 }
 
 //ex3) double 배열 정보 c++로 보내는 예제
@@ -398,7 +398,7 @@ void double_get_array()
 void string_return()
 {
   	//포인터 return
-		Intptr ptr = string_return();
+	Intptr ptr = string_return();
   	
   	//포인터 -> string 변환
   	string strData = Marshal.PtrToStringAnsi(ptr);
