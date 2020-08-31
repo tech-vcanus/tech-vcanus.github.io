@@ -272,7 +272,7 @@ void double_set_array(double** datas, int* length)
 	// CoTaskMemAlloc() : 마샬링하는데 사용하는 메모리 할당 함수, COM 기반 애플리케이션에서 메모리를 공유하는 유일한 방법
 	*datas = (double*)::CoTaskMemAlloc(sizeof(double) * this->length);
 			
-	// 필자는 vector를 복사 했음.
+	// vector->double[] 복사.
 	std::copy(vector_data.begin(), vector_data.end(), *datas);
 }
 
