@@ -191,9 +191,222 @@ test_array(array);
 
 
 
+## 5. Marshalling(동적 배열)
+
+*마샬링(marshalling) : 하나 이상의 프로그램 또는 연속적이지 않은 저장공간으로부터 데이터를 모은 다음, 이들을 메시지 버퍼에 집어넣고 특정 수신기나 프로그래밍 인터페이스에 맞도록 그 데이터를 조직화하거나, 미래 정해진 다른 형식으로 변환하는 과정. 
+
+주로 한 언어로 작성된 프로그램의 출력 매개변수를 다른 언어로 작성된 프로그램의 입력으로 전달해야 하는 경우 필요하다
 
 
 
+__동적 배열 예제__
+
+__C++ code__
+
+```c++
+// c++
+// arrayTest.h
+
+
+#ifndef ARRAYTEST_H
+#define ARRAYTEST_H
+
+#include <vector>
+#include <iostream>
+#include <string>
+
+class arrayTest
+{
+public:
+				static arrayTest* get_instance();
+				
+				// double 배열 c++에서 set 해주는 예제
+				void double_set_array(double** datas, int* length);
+				
+				// string 배열 get 예제
+				void string_get_array(char** datas, int length);
+				
+				// double 배열 get 하고 std::copy 해주는 예제
+				void double_get_array(double* datas, int length);
+  
+  			// string return 해주는 예제
+  			char* string_return();
+private:
+  			double* double_array;
+  			int double_length;
+				std::vector<double> vector_data;
+  			string str_data;
+};
+
+extern "C"{
+				__declspec(dllexport) void double_set_array(double** datas, int* length);
+				__declspec(dllexport) void string_get_array(char** datas, int length);
+				__declspec(dllexport) void double_get_array(double* datas, int length);
+  			__declspec(dllexport) char* string_return();
+}
+
+#endlf
+```
+
+
+
+```c++
+// c++
+// arrayTest.cpp
+
+// 무조건 pch.h 헤더파일이 맨 앞으로 오게 한다!
+#include "pch.h"
+#include "arrayTest.h"
+
+arrayTest* arrayTest::get_instance()
+{
+			static arrayTest instance;
+			return &instance;
+}
+
+void double_set_array(double** datas, int* length)
+{
+			// 역참조 사용, 주소로 참조해서 값을 넣어줘야 하기 떄문에
+			*length =(int)this->length;
+			
+			// CoTaskMemAlloc() : 마샬링하는데 사용하는 메모리 할당 함수, COM 기반 애플리케이션에서 메모리를 공유하는 유일한 방법
+			*datas = (double*)::CoTaskMemAlloc(sizeof(double) * this->length);
+			
+			// 필자는 vector를 복사 했음.
+			std::copy(vector_data.begin(), vector_data.end(), *datas);
+}
+
+void string_get_array(char** datas, int length)
+{
+			
+}
+
+char* string_return()
+{
+			int size = this->str_data.size();
+  		char* data = new char[size];
+  		strcpy(data,this->str_data.c_str());
+  		return data;
+}
+
+void double_get_array(double* datas, int length)
+{
+  		// 담아주는 c++ 배열 동적 메모리 할당
+			this->double_array = new double[length];
+  		
+  		// std::copy
+  		std::copy(datas, datas + length, this->double_array)
+}
+
+
+/** DLL - Function **/
+
+void double_set_array(double** datas, int* length)
+{
+			return arrayTest::get_instance()->double_set_array(datas, length);  	
+}
+
+void string_get_array(char** datas, int length)
+{
+			return arrayTest::get_instance()->string_get_array(datas, length);  	
+}
+
+char* string_return()
+{
+			return arrayTest::get_instance()->string_return();  	
+}
+
+void double_get_array(double** datas, int* length)
+{
+			return arrayTest::get_instance()->double_get_array(datas, length);  	
+}
+```
+
+
+
+__c# code__
+
+```c++
+// C#
+// arrayTest.cs
+using System.Runtime.InteropServices;
+...
+  
+// double 배열 정보 c++에서 set 해주는 예제  
+[DllImport("arrayTest.dll", CallingConvention = CallingConvention.Cdecl)]
+extern public static void double_set_array([Out] out IntPtr datas, [Out] out int length);
+
+// string 배열 정보 c++로 보내는 예제 
+[DllImport("arrayTest.dll", CallingConvention = CallingConvention.Cdecl)]
+extern public static void string_get_array(string[] data, int length);
+
+// double 배열 정보 c++로 보내는 예제
+[DllImport("arrayTest.dll", CallingConvention = CallingConvention.Cdecl)]
+extern public static void double_get_array(double[] datas,int length);
+
+// string 정보 c++ 에서 return 하는 예제 
+[DllImport("arrayTest.dll", CallingConvention = CallingConvention.Cdecl)]
+extern public static Intptr string_return();
+
+
+//ex1) double 배열 정보 c++에서 set 해주는 예제  
+void double_set_array()
+{
+  	// 포인터 초기화
+		Intptr IntPtrData = IntPtr.Zero;
+  	
+  	// c++에서 배열 길이 가져오는 int 변수 초기화
+  	int length = 0;
+  	
+  	//dll 함수 호출
+  	double_set_array(out IntPtrData, out length);
+  	
+  	// c# 에서 copy 할 double array 생성
+  	double[] data = new double[length];
+  	
+  	// 마샬링 copy
+  	Marshal.Copy(IntPtrData, data, 0, length);
+  
+  	// 동적 메모리 해제
+  	Marshal.FreeCoTaskMem(IntPtrData);
+  	
+}
+
+//ex2) string 배열 정보 c++로 보내는 예제 
+void string_get_array()
+{
+  	// 보낼 배열 과 배열 사이즈
+  	int length = 3;
+  	string[] data = new string[length]{"info1", "info2", "info3"};
+  	
+  	// dll 함수 호출
+		string_get_array(data, length);
+}
+
+//ex3) double 배열 정보 c++로 보내는 예제
+void double_get_array()
+{
+  	// 보낼 배열 과 배열 사이즈
+  	int length = 3;
+  	double[] data = new double[length]{1.0, 2.0, 3.0};
+  	
+  	// dll 함수 호출
+  	double_get_array(data, length);
+}
+
+//ex4)
+void string_return()
+{
+  	//포인터 return
+		Intptr ptr = string_return();
+  	
+  	//포인터 -> string 변환
+  	string strData = Marshal.PtrToStringAnsi(ptr);
+  
+  	// 메모리 할당 해제
+  	Marshal.FreeHGlobal(ptr);
+}
+```
 
 
 
