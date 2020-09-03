@@ -46,12 +46,12 @@ $ docker run -d \
 ## InfluxDB CLI on Docker Container
 
 ```
-$docker exec -it <ContainerName> influxdb [-username <USERNAME> -password <PASSWORD> -database <DATABASENAME>] -precision rfc3339
+$docker exec -it <ContainerName> influx [-username <USERNAME> -password <PASSWORD> -database <DATABASENAME>] -precision rfc3339
 ```
 
 only available under version 1.8 when using auth
 ```
-$docker exec -it <ContainerName> influxdb influx -precision rfc3339
+$docker exec -it <ContainerName> influx -precision rfc3339
 >auth
 ```
 
