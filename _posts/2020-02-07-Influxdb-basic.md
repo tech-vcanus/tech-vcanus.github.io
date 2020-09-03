@@ -100,6 +100,7 @@ reference : [Document](https://docs.influxdata.com/influxdb/v1.7/query_language/
 - USE \<DATABASE>[,\<retention_policy>]
 - SETTINGS
   
+
 reference : [Document](https://docs.influxdata.com/influxdb/v1.7/query_language/schema_exploration)
 
 ## Basic Query
@@ -131,3 +132,24 @@ reference(Document)<br>
 - ALTER RETENTION POLICY \<retention_name> ON \<database_name> DURATION \<duration_time> REPLICATION \<n> [SHARD DURATION \<duration>] [DEFAULT]
 
 reference : [Document](https://docs.influxdata.com/influxdb/v1.7/query_language/database_management/#create-retention-policies-with-create-retention-policy)
+
+
+
+## curl 
+
+### write
+
+```
+$ curl -i -XPOST "http://localhost:8086/write?db=mydb&u=vcanus&p=1234" --data-binary 'Mesurement,tag_key=tag_value field=90 1463683075'
+```
+
+### query
+
+```
+$ curl -G 'http://localhost:8086/query?pretty=true&u=vcanus&p=1234&db=grafana&epoch=ns' --data-urlencode "q=SELECT \"value\" FROM \"Mesurement\" WHERE \"tag_key\"='tag_value' AND \"time\" > now() order by desc limit 100"
+```
+
+
+
+
+
