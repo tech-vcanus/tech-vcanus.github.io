@@ -30,6 +30,7 @@ The below make a docker container to be run automatically on boot.
 ```
 $ sudo vi /etc/systemd/system/docker_container_name.service
 ```
+__docker-container__
 ```
 [Unit]
 Description=Docker Container Service
@@ -46,7 +47,7 @@ ExecStop=/usr/bin/docker stop docker_container_name # <- modify here
 #WantedBy=default.target
 WantedBy=multi-user.target
 ```
-docker-compose 
+__docker-compose__ 
 ```
 [Unit]
 Description=Docker Compose Application Service
