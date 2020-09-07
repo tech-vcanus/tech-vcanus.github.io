@@ -47,7 +47,7 @@ ExecStop=/usr/bin/docker stop docker_container_name # <- modify here
 WantedBy=multi-user.target
 ```
 docker-compose 
-``
+```
 [Unit]
 Description=Docker Compose Application Service
 Requires=docker.service
@@ -63,7 +63,7 @@ TimeoutStartSec=0
 
 [Install]
 WantedBy=multi-user.target
-``
+```
 
 ```
 $ sudo systemctl start docker_container_name.service
