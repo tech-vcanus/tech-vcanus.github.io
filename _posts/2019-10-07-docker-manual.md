@@ -28,7 +28,7 @@ $ sudo systemctl status docker.service
 Refer some documents about service registration. 
 The below make a docker container to be run automatically on boot.
 ```
-$ sudo vi /etc/systemd/system/docker_container_name.service
+$ sudo vi /etc/systemd/system/docker-container.service
 ```
 __docker-container__
 ```
@@ -47,7 +47,25 @@ ExecStop=/usr/bin/docker stop docker_container_name # <- modify here
 #WantedBy=default.target
 WantedBy=multi-user.target
 ```
+
+```
+$ sudo systemctl start docker_container_name.service
+$ sudo systemctl enable docker_container_name.service
+```
+
 __docker-compose__ 
+add option : restart: always
+
+example file(nats-node-1.yaml)
+```
+version: "3.5"
+services:
+  nats-node-1:
+    network_mode: host
+    image: nats
+    restart: always
+```
+
 ```
 [Unit]
 Description=Docker Compose Application Service
@@ -64,11 +82,6 @@ TimeoutStartSec=0
 
 [Install]
 WantedBy=multi-user.target
-```
-
-```
-$ sudo systemctl start docker_container_name.service
-$ sudo systemctl enable docker_container_name.service
 ```
 ### Run services inside docker container on boot
 make entry-point script (docker-entrypoint.sh). 
