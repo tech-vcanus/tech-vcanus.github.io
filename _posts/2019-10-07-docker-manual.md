@@ -58,7 +58,7 @@ __docker-compose__
 1. add option
 restart: always
 
-example file(nats-node-1.yaml)
+2. example file(nats-node-1.yaml)
 ```
 version: "3.5"
 services:
