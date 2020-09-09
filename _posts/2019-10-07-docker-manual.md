@@ -54,6 +54,7 @@ $ sudo systemctl enable docker_container_name.service
 ```
 
 __docker-compose__ 
+
 add option : restart: always
 
 example file(nats-node-1.yaml)
@@ -64,24 +65,6 @@ services:
     network_mode: host
     image: nats
     restart: always
-```
-
-```
-[Unit]
-Description=Docker Compose Application Service
-Requires=docker.service
-After=docker.service
-
-[Service]
-Type=oneshot
-RemainAfterExit=yes
-WorkingDirectory={file PATH}
-ExecStart=/usr/local/bin/docker-compose up -d
-ExecStop=/usr/local/bin/docker-compose down
-TimeoutStartSec=0
-
-[Install]
-WantedBy=multi-user.target
 ```
 ### Run services inside docker container on boot
 make entry-point script (docker-entrypoint.sh). 
