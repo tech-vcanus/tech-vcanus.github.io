@@ -55,7 +55,8 @@ $ sudo systemctl enable docker_container_name.service
 
 __docker-compose__ 
 
-add option : restart: always
+1. add option
+restart: always
 
 example file(nats-node-1.yaml)
 ```
