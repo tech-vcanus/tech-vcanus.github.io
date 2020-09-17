@@ -62,6 +62,10 @@ $ vi ~/.npmrc
 @(github package가 존재하는 repository name):registry=https://npm.pkg.github.com/
 ```
 
+### Grafana influxDB 설정 options custom http headers
+* header : Content-Type
+* value : application/x-www-form-urlencoded
+
 ### 4. 기타 유의사항
 * react plugin 코드를 심은 후 dependency를 다운받으려면 컨테이너 안에 yarn이 설치되어 있어야 한다.  
 * yarn을 설치하기 위해서는 nodejs가 설치되어 있어야 한다.
