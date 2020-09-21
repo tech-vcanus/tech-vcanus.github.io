@@ -22,6 +22,7 @@ A file of docker.service is already installed on /usr/lib/systemd/system.
 $ sudo systemctl enable docker.service
 $ sudo systemctl start docker.service
 $ sudo systemctl status docker.service
+$ sudo usermod -aG docker $USER
 ```
 
 ### Start docker container on boot 
