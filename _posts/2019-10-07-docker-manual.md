@@ -12,8 +12,44 @@ Written by SGLee, VCANUS
 ## Installation
 CentOS
 ```
-$ sudo yum update
-$ sudo yum install docker
+$ sudo yum install -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2
+$ sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+```
+__특정 버전 설치__
+```    
+$ yum list docker-ce --showduplicates | sort -r
+$ sudo yum install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io -nobest
+```
+__최신 버전 설치__
+```    
+$ sudo yum install docker-ce docker-ce-cli containerd.io nobest
+```
+
+Ubuntu
+```
+$ sudo apt update
+$ sudo apt install apt-transport-https ca-certificates curl software-properties-common
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+$ sudo apt update
+$ apt-cache policy docker-ce
+docker-ce:
+  Installed: (none)
+  Candidate: 18.06.1~ce~3-0~ubuntu
+  Version table:
+     18.06.1~ce~3-0~ubuntu 500
+        500 https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
+     18.06.0~ce~3-0~ubuntu 500
+        500 https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
+     18.03.1~ce~3-0~ubuntu 500
+        500 https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
+	
+# Installed: (none) 이면 docker 설치
+$ sudo apt install docker-ce
 ```
 
 ## Start docker on boot 
