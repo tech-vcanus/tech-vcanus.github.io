@@ -231,8 +231,12 @@ public:
   
   	// string return 해주는 예제
   	char* string_return();
+	
+	// bool 배열 get 예제
+	void bool_get_array(bool* IEPE,int length);
 private:
   	double* double_array;
+	bool* bool_array;
   	int double_length;
 	std::vector<double> vector_data;
   	string str_data;
@@ -243,6 +247,7 @@ extern "C"{
 	__declspec(dllexport) void string_get_array(char** datas, int length);
 	__declspec(dllexport) void double_get_array(double* datas, int length);
   	__declspec(dllexport) char* string_return();
+	__declspec(dllexport) void bool_get_array(boo* IEPE, int length);
 }
 
 #endlf
@@ -298,6 +303,15 @@ void double_get_array(double* datas, int length)
   	std::copy(datas, datas + length, this->double_array)
 }
 
+void bool_get_array(bool* IEPE, int length)
+{
+  	// 담아주는 c++ 배열 동적 메모리 할당
+	this->bool_array = new bool[length];
+  		
+  	// std::copy
+  	std::copy(IEPE, IEPE + length, this->bool_array)
+}
+
 
 /** DLL - Function **/
 
@@ -319,6 +333,11 @@ char* string_return()
 void double_get_array(double** datas, int* length)
 {
 	return arrayTest::get_instance()->double_get_array(datas, length);  	
+}
+
+void bool_get_array(bool IEPE, int length)
+{
+	return arrayTest::get_instance()->double_get_array(IEPE, length);  	
 }
 ```
 
@@ -348,6 +367,12 @@ extern public static void double_get_array(double[] datas,int length);
 [DllImport("arrayTest.dll", CallingConvention = CallingConvention.Cdecl)]
 extern public static Intptr string_return();
 
+//bool array c# -> c++ 로 보내는 예제
+[DllImport("arrayTest.dll", CallingConvention = CallingConvention.Cdecl)]
+extern public static void bool_get_array (
+            [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.I1)]
+            bool[] isIEPE,
+	    int Length);
 
 //ex1) double 배열 정보 c++에서 set 해주는 예제  
 void double_set_array()
@@ -405,6 +430,17 @@ void string_return()
   
   	// 메모리 할당 해제
   	Marshal.FreeHGlobal(ptr);
+}
+
+//ex5)
+void bool_get_array()
+{
+  	bool[] boolArray = new bool[4];
+	for(int i=0; i<4; i++)
+	{
+	    boolArray[i] = true;
+	}
+	bool_get_array(boolArray,boolArray.Length);
 }
 ```
 
