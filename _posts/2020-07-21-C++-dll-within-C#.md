@@ -337,7 +337,7 @@ void double_get_array(double** datas, int* length)
 
 void bool_get_array(bool IEPE, int length)
 {
-	return arrayTest::get_instance()->double_get_array(IEPE, length);  	
+	return arrayTest::get_instance()->bool_get_array(IEPE, length);  	
 }
 ```
 
