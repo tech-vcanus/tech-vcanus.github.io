@@ -436,7 +436,7 @@ void string_return()
 void bool_get_array()
 {
   	bool[] boolArray = new bool[4];
-	for(int i=0; i<4; i++)
+	for(int i=0; i<boolArray.Length; i++)
 	{
 	    boolArray[i] = true;
 	}
