@@ -76,17 +76,20 @@ void loop(){
 string 타입으로 변환하는 String()에는 세 가지 문법이 있다.<br>
 String()의 첫 번째 인자 val에 사용할 수 있는 자료형은 string, char, byte, int, long, unsigned int, unsigned long, float, double이다.<br>
 
-1. String(val)
+(1) String(val)
 
 val을 string 타입으로 변환
 
-2. String(val, base)
+
+(2) String(val, base)
 
 val을 HEX(hexadecimal), BIN(binary), DEC(deciamal) 등의 base로 변환
 
-3. String(val, decimalPlaces)
+
+(3) String(val, decimalPlaces)
 
 val의 float 또는 double 타입일 경우, 소수점 지정<br>
+
 
 이 외에도 괄호 안의 값을 byte, word 타입으로 변환하는 byte(), word()도 있다.
 
