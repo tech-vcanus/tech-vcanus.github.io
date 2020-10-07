@@ -18,7 +18,7 @@ Written by SGLee, VCANUS
 ```
 $brew update
 $brew tap homebrew/cask-versions
-$brew tap caskroom/cask
+#$brew tap caskroom/cask
 ```
 
 ## Java Install
