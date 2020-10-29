@@ -1,5 +1,5 @@
 ---
-title: C# Influx Monitoring Setting
+title: Influx Monitoring Setting
 tags: setup
 toc: true
 toc_sticky: true
