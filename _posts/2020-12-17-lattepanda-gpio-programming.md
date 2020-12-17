@@ -7,8 +7,6 @@ toc_sticky: true
 
 Written By [HJ Jang](https://github.com/hei-jung), VCANUS
 
-<br>
-참고링크: [LattePanda 페이지](http://docs.lattepanda.com/content/1st_edition/vs_programming/)
 
 ## PC 설정
 
@@ -106,3 +104,7 @@ private static void Arduino_didI2CDataReveive(byte address, byte register, byte[
 ![lattepanda_gpio](https://user-images.githubusercontent.com/40985307/102469060-a788d780-4095-11eb-9314-2ec0a139c8ea.png)
 
 (이미지 출처: https://www.lattepanda.com/lattepanda-docs)
+
+
+---
+참고링크: [LattePanda 페이지](http://docs.lattepanda.com/content/1st_edition/vs_programming/)
