@@ -7,6 +7,7 @@ toc_sticky: true
 
 Written By [HJ Jang](https://github.com/hei-jung), VCANUS
 
+<br>
 참고링크: [LattePanda 페이지](http://docs.lattepanda.com/content/1st_edition/vs_programming/)
 
 ## PC 설정
