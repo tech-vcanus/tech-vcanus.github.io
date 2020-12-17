@@ -1,5 +1,5 @@
 ---
-title: "LattePanda GPIO"
+title: "LattePanda GPIO Programming"
 tags: DAC Arduino setup
 toc: true
 toc_sticky: true
