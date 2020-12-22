@@ -10,7 +10,7 @@ Written By [HJ Jang](https://github.com/hei-jung), VCANUS
 RaspberryPi나 LattePanda처럼 GPIO 핀이 있는 컴퓨터에서는 핀에 LED, 서보모터, ADC 또는 DAC 모듈 등을 연결해서 IoT 시스템을 구현할 수 있다.<br>
 이 문서에서는 Arduino Leonardo가 내장되어 있는 LattePanda 컴퓨터에서 C# GPIO 프로그래밍하는 방법을 정리한다.
 
-## PC 설정
+## Settings for PC
 
 ### 1. 개발자 모드 ON
 
