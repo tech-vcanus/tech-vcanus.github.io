@@ -84,7 +84,7 @@ ModbusSerialMaster master = new ModbusSerialMaster();
 2) write 함수
 
 ```cs
-void WriteMultipleRegisters(byte slaveAddress, ushort startAddress, ushort[] data);
+void WriteSingleRegisters(byte slaveAddress, ushort startAddress, ushort[] data);
 ```
 
 ### 3. 각 설정 화면
