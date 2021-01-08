@@ -13,13 +13,13 @@ DASUtill, SDK 프로그램 이용 방법과 Master write 프로그래밍 방법 
 
 ## DASUtil 이용 방법
 
-### 1.프로그램 다운 경로
+### 1. 프로그램 다운 경로
 [다운로드 링크](https://www.icpdas.com/en/download/show.php?num=1046&root=&model=&kw=DCON%20Utility) 에서 DCON_Utility_Pro_PC_V4 다운
 
-### 2.프로그램 설치 경로
+### 2. 프로그램 설치 경로
 zip해제 후 > DCON_Utility_Pro_PC > DCON_Utility_Pro.exe 설치
 
-### 3.프로그램 실행 및 설정 방법
+### 3. 프로그램 실행 및 설정 방법
 (1) DCON_Utility_Pro.exe 실행
 (2) COM Port 누르고 Search Options 설정
 
@@ -46,7 +46,7 @@ zip해제 후 > DCON_Utility_Pro_PC > DCON_Utility_Pro.exe 설치
 ----------
 ## DAS SDK(NModbus4 라이브러리) 설치
 
-### 1.프로그램 다운로드 경로
+### 1. 프로그램 다운로드 경로
 (1)프로젝트를 만든 후 우측의 “솔루션 탐색기”의 “프로젝트(ModbusExample)“에 우클릭으로 “NuGet 패키지 관리(N)..”를 선택
 
 ![dll1](https://user-images.githubusercontent.com/76982066/103958938-ba249700-5191-11eb-8c3b-437e1fee8b21.PNG)
@@ -64,7 +64,7 @@ zip해제 후 > DCON_Utility_Pro_PC > DCON_Utility_Pro.exe 설치
 
 ## 프로그래밍
 
-### 1.NModbus4 라이브러리 참조
+### 1. NModbus4 라이브러리 참조
 
 (1) 위 DAS SDK(NModbus4 라이브러리) 설치 참조
 (2) 다운 받은 라이브러리 불러오기
@@ -73,7 +73,7 @@ zip해제 후 > DCON_Utility_Pro_PC > DCON_Utility_Pro.exe 설치
 using Modbus.Device;
 ```
 
-### 2.참조 함수
+### 2. 참조 함수
 
 (1) 클래스 사용
 
@@ -86,9 +86,12 @@ ModbusSerialMaster master = new ModbusSerialMaster();
 
 ```cs
 void WriteSingleRegisters(byte slaveAddress, ushort startAddress, ushort[] data);
+
+Thread thread = new Thread(() => Application.Run(master));
+thread.Start();
 ```
 
-### 3.포트 설정 및 설정 값
+### 3. 포트 설정 및 설정 값
 
 (1) port Setting
 ```cs
@@ -127,7 +130,7 @@ master.WriteSingleRegister(slaveAddress, registerAddress, value);
 ## MmodBusRtu_M7024 사용법
 위 프로그래밍으로 작성한 실행파일 및 라이브러리 사용법이다.
 
-### 1.  exe 파일 실행
+### 1. exe 파일 실행
 
 [vsc_serial_communication](https://github.com/vcanus/vcs_serial_communication) -> SerialPortConnection -> bin -> Release -> SerialPortConnection.exe 실행
 
@@ -149,7 +152,7 @@ ModbusRtu_M7024.ModbusRtu_M7024 modbusRtu_m7024 = new ModbusRtu_7024.ModbusRtu_M
 ```
 
 
-### 3.cs 사용법
+### 3. cs 사용법
 (1) comboBox 에서 port name 설정 연결버튼 클릭
 
 ![exe1](https://user-images.githubusercontent.com/76982066/103968860-037fe100-51a8-11eb-99f2-4ce6fd2ecaea.PNG)
