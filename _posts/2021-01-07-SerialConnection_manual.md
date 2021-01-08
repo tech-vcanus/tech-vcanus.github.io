@@ -46,7 +46,7 @@ zip해제 후 > DCON_Utility_Pro_PC > DCON_Utility_Pro.exe 설치
 ----------
 # DAS SDK(NModbus4 라이브러리) 설치
 
-### 프로그램 다운로드 경로
+### 1.프로그램 다운로드 경로
 (1)프로젝트를 만든 후 우측의 “솔루션 탐색기”의 “프로젝트(ModbusExample)“에 우클릭으로 “NuGet 패키지 관리(N)..”를 선택
 
 ![dll1](https://user-images.githubusercontent.com/76982066/103958938-ba249700-5191-11eb-8c3b-437e1fee8b21.PNG)
