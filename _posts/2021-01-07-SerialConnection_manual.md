@@ -129,7 +129,6 @@ master.WriteSingleRegister(slaveAddress, registerAddress, value);
 
 ### 1.  exe 파일 실행
 
-* 실행 루트
 [vsc_serial_communication](https://github.com/vcanus/vcs_serial_communication) -> SerialPortConnection -> bin -> Release -> SerialPortConnection.exe 실행
 
 ### 2. dll 파일 참조
