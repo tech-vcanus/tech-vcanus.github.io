@@ -11,7 +11,7 @@ M-7024 모델을 이용한 SerialPort Connection(ModBusRTU)에 대한 내용이�
 <br>
 DASUtill, SDK 프로그램 이용 방법과 Master write 프로그래밍 방법 및 사용 법 정리
 
-# DASUtil 이용 방법
+## DASUtil 이용 방법
 
 ### 1.프로그램 다운 경로
 [다운로드 링크](https://www.icpdas.com/en/download/show.php?num=1046&root=&model=&kw=DCON%20Utility) 에서 DCON_Utility_Pro_PC_V4 다운
@@ -44,7 +44,7 @@ zip해제 후 > DCON_Utility_Pro_PC > DCON_Utility_Pro.exe 설치
 ![findresult](https://user-images.githubusercontent.com/76982066/103882818-b2c4a580-511f-11eb-914c-7de5a69277b2.PNG)
 
 ----------
-# DAS SDK(NModbus4 라이브러리) 설치
+## DAS SDK(NModbus4 라이브러리) 설치
 
 ### 1.프로그램 다운로드 경로
 (1)프로젝트를 만든 후 우측의 “솔루션 탐색기”의 “프로젝트(ModbusExample)“에 우클릭으로 “NuGet 패키지 관리(N)..”를 선택
