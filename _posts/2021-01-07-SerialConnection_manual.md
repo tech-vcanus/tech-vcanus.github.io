@@ -132,7 +132,21 @@ master.WriteSingleRegister(slaveAddress, registerAddress, value);
 [vsc_serial_communication](https://github.com/vcanus/vcs_serial_communication) -> SerialPortConnection -> bin -> Release -> SerialPortConnection.exe 실행
 
 ### 2. dll 파일 참조
+1) 참조 경로
+
 [vsc_serial_communication](https://github.com/vcanus/vcs_serial_communication) -> SerialPortConnection -> bin -> Debug -> SerialPortConnection.dll 참조 추가
+
+2) 코드 추가
+
+```cs
+using ModbusRtu_M7024;
+using System.Threading;
+```
+
+```cs
+ModbusRtu_M7024.ModbusRtu_M7024 modbusRtu_m7024 = new ModbusRtu_7024.ModbusRtu_M7024();
+
+```
 
 
 ### 3. cs 사용법
