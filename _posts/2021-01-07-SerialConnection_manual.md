@@ -9,7 +9,7 @@ Written By [mskoo](https://github.com/mskoo-vcanus), VCANUS
 
 M-7024 모델을 이용한 SerialPort Connection(ModBusRTU)에 대한 내용이다
 <br>
-DASUtill, SDK 프로그램 이용 방법과 Master write 프로그래밍 방법및  정리
+DASUtill, SDK 프로그램 이용 방법과 Master write 프로그래밍 방법 및 사용 법 정리
 
 # DASUtil 이용 방법
 
