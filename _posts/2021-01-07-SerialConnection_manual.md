@@ -38,6 +38,7 @@ zip해제 후 > DCON_Utility_Pro_PC > DCON_Utility_Pro.exe 설치
 3) Start Search 화살표 클릭하여 포트정보 찾기
 
 ![findport](https://user-images.githubusercontent.com/76982066/103882790-a80a1080-511f-11eb-8895-57822aee7045.png)
+
 4) 찾은 정보 확인
 
 ![findresult](https://user-images.githubusercontent.com/76982066/103882818-b2c4a580-511f-11eb-914c-7de5a69277b2.PNG)
@@ -105,7 +106,7 @@ master = ModbusSerialMaster.CreateRtu(port);
 	
 3) write
 registerAddress 인자는 주소값이 40003번지라면 40003이 아닌 3을 넣어야 함
-value 허용범위값 : 0~10V -> 0~10000
+value 허용범위값 : 0 - 10V -> 0 - 10000
 
 ```cs
 byte slaveAddress = Convert.ToByte(txtSlaveAdress.Text);
@@ -119,7 +120,7 @@ master.WriteSingleRegister(slaveAddress, registerAddress, value);
 
 ![address](https://user-images.githubusercontent.com/76982066/103967080-8ef77300-51a4-11eb-87a1-12adb78978f9.PNG)
 
-[Series User Manual link(M-7024)](https://www.icpdas.com/web/product//download/io_and_unit/rs-485/document/manual/7000/I-7021_I-7021P(D)_I-7022_I-7024_I-7024R_M-7022_M-7024_M-7024L_M-7024R_M-7024U(D)_M-7028_en.pdf)
+매뉴얼 다운로드 링크 : [Series User Manual link(M-7024)](https://www.icpdas.com/web/product//download/io_and_unit/rs-485/document/manual/7000/I-7021_I-7021P(D)_I-7022_I-7024_I-7024R_M-7022_M-7024_M-7024L_M-7024R_M-7024U(D)_M-7028_en.pdf)
 
 ----------
 
