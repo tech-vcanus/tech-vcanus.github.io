@@ -88,7 +88,7 @@ ModbusSerialMaster master = new ModbusSerialMaster();
 void WriteSingleRegisters(byte slaveAddress, ushort startAddress, ushort[] data);
 ```
 
-### 3. 각 설정 화면
+### 3. 포트 설정 및 설정 값
 
 1) port Setting
 ```cs
