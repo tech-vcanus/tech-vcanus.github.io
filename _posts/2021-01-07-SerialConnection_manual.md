@@ -120,7 +120,7 @@ master.WriteSingleRegister(slaveAddress, registerAddress, value);
 
 ![address](https://user-images.githubusercontent.com/76982066/103967080-8ef77300-51a4-11eb-87a1-12adb78978f9.PNG)
 
-매뉴얼 다운로드 링크 : [Series User Manual link(M-7024)](https://www.icpdas.com/web/product//download/io_and_unit/rs-485/document/manual/7000/I-7021_I-7021P(D)_I-7022_I-7024_I-7024R_M-7022_M-7024_M-7024L_M-7024R_M-7024U(D)_M-7028_en.pdf)
+참고 : [Series User Manual link(M-7024)](https://www.icpdas.com/web/product//download/io_and_unit/rs-485/document/manual/7000/I-7021_I-7021P(D)_I-7022_I-7024_I-7024R_M-7022_M-7024_M-7024L_M-7024R_M-7024U(D)_M-7028_en.pdf)
 
 ----------
 
