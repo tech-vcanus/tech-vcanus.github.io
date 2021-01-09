@@ -86,9 +86,6 @@ ModbusSerialMaster master = new ModbusSerialMaster();
 
 ```cs
 void WriteSingleRegisters(byte slaveAddress, ushort startAddress, ushort[] data);
-
-Thread thread = new Thread(() => Application.Run(master));
-thread.Start();
 ```
 
 ### 3. 포트 설정 및 설정 값
