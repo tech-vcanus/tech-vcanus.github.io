@@ -32,6 +32,16 @@ brew install openjdk@8
 #### install java11
 ```
 brew install openjdk@11
+==>
+openjdk is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides similar software and installing this software in
+parallel can cause all kinds of trouble.
+
+If you need to have openjdk first in your PATH, run:
+  echo 'export PATH="/usr/local/opt/openjdk/bin:$PATH"' >> ~/.zshrc
+
+For compilers to find openjdk you may need to set:
+  export CPPFLAGS="-I/usr/local/opt/openjdk/include"
 ```
 #### make symbolic link
 ```
@@ -71,8 +81,48 @@ $ java -version
 $ jdk 1.11
 $ java -version
 ```
-## Install maven, openssl, etc.
-use brew install
+## Install other development tools
+
+### install scala
+```
+$ brew install scala
+```
+## install maven, openssl, etc.
+```
+$ brew install maven
+```
+```
+$ brew install openssl
+>>
+openssl@1.1 is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides LibreSSL.
+
+If you need to have openssl@1.1 first in your PATH, run:
+  echo 'export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"' >> ~/.zshrc
+
+For compilers to find openssl@1.1 you may need to set:
+  export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+  export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+```
+
+## Update .rc file
+update .zshrc 
+```
+jdk() {
+        version=$1
+        unset JAVA_HOME;
+        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+        java -version
+}
+
+MAVEN_HOME=/usr/loca/opt/maven
+OPENSSL_HOME=/usr/local/opt/openssl@1.1
+
+export PATH=$JAVA_HOME/bin:$PATH
+export PATH=$MAVEN_HOME/bin:$PATH
+export PATH=$OPENSSL_HOME/bin:$PATH
+```
+
 
 <!--
 ### static switch
@@ -98,7 +148,3 @@ export PATH=$OPENSSL_HOME/bin:$PATH
 ```
 -->
 
-### install scala
-```
-$ brew install scala
-```
