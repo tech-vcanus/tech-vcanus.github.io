@@ -3,7 +3,9 @@
 title: "Install Java with Homebrew"
 data: 2020-10-07 00:00:00 -0000
 categories: development 
-tags: Java Install Homebrew
+tags: Java & Dev Install Environment on Mac
+toc: true
+toc_sticky: true
 ---
 
 Written by SGLee, VCANUS
@@ -153,6 +155,11 @@ $sudo chmod 777 /usr/local/lib/cmake
 $brew install boost
 $sudo chmod 755 /usr/local/lib/cmake
 ```
+### install Google Test
+https://alexanderbussan.medium.com/getting-started-with-google-test-on-os-x-a07eee7ae6dc
+
+
+
 
 ## Update .rc file
 update .zshrc 
