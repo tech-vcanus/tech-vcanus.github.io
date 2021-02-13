@@ -159,8 +159,6 @@ $sudo chmod 755 /usr/local/lib/cmake
 https://alexanderbussan.medium.com/getting-started-with-google-test-on-os-x-a07eee7ae6dc
 
 
-
-
 ## Update .rc file
 update .zshrc 
 ```
@@ -178,31 +176,6 @@ export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$MAVEN_HOME/bin:$PATH
 export PATH=$OPENSSL_HOME/bin:$PATH
 ```
-
-
-<!--
-### static switch
-#### modify .bash_profile
-```
-JAVA_8_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-JAVA_11_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home
-
-alias JAVA8='export JAVA_HOME=$JAVA_8_HOME'
-alias JAVA11='export JAVA_HOME=$JAVA_11_HOME'
-
-#default to Java11
-JAVA11
-
-FLUTTER_HOME=/opt/flutter
-MAVEN_HOME=/opt/maven
-OPENSSL_HOME=/usr/local/opt/openssl@1.1
-
-export PATH=$JAVA_HOME/bin:$PATH
-export PATH=$FLUTTER_HOME/bin:$PATH
-export PATH=$MAVEN_HOME/bin:$PATH
-export PATH=$OPENSSL_HOME/bin:$PATH
-```
--->
 
 ## Ref
 https://github.com/tech-vcanus/tech-vcanus.github.io/blob/master/_posts/2020-03-13-nats.md
