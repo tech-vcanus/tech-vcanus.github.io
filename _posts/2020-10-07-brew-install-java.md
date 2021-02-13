@@ -1,4 +1,3 @@
-
 ---
 title: "Install Java with Homebrew"
 data: 2020-10-07
