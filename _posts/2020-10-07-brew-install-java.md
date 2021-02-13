@@ -93,7 +93,7 @@ $ brew install maven
 ```
 ```
 $ brew install openssl
->>
+==>
 openssl@1.1 is keg-only, which means it was not symlinked into /usr/local,
 because macOS provides LibreSSL.
 
