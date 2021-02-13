@@ -1,7 +1,7 @@
 
 ---
 title: "Install Java with Homebrew"
-data: 2020-10-07 00:00:00 -0000
+data: 2020-10-07
 categories: development 
 tags: Java & Dev Install Environment on Mac
 toc: true
