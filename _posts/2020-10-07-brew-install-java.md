@@ -22,20 +22,58 @@ $brew tap homebrew/cask-versions
 ```
 
 ## Java Install
-### install java
+### without Cask
+#### reference
+https://mkyong.com/java/how-to-install-java-on-mac-osx/
+#### install java8
+```
+brew install openjdk@8
+```
+#### install java11
+```
+brew install openjdk@11
+```
+#### make symbolic link
+```
+sudo ln -sfn /usr/local/opt/openjdk@8/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-8.jdk
+sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+```
+
+### with Cask
+#### install java
+adoptopenjdk creates the JDK home directly in the /Library/Java/JavaVirtualMachines, so we don't need to create any symbolic link
 ```
 brew cask install adoptopenjdk8
 ```
 
-### install java for specific version
+#### install java for specific version
 ```
-$ brew tap AdoptOpenJDK/openjdk # add repository
+$ brew tap adoptopenjdk/openjdk # add repository
 $ brew cask install adoptopenjdk8
 $ brew cask install adoptopenjdk # to install the latest version
 ```
 
 ## Switch Java Version
-### modify .bash_profile
+### dynamic switch
+#### modify ~/.zshrc (above macOS10.15 Catalina) or ~/.bashrc (before macOS10.15 Catalina)
+```
+jdk() {
+      version=$1
+      unset JAVA_HOME;
+      export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+      java -version
+}
+```
+```
+$ source ~/.zshrc
+$ jdk 1.8
+$ java -version
+$ jdk 1.11
+$ java -version
+```
+
+### static switch
+#### modify .bash_profile
 ```
 JAVA_8_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 JAVA_11_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home
