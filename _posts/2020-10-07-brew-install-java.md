@@ -135,8 +135,24 @@ For compilers to find icu4c you may need to set:
   export LDFLAGS="-L/usr/local/opt/icu4c/lib"
   export CPPFLAGS="-I/usr/local/opt/icu4c/include"
 ```
+error message
+```
+==> Pouring boost-1.75.0_1.big_sur.bottle.tar.gz
+Error: The `brew link` step did not complete successfully
+The formula built, but is not symlinked into /usr/local
+Could not symlink lib/cmake/Boost-1.75.0
+/usr/local/lib/cmake is not writable.
 
-
+You can try again using:
+  brew link boost
+==> Summary
+```
+solution:
+```
+$sudo chmod 777 /usr/local/lib/cmake
+$brew install boost
+$sudo chmod 755 /usr/local/lib/cmake
+```
 
 ## Update .rc file
 update .zshrc 
