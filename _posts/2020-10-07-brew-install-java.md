@@ -104,6 +104,22 @@ For compilers to find openssl@1.1 you may need to set:
   export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
   export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
 ```
+### install python3
+```
+$brew install pyenv
+==>
+readline is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides BSD libedit.
+
+For compilers to find readline you may need to set:
+  export LDFLAGS="-L/usr/local/opt/readline/lib"
+  export CPPFLAGS="-I/usr/local/opt/readline/include"
+
+For pkg-config to find readline you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
+  
+$pyenv install 3.8.7
+```
 ### install boost
 ```
 $brew install boost
@@ -119,6 +135,8 @@ For compilers to find icu4c you may need to set:
   export LDFLAGS="-L/usr/local/opt/icu4c/lib"
   export CPPFLAGS="-I/usr/local/opt/icu4c/include"
 ```
+
+
 
 ## Update .rc file
 update .zshrc 
