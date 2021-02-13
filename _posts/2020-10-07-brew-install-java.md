@@ -87,7 +87,7 @@ $ java -version
 ```
 $ brew install scala
 ```
-## install maven, openssl, etc.
+### install maven, openssl, etc.
 ```
 $ brew install maven
 ```
@@ -148,3 +148,30 @@ export PATH=$OPENSSL_HOME/bin:$PATH
 ```
 -->
 
+## Ref
+https://github.com/tech-vcanus/tech-vcanus.github.io/blob/master/_posts/2020-03-13-nats.md
+
+### Install NATS on Mac
+#### 1. install protobuf protobuf-c
+```
+$ brew install protobuf protobuf-c
+```
+#### 2. install openssl and openssl-devel
+```
+$ brew install openssl openssl-devel
+```
+#### 3. add environment variable "OPENSSL_HOME" to .bash_profile
+```
+OPENSSL_HOME=/usr/local/opt/openssl@1.1
+export PATH=$OPENSSL_HOME/bin:$PATH
+```
+#### 4. install nats clienht (C version)
+```
+$ git clone https://github.com/nats-io/nats.c.git
+$ cd nats.c
+$ mkdir build
+$ cd build
+$ cmake .. -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 -DOPENSSL_LIBRARIES=/usr/loca/opt/openssl@1.1/lib
+$ make
+$ sudo make install
+```
