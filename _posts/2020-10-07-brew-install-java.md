@@ -71,7 +71,10 @@ $ java -version
 $ jdk 1.11
 $ java -version
 ```
+## Install maven, openssl, etc.
+use brew install
 
+<!--
 ### static switch
 #### modify .bash_profile
 ```
@@ -93,6 +96,7 @@ export PATH=$FLUTTER_HOME/bin:$PATH
 export PATH=$MAVEN_HOME/bin:$PATH
 export PATH=$OPENSSL_HOME/bin:$PATH
 ```
+-->
 
 ### install scala
 ```
