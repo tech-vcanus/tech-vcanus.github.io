@@ -156,7 +156,17 @@ $sudo chmod 755 /usr/local/lib/cmake
 ```
 ### install Google Test
 https://alexanderbussan.medium.com/getting-started-with-google-test-on-os-x-a07eee7ae6dc
-
+```
+$git clone https://github.com/google/googletest.git
+$cd googletest 
+$mkdir build 
+$cd build
+$cmake ../  #creates a make file 
+$make #compiles Google Test
+$sudo make install #installs Google Test
+$vi ~/.zshrc 
+source ~/.zshrc
+```
 
 ## Update .rc file
 update .zshrc 
@@ -174,6 +184,9 @@ OPENSSL_HOME=/usr/local/opt/openssl@1.1
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$MAVEN_HOME/bin:$PATH
 export PATH=$OPENSSL_HOME/bin:$PATH
+
+export CPLUS_INCLUDE_PATH=/usr/local/include
+export LIBRARY_PATH=/usr/local/lib
 ```
 
 ## Ref
