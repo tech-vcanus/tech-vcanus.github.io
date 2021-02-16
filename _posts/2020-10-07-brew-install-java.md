@@ -178,9 +178,11 @@ jdk() {
         java -version
 }
 
-MAVEN_HOME=/usr/loca/opt/maven
+HOMEBREW_HOME=/opt/homebrew
+MAVEN_HOME=/usr/local/opt/maven
 OPENSSL_HOME=/usr/local/opt/openssl@1.1
 
+export PATH=$HOMEBREW_HOME/bin:$PATH
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$MAVEN_HOME/bin:$PATH
 export PATH=$OPENSSL_HOME/bin:$PATH
