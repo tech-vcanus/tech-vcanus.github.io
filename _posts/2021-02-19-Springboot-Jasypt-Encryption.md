@@ -26,7 +26,7 @@ properties의 민감한 정보를 암호화하여 관리
 
 ### 2. bouncycastle
 확장된 기능을 가진 암호 라이브러리.
-암호화를 위한 도구로써 다양한 암호화 알고리즘을 가지고 있다.
+암호화를 위한 도구로써 다양한 암호화 알고리즘을 가지고 있다
 [more information](https://www.bouncycastle.org/)
 
 ```
