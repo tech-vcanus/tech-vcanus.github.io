@@ -108,7 +108,13 @@ For compilers to find openssl@1.1 you may need to set:
   export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
   export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
 ```
+### install cmake
+```
+$ brew install cmake
+```
+
 ### install python3
+pyenv is good to manage python version (https://dailyheumsi.tistory.com/214), but unstable yet on M1 mac (2020.02.27)
 ```
 $brew install pyenv
 ==>
@@ -121,7 +127,10 @@ For compilers to find readline you may need to set:
 
 For pkg-config to find readline you may need to set:
   export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
-  
+```
+install python with pyenv
+```
+$pyenv install --list
 $pyenv install 3.8.7
 ```
 ### install boost
@@ -172,6 +181,11 @@ source ~/.zshrc
 ```
 
 ## Update .rc file
+update .zprofile
+```
+eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(pyenv init -)"
+```
 update .zshrc 
 ```
 jdk() {
@@ -181,19 +195,22 @@ jdk() {
         java -version
 }
 
-HOMEBREW_HOME=/opt/homebrew
-MAVEN_HOME=/usr/local/opt/maven
-OPENSSL_HOME=/usr/local/opt/openssl@1.1
+export HOMEBREW_HOME="/opt/homebrew"
+export MAVEN_HOME="/usr/local/opt/maven"
+export OPENSSL_HOME="/usr/local/opt/openssl@1.1"
+export PYENV_HOME="$HOME/.pyenv"
 
-export PATH=$HOMEBREW_HOME/bin:$PATH
-export PATH=$JAVA_HOME/bin:$PATH
-export PATH=$MAVEN_HOME/bin:$PATH
-export PATH=$OPENSSL_HOME/bin:$PATH
-export PATH=$HOMEBREW_HOME/opt/icu4c/bin:$PATH
-export PATH=$HOMEBREW_HOME/opt/icu4c/sbin:$PATH
+export PATH="$HOMEBREW_HOME/bin:$PATH"
+export PATH="$JAVA_HOME/bin:$PATH"
+export PATH="$MAVEN_HOME/bin:$PATH"
+export PATH="$OPENSSL_HOME/bin:$PATH"
+export PATH="$HOMEBREW_HONME/opt/make/libexec/gnubin:$PATH"
+export PATH="$PYENV_HOME/bin:$PATH"
+export PATH="$HOMEBREW_HOME/opt/icu4c/bin:$PATH"
+export PATH="$HOMEBREW_HOME/opt/icu4c/sbin:$PATH"
 
-export CPLUS_INCLUDE_PATH=/usr/local/include
-export LIBRARY_PATH=/usr/local/lib
+export CPLUS_INCLUDE_PATH="/usr/local/include"
+export LIBRARY_PATH="/usr/local/lib"
 ```
 
 ## Ref
