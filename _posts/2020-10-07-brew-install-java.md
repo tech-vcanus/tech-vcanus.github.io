@@ -117,7 +117,7 @@ $ brew install cmake
 ```
 
 ### install python3
-pyenv is good to manage python version (https://dailyheumsi.tistory.com/214), but unstable yet on M1 mac (2020.02.27)
+pyenv is good to manage python version (https://dailyheumsi.tistory.com/214), but ???
 ```
 $brew install pyenv
 ==>
@@ -134,7 +134,7 @@ For pkg-config to find readline you may need to set:
 install python with pyenv
 ```
 $pyenv install --list
-$pyenv install 3.8.7
+$pyenv install 3.7.10
 ```
 ### install boost
 ```
