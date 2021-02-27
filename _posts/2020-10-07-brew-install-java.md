@@ -19,11 +19,11 @@ Written by SGLee, VCANUS
 ### install cask
 ```
 $brew update
-$brew tap homebrew/cask-versions
+$brew install cask
 ```
 
 ## Java Install
-### without Cask
+### without Cask (not recommend)
 #### reference
 https://mkyong.com/java/how-to-install-java-on-mac-osx/
 #### install java8
@@ -50,18 +50,20 @@ sudo ln -sfn /usr/local/opt/openjdk@8/libexec/openjdk.jdk /Library/Java/JavaVirt
 sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 ```
 
-### with Cask
+### with Cask (recommend)
 #### install java
 adoptopenjdk creates the JDK home directly in the /Library/Java/JavaVirtualMachines, so we don't need to create any symbolic link
+https://github.com/AdoptOpenJDK/homebrew-openjdk#other-versions
 ```
-brew cask install adoptopenjdk8
+$ brew tap AdoptOpenJDK/openjdk # add repository
+$ brew install --cask adoptopenjdk8
 ```
 
 #### install java for specific version
 ```
-$ brew tap adoptopenjdk/openjdk # add repository
-$ brew cask install adoptopenjdk8
-$ brew cask install adoptopenjdk # to install the latest version
+$ brew tap AdoptOpenJDK/openjdk # add repository
+$ brew install --cask adoptopenjdk8
+$ brew install --cask adoptopenjdk # to install the latest version
 ```
 
 ## Switch Java Version
@@ -86,6 +88,7 @@ $ java -version
 
 ### install scala
 ```
+$ brew install --cask openjdk15 (scala's dependency)
 $ brew install scala
 ```
 ### install maven, openssl, etc.
@@ -93,7 +96,7 @@ $ brew install scala
 $ brew install maven
 ```
 ```
-$ brew install openssl
+$ brew install openssl (you don't need to install openssl if you already installed cask!!)
 ==>
 openssl@1.1 is keg-only, which means it was not symlinked into /usr/local,
 because macOS provides LibreSSL.
@@ -186,6 +189,8 @@ export PATH=$HOMEBREW_HOME/bin:$PATH
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$MAVEN_HOME/bin:$PATH
 export PATH=$OPENSSL_HOME/bin:$PATH
+export PATH=$HOMEBREW_HOME/opt/icu4c/bin:$PATH
+export PATH=$HOMEBREW_HOME/opt/icu4c/sbin:$PATH
 
 export CPLUS_INCLUDE_PATH=/usr/local/include
 export LIBRARY_PATH=/usr/local/lib
