@@ -12,14 +12,14 @@ Written by SGLee, VCANUS
 ## Homebrew
 ### install homebrew
 ```
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+???/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ### install cask
 ```
 $brew update
 $brew tap homebrew/cask-versions
-#$brew tap caskroom/cask
 ```
 
 ## Java Install
