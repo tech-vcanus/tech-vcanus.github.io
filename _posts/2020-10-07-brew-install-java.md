@@ -10,6 +10,8 @@ toc_sticky: true
 Written by SGLee, VCANUS
 
 ## Homebrew
+### install XCode
+
 ### install homebrew
 ```
 ???/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -109,6 +111,7 @@ For compilers to find openssl@1.1 you may need to set:
   export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
 ```
 ### install cmake
+make is already installed with Xcode
 ```
 $ brew install cmake
 ```
