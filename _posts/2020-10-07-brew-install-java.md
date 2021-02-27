@@ -199,9 +199,10 @@ jdk() {
 }
 
 export HOMEBREW_HOME="/opt/homebrew"
-export MAVEN_HOME="/usr/local/opt/maven"
-export OPENSSL_HOME="/usr/local/opt/openssl@1.1"
+export MAVEN_HOME="$HOMEBREW_HOME/opt/maven"
+export OPENSSL_HOME="$HOMEBREW_HOME/opt/openssl@1.1"
 export PYENV_HOME="$HOME/.pyenv"
+export ICU4C_HOME="$HOMEBREW_HOME/opt/icu4c"
 
 export PATH="$HOMEBREW_HOME/bin:$PATH"
 export PATH="$JAVA_HOME/bin:$PATH"
@@ -209,8 +210,8 @@ export PATH="$MAVEN_HOME/bin:$PATH"
 export PATH="$OPENSSL_HOME/bin:$PATH"
 export PATH="$HOMEBREW_HONME/opt/make/libexec/gnubin:$PATH"
 export PATH="$PYENV_HOME/bin:$PATH"
-export PATH="$HOMEBREW_HOME/opt/icu4c/bin:$PATH"
-export PATH="$HOMEBREW_HOME/opt/icu4c/sbin:$PATH"
+export PATH="$ICU4C_HOME/bin:$PATH"
+export PATH="$ICU4C_HOME/sbin:$PATH"
 
 export CPLUS_INCLUDE_PATH="/usr/local/include"
 export LIBRARY_PATH="/usr/local/lib"
@@ -239,7 +240,7 @@ $ git clone https://github.com/nats-io/nats.c.git
 $ cd nats.c
 $ mkdir build
 $ cd build
-$ cmake .. -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 -DOPENSSL_LIBRARIES=/usr/loca/opt/openssl@1.1/lib
+$ cmake .. -DOPENSSL_ROOT_DIR=$HOMEBREW_HOME/opt/openssl@1.1 -DOPENSSL_LIBRARIES=$HOMEBREW_HOME/opt/openssl@1.1/lib
 $ make
 $ sudo make install
 ```
