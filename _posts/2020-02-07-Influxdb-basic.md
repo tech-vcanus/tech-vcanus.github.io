@@ -80,7 +80,7 @@ reference : [Document](https://docs.influxdata.com/influxdb/v1.7/administration/
 
 ### Delete User
 
-- DROP USER <USERNAME>
+- DROP USER \<USERNAME>
 
 ## Data types
 
