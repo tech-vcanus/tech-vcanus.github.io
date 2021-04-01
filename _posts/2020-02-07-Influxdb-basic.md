@@ -1,6 +1,13 @@
-# InfluxDB Basic
+---
+title: "InfluxDB Basic 1.x"
+data: 2020-02-07 00:00:00 -0000
+categories: development
+tags: Influx TimeseriesDB
+---
 
 Written By [David Roh](https://github.com/tsedek), VCANUS
+
+# InfluxDB Basic
 
 [reference Document](https://docs.influxdata.com/influxdb/v1.7/query_language/spec/)
 
@@ -70,6 +77,10 @@ $docker exec -it <ContainerName> influx -precision rfc3339
 - REVOKE [ALL,READ,WRITE] ON \<DATABASENAME> TO \<USERNAME>
 
 reference : [Document](https://docs.influxdata.com/influxdb/v1.7/administration/authentication_and_authorization/#user-management-commands)
+
+### Delete User
+
+- DROP USER <USERNAME>
 
 ## Data types
 
