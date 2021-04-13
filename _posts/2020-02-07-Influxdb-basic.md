@@ -78,6 +78,10 @@ $docker exec -it <ContainerName> influx -precision rfc3339
 
 reference : [Document](https://docs.influxdata.com/influxdb/v1.7/administration/authentication_and_authorization/#user-management-commands)
 
+### Chagne Password
+
+- SET PASSWORD FOR \<USERNAME> = '\<PASSWORD>'
+
 ### Delete User
 
 - DROP USER \<USERNAME>
