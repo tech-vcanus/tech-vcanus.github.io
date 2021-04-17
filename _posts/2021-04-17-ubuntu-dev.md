@@ -100,12 +100,14 @@ export JAVA_HOME
 export CPLUS_INCLUDE_PATH="/usr/local/include"
 export LIBRARY_PATH="/usr/local/lib"
 
-CUDA_HOME=/usr/local/cuda
-export PATH=$CUDA_HOME/bin:$PATH
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu/"
+
+CUDA_HOME=/usr/lib/cuda
+export PATH=$CUDA_HOME/bin:$PATH
 ```
 
 ## Install Cuda
 ```
+$ sudo find / -name cuda # find cuda
 $ sudo apt install nvidia-cuda-toolkit
 ```
