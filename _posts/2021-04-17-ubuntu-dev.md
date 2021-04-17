@@ -87,3 +87,18 @@ install nats by using snap
 ```
 $ sudo snap install nats
 ```
+
+
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+export JAVA_HOME
+
+MAVEN_HOME=/opt/maven
+export PATH=$MAVEN_HOME/bin:$PATH
+
+ANT_HOME=/opt/ant
+export PATH=$ANT_HOME/bin:$PATH
+
+CUDA_HOME=/usr/local/cuda
+export PATH=$CUDA_HOME/bin:$PATH
+
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu/"
