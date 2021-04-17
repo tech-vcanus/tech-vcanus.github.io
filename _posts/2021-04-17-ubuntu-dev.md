@@ -111,3 +111,6 @@ export PATH=$CUDA_HOME/bin:$PATH
 $ nvcc --version
 $ sudo apt install nvidia-cuda-toolkit
 ```
+
+## Install Dev. IDE
+https://linuxconfig.org/how-to-install-intellij-idea-on-ubuntu-20-04-linux-desktop
