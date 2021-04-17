@@ -114,3 +114,18 @@ $ sudo apt install nvidia-cuda-toolkit
 
 ## Install Dev. IDE
 https://linuxconfig.org/how-to-install-intellij-idea-on-ubuntu-20-04-linux-desktop
+
+## Opencascade
+ - download .tar file and unzip
+ - install 3rd party
+### 3rd party
+```
+$ sudo apt install ffmpeg
+$ sudo apt install libfreeimage-dev
+$ sudo apt install libfreetype-dev
+$ sudo apt install libvtk6-dev libvtk6-qt-dev
+install qt creator
+$ sudo apt install libtbb-dev
+$ sudo apt install libtclcl1-dev
+```
+https://wiki.qt.io/Install_Qt_5_on_Ubuntu
