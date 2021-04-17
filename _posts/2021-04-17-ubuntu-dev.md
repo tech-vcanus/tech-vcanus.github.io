@@ -7,12 +7,7 @@ $ apt search openjdk
 $ sudo apt install openjdk-8-jdk
 $ sudo apt install openjdk-11-jdk
 ```
-### Modify .zshrc
-```
-$ JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk (or /etc/alternatives/java_sdk_1.8.0_openjdk)
-# $ JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk
-$ export JAVA_HOME
-```
+
 ### Change Java version
 ```
 $ sudo update-alternatives --config java
@@ -88,17 +83,29 @@ install nats by using snap
 $ sudo snap install nats
 ```
 
+## Modify .zshrc
+```
+$ cd
+$ vi .zshrc
+...
+$ source .zshrc
+```
 
+.zshrc
+```
 JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+# $ JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk
 export JAVA_HOME
 
-MAVEN_HOME=/opt/maven
-export PATH=$MAVEN_HOME/bin:$PATH
-
-ANT_HOME=/opt/ant
-export PATH=$ANT_HOME/bin:$PATH
+export CPLUS_INCLUDE_PATH="/usr/local/include"
+export LIBRARY_PATH="/usr/local/lib"
 
 CUDA_HOME=/usr/local/cuda
 export PATH=$CUDA_HOME/bin:$PATH
-
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu/"
+```
+
+## Install Cuda
+```
+$ sudo apt install nvidia-cuda-toolkit
+```
