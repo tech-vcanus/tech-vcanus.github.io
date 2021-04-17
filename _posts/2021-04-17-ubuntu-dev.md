@@ -78,6 +78,11 @@ $ sudo apt install libthrift-dev
 ```
 
 #### NATS
+install snap
 ```
-$ sudo apt install 
+$ sudo apt install snapd
+```
+install nats by using snap
+```
+$ sudo snap install nats
 ```
