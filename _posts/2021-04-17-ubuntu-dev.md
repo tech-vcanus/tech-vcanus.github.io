@@ -117,8 +117,8 @@ https://linuxconfig.org/how-to-install-intellij-idea-on-ubuntu-20-04-linux-deskt
 
 ## Opencascade
  - download .tar file and unzip
- - install 3rd party
-### 3rd party
+ - install 3rd party first
+### Install 3rd party
 ```
 $ sudo apt install ffmpeg
 $ sudo apt install libfreeimage-dev
@@ -126,6 +126,15 @@ $ sudo apt install libfreetype-dev
 $ sudo apt install libvtk6-dev libvtk6-qt-dev
 install qt creator
 $ sudo apt install libtbb-dev
+$ sudo apt install tcl
 $ sudo apt install libtclcl1-dev
 ```
 https://wiki.qt.io/Install_Qt_5_on_Ubuntu
+
+### Build Opencascade
+ - cmake
+ - make
+ - make install
+```
+$ cmake CMakeList.txt -DBUILD_MODULE_Draw:BOOL=FALSE
+```
