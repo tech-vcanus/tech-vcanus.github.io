@@ -53,6 +53,7 @@ $ sudo apt install googletest
 ```
 
 ## Libraries
+
 ### OpenSSL
 check whether openssl is installed or not
 (maybe installed)
@@ -72,12 +73,12 @@ $ sudo apt install libprotobuf-dev
 $ sudo apt install libprotobuf-c-dev
 ```
 
-#### Thrift
+### Thrift
 ```
 $ sudo apt install libthrift-dev
 ```
 
-#### NATS
+### NATS
 install snap
 ```
 $ sudo apt install snapd
