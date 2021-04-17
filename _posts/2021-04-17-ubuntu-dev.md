@@ -108,6 +108,6 @@ export PATH=$CUDA_HOME/bin:$PATH
 
 ## Install Cuda
 ```
-$ sudo find / -name cuda # find cuda
+$ nvcc --version
 $ sudo apt install nvidia-cuda-toolkit
 ```
