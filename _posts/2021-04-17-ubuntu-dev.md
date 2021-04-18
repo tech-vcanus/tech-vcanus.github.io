@@ -131,7 +131,8 @@ install qt creator
 $ sudo apt install libtbb-dev
 $ sudo apt install tcl
 $ sudo apt install libtclcl1-dev
-$ sudo apt install libxmu-dev libxmu-headers
+$ sudo apt install libxmu-dev libxmu-headers libxi-dev
+$ sudo apt install liblxi-dev lxi-tools # ??
 ```
 https://wiki.qt.io/Install_Qt_5_on_Ubuntu
 
