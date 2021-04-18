@@ -124,10 +124,14 @@ $ sudo apt install ffmpeg
 $ sudo apt install libfreeimage-dev
 $ sudo apt install libfreetype-dev
 $ sudo apt install libvtk6-dev libvtk6-qt-dev
+$ sudo apt install libocct-visualization-7.3
+$ sudo apt install libvtk7-dev libvtk7-qt-dev
+$ sudo apt install tcl-vtk7
 install qt creator
 $ sudo apt install libtbb-dev
 $ sudo apt install tcl
 $ sudo apt install libtclcl1-dev
+$ sudo apt install libxmu-dev libxmu-headers
 ```
 https://wiki.qt.io/Install_Qt_5_on_Ubuntu
 
