@@ -141,5 +141,7 @@ https://wiki.qt.io/Install_Qt_5_on_Ubuntu
  - make
  - make install
 ```
-$ cmake CMakeList.txt -DBUILD_MODULE_Draw:BOOL=FALSE
+$ mkdir build
+$ cd build
+$ cmake ..
 ```
