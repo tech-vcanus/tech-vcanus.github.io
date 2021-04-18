@@ -144,4 +144,6 @@ https://wiki.qt.io/Install_Qt_5_on_Ubuntu
 $ mkdir build
 $ cd build
 $ cmake ..
+$ make
+$ sudo make install
 ```
