@@ -10,14 +10,10 @@ toc_sticky: true
 
 Written By [Jun Park](https://github.com/junpark-vcanus), VCANUS
 
-1개의 Spring Boot 서버에 REST API 서버와 React App을 포함하는 WAS 서버를 포함하는 방법
+1개의 Spring Boot 서버에 REST API 서버와 React App WAS 서버를 포함하는 방법
 
-<br/>
-<br/>
 
 ## 📌 Spring Boot Setup
-
-<br/>
 
 ### 1. Init Spring Boot Project
 
@@ -36,8 +32,6 @@ Written By [Jun Park](https://github.com/junpark-vcanus), VCANUS
         - H2 Database
 
 ![spring initializr](https://user-images.githubusercontent.com/76981967/115811547-dee40800-a42a-11eb-92e3-78680b62b11b.png)
-
-<br/>
 
 ### 2. Rest API 개발
 
@@ -137,12 +131,8 @@ $ curl localhost:8080/api/users
 // Result: two users, Paul and Tom
 ```
 
-<br/>
-<br/>
 
 ## 📌 React Setup
-
-<br/>
 
 ### 1. React 생성
 
@@ -151,8 +141,6 @@ $ curl localhost:8080/api/users
 ```java
 $ ~/**/project-root % npx create-react-app frontend
 ```
-
-<br/>
 
 ### 2. React 개발
 
@@ -181,8 +169,6 @@ const Users = () => {
 }
 ```
 
-<br/>
-
 ### 3. 테스트
 
 - 테스트용 proxy 설정
@@ -210,12 +196,8 @@ module.exports = (app) => {
 
 ![user-api-result](https://user-images.githubusercontent.com/76981967/115829614-28901b00-a44a-11eb-8015-256a145b6c68.png)
 
-<br/>
-<br/>
 
 ## 📌 Packaging
-
-<br/>
 
 ### 1. pom.xml 수정
 - frontend-maven-plugin 추가
@@ -297,8 +279,6 @@ module.exports = (app) => {
 </plugins>
 ```
 
-<br/>
-
 ### 2. build & package
 
 ```java
@@ -306,8 +286,6 @@ maven clean
 maven install
 // target 폴더에 jar 생성
 ```
-
-<br/>
 
 ### 3. run
 
