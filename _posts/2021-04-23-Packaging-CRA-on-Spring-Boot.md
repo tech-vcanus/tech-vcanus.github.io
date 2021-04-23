@@ -344,3 +344,8 @@ const App = () => {
 ```
 
 ![react-router-dom-result](https://user-images.githubusercontent.com/76981967/115832773-3fd10780-a44e-11eb-86f7-05f9682053a9.png)
+
+## 📚 Reference
+- [spring official tutorial: React.js and Spring Data REST](https://spring.io/guides/tutorials/react-and-spring-data-rest/)
+- [Kantega blog: Webapp with Create React App and Spring Boot](https://blogg.kantega.no/webapp-with-create-react-app-and-spring-boot/)
+- [[react, springboot] react 와 spring boot 로 구성하기, 묶어 build 하기](https://lemontia.tistory.com/912)(Maven 대신 Gradle 사용)
