@@ -138,8 +138,8 @@ $ curl localhost:8080/api/users
 
 - Spring boot project root에서 Create React App
 
-```java
-$ ~/**/project-root % npx create-react-app frontend
+```zsh
+$ % npx create-react-app frontend
 ```
 
 ### 2. React 개발
@@ -190,8 +190,8 @@ module.exports = (app) => {
 
 - 테스트
 
-```js
-// npm start
+```zsh
+$ % npm start
 ```
 
 ![user-api-result](https://user-images.githubusercontent.com/76981967/115829614-28901b00-a44a-11eb-8015-256a145b6c68.png)
@@ -289,8 +289,8 @@ maven install
 
 ### 3. run
 
-```java
-$ ... % java -jar target/result.jar
+```zsh
+$ % java -jar target/result.jar
 ```
 
 ## ❗️ 페이지 이동은 react-router-dom 활용
