@@ -1,6 +1,6 @@
 ---
-title: "LattePanda GPIO Programming"
-tags: DAC Arduino setup
+title: "Packaging CRA on Spring Boot"
+tags: cra react spring maven rest
 toc: true
 toc_sticky: true
 ---
@@ -42,6 +42,7 @@ Written By [Jun Park](https://github.com/junpark-vcanus), VCANUS
 ### 2. Rest API 개발
 
 - `application.properties`에 Rest API base path 추가
+
 ```java
 // src/main/resources/application.properties
 // root는 React를 호스트할 것이기 때문에
@@ -49,6 +50,7 @@ Written By [Jun Park](https://github.com/junpark-vcanus), VCANUS
 
 spring.data.rest.base-path=/api
 ```
+
 ```java
 // 또는 수동으로 각 요청마다 지정
 // 이 글은 base-path를 설정한 상위 방법을 사용한다고 가정
@@ -76,6 +78,7 @@ public class ProductController {
 ```
 
 - Entity, Repository 개발
+
 ```java
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -91,6 +94,7 @@ public class User {
     // 그 외 constructor, getter, setter...
 }
 ```
+
 ```java
 import org.springframework.data.repository.CrudRepository;
 
@@ -98,6 +102,7 @@ public interface UserRepository extends CrudRepository<User, Long> {}
 ```
 
 - Repository ~ Database 연결
+
 ```java
 // 테스트를 위한 데모 데이터베이스 사용
 
@@ -124,6 +129,7 @@ public class DatabaseLoader implements CommandLineRunner {
 ```
 
 - 테스트
+
 ```java
 // after run spring boot app
 
@@ -139,7 +145,9 @@ $ curl localhost:8080/api/users
 <br/>
 
 ### 1. React 생성
+
 - Spring boot project root에서 Create React App
+
 ```java
 $ ~/**/project-root % npx create-react-app frontend
 ```
@@ -149,6 +157,7 @@ $ ~/**/project-root % npx create-react-app frontend
 ### 2. React 개발
 
 - API 요청
+
 ```jsx
 // npm install axios OR yarn add axios
 import axios from 'axios';
@@ -177,6 +186,7 @@ const Users = () => {
 ### 3. 테스트
 
 - 테스트용 proxy 설정
+
 ```js
 // frontend/src/**/setupProxy.js
 // npm install http-proxy-middleware OR yarn add http-proxy-middleware
@@ -191,10 +201,13 @@ module.exports = (app) => {
     );
 };
 ```
+
 - 테스트
+
 ```js
 // npm start
 ```
+
 ![user-api-result](https://user-images.githubusercontent.com/76981967/115829614-28901b00-a44a-11eb-8015-256a145b6c68.png)
 
 <br/>
@@ -206,6 +219,7 @@ module.exports = (app) => {
 
 ### 1. pom.xml 수정
 - frontend-maven-plugin 추가
+
 ```xml
 <plugins>
 ...
@@ -253,7 +267,9 @@ module.exports = (app) => {
 ...
 </plugins>
 ```
+
 - React build 파일 이동 자동화를 위한 maven-antrun-plugin 추가
+
 ```xml
 <plugins>
 ...
@@ -284,6 +300,7 @@ module.exports = (app) => {
 <br/>
 
 ### 2. build & package
+
 ```java
 maven clean
 maven install
@@ -293,11 +310,13 @@ maven install
 <br/>
 
 ### 3. run
+
 ```java
 $ ... % java -jar target/result.jar
 ```
 
 ## ❗️ 페이지 이동은 react-router-dom 활용
+
 ```jsx
 import {
   BrowserRouter as Router,
@@ -345,4 +364,5 @@ const App = () => {
   );
 };
 ```
+
 ![react-router-dom-result](https://user-images.githubusercontent.com/76981967/115832773-3fd10780-a44e-11eb-86f7-05f9682053a9.png)
