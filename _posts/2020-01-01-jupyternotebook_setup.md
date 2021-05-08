@@ -1,6 +1,6 @@
 ---
 title: "Setting Jupiter Notebook"
-data: 2020-10-07
+data: 2020-01-01
 categories: development 
 tags: Jupyter Notebool
 toc: true
