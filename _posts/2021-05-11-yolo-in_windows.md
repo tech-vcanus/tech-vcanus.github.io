@@ -6,9 +6,11 @@
  - C, C++
  - Add English in language pack
 ### 2. install vcpkg
+https://vcpkg.io/en/getting-started.html?platform=windows
 ```
  $ .bootstrap-vcpkg.bat
  $ .vcpkg integrate install
+ $ .vcpkg install <package-name>
 ```
  
 #### setup system environment
