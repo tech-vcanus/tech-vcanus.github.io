@@ -61,3 +61,10 @@ $ vcpkg darknet
  ```
 
 ## install Darknet
+ - make folder
+ ```
+ $ cd c:\
+ $ mkdir yolov4
+ ```
+ - download and decompress
+ https://github.com/AlexeyAB/darknet
