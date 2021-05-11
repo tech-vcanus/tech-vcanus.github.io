@@ -38,12 +38,26 @@ $ vcpkg darknet
 ```
 
 ## install OpenCV
-### download and setup for build
+### download and setup for cmake
  - download opencv source, https://opencv.org/releases/
  - download opencv_contrib, https://github.com/opencv/opencv_contrib
  - extract two sources
  - make opencv folder and move the extracted folders to it
  ![image](https://user-images.githubusercontent.com/33934527/117842827-43231a80-b2b9-11eb-8056-d005d5ae2bf1.png)
-### build with Cmake
+### generate with Cmake
+ - check BUILD_opencv_world
 ![image](https://user-images.githubusercontent.com/33934527/117842916-5504bd80-b2b9-11eb-8692-f3fe4aac8261.png)
+### build with visual studio
+ - open ./opencv/build/ALL_BUILD.vcxproj
+ - set Release / x64 (if 64bit)
+ - build CMakeTargets/ALL_BUILD
+ - build CMakeTargets/INSTALL
+### check opencv in python
+ run python in cmd
+ ```
+ >> import cv2
+ >> cv2.__version__
+ >> ...
+ ```
 
+## install Darknet
