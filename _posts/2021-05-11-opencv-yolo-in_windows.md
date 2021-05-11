@@ -1,4 +1,4 @@
-# Yolov4 in Windows10
+# OpenCV, Darknet, Yolov4 in Windows10
 
 ## Prerequisition
 ### 1. install Visual Studio
@@ -29,9 +29,21 @@ https://vcpkg.io/en/getting-started.html?platform=windows
  - copy cudnn/cuda/bin/cudnn64_8.dll to program files/nvidia toolkit/cuda/v11.3/bin
  - copy cudnn/cuda/include/cudnn.h to program files/nvidia toolkit/cuda/v11.3/include
  - copy cudnn/cuda/lib/x64/cudnn.lib to program files/nvidia toolkit/cuda/v11.3/lib/x64
+ - 
 ## install vcpkg
 ```
 $ vcpkg install boost
 $ vcpkg install opencv
 $ vcpkg darknet
 ```
+
+## install OpenCV
+### download and setup for build
+ - download opencv source, https://opencv.org/releases/
+ - download opencv_contrib, https://github.com/opencv/opencv_contrib
+ - extract two sources
+ - make opencv folder and move the extracted folders to it
+ ![image](https://user-images.githubusercontent.com/33934527/117842827-43231a80-b2b9-11eb-8056-d005d5ae2bf1.png)
+### build with Cmake
+![image](https://user-images.githubusercontent.com/33934527/117842916-5504bd80-b2b9-11eb-8692-f3fe4aac8261.png)
+
