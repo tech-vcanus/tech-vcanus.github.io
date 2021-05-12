@@ -1,4 +1,5 @@
 # OpenCV, Darknet, Yolov4 in Windows10
+https://www.youtube.com/watch?v=sUxAVpzZ8hU
 
 ## Prerequisition
 ### 1. install Visual Studio
@@ -29,7 +30,6 @@ https://vcpkg.io/en/getting-started.html?platform=windows
  - copy cudnn/cuda/bin/cudnn64_8.dll to program files/nvidia toolkit/cuda/v11.3/bin
  - copy cudnn/cuda/include/cudnn.h to program files/nvidia toolkit/cuda/v11.3/include
  - copy cudnn/cuda/lib/x64/cudnn.lib to program files/nvidia toolkit/cuda/v11.3/lib/x64
- - 
 ## install vcpkg
 ```
 $ vcpkg install boost
@@ -61,10 +61,25 @@ $ vcpkg darknet
  ```
 
 ## install Darknet
+### prepare build
  - make folder
  ```
  $ cd c:\
  $ mkdir yolov4
  ```
- - download and decompress
+ - download and decompress (C:\yolo_v4\darknet)
  https://github.com/AlexeyAB/darknet
+ - copy opencv files to darknet folder
+ ```
+ $ cp /opencv/build/bin/Release/opencv_world452.dll C:\yolo_v4\darknet\build\darknet\x64
+ $ cp /opencv/build/bin/Release/opencv_videoio_ffmpeg452_64.dll C:\yolo_v4\darknet\build\darknet\x64
+ ```
+ - copy cudnn file to darknet folder
+ ```
+ $ cp C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.3\bin\cudnn64_8.dll C:\yolo_v4\darknet\build\darknet\x64
+ ```
+### change CUDA version
+ - cd C:\yolo_v4\darknet\build\darknet
+ - modify darknet.vcxproj, yolo_cpp_dll.vcxproj
+ - change CUDA version darknet-<your installed version>
+### open yolo_cpp_dll.vcxproj and build it
