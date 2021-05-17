@@ -35,6 +35,7 @@ https://vcpkg.io/en/getting-started.html?platform=windows
 $ vcpkg install boost
 $ vcpkg install opencv
 $ vcpkg install darknet[full]:x64-windows
+# $ vcpkg install darknet[full] --triplet x64-windows
 ```
 
 ## install OpenCV
