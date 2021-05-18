@@ -42,7 +42,7 @@ $ vcpkg install boost
 $ vcpkg install protobuf 
 * protobuf-c(only supports Linux)
 $ vcpkg install nats (no package, direct build!)
-$ vcpkg install opencv
+$ vcpkg install opencv4
 $ vcpkg install darknet[full]:x64-windows
 # $ vcpkg install darknet[full] --triplet x64-windows
 ```
