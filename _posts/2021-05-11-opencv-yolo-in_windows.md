@@ -2,10 +2,10 @@
 https://www.youtube.com/watch?v=sUxAVpzZ8hU
 
 ## Prerequisition
-### 1. install Visual Studio
+### 1. install Visual Studio (with English pack!!)
  - C#
  - C, C++
- - Add English in language pack
+ - Add English in language pack !!!!
 ### 2. install vcpkg
 #### install git
 https://git-scm.com/download/win
