@@ -9,6 +9,9 @@ https://www.youtube.com/watch?v=sUxAVpzZ8hU
 ### 2. install vcpkg
 #### install git
 https://git-scm.com/download/win
+#### install cmake
+https://cmake.org/download/
+ - check "for all users"
 #### install vcpkg
 https://vcpkg.io/en/getting-started.html?platform=windows
 ```
@@ -24,11 +27,9 @@ https://vcpkg.io/en/getting-started.html?platform=windows
 
 ### 3. install python3.8
  - checkt "add path" (important!!)
-### 4. install cmake
- - check "for all users"
-### 6. install CUDA Toolkit
-### 7. install CuDnn
-### 8. copy CuDnn files to CuDA
+### 4. install CUDA Toolkit
+#### install CuDnn
+#### copy CuDnn files to CuDA
  - copy cudnn/cuda/bin/cudnn64_8.dll to program files/nvidia toolkit/cuda/v11.3/bin
  - copy cudnn/cuda/include/cudnn.h to program files/nvidia toolkit/cuda/v11.3/include
  - copy cudnn/cuda/lib/x64/cudnn.lib to program files/nvidia toolkit/cuda/v11.3/lib/x64
