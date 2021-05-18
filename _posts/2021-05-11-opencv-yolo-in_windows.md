@@ -40,8 +40,19 @@ $ vcpkg install opencv
 $ vcpkg install darknet[full]:x64-windows
 # $ vcpkg install darknet[full] --triplet x64-windows
 ```
+### install opencv-python
+```
+$ pip install opencv-python
+```
+### check opencv in python
+ run python in cmd
+ ```
+ >> import cv2
+ >> cv2.__version__
+ >> ...
+ ```
 
-## install OpenCV
+## install OpenCV (build)
 ### download and setup for cmake
  - download opencv source, https://opencv.org/releases/
  - download opencv_contrib, https://github.com/opencv/opencv_contrib
@@ -56,13 +67,6 @@ $ vcpkg install darknet[full]:x64-windows
  - set Release / x64 (if 64bit)
  - build CMakeTargets/ALL_BUILD
  - build CMakeTargets/INSTALL
-### check opencv in python
- run python in cmd
- ```
- >> import cv2
- >> cv2.__version__
- >> ...
- ```
 
 ## install Darknet
 ### prepare build
