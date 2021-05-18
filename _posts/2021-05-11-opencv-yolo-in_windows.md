@@ -35,6 +35,8 @@ https://vcpkg.io/en/getting-started.html?platform=windows
  - copy cudnn/cuda/lib/x64/cudnn.lib to program files/nvidia toolkit/cuda/v11.3/lib/x64
 ## install vcpkg
 ```
+$ vcpkg install curl
+$ vcpkg install openssl
 $ vcpkg install boost
 $ vcpkg install opencv
 $ vcpkg install darknet[full]:x64-windows
