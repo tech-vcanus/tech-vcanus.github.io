@@ -7,6 +7,9 @@ https://www.youtube.com/watch?v=sUxAVpzZ8hU
  - C, C++
  - Add English in language pack
 ### 2. install vcpkg
+#### install git
+https://git-scm.com/download/win
+#### install vcpkg
 https://vcpkg.io/en/getting-started.html?platform=windows
 ```
  $ .bootstrap-vcpkg.bat
@@ -23,7 +26,6 @@ https://vcpkg.io/en/getting-started.html?platform=windows
  - checkt "add path" (important!!)
 ### 4. install cmake
  - check "for all users"
-### 5. install git
 ### 6. install CUDA Toolkit
 ### 7. install CuDnn
 ### 8. copy CuDnn files to CuDA
