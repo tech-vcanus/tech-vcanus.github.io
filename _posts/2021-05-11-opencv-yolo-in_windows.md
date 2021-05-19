@@ -34,15 +34,24 @@ https://vcpkg.io/en/getting-started.html?platform=windows
  - copy cudnn/cuda/include/cudnn.h to program files/nvidia toolkit/cuda/v11.3/include
  - copy cudnn/cuda/lib/x64/cudnn.lib to program files/nvidia toolkit/cuda/v11.3/lib/x64
 ## install vcpkg
+### install boost
 ```
+$ vcpkg install pthreds
 $ vcpkg install curl
 $ vcpkg install openssl
 $ vcpkg install zlip
 $ vcpkg install boost
+```
+### install etc
+```
 $ vcpkg install protobuf 
 * protobuf-c(only supports Linux)
 $ vcpkg install nats (no package, direct build!)
-$ vcpkg install opencv4
+```
+### install opencv
+```
+$ vcpkg install ffmpeg giflib hdf5 leptonica libjpeg-turbo liblzma libpng libwebp tiff
+$ vcpkg install opencv
 $ vcpkg install darknet[full]:x64-windows
 # $ vcpkg install darknet[full] --triplet x64-windows
 ```
