@@ -19,6 +19,7 @@ https://vcpkg.io/en/getting-started.html?platform=windows
  $ .vcpkg integrate install
  $ .vcpkg install <package-name>
 ```
+https://github.com/microsoft/vcpkg/blob/master/docs/specifications/feature-packages.md
  
 #### setup system environment
  - register name: VCPKG_DEFAULT_TRIPLET , value: x64-windows
@@ -49,6 +50,7 @@ $ vcpkg install protobuf
 $ vcpkg install nats (no package, direct build!)
 ```
 ### install opencv
+https://github.com/microsoft/vcpkg/blob/master/docs/specifications/feature-packages.md
 ```
 $ vcpkg install ffmpeg giflib hdf5 leptonica libjpeg-turbo liblzma libpng libwebp tiff
 $ vcpkg install opencv
