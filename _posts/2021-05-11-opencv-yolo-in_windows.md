@@ -52,6 +52,7 @@ $ vcpkg install nats (no package, direct build!)
 ### install opencv
 https://github.com/microsoft/vcpkg/blob/master/docs/specifications/feature-packages.md
 ```
+$ vcpkg install eigen3 zstr glog 
 $ vcpkg install ffmpeg giflib hdf5 leptonica libjpeg-turbo liblzma libpng libwebp tiff
 $ vcpkg install opencv
 $ vcpkg install darknet[full]:x64-windows
