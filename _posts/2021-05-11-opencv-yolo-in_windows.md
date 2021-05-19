@@ -40,7 +40,7 @@ https://github.com/microsoft/vcpkg/blob/master/docs/specifications/feature-packa
 $ vcpkg install pthreds
 $ vcpkg install curl
 $ vcpkg install openssl
-$ vcpkg install zlip
+$ vcpkg install zlib
 $ vcpkg install boost
 ```
 ### install etc
