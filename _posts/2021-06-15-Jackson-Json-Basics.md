@@ -1,5 +1,10 @@
 ---
-title: Jackson Json Basic date: 2021-06-15 categories: development tags: jackson json toc: true toc_sticky: true
+title: Jackson Json Basic
+date: 2021-06-15
+categories: development
+tags: jackson json
+toc: true
+toc_sticky: true
 comments: true
 ---
 
