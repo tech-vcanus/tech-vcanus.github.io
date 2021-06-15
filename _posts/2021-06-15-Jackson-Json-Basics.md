@@ -136,21 +136,6 @@ targetNode가 ArrayNode이거나 ObjectNode인 경우는 공백을 리턴
 ex) targetNode.asText()
 ```
 
-```
-[dataType]Value() 함수 : 해당 type경우에 값을 return
-해당하지 않으면 null을 리턴
-ex) targetNode.textValue()
-```
-
-```
-toString() 함수 : json string으로 출력
-
-boolean : true / false
-number : 1, 1.123
-string : "string"
-
-ex) targetNode.toString()
-```
 
 ### Set Value To Jackson Object
 
