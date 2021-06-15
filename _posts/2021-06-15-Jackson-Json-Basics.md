@@ -126,7 +126,7 @@ JsonNode targetNode = jsonNode.get(index);
 
 - Get Value When JsonNode is ValueNode
 
-```memo
+```java
 as[DataType](/*default value*/) 함수 : 지정된 DataType으로 casting하여 return
 casting이 안될경우에 대비하여 default값 지정 가능
 ex) targetNode.asInt(123)
@@ -136,13 +136,13 @@ targetNode가 ArrayNode이거나 ObjectNode인 경우는 공백을 리턴
 ex) targetNode.asText()
 ```
 
-```memo        
+```java      
 [dataType]Value() 함수 : 해당 type경우에 값을 return
 해당하지 않으면 null을 리턴
 ex) targetNode.textValue()
 ```
 
-```memo
+```java
 toString() 함수 : json string으로 출력
 
 boolean : true / false
