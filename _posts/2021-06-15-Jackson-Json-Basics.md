@@ -1,7 +1,6 @@
 ---
 title: Jackson Json Basic
 date: 2021-06-15
-categories: development
 tags: jackson json
 toc: true
 toc_sticky: true
@@ -82,6 +81,8 @@ JsonNode jsonNode = jsonMapper.convertValue(map, JsonNode.class);
 ObjectNode objectNode = jsonMapper.convertValue(map, JsonNode.class);
 ```
 
+## Convert JsonNode to POJO
+
 ### From Jackson Object to JavaCollection
 
 ```java
@@ -98,6 +99,8 @@ Map map = jsonMapper.convertValue(jsonNode /* or objectNode */, LinkedHashMap.cl
 ```java
 jsonNode.toString();
 ```
+
+## GET, SET Value
 
 ### Get Value From Jackson Object
 
