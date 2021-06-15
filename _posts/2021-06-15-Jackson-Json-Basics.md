@@ -134,7 +134,7 @@ ex) targetNode.asInt(123)
 asText(defaultValue)의 경우 값이 null인 경우만 작동
 targetNode가 ArrayNode이거나 ObjectNode인 경우는 공백을 리턴
 ex) targetNode.asText()
-```    
+```
 
 ```memo        
 [dataType]Value() 함수 : 해당 type경우에 값을 return
