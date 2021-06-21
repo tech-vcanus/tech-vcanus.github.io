@@ -148,6 +148,14 @@ y - year
 yyyy-mm-dd - until date
 ```
 
+- Modify user pub/sub rule
+
+```shell
+# nsc edit user <User Name> --allow-pub "pub rule"[,"pub rule"] --allow-sub "sub rule"[,"sub rule"]
+# nsc edit user <User Name> --deny-pub "pub rule"[,"pub rule"] --deny-sub "sub rule"[,"sub rule"]
+# nsc edit user <User Name> --rm "string" // remove rule allow/deny pub/sub
+```
+
 - Push jwt to nats-server
 
 ```
@@ -160,6 +168,10 @@ yyyy-mm-dd - until date
 ```shell
 $ nsc delete account <Account Name>
 $ nsc push --prune(-P)
+
+- Notice
+한번 발급된 user credential은 account계정이 삭제 되기까지 유효  
+예를 들어 expire기간이 없는 user를 생성하고 그 credential을 배포시 상위 account를 지우는것이 아닌 이상 user를 삭제해도 유효한 credential로 작동
 ```
 
 ### Using client-side jwt
