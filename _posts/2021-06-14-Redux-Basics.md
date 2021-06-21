@@ -3,6 +3,7 @@ title: "Redux Basics"
 data: 2021-06-14 17:00:00 -0000
 categories: development
 tags: react Javascript
+toc: true
 ---
 
 # Redux
@@ -27,7 +28,24 @@ redux는 리듀서를 사용해서 변화를 일으키는데, 다음 사항을 �
 
 new Date(), 난수생성, API 요청 등 요청시마다 결과값이 달라지는 작업은 리듀서 바깥이나 리덕스 미들웨어를 사용해야 한다.
 
-## 3. Redux에서 사용되는 개념
+## 3. Redux Data Flow
+![ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26](https://user-images.githubusercontent.com/84295499/122696324-cacb5400-d27d-11eb-8701-218d7fa0c999.gif)
+
+[이미지 출처 - https://redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow]
+
+### 1) 이벤트 발생
+- UI 컴포넌트에서 파라미터와 함께 이벤트 호출
+
+### 2) 디스패치 Dispatch
+- 파라미터를 담은 액션을 생성
+- 리듀서에 액션 전달
+
+### 3) 리듀서 Reducer in Store
+- 액션이 전달될 때, 현재 상태 정보가 함께 전달됨
+- 리듀서 정의와 액션을 통해 전달된 파라미터를 참조해 새 상태 생성
+- 상태 갱신
+
+## 4. Redux에서 사용되는 개념
 ### 1) Action
 
 상태 변화가 필요할 때 액션을 발생시킨다. 액션은 객체 형태이며, 직접 정의하거나 액션 생성 함수로 생성한다.
@@ -125,6 +143,6 @@ dispatch(actionHello('VCANUS'));
 
 직접 사용하기보다는, react-redux 라이브러리의 connect 함수 또는 useSelector Hook을 사용해서 리덕스 스토어의 상태를 구독한다.
 
-## 4. Example code
+## 5. Example code
 
 https://github.com/vcanus/vjs-react-redux-example.git
