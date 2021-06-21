@@ -134,9 +134,10 @@ $ docker run --name jwt_nats -d -v $PWD/nsc/nats-auth.config:/nats-auth.config -
 # nsc add user -a <Account Name> -n <User Name>
 ```
 
-- Modify user expires
+- Modify user/account expires
 
 ```shell
+# nsc edit account <Account Name> --expiry 10m
 # nsc edit user <User Name> --expiry 10m
 
 0 - infinity
@@ -148,12 +149,12 @@ y - year
 yyyy-mm-dd - until date
 ```
 
-- Modify user pub/sub rule
+- Modify user/account pub/sub rule
 
 ```shell
-# nsc edit user <User Name> --allow-pub "pub rule"[,"pub rule"] --allow-sub "sub rule"[,"sub rule"]
-# nsc edit user <User Name> --deny-pub "pub rule"[,"pub rule"] --deny-sub "sub rule"[,"sub rule"]
-# nsc edit user <User Name> --rm "string" // remove rule allow/deny pub/sub
+# nsc edit account(or user) <User Name> --allow-pub "pub rule"[,"pub rule"] --allow-sub "sub rule"[,"sub rule"]
+# nsc edit account(or user) <User Name> --deny-pub "pub rule"[,"pub rule"] --deny-sub "sub rule"[,"sub rule"]
+# nsc edit account(or user) <User Name> --rm "string" // remove rule allow/deny pub/sub
 ```
 
 - Push jwt to nats-server
@@ -168,11 +169,18 @@ yyyy-mm-dd - until date
 ```shell
 $ nsc delete account <Account Name>
 $ nsc push --prune(-P)
-
-- Notice
-한번 발급된 user credential은 account계정이 삭제 되기까지 유효  
-예를 들어 expire기간이 없는 user를 생성하고 그 credential을 배포시 상위 account를 지우는것이 아닌 이상 user를 삭제해도 유효한 credential로 작동
 ```
+
+### Notice
+한번 발급된 user credential은 expire date가 설정되지 않았다면 account계정이 삭제되거나 만료되기까지는 지속적으로 사용가능  
+예를 들어 expire기간이 없는 user를 생성하고 그 credential을 배포시 user를 삭제하고 push하여도 유효한 credential로 작동(상위 account의 유효기간 내)  
+
+- 권장 계정 사용방법  
+
+user의 경우 수정에 따른 creds file의 교체가 필요함으로
+account에 expire date를 설정하고 account의 expire date를 업데이트하는 방식으로 사용하는 것이 바람직하다.  
+user는 detail 규칙 세분화 용도로 사용
+
 
 ### Using client-side jwt
 
