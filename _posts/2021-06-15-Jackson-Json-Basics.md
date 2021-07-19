@@ -107,7 +107,7 @@ jsonNode.toString();
 List list = jsonMapper.readValue(jsonString, List.class);
 
 // object type
-Map<String, Object> map = jsonMapper.readValue(jsonString, Map.class);
+Map map = jsonMapper.readValue(jsonString, Map.class);
 ```
 
 ## GET, SET Value
