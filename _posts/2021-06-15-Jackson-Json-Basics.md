@@ -100,6 +100,16 @@ Map map = jsonMapper.convertValue(jsonNode /* or objectNode */, LinkedHashMap.cl
 jsonNode.toString();
 ```
 
+### From Json String to Java Collection
+
+```java
+// array type
+List list = jsonMapper.readValue(jsonString, List.class);
+
+// object type
+Map<String, Object> map = jsonMapper.readValue(jsonString, Map.class);
+```
+
 ## GET, SET Value
 
 ### Get Value From Jackson Object
