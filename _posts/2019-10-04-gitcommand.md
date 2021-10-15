@@ -106,3 +106,10 @@ $ git log --graph --all --decorate --oneline
 ```
 
 https://gist.github.com/heiswayi/350e2afda8cece810c0f6116dadbe651
+
+
+## 작업 branch develop으로 merge 방법
+1. 작업 branch commit
+2. git rebase develop
+3. git checkout develop
+4. git merge 작업 branch : fast-forward merge가 일어남
