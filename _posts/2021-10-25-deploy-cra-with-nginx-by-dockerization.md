@@ -1,8 +1,10 @@
 ---
 title: "Deploy CRA with NGINX by Dockerization"
+date: 2021-10-25
 tags: cra react nginx docker dockerfile
 toc: true
 toc_sticky: true
+comments: true
 ---
 
 # Deploy CRA with NGINX by Dockerization🥕
