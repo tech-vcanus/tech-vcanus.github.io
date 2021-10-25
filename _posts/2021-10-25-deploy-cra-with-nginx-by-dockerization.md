@@ -24,6 +24,8 @@ user@app $ yarn build
 ```
 
 - 만약 `build` 폴더를 개발 서버에 이동시켜 작업하는 경우
+
+
 ```bash
 # -r: recursive
 user@app $ scp -r ./build {username}@{ip_address}:{target_dir}
@@ -32,6 +34,8 @@ user@app $ scp -r ./build {username}@{ip_address}:{target_dir}
 ### 2. NGINX 설정 폴더 conf.d 및 파일 default.conf 생성
 - `React-Router`를 사용하지 않는 경우 관련 작업은 생략 가능
 - `default.conf` 생성
+
+
 ```bash
 user@app $ mkdir conf
 user@app $ mkdir conf/conf.d
@@ -39,7 +43,9 @@ user@app $ touch conf/conf.d/default.conf
 ```
 
 - 아래 내용을 `deafult.conf`에 작성
-```Text
+
+
+```
 server {
   listen 80;
   
@@ -59,12 +65,16 @@ server {
 
 ### 3. Dockerfile 생성
 - `Dockerfile` 생성
+
+
 ```bash
 user@app $ touch dockerfile-react-nginx # 이름을 Dockerfile로 하면 Docker Image 생성 시 파일 지정 옵션(-f) 생략 가능
 ```
 
 - 아래 내용을 `dockerfile-react-nginx`에 작성
-```Text
+
+
+```
 FROM nginx:latest # NGINX docker 최신 버전 이미지를 활용하여
 
 # >> React-Router 사용 시 >>
@@ -84,6 +94,8 @@ CMD ["nginx", "-g", "daemon off;"]
 ### 1. Docker Image 생성
 
 - `dockerfile-react-nginx`를 사용하여 `docker-react-nginx`(이름 무관)라는 `Docker Image` 생성
+
+
 ```bash
 user@app $ docker build -f dockerfile-react-nginx -t docker-react-nginx .
 user@app $ docker image list # image 생성 확인
@@ -91,11 +103,14 @@ REPOSITORY          TAG     IMAGE ID      CREATED         SIZE
 docker-react-nginx  latest  9f2ece875241  10 seconds ago  100MB
 ...                 ...     ...           ...             ...
 ```
+
 - 생성 과정에서 \<none\> 이미지가 생성된 경우 원인(주로 이미지 생성 시 오류 발생으로 인함) 확인 후 정리해주면 좋음
 
 ### 2. Docker Image를 Container로 생성 및 실행 
 
 - my-new-app이라는 `Container`를 생성 및 실행
+
+
 ```bash
 user@app $ docker run -it -d -p 80:80 --name=my-new-app docker-react-nginx
 user@app $ docker ps # container 생성 확인
@@ -106,7 +121,8 @@ user@app $ docker ps # container 생성 확인
 - build 시 `node` 버전을 관리할 수 있는 장점
 - 아래 내용으로 `dockerfile-react-nginx`에 작성
 
-```Text
+
+```
 FROM node:latest as build # node 최신 버전 이미지를 build라는 스테이지로 활용
 
 RUN mkdir /app
