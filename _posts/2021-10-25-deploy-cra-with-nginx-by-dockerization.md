@@ -39,7 +39,7 @@ user@app $ touch conf/conf.d/default.conf
 ```
 
 - 아래 내용을 `deafult.conf`에 작성
-```vi
+```Text
 server {
   listen 80;
   
@@ -64,7 +64,7 @@ user@app $ touch dockerfile-react-nginx # 이름을 Dockerfile로 하면 Docker 
 ```
 
 - 아래 내용을 `dockerfile-react-nginx`에 작성
-```vi
+```Text
 FROM nginx:latest # NGINX docker 최신 버전 이미지를 활용하여
 
 # >> React-Router 사용 시 >>
@@ -106,7 +106,7 @@ user@app $ docker ps # container 생성 확인
 - build 시 `node` 버전을 관리할 수 있는 장점
 - 아래 내용으로 `dockerfile-react-nginx`에 작성
 
-```vi
+```Text
 FROM node:latest as build # node 최신 버전 이미지를 build라는 스테이지로 활용
 
 RUN mkdir /app
