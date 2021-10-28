@@ -18,7 +18,7 @@ Written By [David Roh](https://github.com/tsedek), VCANUS
 ## Make clickOnce
 
 1. 배포하고자하는 Project - properties
-2. 좌측 메뉴 항목중 Publish
+2. 좌측 메뉴 항목중 Publish  
 ![publish_menu](https://user-images.githubusercontent.com/51553425/139192951-7e5542e0-c278-4648-a6ee-169afc0a33b5.png)
 3. Publishing Folder Location : clickOnce 배포파일을 만들고자 하는 경로 설정
 	- FTP경로 또는 파일 경로만 가능
@@ -33,8 +33,8 @@ Written By [David Roh](https://github.com/tsedek), VCANUS
 	1. The applicatino sholud check for updates 체크
 	2. 세부 업데이트 옵션 설가
 8. 기타 옵션 설정  
-![option](https://user-images.githubusercontent.com/51553425/139193101-61c9cb46-076f-4dae-b0dd-70924f015947.png)
-![option](https://user-images.githubusercontent.com/51553425/139193198-f65013da-cca2-4bde-bccf-926417f72200.png)
+![option1](https://user-images.githubusercontent.com/51553425/139193101-61c9cb46-076f-4dae-b0dd-70924f015947.png)
+![option2](https://user-images.githubusercontent.com/51553425/139193198-f65013da-cca2-4bde-bccf-926417f72200.png)
 9. Publish Now 클릭
 	- Publish Wizard 클릭시 publish location경로 설정과 Install Mode선택을 다시 하고 배포가능. 다른 설정을 변경 불가
 
