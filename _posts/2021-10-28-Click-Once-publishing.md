@@ -18,7 +18,7 @@ Written By [David Roh](https://github.com/tsedek), VCANUS
 ## Make clickOnce
 
 1. 배포하고자하는 Project - properties
-2. 좌측 메뉴 항목중 Publish  
+2. 좌측 메뉴 항목중 Publish
 ![publish_menu](https://user-images.githubusercontent.com/51553425/139192951-7e5542e0-c278-4648-a6ee-169afc0a33b5.png)
 3. Publishing Folder Location : clickOnce 배포파일을 만들고자 하는 경로 설정
 	- FTP경로 또는 파일 경로만 가능
