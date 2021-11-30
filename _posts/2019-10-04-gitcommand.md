@@ -14,16 +14,27 @@ Written by SGLee, VCANUS
 $ git init
 $ git config --global user.name "user name"
 $ git config --global user.email <user email>
-$ git remote add origin <repository url>
-$ git fetch origin
-$ git fetch (default is origin)
+$ git remote add origin <repository url> (in case of using origin)
+$ git remote add vcanus <repository url>
+$ git fetch (default is origin, in case of using origin)
 $ git fetch vcanus (target remote(upstream) is vcanus)
-$ git pull origin master (develop, feature/topic)
+$ git pull vcanus master (ex. develop, feature/topic)
 $ git add <file name>
 // to all files
-$ git add --
+$ git add --all
 $ git commit -m "<message>"
-$ git push origin master (develop, feature/topic)
+$ git push vcanus master (ex. develop, feature/topic)
+$ git checkout -b develop (check -b and -t)
+$ git add --all
+$ git commit -m "<message>"
+$ git push vcanus develop
+$ git checkout -b feature/topic
+$ git rebase develop (to avoid conflict)
+$ git add --all
+$ git commit -m "<message>"
+$ git push vcanus feature/topic
+$ git checkout develop
+$ git merge feature/topic
 ```
 ## make branch and checkout
 ```
