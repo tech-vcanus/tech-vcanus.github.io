@@ -171,6 +171,28 @@ $ nsc delete account <Account Name>
 $ nsc push --prune(-P)
 ```
 
+- Use client-side authentication
+```
+생성한 user이름.creds파일 자체를 사용하거나 파일에서 정보를 취득
+creds파일 위치 : ./nsc/nkeys/creds/생성operation/생성account/user이름.creds
+
+example creds 파일 내용
+
+-----BEGIN NATS USER JWT-----
+eyJ0eXAiOiJKV1QiLCJhbGciOiJlZDI1NTE5LW5rZXkifQ.eyJqdGkiOiJOUDRJM1VHMlNSRk9YU1dUMkVBSzVSWkVYRUFXNkMzT1I0S0EzSFVWRzZDN1pETUlaS0JRIiwiaWF0IjoxNjQxMTgzMzQ0LCJpc3MiOiJBQlZONzNHU0JYQ0M3VTZLUkFGUVdCRVZRWlZQSFBNVUhYNUQ1UUs2UFBZMkZTTks1S1FIT01WNCIsIm5hbWUiOiJ1c2VyYSIsInN1YiI6IlVDT1ZTTzJZV1pMMjRJRkRTSFozRERZTzJVM0VXVUlSV1JWRDJVQlNNRENWS1BIRlFYVzI1RERYIiwibmF0cyI6eyJwdWIiOnt9LCJzdWIiOnt9LCJzdWJzIjotMSwiZGF0YSI6LTEsInBheWxvYWQiOi0xLCJ0eXBlIjoidXNlciIsInZlcnNpb24iOjJ9fQ.P4qAGyOHlB_OdnPzzwOiqQU2BmErAKVtZzwAHZG1vVr15yM8qXT2La_xDRqigVPshV-bkj_dtJ4KDCgCzdoZCw
+------END NATS USER JWT------
+
+************************* IMPORTANT *************************
+NKEY Seed printed below can be used to sign and prove identity.
+NKEYs are sensitive and should be treated as secrets.
+
+-----BEGIN USER NKEY SEED-----
+SUAMFALQFBXJX4ZXTJ4Z7UOSWGRSDFEH355CXZRZADEBLYEYQ2YYIH52WM
+------END USER NKEY SEED------
+
+*************************************************************
+```
+
 ### Notice
 한번 발급된 user credential은 expire date가 설정되지 않았다면 account계정이 삭제되거나 만료되기까지는 지속적으로 사용가능  
 예를 들어 expire기간이 없는 user를 생성하고 그 credential을 배포시 user를 삭제하고 push하여도 유효한 credential로 작동(상위 account의 유효기간 내)  
