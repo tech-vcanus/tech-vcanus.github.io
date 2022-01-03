@@ -81,7 +81,7 @@ $ docker run -v $PWD/nsc:/nsc --rm -it synadia/nats-box
 # nsc edit operator --account-jwt-server-url nats://<nats ip>:<nats port>
 
 inspect setup
-# nsc list key -all
+# nsc list keys --all
 # nsc descirbe operator
 
 export config file
