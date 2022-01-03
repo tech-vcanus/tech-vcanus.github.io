@@ -176,7 +176,7 @@ $ nsc push --prune(-P)
 생성한 user이름.creds파일 자체를 사용하거나 파일에서 정보를 취득
 creds파일 위치 : ./nsc/nkeys/creds/생성operation/생성account/user이름.creds
 
-example creds 파일 내용
+creds 파일 내용 example(jwt와 nkey로 구성)
 
 -----BEGIN NATS USER JWT-----
 eyJ0eXAiOiJKV1QiLCJhbGciOiJlZDI1NTE5LW5rZXkifQ.eyJqdGkiOiJOUDRJM1VHMlNSRk9YU1dUMkVBSzVSWkVYRUFXNkMzT1I0S0EzSFVWRzZDN1pETUlaS0JRIiwiaWF0IjoxNjQxMTgzMzQ0LCJpc3MiOiJBQlZONzNHU0JYQ0M3VTZLUkFGUVdCRVZRWlZQSFBNVUhYNUQ1UUs2UFBZMkZTTks1S1FIT01WNCIsIm5hbWUiOiJ1c2VyYSIsInN1YiI6IlVDT1ZTTzJZV1pMMjRJRkRTSFozRERZTzJVM0VXVUlSV1JWRDJVQlNNRENWS1BIRlFYVzI1RERYIiwibmF0cyI6eyJwdWIiOnt9LCJzdWIiOnt9LCJzdWJzIjotMSwiZGF0YSI6LTEsInBheWxvYWQiOi0xLCJ0eXBlIjoidXNlciIsInZlcnNpb24iOjJ9fQ.P4qAGyOHlB_OdnPzzwOiqQU2BmErAKVtZzwAHZG1vVr15yM8qXT2La_xDRqigVPshV-bkj_dtJ4KDCgCzdoZCw
