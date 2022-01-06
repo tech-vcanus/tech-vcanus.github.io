@@ -75,7 +75,7 @@ $ docker run -v $PWD/nsc:/nsc --rm -it synadia/nats-box
 ```
 
 - Create operator and out nats config
-operation을 등록하고 해당 설정을 내보내서 nats server를 
+operation을 등록하고 해당 설정을 내보내서 nats server를 구동
 
 ```shell
 # nsc add operator -n <Name> --sys
