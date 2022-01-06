@@ -74,7 +74,8 @@ $ mkdir nsc
 $ docker run -v $PWD/nsc:/nsc --rm -it synadia/nats-box
 ```
 
-- Create nats config
+- Create operator and out nats config
+operation을 등록하고 해당 설정을 내보내서 nats server를 
 
 ```shell
 # nsc add operator -n <Name> --sys
@@ -87,6 +88,14 @@ inspect setup
 export config file
 # nsc generate config --nats-resolver > nats-auth.config
 ```
+
+- Run Nats-server with config file
+
+```shell
+$ mkdir jwt
+$ docker run --name jwt_nats -d -v $PWD/nsc/nats-auth.config:/nats-auth.config -v $PWD/jwt:/jwt -p 4222:4222 nats:latest -c /nats-auth.config
+```
+
 
 - Path about auth file in container
 
@@ -118,13 +127,6 @@ nsc/
         └── U
             └── DB
                 └── UDBD5FNQPSLIO6CDMIS5D4EBNFKYWVDNULQTFTUZJXWFNYLGFF52VZN7.nk
-```
-
-- Run Nats-server with config file
-
-```shell
-$ mkdir jwt
-$ docker run --name jwt_nats -d -v $PWD/nsc/nats-auth.config:/nats-auth.config -v $PWD/jwt:/jwt -p 4222:4222 nats:latest -c /nats-auth.config
 ```
 
 - Create account
