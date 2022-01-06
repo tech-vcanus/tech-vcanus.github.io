@@ -174,7 +174,8 @@ $ nsc push --prune(-P)
 ```
 
 - Use client-side authentication
-```
+
+```text
 생성한 user이름.creds파일 자체를 사용하거나 파일에서 정보를 취득
 creds파일 위치 : ./nsc/nkeys/creds/생성operation/생성account/user이름.creds
 
@@ -195,15 +196,14 @@ SUAMFALQFBXJX4ZXTJ4Z7UOSWGRSDFEH355CXZRZADEBLYEYQ2YYIH52WM
 *************************************************************
 ```
 
-### Notice
-한번 발급된 user credential은 expire date가 설정되지 않았다면 account계정이 삭제되거나 만료되기까지는 지속적으로 사용가능  
-예를 들어 expire기간이 없는 user를 생성하고 그 credential을 배포시 user를 삭제하고 push하여도 유효한 credential로 작동(상위 account의 유효기간 내)  
+### Notice(계정 사용 유의사항)
 
-- 권장 계정 사용방법  
-
-user의 경우 수정에 따른 creds file의 교체가 필요함으로
-account에 expire date를 설정하고 account의 expire date를 업데이트하는 방식으로 사용하는 것이 바람직하다.  
-user는 detail 규칙 세분화 용도로 사용
+- nats server는 처음 동작할때 config에 입력된 operator정보와 nsc가 push해주는 account 정보만 가지고 있다
+- account를 기반으로 만들어지는 user는 nats server에 저장되지 않음
+- 따라서 한번 발급된 user credential(jwt)은 만료기한(expire date)가 설정되지 않았다면 상위 account계정이 삭제되거나 만료되기까지는 지속적으로 사용가능
+  - 예를 들어 만료기간이 없는 user를 생성하고 그 credential(jwt)을 배포후에, nsc에서 user를 삭제하여도 기존에 발급된 user credential(jwt)가 그대로 정상 작동하게 된다.
+- user를 수정하게 되면 creds파일 내용(jwt)가 변동. 해당 내용으로 사용자에게 재배포 필요.
+- account도 수정후 수정된 내용(수정된 jwt)를 적용하기 위해선 반드시 nats server로 push 해줘야 한다(nsc push)
 
 
 ### Using client-side jwt
