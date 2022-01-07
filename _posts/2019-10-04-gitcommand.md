@@ -18,7 +18,7 @@ $ git remote add origin <repository url> (in case of using origin)
 $ git remote add vcanus <repository url>
 $ git fetch (default is origin, in case of using origin)
 $ git fetch vcanus (target remote(upstream) is vcanus)
-$ git pull vcanus master (ex. develop, feature/topic)
+$ git pull vcanus master (ex. develop, feature/<topic>)
 $ git add <file name>
 // to all files
 $ git add --all
@@ -28,13 +28,18 @@ $ git checkout -b develop (check -b and -t)
 $ git add --all
 $ git commit -m "<message>"
 $ git push vcanus develop
-$ git checkout -b feature/topic
+$ git checkout -b feature/<topic>
+$ git add --all
+$ git commit -m "<message>"
+$ git checkout develop
+$ git pull vcanus develop
+$ git checkout feature/<topic>
 $ git rebase develop (to avoid conflict)
 $ git add --all
 $ git commit -m "<message>"
-$ git push vcanus feature/topic
+$ git push vcanus feature/<topic>
 $ git checkout develop
-$ git merge feature/topic
+$ git merge feature/<topic>
 ```
 ## make branch and checkout
 ```
