@@ -41,6 +41,38 @@ $ git push vcanus feature/<topic>
 $ git checkout develop
 $ git merge feature/<topic>
 ```
+
+## case study
+```
+$ git init // 최초 실행
+$ git remote add vcanus https://github.com/vcanus/<repositoryname>.git // 해당 repository 등록, origin이 아닌 vcanus upstream 사용, git config는 global로 사전 설정 가정
+$ git fetch vcanus // vcanus upstream의 branch 정보 가져오기
+$ git pull vcanus master // 마스터 pull
+$ git checkout -b develop // -b: 신규, -t: 기존
+$ git pull vcanus develop // develop 최신 pull
+$ git checkout -b feature/<topic> // -b: 신규, -t 기존
+$ ... update
+$ git add --all
+$ git commit -m "feature/<topic> 수정 내용"
+$ git checkout develop
+$ git pull vcanus develop // feature<topic> 수정 시 upstream develop이 변경될 수 있기에 pull
+$ git checkout feature/<topic>
+$ git rebase develop // feature/<topic> 생성 시 develop 버전이 아닌 신규 버전이 있는 경우 반영
+$ git push vcanus feature/<topic>
+$ git checkout develop 
+$ git merge feature/<topic> // topic merge
+$ git push vcanus develop
+$ git checkout master
+$ git merge develop // develop 버전 merge, 또는 github web에서 Pull Request할 것 (develop branch에서)
+$ git push vcanus master
+$ git checkout -b release/<v0.0.1> // release<version>명으로 브랜치 생성
+$ git merge master
+$ git push vcanus release/<v0.0.1>
+$ mvn clean & compile
+$ mvn package
+$ mvn deploy -DskipTests // -DskipTests는 option
+```
+
 ## make branch and checkout
 ```
 // first 2~6 digits are ok
