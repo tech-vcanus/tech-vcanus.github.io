@@ -56,12 +56,14 @@ $ git add --all
 $ git commit -m "feature/<topic> 수정 내용"
 $ git fetch vcanus develop // upstream vcanus의 develop 변경 사항 fetch
 $ git rebase vcanus/develop // upstream vcanus/develop 브랜치로 rebase 수행
-// conflict 발생할 경우
+// conflict 발생할 경우 시작
 $ conflict 파일 수정 ...
 $ git add --all
 $ git commit -m "conflict 수정 사항 입력"
 $ git rebase --continue // 매우 중요
 $ git push vcanus feature/<topic> // 선택 사항
+// conflict 발생할 경우 끝
+$ git checkout develop
 $ git pull vcanus develop // 매우 중요, feature merge 하기 전에 최신 develop 브랜치로 pull
 $ git merge feature/<topic> // 앞에서 수정한 feature 브랜치를 merge
 $ git push vcanus develop
