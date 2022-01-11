@@ -51,17 +51,21 @@ $ git pull vcanus master // 마스터 pull
 $ git checkout -b develop // -b: 신규, -t: 기존
 $ git pull vcanus develop // develop 최신 pull
 $ git checkout -b feature/<topic> // -b: 신규, -t 기존
-$ ... update
+$ ... update contents, 신규 기능 추가 및 내용 변경
 $ git add --all
 $ git commit -m "feature/<topic> 수정 내용"
-$ git checkout develop
-$ git pull vcanus develop // feature<topic> 수정 시 upstream develop이 변경될 수 있기에 pull
-$ git checkout feature/<topic>
-$ git rebase develop // feature/<topic> 생성 시 develop 버전이 아닌 신규 버전이 있는 경우 반영
-$ git push vcanus feature/<topic>
-$ git checkout develop 
-$ git merge feature/<topic> // topic merge
+$ git fetch vcanus develop // upstream vcanus의 develop 변경 사항 fetch
+$ git rebase vcanus/develop // upstream vcanus/develop 브랜치로 rebase 수행
+// conflict 발생할 경우
+$ conflict 파일 수정 ...
+$ git add --all
+$ git commit -m "conflict 수정 사항 입력"
+$ git rebase --continue // 매우 중요
+$ git push vcanus feature/<topic> // 선택 사항
+$ git pull vcanus develop // 매우 중요, feature merge 하기 전에 최신 develop 브랜치로 pull
+$ git merge feature/<topic> // 앞에서 수정한 feature 브랜치를 merge
 $ git push vcanus develop
+// 이하 다른 option
 $ git checkout master
 $ git merge develop // develop 버전 merge, 또는 github web에서 Pull Request할 것 (develop branch에서)
 $ git push vcanus master
