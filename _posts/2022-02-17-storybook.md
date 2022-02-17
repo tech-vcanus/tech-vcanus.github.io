@@ -46,8 +46,10 @@ npx sb init
 ![screenshot](https://user-images.githubusercontent.com/93421356/154380385-6a8fd200-8f01-496c-8abc-adbd997ed119.png)
 
 
-- basic composition of a file
+
+- basic composition of a file </br>
 ![screenshot2](https://user-images.githubusercontent.com/93421356/154380397-56075b5a-668a-44c8-b03f-194854438d6e.png)
+
 
 
 ## Run Storybook
