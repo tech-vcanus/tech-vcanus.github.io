@@ -43,15 +43,15 @@ npm start
 npx sb init
 ```
 - make a file of a component with '.stories.tsx' in 'stories' directory to see on the storybook
-![image](../../Desktop/screenshot.png)
+![screenshot](https://user-images.githubusercontent.com/93421356/154380385-6a8fd200-8f01-496c-8abc-adbd997ed119.png)
 
 
 - basic composition of a file
-![image](../../Desktop/screenshot2.png)
+![screenshot2](https://user-images.githubusercontent.com/93421356/154380397-56075b5a-668a-44c8-b03f-194854438d6e.png)
 
 
 ## Run Storybook
 ```
 npm run storybook
 ```
-![image](../../Desktop/screenshot3.png)
+<img width="1440" alt="screenshot3" src="https://user-images.githubusercontent.com/93421356/154380429-8252f191-cef4-47ad-8c1f-2d3b6d570d14.png">
