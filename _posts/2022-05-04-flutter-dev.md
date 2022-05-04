@@ -10,3 +10,8 @@ Written by SGLee, VCANUS
 ## CocoaPods 설치
 - M1 노트북인 경우 gem install cocoapods에 문제가 있음
 - brew로 설치할 것을 권장
+```
+$ brew update
+$ brew install libffi
+$ brew install cocoapods
+```
