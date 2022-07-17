@@ -9,6 +9,8 @@ toc_sticky: true
 
 Written by SGLee, VCANUS
 
+# 각 OS별로 Conda를 설치하고 Conda에서 Jupiter 사용하는 것을 권장
+
 # How to use Jupiter
 
 ## 1. Install Python3
