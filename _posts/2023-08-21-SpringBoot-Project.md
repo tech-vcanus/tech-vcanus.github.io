@@ -13,7 +13,8 @@ Written By Tae-hwa Seo
 ## Spring Boot를 활용하여 Project 만들기
 
 ### 1. https://start.spring.io/ 에서 프로젝트 생성
-<img src="../assets/images/start_spring_io.png" width="600px" height="400px" title="start_spring_io"/>
+
+<img src="../assets/images/start_spring_io.png" title="start_spring_io">
 
 1. https://start.spring.io/ 접속
 2. project : 빌드 툴 선택
@@ -56,7 +57,8 @@ Written By Tae-hwa Seo
 ## pom.xml 설정
 추가로 필요한 라이브러리를 셋팅 가능
 * dependency 설정 추가 예시
-```xml
+
+``` xml
 <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 <dependency>
     <groupId>org.slf4j</groupId>
@@ -99,4 +101,5 @@ Written By Tae-hwa Seo
     <version>0.0.1-SNAPSHOT</version>
 </dependency>
 ```
+
 * **Spring Boot 버전에 호환되는 라이브러리의 버전을 선택해야함**
