@@ -14,7 +14,7 @@ Written By Tae-hwa Seo
 
 ### 1. https://start.spring.io/ 에서 프로젝트 생성
 
-<img src="../assets/images/start_spring_io.png" title="start_spring_io">
+<img src="assets/images/start_spring_io.png" title="start_spring_io">
 
 1. https://start.spring.io/ 접속
 2. project : 빌드 툴 선택
@@ -37,7 +37,8 @@ Written By Tae-hwa Seo
 
 
 ### 2. IntelliJ project 생성 시 'Spring Initializr' 바로 적용 (IntelliJ Ultimate Edition 버전)
-<img src="../assets/images/springboot_create_project.png" width="600px" height="400px" title="springboot_create_project"/>
+
+<img src="assets/images/springboot_create_project.png" width="600px" height="400px" title="springboot_create_project"/>
 
 1. 인텔리제이 실행
 2. 새 프로젝트 생성
