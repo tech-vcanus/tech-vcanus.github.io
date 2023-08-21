@@ -13,16 +13,16 @@ Written By Tae-hwa Seo
 ## Spring Boot를 활용하여 Project 만들기
 
 ### 1. https://start.spring.io/ 에서 프로젝트 생성
-<img src="assets/images/start_spring_io.png" width="500px" height="400px" title="start_spring_io"/>
+<img src="../assets/images/start_spring_io.png" width="600px" height="400px" title="start_spring_io"/>
 
 1. https://start.spring.io/ 접속
 2. project : 빌드 툴 선택
 3. language : 프로젝트에 사용하고자하는 프로그래밍 언어 선택
-4. Spring Boot : 스프링부트 버전 선택. 버전 이름 뒤 아무것도 붙어 있지 않은 버전 중 가장 최신 버전 선택\
+4. Spring Boot : 스프링부트 버전 선택. 버전 이름 뒤 아무것도 붙어 있지 않은 버전 중 가장 최신 버전 선택
    *  SNAPSHOT: 개발이 아직 완료되지 않은 버전
    *  M(Milestone) : 개발은 완료 되었으나, 기능 개선 or 버그 수정 중인 버전
    *  RC(Release Candidate) : 기능 개선과 버그 수정 완료되었으나, 최종 릴리즈 되지 않은 버전
-5. Project Metadata : 프로젝트 정보 입력\
+5. Project Metadata : 프로젝트 정보 입력
    * Group : 프로젝트를 만드는 그룹 이름
    * Artifact : 빌드 결과물의 이름
    * Name : 프로젝트의 이름
@@ -36,12 +36,12 @@ Written By Tae-hwa Seo
 
 
 ### 2. IntelliJ project 생성 시 'Spring Initializr' 바로 적용 (IntelliJ Ultimate Edition 버전)
-<img src="/assets/images/springboot_create_project.png" width="500px" height="400px" title="springboot_create_project"/>
+<img src="../assets/images/springboot_create_project.png" width="600px" height="400px" title="springboot_create_project"/>
 
 1. 인텔리제이 실행
 2. 새 프로젝트 생성
 3. 좌측 Generators tab에서 Spring Initializr 선택
-4. 프로젝트 정보 입력 후 NEXT\
+4. 프로젝트 정보 입력 후 NEXT
    * Name : 프로젝트의 이름
    * Location : 프로젝트 저장 위치
    * Language : 프로젝트에 사용하고자하는 프로그래밍 언어 선택
