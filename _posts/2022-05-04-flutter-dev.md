@@ -6,6 +6,9 @@ tags: development environment setup installation flutter
 ---
 
 Written by SGLee, VCANUS
+# 참고
+- https://velog.io/@okxooxoo/Flutter-Mac%EC%97%90-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EC%84%B8%ED%8C%85%ED%95%98%EA%B8%B0
+  
 # IOS 개발 환경
 ## Java, Python 등 기본 환경 설치
 ## XCode 설치
