@@ -39,5 +39,5 @@ $ brew install --cask flutter
 ```
 $ flutter doctor
 ```
-
+<img width="731" alt="image" src="https://github.com/user-attachments/assets/3f114049-b3b1-4fe0-b38b-d30995eb541f" />
 
