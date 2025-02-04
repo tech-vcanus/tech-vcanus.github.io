@@ -28,3 +28,16 @@ $ brew install cocoapods
 
 
 # Android 스튜디오 설치
+https://developer.android.com/studio
+
+# Flutter 설치
+## Homebrew 기반 설치
+```
+$ brew install --cask flutter
+```
+## Flutter Doctor로 개발환경 세팅 확인
+```
+$ flutter doctor
+```
+
+
