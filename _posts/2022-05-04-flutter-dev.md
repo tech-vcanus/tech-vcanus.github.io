@@ -49,6 +49,11 @@ $ flutter doctor
 - android 툴체인: 안드로이드 설치 참고
 - android 라이센스
 ```
-flutter doctor --android-licenses
+$ flutter doctor --android-licenses
+```
+- xcode
+```
+$ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+$ sudo xcodebuild -runFirstLaunch
 ```
 
