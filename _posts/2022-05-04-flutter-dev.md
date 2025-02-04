@@ -26,9 +26,10 @@ $ brew update
 $ brew install cocoapods
 ```
 
-
 # Android 스튜디오 설치
 https://developer.android.com/studio
+<img width="414" alt="image" src="https://github.com/user-attachments/assets/ae718ee3-c3eb-482b-8b4d-7d04fe1230ab" />
+
 
 # Flutter 설치
 ## Homebrew 기반 설치
@@ -40,4 +41,11 @@ $ brew install --cask flutter
 $ flutter doctor
 ```
 <img width="731" alt="image" src="https://github.com/user-attachments/assets/3f114049-b3b1-4fe0-b38b-d30995eb541f" />
+
+## 추가 해결
+- android 툴체인: 안드로이드 설치 참고
+- android 라이센스
+```
+flutter doctor --android-licenses
+```
 
