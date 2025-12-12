@@ -16,67 +16,43 @@ $ git config --global user.name "user name"
 $ git config --global user.email <user email>
 $ git remote add origin <repository url> (in case of using origin)
 $ git remote add vcanus <repository url>
-$ git fetch (default is origin, in case of using origin)
-$ git fetch vcanus (target remote(upstream) is vcanus)
-$ git pull vcanus master (ex. develop, feature/<topic>)
-$ git add <file name>
-// to all files
+
+# 체크아웃
+$ git checkout -b develop # 최초 생성. 원격 저장소에 develop 브랜치 존재하지 않을 경우
+$ git checkout -t vcanus/develop # 원격 저장소에 기존 존재하는 develop으로 체크아웃
+
+# commit & push 일반
 $ git add --all
 $ git commit -m "<message>"
-$ git push vcanus master (ex. develop, feature/topic)
-$ git checkout -b develop (check -b and -t)
+$ git push vcanus <branch> # 원격 저장소로 푸시
+
+$ git pull vcanus <branch> # <branch> 최신 데이터 유지
+
+$ git checkout -b feature/<topic> # 신규 작업 브랜치 생성
 $ git add --all
-$ git commit -m "<message>"
-$ git push vcanus develop
-$ git checkout -b feature/<topic>
-$ git add --all
-$ git commit -m "<message>"
+$ git commit -m "message"
+$ git push vcanus feature/<topic>
+
+# Github에서 PR 수행 (feature -> develop)
+$ git checkout develop
+$ git pull vcanus develop
+
+# 작업 중인 브랜치에서 최신 develop 내용 반영하기 1)
+$ git fetch
 $ git checkout develop
 $ git pull vcanus develop
 $ git checkout feature/<topic>
-$ git rebase develop (to avoid conflict)
-$ git add --all
-$ git commit -m "<message>"
-$ git push vcanus feature/<topic>
-$ git checkout develop
-$ git merge feature/<topic>
-```
+$ git rebase develop
 
-## case study
-```
-$ git init // 최초 실행
-$ git remote add vcanus https://github.com/vcanus/<repositoryname>.git // 해당 repository 등록, origin이 아닌 vcanus upstream 사용, git config는 global로 사전 설정 가정
-$ git fetch vcanus // vcanus upstream의 branch 정보 가져오기
-$ git pull vcanus master // 마스터 pull
-$ git checkout -b develop // -b: 신규, -t: 기존
-$ git pull vcanus develop // develop 최신 pull
-$ git checkout -b feature/<topic> // -b: 신규, -t 기존
-$ ... update contents, 신규 기능 추가 및 내용 변경
-$ git add --all
-$ git commit -m "feature/<topic> 수정 내용"
-$ git fetch vcanus develop // upstream vcanus의 develop 변경 사항 fetch
-$ git rebase vcanus/develop // upstream vcanus/develop 브랜치로 rebase 수행
-// conflict 발생할 경우 시작
+# 작업 중인 브랜치에서 최신 develop 내용 반영하기 2) fetch, rebase를 한 번에 수행
+$ git checkout feature
+$ git pull --rebase origin develop
+
+# conflict 발생할 경우
 $ conflict 파일 수정 ...
 $ git add --all
 $ git commit -m "conflict 수정 사항 입력"
-$ git rebase --continue // 매우 중요
-$ git push vcanus feature/<topic> // 선택 사항
-// conflict 발생할 경우 끝
-$ git checkout develop
-$ git pull vcanus develop // 매우 중요, feature merge 하기 전에 최신 develop 브랜치로 pull
-$ git merge feature/<topic> // 앞에서 수정한 feature 브랜치를 merge
-$ git push vcanus develop
-// 이하 다른 option
-$ git checkout master
-$ git merge develop // develop 버전 merge, 또는 github web에서 Pull Request할 것 (develop branch에서)
-$ git push vcanus master
-$ git checkout -b release/<v0.0.1> // release<version>명으로 브랜치 생성
-$ git merge master
-$ git push vcanus release/<v0.0.1>
-$ mvn clean & compile
-$ mvn package
-$ mvn deploy -DskipTests // -DskipTests는 option
+$ git rebase --continue # 매우 중요
 ```
 
 ## make branch and checkout
